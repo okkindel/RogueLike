@@ -89,14 +89,14 @@ public class Room {
         Image black, white, doors;
 
         File f = new File("./assets/black.png");
-        BufferedImage blackbrick = ImageIO.read(f);
-        black = SwingFXUtils.toFXImage(blackbrick, null);
+        BufferedImage wall_block = ImageIO.read(f);
+        black = SwingFXUtils.toFXImage(wall_block, null);
         f = new File("./assets/white.png");
-        BufferedImage whitebrick = ImageIO.read(f);
-        white = SwingFXUtils.toFXImage(whitebrick, null);
+        BufferedImage floor_block = ImageIO.read(f);
+        white = SwingFXUtils.toFXImage(floor_block, null);
         f = new File("./assets/doors.png");
-        BufferedImage doorsbrick = ImageIO.read(f);
-        doors = SwingFXUtils.toFXImage(doorsbrick, null);
+        BufferedImage door_block = ImageIO.read(f);
+        doors = SwingFXUtils.toFXImage(door_block, null);
 
         Pane root = new Pane();
 
