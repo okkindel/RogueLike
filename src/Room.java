@@ -1,3 +1,12 @@
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Arrays;
 
@@ -8,6 +17,7 @@ public class Room {
 
     protected static int height = 0;
     protected static int width = 0;
+    protected static int door_position;
     protected static int [][] sizes;
     protected static int [] north, south, east, west;
 
@@ -16,8 +26,8 @@ public class Room {
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
         sizes = new int[width][height];
-        north = new int[width+2];
-        south = new int[width+2];
+        north = new int[width];
+        south = new int[width];
         east = new int[height];
         west = new int[height];
 
@@ -40,41 +50,57 @@ public class Room {
         Arrays.fill(south, 2);
         Arrays.fill(east, 2);
         Arrays.fill(west, 2);
-    }
-
-    protected static void doorPosition() {
-        Random generator = new Random();
-        int [] array_choosed = new int [10];
-        if (generator.nextInt(4) + 1 == 1)
-            array_choosed = north;
-        if (generator.nextInt(4) + 1 == 2)
-            array_choosed = south;
-        if (generator.nextInt(4) + 1 == 3)
-            array_choosed = east;
-        if (generator.nextInt(4) + 1 == 4)
-            array_choosed = west;
-        int position_random = generator.nextInt(array_choosed.length) + 1;
-        addDoors(position_random, array_choosed);
-    }
-
-    protected static void addDoors (int position, int[] array) {
-        position = position;
-        array = array;
+        for (int i = 0; i < width; i++) {
+            sizes[i][0] = north[i];
+            sizes[i][height-1] = south[i];
+        }
+        for (int i = 0; i < height; i++) {
+            sizes[0][i] = east[i];
+            sizes[width-1][i] = west[i];
+        }
     }
 
     protected static void showing() {
-        for (int i = 0; i < north.length; i++)
-            System.out.print(north[i]);
-        System.out.println();
+
         for (int i = 0; i < height; i++) {
-            System.out.print(west[i]);
             for (int j = 0; j < width; j++) {
                 System.out.print(sizes[j][i]);
             }
-            System.out.print(east[i]);
             System.out.println();
         }
-        for (int i = 0; i < south.length; i++)
-            System.out.print(south[i]);
+    }
+
+    protected Pane draw() throws IOException {
+        Image black;
+        Image white;
+
+        File f = new File("./assets/black.png");
+        BufferedImage blackbrick = ImageIO.read(f);
+        black = SwingFXUtils.toFXImage(blackbrick, null);
+
+        f = new File("./assets/white.png");
+        BufferedImage whitebrick = ImageIO.read(f);
+        white = SwingFXUtils.toFXImage(whitebrick, null);
+
+        Pane root = new Pane();
+
+        for (int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                ImageView iV = new ImageView();
+                if( sizes[j][i] == 2) {
+                    iV.setImage(black);
+                    iV.setX(j*16 + 100);
+                    iV.setY(i*16 + 100);
+                    root.getChildren().add(iV);
+                }
+                if(sizes[j][i] == 1) {
+                    iV.setImage(white);
+                    iV.setX(j*16 + 100);
+                    iV.setY(i*16 + 100);
+                    root.getChildren().add(iV);
+                }
+            }
+        }
+        return root;
     }
 }
