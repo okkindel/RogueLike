@@ -9,8 +9,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Room room = new Room();
+        Corridor corridor = new Corridor();
+        Draftsman dungeon = new Draftsman();
         primaryStage.setTitle("Pixel Caves");
-        sc = new Scene(room.draw(), 800, 600);
+        sc = new Scene(dungeon.draw(), 800, 600);
         primaryStage.setScene(sc);
         primaryStage.show();
     }
