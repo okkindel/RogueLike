@@ -8,7 +8,6 @@ public class Room {
 
     protected static int height = 0;
     protected static int width = 0;
-    protected static int door_position;
     protected static int [][] sizes;
     protected static int [] north, south, east, west;
 
@@ -44,7 +43,18 @@ public class Room {
     }
 
     protected static void doorPosition() {
-        
+        Random generator = new Random();
+        int [] array_choosed = new int [10];
+        if (generator.nextInt(4) + 1 == 1)
+            array_choosed = north;
+        if (generator.nextInt(4) + 1 == 2)
+            array_choosed = south;
+        if (generator.nextInt(4) + 1 == 3)
+            array_choosed = east;
+        if (generator.nextInt(4) + 1 == 4)
+            array_choosed = west;
+        int position_random = generator.nextInt(array_choosed.length) + 1;
+        addDoors(position_random, array_choosed);
     }
 
     protected static void addDoors (int position, int[] array) {
