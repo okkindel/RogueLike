@@ -9,7 +9,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Room room = new Room();
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Pixel Caves");
         sc = new Scene(room.draw(), 800, 600);
         primaryStage.setScene(sc);
         primaryStage.show();

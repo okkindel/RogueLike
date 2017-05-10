@@ -62,16 +62,16 @@ public class Room {
         Random generator = new Random();
         int random = generator.nextInt(4);
         if (random == 0) {
-            north[generator.nextInt(north.length -1) + 1] = 3;
+            north[generator.nextInt(north.length -3) + 2] = 3;
         }
         if (random == 1) {
-            south[generator.nextInt(south.length -1) + 1] = 3;
+            south[generator.nextInt(south.length -3) + 2] = 3;
         }
         if (random == 2) {
-            east[generator.nextInt(east.length -1) + 1] = 3;
+            east[generator.nextInt(east.length -3) + 2] = 3;
         }
         if (random == 3) {
-            west[generator.nextInt(west.length -1) + 1] = 3;
+            west[generator.nextInt(west.length -2) + 2] = 3;
         }
     }
 
@@ -104,19 +104,19 @@ public class Room {
             for(int j = 0; j < width; j++) {
                 ImageView iV = new ImageView();
 
-                if( sizes[j][i] == 2) {
+                if (sizes[j][i] == 2) {
                     iV.setImage(black);
                     iV.setX(j*16 + 100);
                     iV.setY(i*16 + 100);
                     root.getChildren().add(iV);
                 }
-                if(sizes[j][i] == 1) {
+                if (sizes[j][i] == 1) {
                     iV.setImage(white);
                     iV.setX(j*16 + 100);
                     iV.setY(i*16 + 100);
                     root.getChildren().add(iV);
                 }
-                if(sizes[j][i] == 3) {
+                if (sizes[j][i] == 3) {
                     iV.setImage(doors);
                     iV.setX(j*16 + 100);
                     iV.setY(i*16 + 100);
