@@ -5,9 +5,10 @@ import java.util.Arrays;
  * Created by okkindel on 10.05.17.
  */
 public class Room {
-    
+
     protected static int height = 0;
     protected static int width = 0;
+    protected static int door_position;
     protected static int [][] sizes;
     protected static int [] north, south, east, west;
 
@@ -20,6 +21,7 @@ public class Room {
         south = new int[width+2];
         east = new int[height];
         west = new int[height];
+
 
         innerRoom();
         addWalls();
@@ -41,8 +43,13 @@ public class Room {
         Arrays.fill(west, 2);
     }
 
-    protected static void addDoors() {
+    protected static void doorPosition() {
+        
+    }
 
+    protected static void addDoors (int position, int[] array) {
+        position = position;
+        array = array;
     }
 
     protected static void showing() {
