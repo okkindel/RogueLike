@@ -48,7 +48,7 @@ public class Corridor {
         if (generator.nextInt(5) == 0) {
             left[generator.nextInt(left.length - 1)] = 3;
         }
-        if (generator.nextInt(5) == 1) {
+        if (generator.nextInt(5) == 0) {
             right[generator.nextInt(right.length - 1)] = 3;
         }
     }
