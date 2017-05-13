@@ -63,20 +63,16 @@ public class Room {
             if(StructureGenerator.structure[index][i] == true) {
                 int random = generator.nextInt(4);
                 int place = generator.nextInt(5)+1;
-                Door dr = new Door(index, i, random, place); //do poprawy losowanie
-                if(random == 0){
+                Door door = new Door(index, i, random, place, height, width);
+                if(random == 0)
                     north[place] = 3;
-                }
-                if(random == 1){
-                    east[place] = 3;
-                }
-                if(random == 2){
-                    south[place] = 3;
-                }
-                if(random == 3){
+                if(random == 1)
                     west[place] = 3;
-                }
-                doors.add(dr);
+                if(random == 2)
+                    south[place] = 3;
+                if(random == 3)
+                    east[place] = 3;
+                doors.add(door);
             }
         }
     }
