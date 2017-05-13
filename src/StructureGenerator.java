@@ -1,12 +1,9 @@
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * Created by LenovoY500 on 13.05.2017.
- */
 public class StructureGenerator {
 
-    protected boolean [][] structure;
+    protected static boolean [][] structure;
     protected static int [] countRooms;
 
     public void generate(int vertexs){
