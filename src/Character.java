@@ -24,7 +24,7 @@ public class Character {
     public void increaseX() {
         if (Room.sizes[x_value+1][y_value] != 2) {
             x_value++;
-            Room.sizes[x_value][y_value] = 4;
+            Room.sizes[x_value][y_value] = 5;
             Room.sizes[x_value - 1][y_value] = 1;
         }
     }
