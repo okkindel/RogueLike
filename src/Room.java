@@ -38,7 +38,9 @@ public class Room {
         Arrays.fill(south, 2);
         Arrays.fill(east, 2);
         Arrays.fill(west, 2);
-        addDoors();
+
+        for (int i = 0; i < StructureGenerator.countRooms[0]; i++)
+            addDoors();
 
         for (int i = 0; i < width; i++) {
             sizes[i][0] = north[i];
@@ -54,16 +56,16 @@ public class Room {
         Random generator = new Random();
         int random = generator.nextInt(4);
         if (random == 0) {
-            north[generator.nextInt(north.length - 3) + 2] = 3;
+            north[generator.nextInt(north.length - 3) + 1] = 3;
         }
         if (random == 1) {
-            south[generator.nextInt(south.length - 3) + 2] = 3;
+            south[generator.nextInt(south.length - 3) + 1] = 3;
         }
         if (random == 2) {
-            east[generator.nextInt(east.length - 3) + 2] = 3;
+            east[generator.nextInt(east.length - 3) + 1] = 3;
         }
         if (random == 3) {
-            west[generator.nextInt(west.length - 2) + 2] = 3;
+            west[generator.nextInt(west.length - 3) + 1] = 3;
         }
     }
 

@@ -7,12 +7,13 @@ import java.util.Random;
 public class StructureGenerator {
 
     protected boolean [][] structure;
+    protected static int [] countRooms;
 
     public void generate(int vertexs){
 
         Random rdm = new Random();
         structure = new boolean[vertexs][vertexs];
-        int [] countRooms = new int [vertexs];
+        countRooms = new int [vertexs];
         Arrays.fill(countRooms, 0);
 
         for (int i = 0; i < vertexs; i++) {
@@ -49,7 +50,7 @@ public class StructureGenerator {
             System.out.println();
         }
 
-
+    System.out.println(countRooms[0]);
 
     }
 }

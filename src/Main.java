@@ -11,12 +11,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        StructureGenerator gene = new StructureGenerator();
+        gene.generate(8);
         Room room = new Room();
         //Corridor corridor = new Corridor();
         Character character = new Character();
         Draftsman dungeon = new Draftsman();
-        StructureGenerator gene = new StructureGenerator();
-        gene.generate(8);
         dungeon.load();
         primaryStage.setTitle("Pixel Caves");
         sc = new Scene(dungeon.draw(), 800, 600);

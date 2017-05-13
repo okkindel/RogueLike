@@ -73,32 +73,6 @@ public class Draftsman {
                 }
             }
         }
-//
-//        for (int i = 0; i < Corridor.length; i++) {
-//            for(int j = 0; j < 3; j++) {
-//                ImageView iV = new ImageView();
-//
-//                if (Corridor.sizes[j][i] == 2) {
-//                    iV.setImage(black);
-//                    iV.setX(j*16 + 500);
-//                    iV.setY(i*16 + 100);
-//                    root.getChildren().add(iV);
-//                }
-//                if (Corridor.sizes[j][i] == 1) {
-//                    iV.setImage(white);
-//                    iV.setX(j*16 + 500);
-//                    iV.setY(i*16 + 100);
-//                    root.getChildren().add(iV);
-//                }
-//                if (Corridor.sizes[j][i] == 3) {
-//                    iV.setImage(doors);
-//                    iV.setX(j*16 + 500);
-//                    iV.setY(i*16 + 100);
-//                    root.getChildren().add(iV);
-//                }
-//            }
-//        }
-
         return root;
     }
 
