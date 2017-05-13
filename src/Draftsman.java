@@ -39,20 +39,20 @@ public class Draftsman {
        root = new Pane();
 
         Random generator = new Random();
-        int random = generator.nextInt(4);
+        Room room = Main.rooms.get(Character.whereAmI);
 
-        for (int i = 0; i < Main.rooms.get(Character.whereAmI).height; i++) {
-            for(int j = 0; j < Main.rooms.get(Character.whereAmI).width; j++) {
+        for (int i = 0; i < room.height; i++) {
+            for(int j = 0; j < room.width; j++) {
                 iV = new ImageView();
 
 
-                if (Room.sizes[j][i] == 2) {
+                if (room.sizes[j][i] == 2) {
                     iV.setImage(black);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (Room.sizes[j][i] == 1) {
+                if (room.sizes[j][i] == 1) {
                     if (generator.nextInt(4) == 0)
                         iV.setImage(broken);
                     else
@@ -61,13 +61,13 @@ public class Draftsman {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (Room.sizes[j][i] == 3) {
+                if (room.sizes[j][i] == 3) {
                     iV.setImage(doors);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (Room.sizes[j][i] == 4) {
+                if (room.sizes[j][i] == 4) {
                     iV.setImage(white);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
@@ -78,7 +78,7 @@ public class Draftsman {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (Room.sizes[j][i] == 5) {
+                if (room.sizes[j][i] == 5) {
                     iV.setImage(white);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);

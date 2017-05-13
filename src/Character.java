@@ -54,9 +54,11 @@ public class Character {
     }
 
     public static void whitchDoor(int x, int y) {
-        for (Door door: Room.doors) {
+
+        for (Door door: Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
                 System.out.println("wchodze na drzwi na kordach:" + x + " " + y);
+                Main.character.whereAmI = door.where;
             }
         }
     }

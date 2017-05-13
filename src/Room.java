@@ -6,17 +6,16 @@ import java.util.Arrays;
 
 public class Room {
 
-    protected static int height = 0;
-    protected static int width = 0;
-    protected static int index = 0;
-    protected static int [][] sizes;
-    protected static int [] north, south, east, west;
-    protected static ArrayList<Door> doors;
+    protected int height = 0;
+    protected int width = 0;
+    protected int index = 0;
+    protected int [][] sizes;
+    protected int [] north, south, east, west;
+    protected ArrayList<Door> doors;
 
     public Room(int index) {
         Random generator = new Random();
         doors = new ArrayList<Door>();
-        this.index = index;
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
         sizes = new int[width][height];
@@ -24,14 +23,14 @@ public class Room {
         south = new int[width];
         east = new int[height];
         west = new int[height];
-
+        this.index = index;
 
         innerRoom();
         addWalls();
         terminalShowing();
     }
 
-    private static void innerRoom() {
+    private void innerRoom() {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 sizes[j][i] = 1;
@@ -39,7 +38,7 @@ public class Room {
         }
     }
 
-    private static void addWalls() {
+    private void addWalls() {
         Arrays.fill(north, 2);
         Arrays.fill(south, 2);
         Arrays.fill(east, 2);
@@ -57,10 +56,10 @@ public class Room {
         }
     }
 
-    private static void addDoors() {
+    private void addDoors() {
         Random generator = new Random();
         for (int i = 0; i < Main.howManyRooms; i++) {
-            if(StructureGenerator.structure[index][i] == true) {
+            if(StructureGenerator.structure[index][i]) {
                 int random = generator.nextInt(4);
                 int place = generator.nextInt(5)+1;
                 Door door = new Door(index, i, random, place, height, width);
@@ -77,7 +76,7 @@ public class Room {
         }
     }
 
-    private static void terminalShowing() {
+    private void terminalShowing() {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {

@@ -11,8 +11,8 @@ public class Main extends Application {
 
     public static Scene sc;
     public static ArrayList<Room> rooms;
-    protected static int howManyRooms = 5;
-    protected Character character;
+    protected static int howManyRooms = 3;
+    protected static Character character;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -21,10 +21,20 @@ public class Main extends Application {
         StructureGenerator gene = new StructureGenerator();
         gene.generate(howManyRooms);
 
+        Room room;
         for(int i = 0; i < howManyRooms; i++) {
-            Room room = new Room(i);
+            room = new Room(i);
             rooms.add(room);
         }
+        for (Room rooman : Main.rooms) {
+            for (int i = 0; i < rooman.height; i++) {
+                for (int j = 0; j < rooman.width; j++) {
+                    System.out.print(rooman.sizes[j][i]);
+                }
+                System.out.println();
+            }
+        }
+
         character = new Character();
 
         Draftsman dungeon = new Draftsman();
