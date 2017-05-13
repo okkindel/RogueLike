@@ -7,9 +7,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class Draftsman {
-    protected Image black, white, doors, character_l, character_r;
+    protected Image black, white, broken, doors, character_l, character_r;
     protected ImageView iV;
     protected  Pane root;
 
@@ -20,6 +21,9 @@ public class Draftsman {
         f = new File("./assets/white.png");
         BufferedImage floor_block = ImageIO.read(f);
         white = SwingFXUtils.toFXImage(floor_block, null);
+        f = new File("./assets/white_broken.png");
+        BufferedImage floor_broken = ImageIO.read(f);
+        broken = SwingFXUtils.toFXImage(floor_broken, null);
         f = new File("./assets/doors.png");
         BufferedImage door_block = ImageIO.read(f);
         doors = SwingFXUtils.toFXImage(door_block, null);
@@ -32,9 +36,10 @@ public class Draftsman {
     }
 
     Pane draw(){
-
-
        root = new Pane();
+
+        Random generator = new Random();
+        int random = generator.nextInt(4);
 
         for (int i = 0; i < Main.rooms.get(Character.whereAmI).height; i++) {
             for(int j = 0; j < Main.rooms.get(Character.whereAmI).width; j++) {
@@ -43,32 +48,45 @@ public class Draftsman {
 
                 if (Room.sizes[j][i] == 2) {
                     iV.setImage(black);
-                    iV.setX(j*16 + 100);
-                    iV.setY(i*16 + 100);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
                 if (Room.sizes[j][i] == 1) {
-                    iV.setImage(white);
-                    iV.setX(j*16 + 100);
-                    iV.setY(i*16 + 100);
+                    if (generator.nextInt(4) == 0)
+                        iV.setImage(broken);
+                    else
+                        iV.setImage(white);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
                 if (Room.sizes[j][i] == 3) {
                     iV.setImage(doors);
-                    iV.setX(j*16 + 100);
-                    iV.setY(i*16 + 100);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
                 if (Room.sizes[j][i] == 4) {
+                    iV.setImage(white);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                    iV = new ImageView();
                     iV.setImage(character_l);
-                    iV.setX(j*16 + 100);
-                    iV.setY(i*16 + 100);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
                 if (Room.sizes[j][i] == 5) {
+                    iV.setImage(white);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                    iV = new ImageView();
                     iV.setImage(character_r);
-                    iV.setX(j*16 + 100);
-                    iV.setY(i*16 + 100);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
             }

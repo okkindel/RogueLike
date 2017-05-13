@@ -26,7 +26,6 @@ public class Main extends Application {
             rooms.add(room);
         }
         character = new Character();
-        //Corridor corridor = new Corridor();
 
         Draftsman dungeon = new Draftsman();
         dungeon.load();
