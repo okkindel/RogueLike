@@ -6,7 +6,7 @@ import java.util.Random;
  */
 public class StructureGenerator {
 
-    protected boolean [][] structure;
+    protected static boolean [][] structure;
     protected static int [] countRooms;
 
     public void generate(int vertexs){

@@ -1,3 +1,5 @@
+import java.lang.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
 
@@ -9,9 +11,11 @@ public class Room {
     protected static int index = 0;
     protected static int [][] sizes;
     protected static int [] north, south, east, west;
+    protected static ArrayList<Door> doors;
 
     public Room(int index) {
         Random generator = new Random();
+        doors = new ArrayList<Door>();
         this.index = index;
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
@@ -41,8 +45,8 @@ public class Room {
         Arrays.fill(east, 2);
         Arrays.fill(west, 2);
 
-        for (int i = 0; i < StructureGenerator.countRooms[0]; i++)
-            addDoors();
+
+        addDoors();
 
         for (int i = 0; i < width; i++) {
             sizes[i][0] = north[i];
@@ -56,18 +60,25 @@ public class Room {
 
     private static void addDoors() {
         Random generator = new Random();
-        int random = generator.nextInt(4);
-        if (random == 0) {
-            north[generator.nextInt(north.length - 3) + 1] = 3;
-        }
-        if (random == 1) {
-            south[generator.nextInt(south.length - 3) + 1] = 3;
-        }
-        if (random == 2) {
-            east[generator.nextInt(east.length - 3) + 1] = 3;
-        }
-        if (random == 3) {
-            west[generator.nextInt(west.length - 3) + 1] = 3;
+        for (int i = 0; i < Main.howManyRooms; i++) {
+            if(StructureGenerator.structure[index][i] == true) {
+                int random = generator.nextInt(4);
+                int place = generator.nextInt(5)+1;
+                Door dr = new Door(index, i, random, place); //do poprawy losowanie
+                if(random == 0){
+                    north[place] = 3;
+                }
+                if(random == 1){
+                   east[place] = 3;
+                }
+                if(random == 2){
+                    south[place] = 3;
+                }
+                if(random == 3){
+                   west[place] = 3;
+                }
+                doors.add(dr);
+            }
         }
     }
 
