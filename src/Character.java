@@ -57,8 +57,12 @@ public class Character {
 
         for (Door door: Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
+                Main.rooms.get(whereAmI).sizes[x_value][y_value] = 1;
                 System.out.println("wchodze na drzwi na kordach:" + x + " " + y);
                 Main.character.whereAmI = door.where;
+                Main.rooms.get(whereAmI).sizes[1][1] = 4;
+                Main.character.x_value = 1;
+                Main.character.y_value = 1;
             }
         }
     }

@@ -11,7 +11,7 @@ public class Main extends Application {
 
     public static Scene sc;
     public static ArrayList<Room> rooms;
-    protected static int howManyRooms = 3;
+    protected static int howManyRooms = 5;
     protected static Character character;
 
     @Override
