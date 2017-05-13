@@ -30,7 +30,7 @@ public class Main extends Application {
         Draftsman dungeon = new Draftsman();
         dungeon.load();
         primaryStage.setTitle("Pixel Caves");
-        sc = new Scene(dungeon.draw(), 800, 600);
+        sc = new Scene(dungeon.draw(), 900, 900);
 
         sc.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
