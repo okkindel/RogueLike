@@ -11,6 +11,8 @@ public class Main extends Application {
         Room room = new Room();
         Corridor corridor = new Corridor();
         Draftsman dungeon = new Draftsman();
+        StructureGenerator gene = new StructureGenerator();
+        gene.generate(8);
         primaryStage.setTitle("Pixel Caves");
         sc = new Scene(dungeon.draw(), 800, 600);
         primaryStage.setScene(sc);
