@@ -6,11 +6,13 @@ public class Room {
 
     protected static int height = 0;
     protected static int width = 0;
+    protected static int index = 0;
     protected static int [][] sizes;
     protected static int [] north, south, east, west;
 
-    public Room() {
+    public Room(int index) {
         Random generator = new Random();
+        this.index = index;
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
         sizes = new int[width][height];

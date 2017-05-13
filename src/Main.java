@@ -5,17 +5,29 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
 
     public static Scene sc;
+    public static ArrayList<Room> rooms;
+    protected int howManyRooms = 5;
+    protected Character character;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        rooms = new ArrayList<Room>();
+
         StructureGenerator gene = new StructureGenerator();
-        gene.generate(8);
-        Room room = new Room();
+        gene.generate(howManyRooms);
+
+        for(int i = 0; i < howManyRooms; i++) {
+            Room room = new Room(i);
+            rooms.add(room);
+        }
+        character = new Character();
         //Corridor corridor = new Corridor();
-        Character character = new Character();
+
         Draftsman dungeon = new Draftsman();
         dungeon.load();
         primaryStage.setTitle("Pixel Caves");

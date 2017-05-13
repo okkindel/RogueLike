@@ -36,8 +36,8 @@ public class Draftsman {
 
        root = new Pane();
 
-        for (int i = 0; i < Room.height; i++) {
-            for(int j = 0; j < Room.width; j++) {
+        for (int i = 0; i < Main.rooms.get(Character.whereAmI).height; i++) {
+            for(int j = 0; j < Main.rooms.get(Character.whereAmI).width; j++) {
                 iV = new ImageView();
 
 
