@@ -45,22 +45,22 @@ public class Main extends Application {
         sc.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.W) {
+                if (event.getCode() == KeyCode.UP) {
                     character.decreaseY();
                     sc.setRoot(dungeon.draw());
                     primaryStage.setScene(sc);
                 }
-                if (event.getCode() == KeyCode.A) {
+                if (event.getCode() == KeyCode.LEFT) {
                     character.decreaseX();
                     sc.setRoot(dungeon.draw());
                     primaryStage.setScene(sc);
                 }
-                if (event.getCode() == KeyCode.S) {
+                if (event.getCode() == KeyCode.DOWN) {
                     character.increaseY();
                     sc.setRoot(dungeon.draw());
                     primaryStage.setScene(sc);
                 }
-                if (event.getCode() == KeyCode.D) {
+                if (event.getCode() == KeyCode.RIGHT) {
                     character.increaseX();
                     sc.setRoot(dungeon.draw());
                     primaryStage.setScene(sc);
