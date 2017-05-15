@@ -31,9 +31,14 @@ public class Room {
     }
 
     private void innerRoom() {
+        Random generator = new Random();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 sizes[j][i] = 1;
+                if (sizes[j][i] == 1) {
+                    if (generator.nextInt(4) == 0)
+                        sizes[j][i] = 6;
+                }
             }
         }
     }

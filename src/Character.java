@@ -3,6 +3,7 @@ public class Character {
     protected static int x_value = 1;
     protected static int y_value = 1;
     protected static int whereAmI = 0;
+    protected int last_tile = 1;
 
     public Character() {
 
@@ -10,10 +11,12 @@ public class Character {
     }
 
     public void increaseY() {
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] == 1) {
+        if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] != 2) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
             y_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
-            Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] = 1;
+
         }
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] == 3) {
             whitchDoor(x_value, y_value+1);
@@ -21,10 +24,12 @@ public class Character {
     }
 
     public void decreaseY() {
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] == 1) {
+        if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] != 2) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
             y_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
-            Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] = 1;
+
         }
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] == 3) {
             whitchDoor(x_value, y_value-1);
@@ -32,10 +37,12 @@ public class Character {
     }
 
     public void increaseX() {
-        if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] == 1) {
+        if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] != 2) {
+            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
             x_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 5;
-            Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] = 1;
+
         }
         if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] == 3) {
             whitchDoor(x_value+1, y_value);
@@ -43,10 +50,12 @@ public class Character {
     }
 
     public void decreaseX() {
-        if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] == 1) {
+        if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] != 2) {
+            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
             x_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
-            Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] = 1;
+
         }
         if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] == 3) {
             whitchDoor(x_value-1, y_value);

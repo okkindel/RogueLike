@@ -53,10 +53,14 @@ public class Draftsman {
                     root.getChildren().add(iV);
                 }
                 if (room.sizes[j][i] == 1) {
-                    if (generator.nextInt(4) == 0)
-                        iV.setImage(broken);
-                    else
-                        iV.setImage(white);
+                    iV.setImage(white);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                }
+                if (room.sizes[j][i] == 6) {
+                    iV.setImage(broken);
+
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
