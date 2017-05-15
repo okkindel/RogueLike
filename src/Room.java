@@ -54,42 +54,51 @@ public class Room {
             sizes[i][height-1] = south[i];
         }
         for (int i = 0; i < height; i++) {
-            sizes[0][i] = east[i];
-            sizes[width-1][i] = west[i];
+            sizes[width-1][i] = east[i];
+            sizes[0][i] = west[i];
         }
     }
 
     private void addDoors() {
         Random generator = new Random();
-        for (int i = 0; i < Main.howManyRooms; i++) {
-            if(StructureGenerator.structure[index][i]) {
+        for (int doorID = 0; doorID < Main.howManyRooms; doorID++) {
+            if(StructureGenerator.structure[index][doorID]) {
                 int random = generator.nextInt(4);
                 int place = 0;
                 if(random == 0) {
                     place = generator.nextInt(north.length - 4) + 2;
-                    if (place == north[place - 1] || place == north[place + 1])
-                        place++;
-                    north[place] = 20;
+                    if (north[place] != 3 && north[place - 1] != 20 && north[place + 1] != 20)
+                        north[place] = 20;
+                    else
+                        random += 1;
                 }
                 if(random == 1) {
-                    place = generator.nextInt(west.length - 4) + 2;
-                    if (place == west[place - 1] || place == west[place + 1])
-                        place++;
-                    west[place] = 20;
+                    place = generator.nextInt(south.length - 4) + 2;
+                    if (south[place] != 20 && south[place - 1] != 20 && south[place + 1] != 20)
+                        south[place] = 20;
+                    else
+                        random += 1;
                 }
                 if(random == 2) {
-                    place = generator.nextInt(south.length - 4) + 2;
-                    if (place == south[place - 1] || place == south[place + 1])
-                        place++;
-                    south[place] = 20;
-                }
-                if(random == 20) {
                     place = generator.nextInt(east.length - 4) + 2;
-                    if (place == east[place - 1] || place == east[place + 1])
-                        place++;
-                    east[place] = 20;
+                    if (east[place] != 20 && east[place - 1] != 20 && east[place + 1] != 20)
+                        east[place] = 20;
+                    else
+                        random += 1;
                 }
-                Door door = new Door(index, i, random, place, height, width);
+                if(random == 3) {
+                    place = generator.nextInt(west.length - 4) + 2;
+                    if (west[place] != 20 && west[place - 1] != 20 && west[place + 1] != 20)
+                        west[place] = 20;
+                    else if (west[place - 1] == 20 || west[place] == 20)
+                        west[place + 1] = 20;
+                    else if (west[place + 1] == 20)
+                        west[place - 1] = 20;
+                    else
+                        west[1] = 20; //TODO to trzeba jakoś ogarnąć :F
+                }
+
+                Door door = new Door(index, doorID, random, place, height, width);
                 doors.add(door);
             }
         }

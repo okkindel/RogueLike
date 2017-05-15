@@ -14,47 +14,43 @@ public class Character {
     void increaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
             whichDoor(x_value, y_value + 1);
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] != 88) {
+        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
             y_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
-
         }
     }
 
     void decreaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
             whichDoor(x_value, y_value - 1);
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] != 88) {
+        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
             y_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
-
         }
     }
     void increaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
             whichDoor(x_value + 1, y_value);
-        if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] != 88) {
+        else if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
             x_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
-
         }
     }
 
     void decreaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] == 20)
             whichDoor(x_value - 1, y_value);
-        if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] != 88) {
+        else if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
             x_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
-
         }
     }
 
@@ -63,19 +59,24 @@ public class Character {
         for (Door door: Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
                 Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-                int whereAmWas = whereAmI;
+                int whereIWas = whereAmI;
                 whereAmI = door.where;
                 Room room = Main.rooms.get(whereAmI);
-                if (whereAmWas == whereAmI)
+                if (whereIWas == whereAmI)
                     System.out.println("Strange... I'm back in the same room.");
                 else if (room.iWasHere)
                     System.out.println("I already was here...");
                 else
                     System.out.println("I've never seen this room before...");
                 room.iWasHere = true;
-                Main.rooms.get(whereAmI).sizes[1][1] = 44;
-                x_value = 1;
-                y_value = 1;
+                for (Door newroom: Main.rooms.get(whereAmI).doors) {
+                    if (newroom.where == whereIWas) {
+                        Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 44;
+                        x_value = newroom.posx;
+                        y_value = newroom.posy;
+                    }
+
+                }
             }
         }
     }
