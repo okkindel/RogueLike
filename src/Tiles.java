@@ -1,11 +1,11 @@
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.io.File;
 
 public class Tiles {
 
@@ -17,7 +17,7 @@ public class Tiles {
             terminalShowing(i);
     }
 
-    void load() throws IOException{
+    void load() throws IOException {
         File file = new File("./assets/black.png");
         BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
@@ -44,7 +44,7 @@ public class Tiles {
         character_down = SwingFXUtils.toFXImage(character_d, null);
     }
 
-    Pane draw(){
+    Pane draw() {
         Pane root = new Pane();
 
         Room room = Main.rooms.get(Character.whereAmI);
@@ -59,14 +59,11 @@ public class Tiles {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (room.sizes[j][i] == 10) {
-                    iV.setImage(floor_block);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
-                    root.getChildren().add(iV);
-                }
-                if (room.sizes[j][i] == 11) {
-                    iV.setImage(floor_broken);
+                if (room.sizes[j][i] >= 10 && room.sizes[j][i] <= 11) {
+                    if (room.sizes[j][i] == 10)
+                        iV.setImage(floor_block);
+                    if (room.sizes[j][i] == 11)
+                        iV.setImage(floor_broken);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -77,26 +74,20 @@ public class Tiles {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (room.sizes[j][i] == 44) {
-                    iV.setImage(character_left);
+                if (room.sizes[j][i] >= 44 && room.sizes[j][i] <= 47) {
+                    iV.setImage(background(Character.last_tile));
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
-                }
-                if (room.sizes[j][i] == 45) {
-                    iV.setImage(character_right);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
-                    root.getChildren().add(iV);
-                }
-                if (room.sizes[j][i] == 46) {
-                    iV.setImage(character_up);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
-                    root.getChildren().add(iV);
-                }
-                if (room.sizes[j][i] == 47) {
-                    iV.setImage(character_down);
+                    iV = new ImageView();
+                    if (room.sizes[j][i] == 44)
+                        iV.setImage(character_left);
+                    if (room.sizes[j][i] == 45)
+                        iV.setImage(character_right);
+                    if (room.sizes[j][i] == 46)
+                        iV.setImage(character_up);
+                    if (room.sizes[j][i] == 47)
+                        iV.setImage(character_down);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -106,8 +97,16 @@ public class Tiles {
         return root;
     }
 
-    private void terminalShowing(int index) {
+    private Image background (int index) {
+        if (index == 10)
+            return floor_block;
+        if (index == 11)
+            return floor_broken;
+        else
+            return floor_block;
+    }
 
+    private void terminalShowing (int index) {
         Room room = Main.rooms.get(index);
         for (int i = 0; i < room.height; i++) {
             for (int j = 0; j < room.width; j++) {

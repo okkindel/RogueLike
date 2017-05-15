@@ -12,7 +12,7 @@ public class Room {
     int width = 0;
     boolean iWasHere = false;
 
-    Room(int index) {
+    Room (int index) {
         Random generator = new Random();
         doors = new ArrayList<>();
         height = generator.nextInt(10) + 10;
@@ -61,10 +61,10 @@ public class Room {
     private void addDoors() {
         Random generator = new Random();
         for (int doorID = 0; doorID < Main.howManyRooms; doorID++) {
-            if(StructureGenerator.structure[index][doorID]) {
+            if (StructureGenerator.structure[index][doorID]) {
                 int random = generator.nextInt(4);
                 int place;
-                while(true) {
+                while (true) {
                     if (random == 0) {
                         place = generator.nextInt(north.length - 4) + 2;
                         if (north[place] != 3 && north[place - 1] != 20 && north[place + 1] != 20) {

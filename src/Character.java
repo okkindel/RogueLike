@@ -2,7 +2,7 @@ public class Character {
 
     private static int x_value = 1;
     private static int y_value = 1;
-    private int last_tile = 10;
+    static int last_tile = 10;
     static int whereAmI = 0;
 
     Character() {
@@ -54,7 +54,7 @@ public class Character {
         }
     }
 
-    private void whichDoor(int x, int y) {
+    private void whichDoor (int x, int y) {
 
         for (Door door: Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
@@ -75,7 +75,6 @@ public class Character {
                         x_value = newroom.posx;
                         y_value = newroom.posy;
                     }
-
                 }
             }
         }
