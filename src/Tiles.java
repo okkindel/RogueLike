@@ -114,6 +114,7 @@ public class Tiles {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 }
