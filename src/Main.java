@@ -1,62 +1,52 @@
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class Main extends Application {
 
-    public static Scene sc;
-    public static ArrayList<Room> rooms;
-    protected static int howManyRooms = 5;
-    protected static Character character;
+    private static Scene sc;
+    private static Character character;
+    static int howManyRooms = 5;
+    static ArrayList<Room> rooms = new ArrayList<>();;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        rooms = new ArrayList<Room>();
 
         StructureGenerator gene = new StructureGenerator();
         gene.generate(howManyRooms);
-
-        Room room;
         for(int i = 0; i < howManyRooms; i++) {
-            room = new Room(i);
+            Room room = new Room(i);
             rooms.add(room);
         }
-
         character = new Character();
+        Tiles drawing = new Tiles();
+        drawing.load();
+        primaryStage.setTitle("RogueLike");
+        sc = new Scene(drawing.draw(), 800, 800);
 
-        Draftsman dungeon = new Draftsman();
-        dungeon.load();
-        primaryStage.setTitle("Pixel Caves");
-        sc = new Scene(dungeon.draw(), 900, 900);
-
-        sc.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.UP) {
-                    character.decreaseY();
-                    sc.setRoot(dungeon.draw());
-                    primaryStage.setScene(sc);
-                }
-                if (event.getCode() == KeyCode.LEFT) {
-                    character.decreaseX();
-                    sc.setRoot(dungeon.draw());
-                    primaryStage.setScene(sc);
-                }
-                if (event.getCode() == KeyCode.DOWN) {
-                    character.increaseY();
-                    sc.setRoot(dungeon.draw());
-                    primaryStage.setScene(sc);
-                }
-                if (event.getCode() == KeyCode.RIGHT) {
-                    character.increaseX();
-                    sc.setRoot(dungeon.draw());
-                    primaryStage.setScene(sc);
-                }
+        sc.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.UP) {
+                character.decreaseY();
+                sc.setRoot(drawing.draw());
+                primaryStage.setScene(sc);
+            }
+            if (event.getCode() == KeyCode.LEFT) {
+                character.decreaseX();
+                sc.setRoot(drawing.draw());
+                primaryStage.setScene(sc);
+            }
+            if (event.getCode() == KeyCode.DOWN) {
+                character.increaseY();
+                sc.setRoot(drawing.draw());
+                primaryStage.setScene(sc);
+            }
+            if (event.getCode() == KeyCode.RIGHT) {
+                character.increaseX();
+                sc.setRoot(drawing.draw());
+                primaryStage.setScene(sc);
             }
         });
 
