@@ -27,7 +27,6 @@ public class Room {
 
         innerRoom();
         addWalls();
-        terminalShowing();
     }
 
     private void innerRoom() {
@@ -73,16 +72,6 @@ public class Room {
                     east[place] = 3;
                 doors.add(door);
             }
-        }
-    }
-
-    private void terminalShowing() {
-
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(sizes[j][i]);
-            }
-            System.out.println();
         }
     }
 }

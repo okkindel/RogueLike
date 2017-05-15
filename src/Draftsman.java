@@ -14,6 +14,11 @@ public class Draftsman {
     protected ImageView iV;
     protected  Pane root;
 
+    protected Draftsman() {
+        for (int i = 0; i < Main.howManyRooms; i++)
+            terminalShowing(i);
+    }
+
     void load() throws IOException{
         File f = new File("./assets/black.png");
         BufferedImage wall_block = ImageIO.read(f);
@@ -44,7 +49,6 @@ public class Draftsman {
         for (int i = 0; i < room.height; i++) {
             for(int j = 0; j < room.width; j++) {
                 iV = new ImageView();
-
 
                 if (room.sizes[j][i] == 2) {
                     iV.setImage(black);
@@ -92,6 +96,17 @@ public class Draftsman {
             }
         }
         return root;
+    }
+
+    private void terminalShowing(int index) {
+
+        Room room = Main.rooms.get(index);
+        for (int i = 0; i < room.height; i++) {
+            for (int j = 0; j < room.width; j++) {
+                System.out.print(room.sizes[j][i]);
+            }
+            System.out.println();
+        }
     }
 
 }

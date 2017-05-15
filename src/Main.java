@@ -26,14 +26,6 @@ public class Main extends Application {
             room = new Room(i);
             rooms.add(room);
         }
-        for (Room rooman : Main.rooms) {
-            for (int i = 0; i < rooman.height; i++) {
-                for (int j = 0; j < rooman.width; j++) {
-                    System.out.print(rooman.sizes[j][i]);
-                }
-                System.out.println();
-            }
-        }
 
         character = new Character();
 
