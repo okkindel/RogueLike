@@ -17,7 +17,7 @@ public class Main extends Application {
 
         StructureGenerator gene = new StructureGenerator();
         gene.generate(howManyRooms);
-        for(int i = 0; i < howManyRooms; i++) {
+        for (int i = 0; i < howManyRooms; i++) {
             Room room = new Room(i);
             rooms.add(room);
         }
@@ -49,7 +49,6 @@ public class Main extends Application {
                 primaryStage.setScene(scene);
             }
         });
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }

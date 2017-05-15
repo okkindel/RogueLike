@@ -17,8 +17,8 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
-            y_value++;
-            Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
+            y_value += 1;
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = 47;
         }
     }
 
@@ -28,8 +28,8 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
-            y_value--;
-            Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
+            y_value -= 1;
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = 46;
         }
     }
     void increaseX() {
@@ -38,7 +38,7 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
-            x_value++;
+            x_value += 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
         }
     }
@@ -49,7 +49,7 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] != 88) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
-            x_value--;
+            x_value -= 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
         }
     }

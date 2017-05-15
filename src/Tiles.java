@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Tiles {
 
     private Image wall_block, floor_block, floor_broken, wooden_doors;
-    private Image character_left, character_right;
+    private Image character_left, character_right, character_up, character_down;
 
     Tiles() {
         for (int i = 0; i < Main.howManyRooms; i++)
@@ -18,24 +18,30 @@ public class Tiles {
     }
 
     void load() throws IOException{
-        File f = new File("./assets/black.png");
-        BufferedImage wall_black_block = ImageIO.read(f);
+        File file = new File("./assets/black.png");
+        BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
-        f = new File("./assets/white.png");
-        BufferedImage floor_white_block = ImageIO.read(f);
+        file = new File("./assets/white.png");
+        BufferedImage floor_white_block = ImageIO.read(file);
         floor_block = SwingFXUtils.toFXImage(floor_white_block, null);
-        f = new File("./assets/white_broken.png");
-        BufferedImage floor_broken_block = ImageIO.read(f);
+        file = new File("./assets/white_broken.png");
+        BufferedImage floor_broken_block = ImageIO.read(file);
         floor_broken = SwingFXUtils.toFXImage(floor_broken_block, null);
-        f = new File("./assets/doors.png");
-        BufferedImage door_block = ImageIO.read(f);
+        file = new File("./assets/doors.png");
+        BufferedImage door_block = ImageIO.read(file);
         wooden_doors = SwingFXUtils.toFXImage(door_block, null);
-        f = new File("./assets/character_l.png");
-        BufferedImage character_l = ImageIO.read(f);
+        file = new File("./assets/character_l.png");
+        BufferedImage character_l = ImageIO.read(file);
         character_left = SwingFXUtils.toFXImage(character_l, null);
-        f = new File("./assets/character_r.png");
-        BufferedImage character_r = ImageIO.read(f);
+        file = new File("./assets/character_r.png");
+        BufferedImage character_r = ImageIO.read(file);
         character_right = SwingFXUtils.toFXImage(character_r, null);
+        file = new File("./assets/character_u.png");
+        BufferedImage character_u = ImageIO.read(file);
+        character_up = SwingFXUtils.toFXImage(character_u, null);
+        file = new File("./assets/character_d.png");
+        BufferedImage character_d = ImageIO.read(file);
+        character_down = SwingFXUtils.toFXImage(character_d, null);
     }
 
     Pane draw(){
@@ -79,6 +85,18 @@ public class Tiles {
                 }
                 if (room.sizes[j][i] == 45) {
                     iV.setImage(character_right);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                }
+                if (room.sizes[j][i] == 46) {
+                    iV.setImage(character_up);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                }
+                if (room.sizes[j][i] == 47) {
+                    iV.setImage(character_down);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
