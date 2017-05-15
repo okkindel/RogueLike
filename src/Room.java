@@ -3,17 +3,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
 
-
 public class Room {
 
-    protected int height = 0;
-    protected int width = 0;
+    ArrayList<Door> doors;
+    private int [] north, south, east, west;
     protected int index = 0;
-    protected int [][] sizes;
-    protected int [] north, south, east, west;
-    protected ArrayList<Door> doors;
+    int [][] sizes;
+    int height = 0;
+    int width = 0;
 
-    public Room(int index) {
+    Room(int index) {
         Random generator = new Random();
         doors = new ArrayList<Door>();
         height = generator.nextInt(10) + 10;

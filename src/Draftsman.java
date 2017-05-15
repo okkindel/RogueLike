@@ -10,11 +10,10 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Draftsman {
-    protected Image black, white, broken, doors, character_l, character_r;
-    protected ImageView iV;
-    protected  Pane root;
 
-    protected Draftsman() {
+    private Image black, white, broken, doors, character_l, character_r;
+
+    Draftsman() {
         for (int i = 0; i < Main.howManyRooms; i++)
             terminalShowing(i);
     }
@@ -41,14 +40,14 @@ public class Draftsman {
     }
 
     Pane draw(){
-       root = new Pane();
+        Pane root = new Pane();
 
         Random generator = new Random();
         Room room = Main.rooms.get(Character.whereAmI);
 
         for (int i = 0; i < room.height; i++) {
             for(int j = 0; j < room.width; j++) {
-                iV = new ImageView();
+                ImageView iV = new ImageView();
 
                 if (room.sizes[j][i] == 2) {
                     iV.setImage(black);

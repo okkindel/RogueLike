@@ -1,15 +1,15 @@
 public class Character {
 
-    protected static int x_value = 1;
-    protected static int y_value = 1;
-    protected static int whereAmI = 0;
+    private static int x_value = 1;
+    private static int y_value = 1;
+    static int whereAmI = 0;
 
-    public Character() {
+    Character() {
 
         Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
     }
 
-    public void increaseY() {
+    void increaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value+1] == 1) {
             y_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
@@ -20,7 +20,7 @@ public class Character {
         }
     }
 
-    public void decreaseY() {
+    void decreaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value-1] == 1) {
             y_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
@@ -31,7 +31,7 @@ public class Character {
         }
     }
 
-    public void increaseX() {
+    void increaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value+1][y_value] == 1) {
             x_value++;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 5;
@@ -42,7 +42,7 @@ public class Character {
         }
     }
 
-    public void decreaseX() {
+    void decreaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value-1][y_value] == 1) {
             x_value--;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 4;
@@ -53,16 +53,16 @@ public class Character {
         }
     }
 
-    public static void whitchDoor(int x, int y) {
+    private static void whitchDoor(int x, int y) {
 
         for (Door door: Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
                 Main.rooms.get(whereAmI).sizes[x_value][y_value] = 1;
                 System.out.println("wchodze na drzwi na kordach:" + x + " " + y);
-                Main.character.whereAmI = door.where;
+                whereAmI = door.where;
                 Main.rooms.get(whereAmI).sizes[1][1] = 4;
-                Main.character.x_value = 1;
-                Main.character.y_value = 1;
+                x_value = 1;
+                y_value = 1;
             }
         }
     }

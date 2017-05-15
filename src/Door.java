@@ -1,21 +1,11 @@
-/**
- * Created by LenovoY500 on 13.05.2017.
- */
 public class Door {
-    protected int from;
-    protected int where;
-    protected int wall;
-    protected int place;
-    protected int whichRoom;
-    protected int x, y;
 
-    public Door(int from, int where, int wall, int place, int height, int width) {
-        this.wall = wall;
-        this.place = place;
-        this.from = from;
+    int where;
+    int x, y;
+
+    Door(int from, int where, int wall, int place, int height, int width) {
+
         this.where = where;
-        whichRoom = from;
-
         if(wall == 0) {
             x = place;
             y = 0;

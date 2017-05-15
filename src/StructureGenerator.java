@@ -3,14 +3,13 @@ import java.util.Random;
 
 public class StructureGenerator {
 
-    protected static boolean [][] structure;
-    protected static int [] countRooms;
+    static boolean [][] structure;
 
-    public void generate(int vertexs){
+    void generate(int vertexs){
 
         Random rdm = new Random();
         structure = new boolean[vertexs][vertexs];
-        countRooms = new int [vertexs];
+        int[] countRooms = new int[vertexs];
         Arrays.fill(countRooms, 0);
 
         for (int i = 0; i < vertexs; i++) {
@@ -39,7 +38,7 @@ public class StructureGenerator {
 
         for (int x = 0; x < vertexs; x++) {
             for (int z = 0; z < vertexs; z++) {
-                if(structure[x][z] == true)
+                if(structure[x][z])
                      System.out.print("1 ");
                 else
                     System.out.print("0 ");
