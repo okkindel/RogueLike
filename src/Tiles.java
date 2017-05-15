@@ -45,8 +45,8 @@ public class Tiles {
     }
 
     Pane draw() {
-        Pane root = new Pane();
 
+        Pane root = new Pane();
         Room room = Main.rooms.get(Character.whereAmI);
 
         for (int i = 0; i < room.height; i++) {

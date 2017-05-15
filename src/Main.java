@@ -1,6 +1,6 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class Main extends Application {
     private static Scene scene;
     private static Character character;
     static int howManyRooms = 5;
-    static ArrayList<Room> rooms = new ArrayList<>();;
+    static ArrayList<Room> rooms = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
