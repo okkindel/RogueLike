@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-    private static Scene sc;
+    private static Scene scene;
     private static Character character;
     static int howManyRooms = 5;
     static ArrayList<Room> rooms = new ArrayList<>();;
@@ -25,32 +25,32 @@ public class Main extends Application {
         Tiles drawing = new Tiles();
         drawing.load();
         primaryStage.setTitle("RogueLike");
-        sc = new Scene(drawing.draw(), 800, 800);
+        scene = new Scene(drawing.draw(), 800, 800);
 
-        sc.setOnKeyPressed(event -> {
+        scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
                 character.decreaseY();
-                sc.setRoot(drawing.draw());
-                primaryStage.setScene(sc);
+                scene.setRoot(drawing.draw());
+                primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.LEFT) {
                 character.decreaseX();
-                sc.setRoot(drawing.draw());
-                primaryStage.setScene(sc);
+                scene.setRoot(drawing.draw());
+                primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.DOWN) {
                 character.increaseY();
-                sc.setRoot(drawing.draw());
-                primaryStage.setScene(sc);
+                scene.setRoot(drawing.draw());
+                primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.RIGHT) {
                 character.increaseX();
-                sc.setRoot(drawing.draw());
-                primaryStage.setScene(sc);
+                scene.setRoot(drawing.draw());
+                primaryStage.setScene(scene);
             }
         });
 
-        primaryStage.setScene(sc);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
