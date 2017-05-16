@@ -36,8 +36,8 @@ public class Draftsman {
     }
 
     Pane draw(){
-       root = new Pane();
-
+        root = new Pane();
+        root.setStyle("-fx-background-color: #000000;");
         Random generator = new Random();
         Room room = Main.rooms.get(Character.whereAmI);
 

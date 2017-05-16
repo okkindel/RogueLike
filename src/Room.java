@@ -1,21 +1,20 @@
-import java.lang.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
 
-
 public class Room {
 
-    protected int height = 0;
-    protected int width = 0;
-    protected int index = 0;
-    protected int [][] sizes;
-    protected int [] north, south, east, west;
-    protected ArrayList<Door> doors;
+    ArrayList<Door> doors;
+    private int [] north, south, east, west;
+    private int index = 0;
+    int [][] sizes;
+    int height = 0;
+    int width = 0;
+    boolean iWasHere = false;
 
-    public Room(int index) {
+    Room (int index) {
         Random generator = new Random();
-        doors = new ArrayList<Door>();
+        doors = new ArrayList<>();
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
         sizes = new int[width][height];
@@ -24,25 +23,28 @@ public class Room {
         east = new int[height];
         west = new int[height];
         this.index = index;
-
         innerRoom();
         addWalls();
-        terminalShowing();
     }
 
     private void innerRoom() {
+        Random generator = new Random();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                sizes[j][i] = 1;
+                sizes[j][i] = 10;
+                if (sizes[j][i] == 10) {
+                    if (generator.nextInt(4) == 0)
+                        sizes[j][i] = 11;
+                }
             }
         }
     }
 
     private void addWalls() {
-        Arrays.fill(north, 2);
-        Arrays.fill(south, 2);
-        Arrays.fill(east, 2);
-        Arrays.fill(west, 2);
+        Arrays.fill(north, 88);
+        Arrays.fill(south, 88);
+        Arrays.fill(east, 88);
+        Arrays.fill(west, 88);
 
         addDoors();
 
@@ -51,38 +53,58 @@ public class Room {
             sizes[i][height-1] = south[i];
         }
         for (int i = 0; i < height; i++) {
-            sizes[0][i] = east[i];
-            sizes[width-1][i] = west[i];
+            sizes[width-1][i] = east[i];
+            sizes[0][i] = west[i];
         }
     }
 
     private void addDoors() {
         Random generator = new Random();
-        for (int i = 0; i < Main.howManyRooms; i++) {
-            if(StructureGenerator.structure[index][i]) {
+        for (int doorID = 0; doorID < Main.howManyRooms; doorID++) {
+            if (StructureGenerator.structure[index][doorID]) {
                 int random = generator.nextInt(4);
-                int place = generator.nextInt(5)+1;
-                Door door = new Door(index, i, random, place, height, width);
-                if(random == 0)
-                    north[place] = 3;
-                if(random == 1)
-                    west[place] = 3;
-                if(random == 2)
-                    south[place] = 3;
-                if(random == 3)
-                    east[place] = 3;
+                int place;
+                while (true) {
+                    if (random == 0) {
+                        place = generator.nextInt(north.length - 4) + 2;
+                        if (north[place] != 3 && north[place - 1] != 20 && north[place + 1] != 20) {
+                            north[place] = 20;
+                            break;
+                        }
+                        else
+                            random += 1;
+                    }
+                    if (random == 1) {
+                        place = generator.nextInt(south.length - 4) + 2;
+                        if (south[place] != 20 && south[place - 1] != 20 && south[place + 1] != 20) {
+                            south[place] = 20;
+                            break;
+                        }
+                        else
+                            random += 1;
+                    }
+                    if (random == 2) {
+                        place = generator.nextInt(east.length - 4) + 2;
+                        if (east[place] != 20 && east[place - 1] != 20 && east[place + 1] != 20) {
+                            east[place] = 20;
+                            break;
+                        }
+                        else
+                            random += 1;
+                    }
+                    if (random == 3) {
+                        place = generator.nextInt(west.length - 4) + 2;
+                        if (west[place] != 20 && west[place - 1] != 20 && west[place + 1] != 20) {
+                            west[place] = 20;
+                            break;
+                        }
+                        else
+                            random = 0;
+                    }
+                }
+                Door door = new Door(index, doorID, random, place, height, width);
                 doors.add(door);
             }
-        }
-    }
-
-    private void terminalShowing() {
-
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(sizes[j][i]);
-            }
-            System.out.println();
         }
     }
 }

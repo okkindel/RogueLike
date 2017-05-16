@@ -1,36 +1,34 @@
-/**
- * Created by LenovoY500 on 13.05.2017.
- */
 public class Door {
-    protected int from;
-    protected int where;
-    protected int wall;
-    protected int place;
-    protected int whichRoom;
-    protected int x, y;
 
-    public Door(int from, int where, int wall, int place, int height, int width) {
-        this.wall = wall;
-        this.place = place;
-        this.from = from;
+    int where;
+    int x, y, posx, posy;
+
+    Door (int from, int where, int wall, int place, int height, int width) {
+
         this.where = where;
-        whichRoom = from;
-
-        if(wall == 0) {
+        if (wall == 0) {
             x = place;
             y = 0;
+            posx = x;
+            posy = y + 1;
         }
-        if(wall == 1) {
-            x = width-1;
-            y = place;
-        }
-        if(wall == 2) {
+        if (wall == 1) {
             x = place;
             y = height-1;
+            posx = x;
+            posy = y - 1;
         }
-        if(wall == 3) {
+        if (wall == 2) {
+            x = width-1;
+            y = place;
+            posx = x - 1;
+            posy = y;
+        }
+        if (wall == 3) {
             x = 0;
             y = place;
+            posx = x + 1;
+            posy = y;
         }
     }
 }
