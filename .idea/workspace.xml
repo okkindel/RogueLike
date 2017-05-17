@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42097214-889b-4a2c-99e1-d5b23fb04b14" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/grass_down.png" afterPath="$PROJECT_DIR$/assets/grass_down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/grass_up.png" afterPath="$PROJECT_DIR$/assets/grass_up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Character.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Character.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Door.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Door.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Room.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Room.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Character.java" afterPath="$PROJECT_DIR$/src/Character.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Door.java" afterPath="$PROJECT_DIR$/src/Door.java" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="80" column="92" lean-forward="true" selection-start-line="80" selection-start-column="92" selection-end-line="80" selection-end-column="92" />
+            <state relative-caret-position="530">
+              <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -75,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Door.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Door.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Door.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="64">
@@ -638,7 +631,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24361000" />
+    <option name="totallyTimeSpent" value="24461000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
@@ -869,18 +862,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="80" column="92" lean-forward="true" selection-start-line="80" selection-start-column="92" selection-end-line="80" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Door.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
           <folding />
         </state>
       </provider>

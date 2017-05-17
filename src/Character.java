@@ -71,20 +71,20 @@ public class Character {
                 else
                     System.out.println("I've never seen this room before...");
                 room.iWasHere = true;
-                for (Door newroom: Main.rooms.get(whereAmI).doors) {
-                    if (newroom.where == whereIWas) {
-                        Room incomming = Main.rooms.get(whereAmI);
-                        last_tile = incomming.sizes[newroom.posx][newroom.posy];
-                        if (newroom.wall == 0)
-                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 47;
-                        if (newroom.wall == 1)
-                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 46;
-                        if (newroom.wall == 2)
-                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 44;
-                        if (newroom.wall == 3)
-                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 45;
-                        x_value = newroom.posx;
-                        y_value = newroom.posy;
+                for (Door newdoor: Main.rooms.get(whereAmI).doors) {
+                    if (newdoor.where == whereIWas) {
+                        Room newroom = Main.rooms.get(whereAmI);
+                        last_tile = newroom.sizes[newdoor.posx][newdoor.posy];
+                        if (newdoor.wall == 0)
+                            Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 47;
+                        if (newdoor.wall == 1)
+                            Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 46;
+                        if (newdoor.wall == 2)
+                            Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 44;
+                        if (newdoor.wall == 3)
+                            Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 45;
+                        x_value = newdoor.posx;
+                        y_value = newdoor.posy;
                     }
                 }
             }
