@@ -153,5 +153,13 @@ public class Room {
                 }
             }
         }
+        /*ROOM TYPE MIXTURE*/
+        else if (random == 1) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    sizes[j][i] = 12;
+                }
+            }
+        }
     }
 }
