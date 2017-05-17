@@ -63,47 +63,47 @@ public class Room {
         Random generator = new Random();
         for (int doorID = 0; doorID < Main.howManyRooms; doorID++) {
             if (StructureGenerator.structure[index][doorID]) {
-                int random = generator.nextInt(4);
+                int wall = generator.nextInt(4);
                 int place;
                 while (true) {
-                    if (random == 0) {
+                    if (wall == 0) {
                         place = generator.nextInt(north.length - 4) + 2;
                         if (north[place] != 3 && north[place - 1] != 20 && north[place + 1] != 20) {
                             north[place] = 20;
                             break;
                         }
                         else
-                            random += 1;
+                            wall += 1;
                     }
-                    if (random == 1) {
+                    if (wall == 1) {
                         place = generator.nextInt(south.length - 4) + 2;
                         if (south[place] != 20 && south[place - 1] != 20 && south[place + 1] != 20) {
                             south[place] = 20;
                             break;
                         }
                         else
-                            random += 1;
+                            wall += 1;
                     }
-                    if (random == 2) {
+                    if (wall == 2) {
                         place = generator.nextInt(east.length - 4) + 2;
                         if (east[place] != 20 && east[place - 1] != 20 && east[place + 1] != 20) {
                             east[place] = 20;
                             break;
                         }
                         else
-                            random += 1;
+                            wall += 1;
                     }
-                    if (random == 3) {
+                    if (wall == 3) {
                         place = generator.nextInt(west.length - 4) + 2;
                         if (west[place] != 20 && west[place - 1] != 20 && west[place + 1] != 20) {
                             west[place] = 20;
                             break;
                         }
                         else
-                            random = 0;
+                            wall = 0;
                     }
                 }
-                Door door = new Door(index, doorID, random, place, height, width);
+                Door door = new Door(index, doorID, wall, place, height, width);
                 doors.add(door);
             }
         }
@@ -111,17 +111,39 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = generator.nextInt(5);
+        int random = generator.nextInt(3);
 
-        /*ROOM TYPE COLUMNS*/
-        if (random == 0) {
-            for (int i = 2; i < height - 2; i+=2) {
-                sizes[2][i] = 88;
-                sizes[width-3][i] = 88;
+        if (height % 2 != 0 && width % 2 != 0) {
+
+            /*ROOM TYPE COLUMNS VERTICAL*/
+            if (random == 0) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    sizes[2][i] = 88;
+                    sizes[width - 3][i] = 88;
+                }
+            }
+            /*ROOM TYPE COLUMNS HALL*/
+            if (random == 1) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    for (int j = 2; j < width - 2; j += 2) {
+                        sizes[j][i] = 88;
+                    }
+                }
+            }
+            /*ROOM TYPE COLUMNS ROUND*/
+            if (random == 2) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    sizes[2][i] = 88;
+                    sizes[width - 3][i] = 88;
+                }
+                for (int i = 2; i < width - 2; i += 2) {
+                    sizes[i][2] = 88;
+                    sizes[i][height - 3] = 88;
+                }
             }
         }
         /*ROOM TYPE GRASS*/
-        if (random == 1 || random == 2) {
+        else if (random == 0) {
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
                     if (generator.nextInt(6) < 4)

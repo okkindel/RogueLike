@@ -108,12 +108,12 @@ public class Tiles {
         return root;
     }
 
-    private Image background (int index) {
-        if (index == 10)
+    private Image background (int last_tile) {
+        if (last_tile == 10)
             return floor_block;
-        if (index == 11)
+        if (last_tile == 11)
             return floor_broken;
-        if (index == 13) {
+        if (last_tile == 13) {
             Character.last_tile = 14;
             return grass_down;
         }
