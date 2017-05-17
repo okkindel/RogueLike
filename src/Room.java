@@ -14,6 +14,7 @@ public class Room {
 
     Room (int index) {
         Random generator = new Random();
+        this.index = index;
         doors = new ArrayList<>();
         height = generator.nextInt(10) + 10;
         width = generator.nextInt(10) + 10;
@@ -22,7 +23,6 @@ public class Room {
         south = new int[width];
         east = new int[height];
         west = new int[height];
-        this.index = index;
         roomType();
         addWalls();
     }
@@ -46,27 +46,27 @@ public class Room {
             /*ROOM TYPE COLUMNS VERTICAL*/
             if (random == 0) {
                 for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 88;
-                    sizes[width - 3][i] = 88;
-                }
-            }
-            /*ROOM TYPE COLUMNS HALL*/
-            if (random == 1) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    for (int j = 2; j < width - 2; j += 2) {
-                        sizes[j][i] = 88;
-                    }
+                    sizes[2][i] = 87;
+                    sizes[width - 3][i] = 87;
                 }
             }
             /*ROOM TYPE COLUMNS ROUND*/
-            if (random == 2) {
+            if (random == 1) {
                 for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 88;
-                    sizes[width - 3][i] = 88;
+                    sizes[2][i] = 87;
+                    sizes[width - 3][i] = 87;
                 }
                 for (int i = 2; i < width - 2; i += 2) {
-                    sizes[i][2] = 88;
-                    sizes[i][height - 3] = 88;
+                    sizes[i][2] = 87;
+                    sizes[i][height - 3] = 87;
+                }
+            }
+            /*ROOM TYPE COLUMNS HALL*/
+            if (random == 2) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    for (int j = 2; j < width - 2; j += 2) {
+                        sizes[j][i] = 87;
+                    }
                 }
             }
         }
@@ -96,6 +96,21 @@ public class Room {
         Arrays.fill(south, 88);
         Arrays.fill(east, 88);
         Arrays.fill(west, 88);
+
+        Random generator = new Random();
+
+        for (int i = 1; i < north.length - 1; i++)
+            if (generator.nextInt(30) == 0) {
+                north[i] = 84;
+            }
+        for (int i = 1; i < west.length - 1; i++)
+            if (generator.nextInt(30) == 0) {
+                west[i] = 85;
+            }
+        for (int i = 1; i < east.length - 1; i++)
+            if (generator.nextInt(30) == 0) {
+                east[i] = 86;
+            }
 
         addDoors();
 

@@ -9,7 +9,9 @@ import java.io.File;
 
 public class Tiles {
 
-    private Image wall_block, floor_block, floor_broken, wooden_doors, grass_up, grass_down, wooden_floor;
+    private Image wooden_doors;
+    private Image wall_block, column_block, wall_plant_up, wall_plant_left, wall_plant_right;
+    private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
     Tiles() {
@@ -18,18 +20,37 @@ public class Tiles {
     }
 
     void load() throws IOException {
-        File file = new File("./assets/brick.png");
+
+        File file = new File("./assets/wall/brick.png");
         BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
-        file = new File("./assets/white.png");
+        file = new File("./assets/wall/brick_plant_u.png");
+        BufferedImage brick_plant_up = ImageIO.read(file);
+        wall_plant_up = SwingFXUtils.toFXImage(brick_plant_up, null);
+        file = new File("./assets/wall/brick_plant_l.png");
+        BufferedImage brick_plant_left = ImageIO.read(file);
+        wall_plant_left = SwingFXUtils.toFXImage(brick_plant_left, null);
+        file = new File("./assets/wall/brick_plant_r.png");
+        BufferedImage brick_plant_right = ImageIO.read(file);
+        wall_plant_right = SwingFXUtils.toFXImage(brick_plant_right, null);
+        file = new File("./assets/wall/column.png");
+        BufferedImage column = ImageIO.read(file);
+        column_block = SwingFXUtils.toFXImage(column, null);
+        file = new File("./assets/floor/white.png");
         BufferedImage floor_white_block = ImageIO.read(file);
         floor_block = SwingFXUtils.toFXImage(floor_white_block, null);
-        file = new File("./assets/white_broken.png");
+        file = new File("./assets/floor/white_broken.png");
         BufferedImage floor_broken_block = ImageIO.read(file);
         floor_broken = SwingFXUtils.toFXImage(floor_broken_block, null);
-        file = new File("./assets/wooden_floor.png");
+        file = new File("./assets/floor/wooden_floor.png");
         BufferedImage wooden_floor_block = ImageIO.read(file);
         wooden_floor = SwingFXUtils.toFXImage(wooden_floor_block, null);
+        file = new File("./assets/floor/grass_up.png");
+        BufferedImage grass_full = ImageIO.read(file);
+        grass_up = SwingFXUtils.toFXImage(grass_full, null);
+        file = new File("./assets/floor/grass_down.png");
+        BufferedImage grass_less = ImageIO.read(file);
+        grass_down = SwingFXUtils.toFXImage(grass_less, null);
         file = new File("./assets/doors.png");
         BufferedImage door_block = ImageIO.read(file);
         wooden_doors = SwingFXUtils.toFXImage(door_block, null);
@@ -45,12 +66,6 @@ public class Tiles {
         file = new File("./assets/character_d.png");
         BufferedImage character_d = ImageIO.read(file);
         character_down = SwingFXUtils.toFXImage(character_d, null);
-        file = new File("./assets/grass_up.png");
-        BufferedImage grass_u = ImageIO.read(file);
-        grass_up = SwingFXUtils.toFXImage(grass_u, null);
-        file = new File("./assets/grass_down.png");
-        BufferedImage grass_d = ImageIO.read(file);
-        grass_down = SwingFXUtils.toFXImage(grass_d, null);
     }
 
     Pane draw() {
@@ -63,13 +78,22 @@ public class Tiles {
             for(int j = 0; j < room.width; j++) {
                 ImageView iV = new ImageView();
 
-                if (room.sizes[j][i] == 88) {
-                    iV.setImage(wall_block);
+                if (room.sizes[j][i] >= 80 && room.sizes[j][i] < 90) {
+                    if (room.sizes[j][i] == 84)
+                        iV.setImage(wall_plant_up);
+                    if (room.sizes[j][i] == 85)
+                        iV.setImage(wall_plant_left);
+                    if (room.sizes[j][i] == 86)
+                        iV.setImage(wall_plant_right);
+                    if (room.sizes[j][i] == 87)
+                        iV.setImage(column_block);
+                    if (room.sizes[j][i] == 88)
+                        iV.setImage(wall_block);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (room.sizes[j][i] >= 10 && room.sizes[j][i] <= 14) {
+                if (room.sizes[j][i] >= 10 && room.sizes[j][i] < 20) {
                     if (room.sizes[j][i] == 10)
                         iV.setImage(floor_block);
                     if (room.sizes[j][i] == 11)

@@ -17,8 +17,8 @@ public class Main extends Application {
 
         StructureGenerator gene = new StructureGenerator();
         gene.generate(howManyRooms);
-        for (int i = 0; i < howManyRooms; i++) {
-            Room room = new Room(i);
+        for (int index = 0; index < howManyRooms; index++) {
+            Room room = new Room(index);
             rooms.add(room);
         }
         character = new Character();
