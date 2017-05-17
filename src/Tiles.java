@@ -18,7 +18,7 @@ public class Tiles {
     }
 
     void load() throws IOException {
-        File file = new File("./assets/black.png");
+        File file = new File("./assets/brick.png");
         BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
         file = new File("./assets/white.png");

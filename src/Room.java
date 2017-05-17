@@ -23,19 +23,69 @@ public class Room {
         east = new int[height];
         west = new int[height];
         this.index = index;
-        innerRoom();
         roomType();
         addWalls();
     }
 
-    private void innerRoom() {
+    private void roomType() {
         Random generator = new Random();
+        int random = generator.nextInt(3);
+
+        /*ROOM TYPE TILES*/
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 sizes[j][i] = 10;
                 if (sizes[j][i] == 10) {
                     if (generator.nextInt(4) == 0)
                         sizes[j][i] = 11;
+                }
+            }
+        }
+
+        if (height % 2 != 0 && width % 2 != 0) {
+            /*ROOM TYPE COLUMNS VERTICAL*/
+            if (random == 0) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    sizes[2][i] = 88;
+                    sizes[width - 3][i] = 88;
+                }
+            }
+            /*ROOM TYPE COLUMNS HALL*/
+            if (random == 1) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    for (int j = 2; j < width - 2; j += 2) {
+                        sizes[j][i] = 88;
+                    }
+                }
+            }
+            /*ROOM TYPE COLUMNS ROUND*/
+            if (random == 2) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    sizes[2][i] = 88;
+                    sizes[width - 3][i] = 88;
+                }
+                for (int i = 2; i < width - 2; i += 2) {
+                    sizes[i][2] = 88;
+                    sizes[i][height - 3] = 88;
+                }
+            }
+        }
+        /*ROOM TYPE GRASS*/
+        else if (random == 0) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (generator.nextInt(6) < 4)
+                        sizes[j][i] = 13;
+                    else if (generator.nextInt(6) < 3)
+                        sizes[j][i] = 14;
+                }
+            }
+        }
+        /*ROOM TYPE WOODEN*/
+        else if (random == 1) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    sizes[j][i] = 12;
                 }
             }
         }
@@ -105,60 +155,6 @@ public class Room {
                 }
                 Door door = new Door(index, doorID, wall, place, height, width);
                 doors.add(door);
-            }
-        }
-    }
-
-    private void roomType() {
-        Random generator = new Random();
-        int random = generator.nextInt(3);
-
-        if (height % 2 != 0 && width % 2 != 0) {
-
-            /*ROOM TYPE COLUMNS VERTICAL*/
-            if (random == 0) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 88;
-                    sizes[width - 3][i] = 88;
-                }
-            }
-            /*ROOM TYPE COLUMNS HALL*/
-            if (random == 1) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    for (int j = 2; j < width - 2; j += 2) {
-                        sizes[j][i] = 88;
-                    }
-                }
-            }
-            /*ROOM TYPE COLUMNS ROUND*/
-            if (random == 2) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 88;
-                    sizes[width - 3][i] = 88;
-                }
-                for (int i = 2; i < width - 2; i += 2) {
-                    sizes[i][2] = 88;
-                    sizes[i][height - 3] = 88;
-                }
-            }
-        }
-        /*ROOM TYPE GRASS*/
-        else if (random == 0) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    if (generator.nextInt(6) < 4)
-                        sizes[j][i] = 13;
-                    else if (generator.nextInt(6) < 3)
-                        sizes[j][i] = 14;
-                }
-            }
-        }
-        /*ROOM TYPE MIXTURE*/
-        else if (random == 1) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    sizes[j][i] = 12;
-                }
             }
         }
     }
