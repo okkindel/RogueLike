@@ -24,8 +24,8 @@ public class Room {
         west = new int[height];
         this.index = index;
         innerRoom();
-        addWalls();
         roomType();
+        addWalls();
     }
 
     private void innerRoom() {
@@ -118,6 +118,17 @@ public class Room {
             for (int i = 2; i < height - 2; i+=2) {
                 sizes[2][i] = 88;
                 sizes[width-3][i] = 88;
+            }
+        }
+        /*ROOM TYPE GRASS*/
+        if (random == 1 || random == 2) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (generator.nextInt(6) < 4)
+                        sizes[j][i] = 13;
+                    else if (generator.nextInt(6) < 3)
+                        sizes[j][i] = 14;
+                }
             }
         }
     }

@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42097214-889b-4a2c-99e1-d5b23fb04b14" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/background.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Draftsman.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Draftsman.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Draftsman.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Main.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Room.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Room.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/RogueLike/Tiles.class" afterPath="$PROJECT_DIR$/out/production/RogueLike/Tiles.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Room.java" afterPath="$PROJECT_DIR$/src/Room.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tiles.java" afterPath="$PROJECT_DIR$/src/Tiles.java" />
     </list>
@@ -38,7 +32,7 @@
       <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
+            <state relative-caret-position="864">
               <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
               <folding />
             </state>
@@ -48,8 +42,8 @@
       <file leaf-file-name="Tiles.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="52" column="60" lean-forward="false" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
+            <state relative-caret-position="210">
+              <caret line="116" column="37" lean-forward="false" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,8 +54,8 @@
       <file leaf-file-name="Room.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="113" column="40" lean-forward="false" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+            <state relative-caret-position="352">
+              <caret line="123" column="38" lean-forward="false" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -71,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/StructureGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="370">
-              <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+              <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -102,9 +96,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Tiles.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/StructureGenerator.java" />
+        <option value="$PROJECT_DIR$/src/Tiles.java" />
         <option value="$PROJECT_DIR$/src/Room.java" />
       </list>
     </option>
@@ -181,6 +175,9 @@
       </pane>
       <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Dokumenty/JAVA/GraphicalEditor" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -637,7 +634,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21028000" />
+    <option name="totallyTimeSpent" value="23060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
@@ -845,24 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="52" column="60" lean-forward="false" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StructureGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -874,18 +853,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/StructureGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
+        <state relative-caret-position="864">
           <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="116" column="37" lean-forward="false" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Room.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="113" column="40" lean-forward="false" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+        <state relative-caret-position="352">
+          <caret line="123" column="38" lean-forward="false" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
           <folding />
         </state>
       </provider>

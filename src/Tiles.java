@@ -3,15 +3,13 @@ import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.File;
 
 public class Tiles {
 
-    private Image wall_block, floor_block, floor_broken, wooden_doors;
+    private Image wall_block, floor_block, floor_broken, wooden_doors, grass_up, grass_down;
     private Image character_left, character_right, character_up, character_down;
 
     Tiles() {
@@ -44,6 +42,12 @@ public class Tiles {
         file = new File("./assets/character_d.png");
         BufferedImage character_d = ImageIO.read(file);
         character_down = SwingFXUtils.toFXImage(character_d, null);
+        file = new File("./assets/grass_up.png");
+        BufferedImage grass_u = ImageIO.read(file);
+        grass_up = SwingFXUtils.toFXImage(grass_u, null);
+        file = new File("./assets/grass_down.png");
+        BufferedImage grass_d = ImageIO.read(file);
+        grass_down = SwingFXUtils.toFXImage(grass_d, null);
     }
 
     Pane draw() {
@@ -62,11 +66,15 @@ public class Tiles {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (room.sizes[j][i] >= 10 && room.sizes[j][i] <= 11) {
+                if (room.sizes[j][i] >= 10 && room.sizes[j][i] <= 14) {
                     if (room.sizes[j][i] == 10)
                         iV.setImage(floor_block);
                     if (room.sizes[j][i] == 11)
                         iV.setImage(floor_broken);
+                    if (room.sizes[j][i] == 13)
+                        iV.setImage(grass_up);
+                    if (room.sizes[j][i] == 14)
+                        iV.setImage(grass_down);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -97,7 +105,6 @@ public class Tiles {
                 }
             }
         }
-
         return root;
     }
 
@@ -106,6 +113,10 @@ public class Tiles {
             return floor_block;
         if (index == 11)
             return floor_broken;
+        if (index == 13) {
+            Character.last_tile = 14;
+            return grass_down;
+        }
         else
             return floor_block;
     }
