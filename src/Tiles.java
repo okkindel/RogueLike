@@ -9,15 +9,15 @@ import java.io.File;
 
 public class Tiles {
 
-    private Image wooden_doors;
+    private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
-    private Image wall_plant_up, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_left, wall_moss_right;
+    private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
     Tiles() {
-        for (int i = 0; i < Main.howManyRooms; i++)
-            terminalShowing(i);
+        //for (int i = 0; i < Main.howManyRooms; i++)
+        //    terminalShowing(i);
     }
 
     void load() throws IOException {
@@ -31,6 +31,9 @@ public class Tiles {
         file = new File("./assets/wall/brick_plant_u.png");
         BufferedImage brick_plant_up = ImageIO.read(file);
         wall_plant_up = SwingFXUtils.toFXImage(brick_plant_up, null);
+        file = new File("./assets/wall/brick_plant_d.png");
+        BufferedImage brick_plant_down = ImageIO.read(file);
+        wall_plant_down = SwingFXUtils.toFXImage(brick_plant_down, null);
         file = new File("./assets/wall/brick_plant_l.png");
         BufferedImage brick_plant_left = ImageIO.read(file);
         wall_plant_left = SwingFXUtils.toFXImage(brick_plant_left, null);
@@ -40,6 +43,9 @@ public class Tiles {
         file = new File("./assets/wall/brick_moss_u.png");
         BufferedImage brick_moss_up = ImageIO.read(file);
         wall_moss_up = SwingFXUtils.toFXImage(brick_moss_up, null);
+        file = new File("./assets/wall/brick_moss_d.png");
+        BufferedImage brick_moss_down = ImageIO.read(file);
+        wall_moss_down = SwingFXUtils.toFXImage(brick_moss_down, null);
         file = new File("./assets/wall/brick_moss_l.png");
         BufferedImage brick_moss_left = ImageIO.read(file);
         wall_moss_left = SwingFXUtils.toFXImage(brick_moss_left, null);
@@ -70,6 +76,9 @@ public class Tiles {
         file = new File("./assets/doors.png");
         BufferedImage door_block = ImageIO.read(file);
         wooden_doors = SwingFXUtils.toFXImage(door_block, null);
+        file = new File("./assets/chest.png");
+        BufferedImage chest_block = ImageIO.read(file);
+        wooden_chest = SwingFXUtils.toFXImage(chest_block, null);
         file = new File("./assets/character_l.png");
         BufferedImage character_l = ImageIO.read(file);
         character_left = SwingFXUtils.toFXImage(character_l, null);
@@ -106,14 +115,18 @@ public class Tiles {
                     if (room.sizes[j][i] == 90)
                         iV.setImage(wall_plant_up);
                     if (room.sizes[j][i] == 91)
-                        iV.setImage(wall_plant_left);
+                        iV.setImage(wall_plant_down);
                     if (room.sizes[j][i] == 92)
-                        iV.setImage(wall_plant_right);
+                        iV.setImage(wall_plant_left);
                     if (room.sizes[j][i] == 93)
-                        iV.setImage(wall_moss_up);
+                        iV.setImage(wall_plant_right);
                     if (room.sizes[j][i] == 94)
-                        iV.setImage(wall_moss_left);
+                        iV.setImage(wall_moss_up);
                     if (room.sizes[j][i] == 95)
+                        iV.setImage(wall_moss_down);
+                    if (room.sizes[j][i] == 96)
+                        iV.setImage(wall_moss_left);
+                    if (room.sizes[j][i] == 97)
                         iV.setImage(wall_moss_right);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
@@ -134,8 +147,11 @@ public class Tiles {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
-                if (room.sizes[j][i] == 20) {
-                    iV.setImage(wooden_doors);
+                if (room.sizes[j][i] >= 20 && room.sizes[j][i] <= 30) {
+                    if (room.sizes[j][i] == 20)
+                        iV.setImage(wooden_doors);
+                    if (room.sizes[j][i] == 25)
+                        iV.setImage(wooden_chest);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);

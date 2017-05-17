@@ -20,20 +20,23 @@ public class StructureGenerator {
         for (int i = 0; i < vertex; i++) {
             for (int j = 0; j < vertex; j++) {
                 int chance = rdm.nextInt(100);
-                if (chance < 20 && countRooms[i] < 4 && countRooms[j] < 4){
+                if (chance < 20 && countRooms[i] < 4 && countRooms[j] < 4) {
                     structure[i][j] = true;
                     structure[j][i] = true;
                     countRooms[i]++;
                     countRooms[j]++;
                 }
             }
-            if (countRooms[i] == 0){
+            if (countRooms[i] == 0) {
                 int shoot = rdm.nextInt(vertex);
                 structure[i][shoot] = true;
                 countRooms[i]++;
             }
         }
+        terminalShowing(vertex);
+    }
 
+    void terminalShowing (int vertex) {
         for (int x = 0; x < vertex; x++) {
             for (int z = 0; z < vertex; z++) {
                 if (structure[x][z])

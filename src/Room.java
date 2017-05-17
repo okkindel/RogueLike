@@ -49,6 +49,8 @@ public class Room {
                     sizes[2][i] = 87;
                     sizes[width - 3][i] = 87;
                 }
+                if (generator.nextInt(2) == 0)
+                    sizes[height / 2 - 1][width / 2 + 1] = 25;
             }
             /*ROOM TYPE COLUMNS ROUND*/
             if (random == 1) {
@@ -59,6 +61,12 @@ public class Room {
                 for (int i = 2; i < width - 2; i += 2) {
                     sizes[i][2] = 87;
                     sizes[i][height - 3] = 87;
+                }
+                if (generator.nextInt(2) == 0) {
+                    sizes[height / 2][width / 2] = 25;
+                    sizes[height / 2][width / 2 + 2] = 25;
+                    sizes[height / 2 - 2][width / 2] = 25;
+                    sizes[height / 2 - 2][width / 2 + 2] = 25;
                 }
             }
             /*ROOM TYPE COLUMNS HALL*/
@@ -93,6 +101,8 @@ public class Room {
                 for (int i = 2; i < height - 2; i += 2) {
                     for (int j = 2; j < width - 2; j++) {
                         sizes[j][i] = 81;
+                        if (generator.nextInt(30) == 0)
+                            sizes[j][i] = 25;
                     }
                 }
             }
@@ -108,26 +118,34 @@ public class Room {
         Random generator = new Random();
 
         for (int i = 2; i < north.length - 2; i++) {
-            if (generator.nextInt(50) == 0)
+            if (generator.nextInt(100) == 0)
                 north[i] = 90;
-            else if (generator.nextInt(50) == 0)
-                north[i] = 93;
+            else if (generator.nextInt(5) == 0)
+                north[i] = 94;
             else if (generator.nextInt(50) == 0)
                 north[i] = 89;
         }
-        for (int i = 2; i < west.length - 2; i++) {
-            if (generator.nextInt(50) == 0)
-                west[i] = 91;
+        for (int i = 2; i < south.length - 2; i++) {
+            if (generator.nextInt(100) == 0)
+                south[i] = 91;
+            else if (generator.nextInt(5) == 0)
+                south[i] = 95;
             else if (generator.nextInt(50) == 0)
-                west[i] = 94;
+                south[i] = 89;
+        }
+        for (int i = 2; i < west.length - 2; i++) {
+            if (generator.nextInt(100) == 0)
+                west[i] = 92;
+            else if (generator.nextInt(5) == 0)
+                west[i] = 96;
             else if (generator.nextInt(50) == 0)
                 west[i] = 89;
         }
         for (int i = 2; i < east.length - 2; i++) {
-            if (generator.nextInt(50) == 0)
-                east[i] = 92;
-            else if (generator.nextInt(50) == 0)
-                east[i] = 95;
+            if (generator.nextInt(100) == 0)
+                east[i] = 93;
+            else if (generator.nextInt(5) == 0)
+                east[i] = 97;
             else if (generator.nextInt(50) == 0)
                 east[i] = 89;
         }
