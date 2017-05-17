@@ -88,6 +88,14 @@ public class Room {
                     sizes[j][i] = 12;
                 }
             }
+            /*ROOM TYPE LIBRARY*/
+            if (height % 2 != 0) {
+                for (int i = 2; i < height - 2; i += 2) {
+                    for (int j = 2; j < width - 2; j++) {
+                        sizes[j][i] = 81;
+                    }
+                }
+            }
         }
     }
 

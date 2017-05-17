@@ -10,7 +10,7 @@ import java.io.File;
 public class Tiles {
 
     private Image wooden_doors;
-    private Image wall_block, column_block, wall_plant_up, wall_plant_left, wall_plant_right;
+    private Image wall_block, column_block, bookshelf, wall_plant_up, wall_plant_left, wall_plant_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
@@ -36,6 +36,9 @@ public class Tiles {
         file = new File("./assets/wall/column.png");
         BufferedImage column = ImageIO.read(file);
         column_block = SwingFXUtils.toFXImage(column, null);
+        file = new File("./assets/wall/bookshelf.png");
+        BufferedImage books = ImageIO.read(file);
+        bookshelf = SwingFXUtils.toFXImage(books, null);
         file = new File("./assets/floor/white.png");
         BufferedImage floor_white_block = ImageIO.read(file);
         floor_block = SwingFXUtils.toFXImage(floor_white_block, null);
@@ -79,6 +82,8 @@ public class Tiles {
                 ImageView iV = new ImageView();
 
                 if (room.sizes[j][i] >= 80 && room.sizes[j][i] < 90) {
+                    if (room.sizes[j][i] == 81)
+                        iV.setImage(bookshelf);
                     if (room.sizes[j][i] == 84)
                         iV.setImage(wall_plant_up);
                     if (room.sizes[j][i] == 85)
