@@ -10,7 +10,8 @@ import java.io.File;
 public class Tiles {
 
     private Image wooden_doors;
-    private Image wall_block, column_block, bookshelf, wall_plant_up, wall_plant_left, wall_plant_right;
+    private Image wall_block, wall_broken_block, column_block, bookshelf;
+    private Image wall_plant_up, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
@@ -24,6 +25,9 @@ public class Tiles {
         File file = new File("./assets/wall/brick.png");
         BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
+        file = new File("./assets/wall/brick_broken.png");
+        BufferedImage brick_broken = ImageIO.read(file);
+        wall_broken_block = SwingFXUtils.toFXImage(brick_broken, null);
         file = new File("./assets/wall/brick_plant_u.png");
         BufferedImage brick_plant_up = ImageIO.read(file);
         wall_plant_up = SwingFXUtils.toFXImage(brick_plant_up, null);
@@ -33,6 +37,15 @@ public class Tiles {
         file = new File("./assets/wall/brick_plant_r.png");
         BufferedImage brick_plant_right = ImageIO.read(file);
         wall_plant_right = SwingFXUtils.toFXImage(brick_plant_right, null);
+        file = new File("./assets/wall/brick_moss_u.png");
+        BufferedImage brick_moss_up = ImageIO.read(file);
+        wall_moss_up = SwingFXUtils.toFXImage(brick_moss_up, null);
+        file = new File("./assets/wall/brick_moss_l.png");
+        BufferedImage brick_moss_left = ImageIO.read(file);
+        wall_moss_left = SwingFXUtils.toFXImage(brick_moss_left, null);
+        file = new File("./assets/wall/brick_moss_r.png");
+        BufferedImage brick_moss_right = ImageIO.read(file);
+        wall_moss_right = SwingFXUtils.toFXImage(brick_moss_right, null);
         file = new File("./assets/wall/column.png");
         BufferedImage column = ImageIO.read(file);
         column_block = SwingFXUtils.toFXImage(column, null);
@@ -81,19 +94,27 @@ public class Tiles {
             for(int j = 0; j < room.width; j++) {
                 ImageView iV = new ImageView();
 
-                if (room.sizes[j][i] >= 80 && room.sizes[j][i] < 90) {
+                if (room.sizes[j][i] >= 80 && room.sizes[j][i] <= 99) {
                     if (room.sizes[j][i] == 81)
                         iV.setImage(bookshelf);
-                    if (room.sizes[j][i] == 84)
-                        iV.setImage(wall_plant_up);
-                    if (room.sizes[j][i] == 85)
-                        iV.setImage(wall_plant_left);
-                    if (room.sizes[j][i] == 86)
-                        iV.setImage(wall_plant_right);
                     if (room.sizes[j][i] == 87)
                         iV.setImage(column_block);
                     if (room.sizes[j][i] == 88)
                         iV.setImage(wall_block);
+                    if (room.sizes[j][i] == 89)
+                        iV.setImage(wall_broken_block);
+                    if (room.sizes[j][i] == 90)
+                        iV.setImage(wall_plant_up);
+                    if (room.sizes[j][i] == 91)
+                        iV.setImage(wall_plant_left);
+                    if (room.sizes[j][i] == 92)
+                        iV.setImage(wall_plant_right);
+                    if (room.sizes[j][i] == 93)
+                        iV.setImage(wall_moss_up);
+                    if (room.sizes[j][i] == 94)
+                        iV.setImage(wall_moss_left);
+                    if (room.sizes[j][i] == 95)
+                        iV.setImage(wall_moss_right);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -153,6 +174,8 @@ public class Tiles {
             Character.last_tile = 14;
             return grass_down;
         }
+        if (last_tile == 14)
+            return grass_down;
         else
             return floor_block;
     }

@@ -107,18 +107,30 @@ public class Room {
 
         Random generator = new Random();
 
-        for (int i = 1; i < north.length - 1; i++)
-            if (generator.nextInt(30) == 0) {
-                north[i] = 84;
-            }
-        for (int i = 1; i < west.length - 1; i++)
-            if (generator.nextInt(30) == 0) {
-                west[i] = 85;
-            }
-        for (int i = 1; i < east.length - 1; i++)
-            if (generator.nextInt(30) == 0) {
-                east[i] = 86;
-            }
+        for (int i = 2; i < north.length - 2; i++) {
+            if (generator.nextInt(50) == 0)
+                north[i] = 90;
+            else if (generator.nextInt(50) == 0)
+                north[i] = 93;
+            else if (generator.nextInt(50) == 0)
+                north[i] = 89;
+        }
+        for (int i = 2; i < west.length - 2; i++) {
+            if (generator.nextInt(50) == 0)
+                west[i] = 91;
+            else if (generator.nextInt(50) == 0)
+                west[i] = 94;
+            else if (generator.nextInt(50) == 0)
+                west[i] = 89;
+        }
+        for (int i = 2; i < east.length - 2; i++) {
+            if (generator.nextInt(50) == 0)
+                east[i] = 92;
+            else if (generator.nextInt(50) == 0)
+                east[i] = 95;
+            else if (generator.nextInt(50) == 0)
+                east[i] = 89;
+        }
 
         addDoors();
 
