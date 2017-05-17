@@ -1,11 +1,12 @@
 public class Door {
 
-    int where;
-    int x, y, posx, posy;
+    int x, y, posx, posy, where, wall;
 
     Door (int from, int where, int wall, int place, int height, int width) {
 
         this.where = where;
+        this.wall = wall;
+
         if (wall == 0) {
             x = place;
             y = 0;

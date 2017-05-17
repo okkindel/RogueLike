@@ -1,13 +1,15 @@
 public class Character {
 
-    private static int x_value = 1;
-    private static int y_value = 1;
-    static int last_tile = 10;
+    private static int x_value, y_value;
+    static int last_tile = 0;
     static int whereAmI = 0;
 
     Character() {
-        Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
         Room room = Main.rooms.get(0);
+        last_tile = room.sizes[room.width/2][room.height/2];
+        x_value = room.width / 2;
+        y_value = room.height / 2;
+        Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
         room.iWasHere = true;
     }
 
@@ -71,7 +73,16 @@ public class Character {
                 room.iWasHere = true;
                 for (Door newroom: Main.rooms.get(whereAmI).doors) {
                     if (newroom.where == whereIWas) {
-                        Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 44;
+                        Room incomming = Main.rooms.get(whereAmI);
+                        last_tile = incomming.sizes[newroom.posx][newroom.posy];
+                        if (newroom.wall == 0)
+                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 47;
+                        if (newroom.wall == 1)
+                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 46;
+                        if (newroom.wall == 2)
+                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 44;
+                        if (newroom.wall == 3)
+                            Main.rooms.get(whereAmI).sizes[newroom.posx][newroom.posy] = 45;
                         x_value = newroom.posx;
                         y_value = newroom.posy;
                     }
