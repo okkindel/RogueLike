@@ -3,6 +3,8 @@ import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.File;
@@ -48,6 +50,7 @@ public class Tiles {
 
         Pane root = new Pane();
         Room room = Main.rooms.get(Character.whereAmI);
+        root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
 
         for (int i = 0; i < room.height; i++) {
             for(int j = 0; j < room.width; j++) {
@@ -94,6 +97,7 @@ public class Tiles {
                 }
             }
         }
+
         return root;
     }
 

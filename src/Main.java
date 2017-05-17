@@ -9,7 +9,7 @@ public class Main extends Application {
 
     private static Scene scene;
     private static Character character;
-    static int howManyRooms = 5;
+    static int howManyRooms = 10;
     static ArrayList<Room> rooms = new ArrayList<>();
 
     @Override

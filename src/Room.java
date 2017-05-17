@@ -25,6 +25,7 @@ public class Room {
         this.index = index;
         innerRoom();
         addWalls();
+        roomType();
     }
 
     private void innerRoom() {
@@ -104,6 +105,19 @@ public class Room {
                 }
                 Door door = new Door(index, doorID, random, place, height, width);
                 doors.add(door);
+            }
+        }
+    }
+
+    private void roomType() {
+        Random generator = new Random();
+        int random = generator.nextInt(5);
+
+        /*ROOM TYPE COLUMNS*/
+        if (random == 0) {
+            for (int i = 2; i < height - 2; i+=2) {
+                sizes[2][i] = 88;
+                sizes[width-3][i] = 88;
             }
         }
     }
