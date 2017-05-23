@@ -22,30 +22,30 @@ public class Main extends Application {
             rooms.add(room);
         }
         character = new Character();
-        Tiles drawing = new Tiles();
-        drawing.load();
+        AssetsLoader assets = new AssetsLoader();
+        assets.load();
         primaryStage.setTitle("RogueLike");
-        scene = new Scene(drawing.draw(), 800, 800);
+        scene = new Scene(assets.draw(), 800, 800);
 
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
                 character.decreaseY();
-                scene.setRoot(drawing.draw());
+                scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.LEFT) {
                 character.decreaseX();
-                scene.setRoot(drawing.draw());
+                scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.DOWN) {
                 character.increaseY();
-                scene.setRoot(drawing.draw());
+                scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
             if (event.getCode() == KeyCode.RIGHT) {
                 character.increaseX();
-                scene.setRoot(drawing.draw());
+                scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
         });

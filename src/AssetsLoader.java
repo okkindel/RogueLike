@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.File;
 
-public class Tiles {
+public class AssetsLoader {
 
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
@@ -15,7 +15,7 @@ public class Tiles {
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
-    Tiles() {
+    AssetsLoader() {
         //for (int i = 0; i < Main.howManyRooms; i++)
         //    terminalShowing(i);
     }
