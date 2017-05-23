@@ -16,8 +16,7 @@ public class AssetsLoader {
     private Image character_left, character_right, character_up, character_down;
 
     AssetsLoader() {
-        //for (int i = 0; i < Main.howManyRooms; i++)
-        //    terminalShowing(i);
+        //terminalShowing(i);
     }
 
     void load() throws IOException {
@@ -197,14 +196,15 @@ public class AssetsLoader {
     }
 
     private void terminalShowing (int index) {
-        Room room = Main.rooms.get(index);
-        for (int i = 0; i < room.height; i++) {
-            for (int j = 0; j < room.width; j++) {
-                System.out.print(room.sizes[j][i]);
+        for (int x = 0; x < Main.howManyRooms; x++) {
+            Room room = Main.rooms.get(index);
+            for (int i = 0; i < room.height; i++) {
+                for (int j = 0; j < room.width; j++) {
+                    System.out.print(room.sizes[j][i]);
+                }
+                System.out.println();
             }
             System.out.println();
         }
-        System.out.println();
     }
-
 }

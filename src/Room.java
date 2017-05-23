@@ -49,8 +49,6 @@ public class Room {
                     sizes[2][i] = 87;
                     sizes[width - 3][i] = 87;
                 }
-                if (generator.nextInt(2) == 0)
-                    sizes[height / 2 - 1][width / 2 + 1] = 25;
             }
             /*ROOM TYPE COLUMNS ROUND*/
             if (random == 1) {
@@ -61,12 +59,6 @@ public class Room {
                 for (int i = 2; i < width - 2; i += 2) {
                     sizes[i][2] = 87;
                     sizes[i][height - 3] = 87;
-                }
-                if (generator.nextInt(2) == 0) {
-                    sizes[height / 2][width / 2] = 25;
-                    sizes[height / 2][width / 2 + 2] = 25;
-                    sizes[height / 2 - 2][width / 2] = 25;
-                    sizes[height / 2 - 2][width / 2 + 2] = 25;
                 }
             }
             /*ROOM TYPE COLUMNS HALL*/

@@ -14,47 +14,51 @@ public class Character {
     }
 
     void increaseY() {
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
+        int next_block = Main.rooms.get(whereAmI).sizes[x_value][y_value + 1];
+
+        if (Tiles.checkThisBlock(next_block) == 3)
             whichDoor(x_value, y_value + 1);
-        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] <= 80
-              || Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] >= 99) {
-            Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
+        else if (Tiles.checkThisBlock(next_block) != 1) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
+            last_tile = next_block;
             y_value += 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 47;
         }
     }
 
     void decreaseY() {
-        if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
+        int next_block = Main.rooms.get(whereAmI).sizes[x_value][y_value - 1];
+
+        if (Tiles.checkThisBlock(next_block) == 3)
             whichDoor(x_value, y_value - 1);
-        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] <= 80
-              || Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] >= 99) {
-            Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
+        else if (Tiles.checkThisBlock(next_block) != 1) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
+            last_tile = next_block;
             y_value -= 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 46;
         }
     }
     void increaseX() {
-        if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
+        int next_block = Main.rooms.get(whereAmI).sizes[x_value + 1][y_value];
+
+        if (Tiles.checkThisBlock(next_block) == 3)
             whichDoor(x_value + 1, y_value);
-        else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] <= 80
-              || Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] >= 99) {
-            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
+        else if (Tiles.checkThisBlock(next_block) != 1) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
+            last_tile = next_block;
             x_value += 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
         }
     }
 
     void decreaseX() {
-        if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
+        int next_block = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
+
+        if (Tiles.checkThisBlock(next_block) == 3)
             whichDoor(x_value - 1, y_value);
-        else if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] <= 80
-              || Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] >= 99) {
-            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
+        if (Tiles.checkThisBlock(next_block) != 1) {
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
+            last_tile = next_block;
             x_value -= 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
         }
