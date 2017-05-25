@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.File;
 
-public class Tiles {
+public class AssetsLoader {
 
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
@@ -15,8 +15,7 @@ public class Tiles {
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
 
-    Tiles() {
-        //for (int i = 0; i < Main.howManyRooms; i++)
+    AssetsLoader() {
         //    terminalShowing(i);
     }
 
@@ -106,6 +105,8 @@ public class Tiles {
                 if (room.sizes[j][i] >= 80 && room.sizes[j][i] <= 99) {
                     if (room.sizes[j][i] == 81)
                         iV.setImage(bookshelf);
+                    if (room.sizes[j][i] == 82)
+                        iV.setImage(wooden_chest);
                     if (room.sizes[j][i] == 87)
                         iV.setImage(column_block);
                     if (room.sizes[j][i] == 88)
@@ -150,8 +151,6 @@ public class Tiles {
                 if (room.sizes[j][i] >= 20 && room.sizes[j][i] <= 30) {
                     if (room.sizes[j][i] == 20)
                         iV.setImage(wooden_doors);
-                    if (room.sizes[j][i] == 25)
-                        iV.setImage(wooden_chest);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -197,14 +196,15 @@ public class Tiles {
     }
 
     private void terminalShowing (int index) {
-        Room room = Main.rooms.get(index);
-        for (int i = 0; i < room.height; i++) {
-            for (int j = 0; j < room.width; j++) {
-                System.out.print(room.sizes[j][i]);
+        for (int x = 0; x < Main.howManyRooms; x++) {
+            Room room = Main.rooms.get(index);
+            for (int i = 0; i < room.height; i++) {
+                for (int j = 0; j < room.width; j++) {
+                    System.out.print(room.sizes[j][i]);
+                }
+                System.out.println();
             }
             System.out.println();
         }
-        System.out.println();
     }
-
 }
