@@ -15,6 +15,7 @@ public class AssetsLoader {
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem;
+    private static final int tile_size = 38;
 
     AssetsLoader() {
         //terminalShowing();
@@ -111,6 +112,8 @@ public class AssetsLoader {
         for (int i = 0; i < room.height; i++) {
             for(int j = 0; j < room.width; j++) {
                 ImageView iV = new ImageView();
+                iV.setFitHeight(tile_size);
+                iV.setFitWidth(tile_size);
 
                 /* WALL TILES */
                 if (room.sizes[j][i] >= 80 && room.sizes[j][i] <= 99) {
@@ -140,8 +143,8 @@ public class AssetsLoader {
                         iV.setImage(wall_moss_left);
                     if (room.sizes[j][i] == 97)
                         iV.setImage(wall_moss_right);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* FLOOR TILES */
@@ -156,25 +159,27 @@ public class AssetsLoader {
                         iV.setImage(grass_up);
                     if (room.sizes[j][i] == 14)
                         iV.setImage(grass_down);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* DOORS TILES */
                 if (room.sizes[j][i] >= 20 && room.sizes[j][i] <= 30) {
                     if (room.sizes[j][i] == 20)
                         iV.setImage(wooden_doors);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* CHARACTER TILES */
                 if (room.sizes[j][i] >= 44 && room.sizes[j][i] <= 47) {
                     iV.setImage(background(Character.last_tile));
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                     iV = new ImageView();
+                    iV.setFitHeight(tile_size);
+                    iV.setFitWidth(tile_size);
                     if (room.sizes[j][i] == 44)
                         iV.setImage(character_left);
                     if (room.sizes[j][i] == 45)
@@ -183,25 +188,27 @@ public class AssetsLoader {
                         iV.setImage(character_up);
                     if (room.sizes[j][i] == 47)
                         iV.setImage(character_down);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[j][i] >= 70 && room.sizes[j][i] < 80) {
                     iV.setImage(background(Character.last_tile));
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                     iV = new ImageView();
+                    iV.setFitHeight(tile_size);
+                    iV.setFitWidth(tile_size);
                     if (room.sizes[j][i] == 70)
                         iV.setImage(enemy_zombie);
                     if (room.sizes[j][i] == 71)
                         iV.setImage(enemy_skeleton);
                     if (room.sizes[j][i] == 72)
                         iV.setImage(enemy_golem);
-                    iV.setX(j*32 + 100);
-                    iV.setY(i*32 + 100);
+                    iV.setX(j*tile_size + 100);
+                    iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
                 }
             }
