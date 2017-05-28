@@ -13,10 +13,10 @@ public class AssetsLoader {
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
-    private Image character_left, character_right, character_up, character_down;
+    private Image character_left, character_right, character_up, character_down, enemy_wolf;
 
     AssetsLoader() {
-        //    terminalShowing(i);
+        //terminalShowing();
     }
 
     void load() throws IOException {
@@ -90,6 +90,9 @@ public class AssetsLoader {
         file = new File("./assets/character_d.png");
         BufferedImage character_d = ImageIO.read(file);
         character_down = SwingFXUtils.toFXImage(character_d, null);
+        file = new File("./assets/wolf.png");
+        BufferedImage wolf = ImageIO.read(file);
+        enemy_wolf = SwingFXUtils.toFXImage(wolf, null);
     }
 
     Pane draw() {
@@ -102,6 +105,7 @@ public class AssetsLoader {
             for(int j = 0; j < room.width; j++) {
                 ImageView iV = new ImageView();
 
+                /* WALL TILES */
                 if (room.sizes[j][i] >= 80 && room.sizes[j][i] <= 99) {
                     if (room.sizes[j][i] == 81)
                         iV.setImage(bookshelf);
@@ -133,6 +137,7 @@ public class AssetsLoader {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
+                /* FLOOR TILES */
                 if (room.sizes[j][i] >= 10 && room.sizes[j][i] < 20) {
                     if (room.sizes[j][i] == 10)
                         iV.setImage(floor_block);
@@ -148,6 +153,7 @@ public class AssetsLoader {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
+                /* DOORS TILES */
                 if (room.sizes[j][i] >= 20 && room.sizes[j][i] <= 30) {
                     if (room.sizes[j][i] == 20)
                         iV.setImage(wooden_doors);
@@ -155,6 +161,7 @@ public class AssetsLoader {
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                 }
+                /* CHARACTER TILES */
                 if (room.sizes[j][i] >= 44 && room.sizes[j][i] <= 47) {
                     iV.setImage(background(Character.last_tile));
                     iV.setX(j*32 + 100);
@@ -169,6 +176,19 @@ public class AssetsLoader {
                         iV.setImage(character_up);
                     if (room.sizes[j][i] == 47)
                         iV.setImage(character_down);
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                }
+                /* ENEMIES TILES */
+                if (room.sizes[j][i] >= 50 && room.sizes[j][i] <= 60) {
+                    iV.setImage(background(Enemies.last_tile));
+                    iV.setX(j*32 + 100);
+                    iV.setY(i*32 + 100);
+                    root.getChildren().add(iV);
+                    iV = new ImageView();
+                    if (room.sizes[j][i] == 50)
+                        iV.setImage(enemy_wolf);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
@@ -195,9 +215,9 @@ public class AssetsLoader {
             return floor_block;
     }
 
-    private void terminalShowing (int index) {
+    private void terminalShowing () {
         for (int x = 0; x < Main.howManyRooms; x++) {
-            Room room = Main.rooms.get(index);
+            Room room = Main.rooms.get(x);
             for (int i = 0; i < room.height; i++) {
                 for (int j = 0; j < room.width; j++) {
                     System.out.print(room.sizes[j][i]);

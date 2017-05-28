@@ -1,6 +1,6 @@
 public class Character {
 
-    private static int x_value, y_value;
+    static int x_value, y_value;
     static int last_tile = 0;
     static int whereAmI = 0;
 

@@ -6,14 +6,15 @@ public class Room {
 
     ArrayList<Door> doors;
     private int [] north, south, east, west;
-    private int index = 0;
+    int index = 0;
     int [][] sizes;
-    int height = 0;
-    int width = 0;
+    int height, width = 0;
+    boolean isEnemy = false;
     boolean iWasHere = false;
+    Random generator = new Random();
 
     Room (int index) {
-        Random generator = new Random();
+
         this.index = index;
         doors = new ArrayList<>();
         height = generator.nextInt(10) + 10;
@@ -29,7 +30,7 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = generator.nextInt(3);
+        int random = 1 /*generator.nextInt(3)*/;
 
         /*ROOM TYPE TILES*/
         for (int i = 0; i < height; i++) {
@@ -98,6 +99,9 @@ public class Room {
                     }
                 }
             }
+            else {
+                isEnemy = true;
+            }
         }
     }
 
@@ -106,8 +110,6 @@ public class Room {
         Arrays.fill(south, 88);
         Arrays.fill(east, 88);
         Arrays.fill(west, 88);
-
-        Random generator = new Random();
 
         for (int i = 2; i < north.length - 2; i++) {
             if (generator.nextInt(100) == 0)
