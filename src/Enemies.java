@@ -4,10 +4,9 @@ public class Enemies {
 
     private int positionX, positionY = 0;
     private int enemy_type_tile;
-    static int last_enemy_tile;
     private Room room;
     private int index;
-    int last_tile;
+    private int last_tile;
 
     Enemies (String type, int index, int positionX, int positionY) {
         this.positionX = positionX;
@@ -60,6 +59,7 @@ public class Enemies {
         }
 
         if (room.sizes[positionX][positionY] >= 10 && room.sizes[positionX][positionY] < 20) {
+            last_tile = room.sizes[positionX][positionY];
             room.sizes[positionX][positionY] = enemy_type_tile;
         } else {
             positionX = prevX;

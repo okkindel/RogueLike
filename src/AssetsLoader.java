@@ -182,7 +182,7 @@ public class AssetsLoader {
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[j][i] >= 50 && room.sizes[j][i] <= 60) {
-                    iV.setImage(background(Enemies.last_enemy_tile));
+                    iV.setImage(background(Character.last_tile));
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);

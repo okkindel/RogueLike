@@ -69,7 +69,6 @@ public class Main extends Application {
             }
             for (Enemies enemy : enemies_list) {
                 enemy.enemyMove();
-                Enemies.last_enemy_tile = enemy.last_tile;
                 primaryStage.setScene(scene);
                 primaryStage.show();
             }
