@@ -11,7 +11,7 @@ public class Main extends Application {
     static int howManyRooms = 10;
     private static Character character;
     static ArrayList<Room> rooms = new ArrayList<>();
-    private static ArrayList<Enemies> enemies_list = new ArrayList<>();
+    static ArrayList<Enemies> enemies_list = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -67,11 +67,13 @@ public class Main extends Application {
                 scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
-            for (Enemies enemy : enemies_list) {
-                enemy.enemyMove();
-                primaryStage.setScene(scene);
-                primaryStage.show();
-            }
+            try {
+                for (Enemies enemy : enemies_list) {
+                    enemy.enemyMove();
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                }
+            } catch (Exception ignore) {}
         });
 
         primaryStage.setScene(scene);

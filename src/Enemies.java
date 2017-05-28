@@ -7,6 +7,8 @@ public class Enemies {
     private Room room;
     private int index;
     private int last_tile;
+    int health_points;
+    int damage_points;
 
     Enemies (String type, int index, int positionX, int positionY) {
         this.positionX = positionX;
@@ -15,14 +17,17 @@ public class Enemies {
         room = Main.rooms.get(index);
 
         last_tile = room.sizes[positionX][positionY];
-        if (Objects.equals(type, "wolf"))
+        if (Objects.equals(type, "wolf")) {
+            health_points = 20;
+            damage_points = 5;
             addWolf();
+        }
     }
 
     private void addWolf() {
-        enemy_type_tile = 50;
+        enemy_type_tile = 70;
         room = Main.rooms.get(index);
-        room.sizes[positionX][positionY] = 50;
+        room.sizes[positionX][positionY] = 70;
     }
 
     void enemyMove() {
@@ -63,9 +68,13 @@ public class Enemies {
             last_tile = room.sizes[positionX][positionY];
             room.sizes[positionX][positionY] = enemy_type_tile;
         } else {
+            if (room.sizes[positionX][positionY] >= 44 && room.sizes[positionX][positionY] <= 47) {
+                Actions.fight(this);
+            }
             positionX = prevX;
             positionY = prevY;
             room.sizes[positionX][positionY] = enemy_type_tile;
+
         }
     }
 }

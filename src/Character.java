@@ -3,6 +3,8 @@ public class Character {
     static int x_value, y_value;
     static int last_tile = 0;
     static int whereAmI = 0;
+    static int health_points = 100;
+    static int damage_points = 5;
 
     Character() {
         Room room = Main.rooms.get(0);
@@ -16,7 +18,7 @@ public class Character {
     void increaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
             whichDoor(x_value, y_value + 1);
-        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] <= 80
+        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] >= 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
@@ -28,7 +30,7 @@ public class Character {
     void decreaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
             whichDoor(x_value, y_value - 1);
-        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] <= 80
+        else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] >= 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value ] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
@@ -40,7 +42,7 @@ public class Character {
     void increaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
             whichDoor(x_value + 1, y_value);
-        else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] <= 80
+        else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] >= 99) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
@@ -52,7 +54,7 @@ public class Character {
     void decreaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
             whichDoor(x_value - 1, y_value);
-        else if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] <= 80
+        else if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] >= 99) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];

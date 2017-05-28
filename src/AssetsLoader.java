@@ -181,13 +181,13 @@ public class AssetsLoader {
                     root.getChildren().add(iV);
                 }
                 /* ENEMIES TILES */
-                if (room.sizes[j][i] >= 50 && room.sizes[j][i] <= 60) {
+                if (room.sizes[j][i] >= 70 && room.sizes[j][i] < 80) {
                     iV.setImage(background(Character.last_tile));
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);
                     iV = new ImageView();
-                    if (room.sizes[j][i] == 50)
+                    if (room.sizes[j][i] == 70)
                         iV.setImage(enemy_wolf);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
