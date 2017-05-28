@@ -61,12 +61,14 @@ public class Room {
                     sizes[i][2] = 87;
                     sizes[i][height - 3] = 87;
                 }
+                isEnemy = true;
             }
             /*ROOM TYPE COLUMNS HALL*/
             if (random == 2) {
                 for (int i = 2; i < height - 2; i += 2) {
                     for (int j = 2; j < width - 2; j += 2) {
                         sizes[j][i] = 87;
+                        isEnemy = true;
                     }
                 }
             }
@@ -99,10 +101,11 @@ public class Room {
                     }
                 }
             }
-            else {
+            else
                 isEnemy = true;
-            }
         }
+        else
+            isEnemy = true;
     }
 
     private void addWalls() {

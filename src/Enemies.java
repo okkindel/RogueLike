@@ -4,9 +4,10 @@ public class Enemies {
 
     private int positionX, positionY = 0;
     private int enemy_type_tile;
+    static int last_enemy_tile;
     private Room room;
     private int index;
-    static int last_tile;
+    int last_tile;
 
     Enemies (String type, int index, int positionX, int positionY) {
         this.positionX = positionX;
