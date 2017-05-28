@@ -17,7 +17,7 @@ public class Actions {
             System.exit(0);
         if (enemy.health_points == 0) {
             Enemies.enemies_list.remove(enemy);
-            System.out.println("Enemy killed.");
+            System.out.println("Enemy killed.\n");
         }
     }
 }
