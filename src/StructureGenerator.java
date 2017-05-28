@@ -36,7 +36,7 @@ public class StructureGenerator {
         terminalShowing(vertex);
     }
 
-    void terminalShowing (int vertex) {
+    private void terminalShowing(int vertex) {
         for (int x = 0; x < vertex; x++) {
             for (int z = 0; z < vertex; z++) {
                 if (structure[x][z])

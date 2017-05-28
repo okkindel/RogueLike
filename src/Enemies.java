@@ -19,13 +19,14 @@ public class Enemies {
             addWolf();
     }
 
-    void addWolf () {
+    private void addWolf() {
         enemy_type_tile = 50;
         room = Main.rooms.get(index);
         room.sizes[positionX][positionY] = 50;
     }
 
     void enemyMove() {
+
         int prevX = positionX;
         int prevY = positionY;
         room.sizes[positionX][positionY] = last_tile;

@@ -11,7 +11,7 @@ public class Room {
     int height, width = 0;
     boolean isEnemy = false;
     boolean iWasHere = false;
-    Random generator = new Random();
+    private Random generator = new Random();
 
     Room (int index) {
 
@@ -50,6 +50,7 @@ public class Room {
                     sizes[2][i] = 87;
                     sizes[width - 3][i] = 87;
                 }
+                isEnemy = true;
             }
             /*ROOM TYPE COLUMNS ROUND*/
             if (random == 1) {
@@ -68,7 +69,6 @@ public class Room {
                 for (int i = 2; i < height - 2; i += 2) {
                     for (int j = 2; j < width - 2; j += 2) {
                         sizes[j][i] = 87;
-                        isEnemy = true;
                     }
                 }
             }
@@ -101,11 +101,8 @@ public class Room {
                     }
                 }
             }
-            else
-                isEnemy = true;
+            else { isEnemy = true; }
         }
-        else
-            isEnemy = true;
     }
 
     private void addWalls() {

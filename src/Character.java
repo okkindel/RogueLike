@@ -12,7 +12,7 @@ public class Character {
         Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
         room.iWasHere = true;
     }
-
+    /* CHARACTER GOING DOWN */
     void increaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
             whichDoor(x_value, y_value + 1);
@@ -24,7 +24,7 @@ public class Character {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 47;
         }
     }
-
+    /* CHARACTER GOING UP */
     void decreaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
             whichDoor(x_value, y_value - 1);
@@ -36,6 +36,7 @@ public class Character {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 46;
         }
     }
+    /* CHARACTER GOING RIGHT */
     void increaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
             whichDoor(x_value + 1, y_value);
@@ -47,7 +48,7 @@ public class Character {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
         }
     }
-
+    /* CHARACTER GOING LEFT */
     void decreaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
             whichDoor(x_value - 1, y_value);
