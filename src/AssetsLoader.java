@@ -14,7 +14,7 @@ public class AssetsLoader {
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
-    private Image enemy_wolf, enemy_skeleton;
+    private Image enemy_zombie, enemy_skeleton, enemy_golem;
 
     AssetsLoader() {
         //terminalShowing();
@@ -91,12 +91,15 @@ public class AssetsLoader {
         file = new File("./assets/character_d.png");
         BufferedImage character_d = ImageIO.read(file);
         character_down = SwingFXUtils.toFXImage(character_d, null);
-        file = new File("./assets/enemies/wolf.png");
-        BufferedImage wolf = ImageIO.read(file);
-        enemy_wolf = SwingFXUtils.toFXImage(wolf, null);
+        file = new File("./assets/enemies/zombie.png");
+        BufferedImage zombie = ImageIO.read(file);
+        enemy_zombie = SwingFXUtils.toFXImage(zombie, null);
         file = new File("./assets/enemies/skeleton.png");
         BufferedImage skeleton = ImageIO.read(file);
         enemy_skeleton = SwingFXUtils.toFXImage(skeleton, null);
+        file = new File("./assets/enemies/golem.png");
+        BufferedImage golem = ImageIO.read(file);
+        enemy_golem = SwingFXUtils.toFXImage(golem, null);
     }
 
     Pane draw() {
@@ -192,9 +195,11 @@ public class AssetsLoader {
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     if (room.sizes[j][i] == 70)
-                        iV.setImage(enemy_wolf);
+                        iV.setImage(enemy_zombie);
                     if (room.sizes[j][i] == 71)
                         iV.setImage(enemy_skeleton);
+                    if (room.sizes[j][i] == 72)
+                        iV.setImage(enemy_golem);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);

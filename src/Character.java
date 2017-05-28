@@ -3,7 +3,7 @@ public class Character {
     static int x_value, y_value;
     static int last_tile = 0;
     static int whereAmI = 0;
-    static int health_points = 100;
+    static int health_points = 500;
     static int damage_points = 5;
 
     Character() {

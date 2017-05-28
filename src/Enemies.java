@@ -23,13 +23,15 @@ public class Enemies {
                     int x_position = generator.nextInt(room.width - 2) + 1;
                     int y_position = generator.nextInt(room.height - 2) + 1;
                     if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
-                        if (room.isWolfable) {
-                            Wolf wolf = new Wolf(room.index, x_position, y_position);
-                            enemies_list.add(wolf);
-                        }
-                        if (room.isSkeletonable) {
+                        if (room.isZombiable) {
+                            Zombie zombie = new Zombie(room.index, x_position, y_position);
+                            enemies_list.add(zombie);
+                        } if (room.isSkeletonable) {
                             Skeleton skeleton = new Skeleton(room.index, x_position, y_position);
                             enemies_list.add(skeleton);
+                        } if (room.isGolemable) {
+                            Golem golem = new Golem(room.index, x_position, y_position);
+                            enemies_list.add(golem);
                         }
                     } else
                         numberOf--;
@@ -87,9 +89,9 @@ public class Enemies {
     }
 }
 
-class Wolf extends Enemies {
+class Zombie extends Enemies {
 
-    Wolf (int index, int positionX, int positionY) {
+    Zombie (int index, int positionX, int positionY) {
 
         this.positionX = positionX;
         this.positionY = positionY;
@@ -116,5 +118,21 @@ class Skeleton extends Enemies {
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 71;
+    }
+}
+
+class Golem extends Enemies {
+
+    Golem (int index, int positionX, int positionY) {
+
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.index = index;
+        enemy_type_tile = 72;
+        health_points = 40;
+        damage_points = 5;
+        room = Main.rooms.get(index);
+        last_tile = room.sizes[positionX][positionY];
+        room.sizes[positionX][positionY] = 72;
     }
 }
