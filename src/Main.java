@@ -21,8 +21,9 @@ public class Main extends Application {
         for (int index = 0; index < howManyRooms; index++) {
             Room room = new Room(index);
             rooms.add(room);
+            new Enemies(index);
         }
-        Enemies.addEnemy();
+
 
         character = new Character();
         AssetsLoader assets = new AssetsLoader();

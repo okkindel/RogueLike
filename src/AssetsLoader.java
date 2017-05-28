@@ -15,7 +15,7 @@ public class AssetsLoader {
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem;
-    private static final int tile_size = 38;
+    private static final int tile_size = 32;
 
     AssetsLoader() {
         //terminalShowing();

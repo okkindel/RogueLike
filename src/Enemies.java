@@ -9,41 +9,44 @@ public class Enemies {
     int last_tile;
     int health_points;
     int damage_points;
+    private int prevX = positionX;
+    private int prevY = positionY;
     Room room;
 
     static ArrayList<Enemies> enemies_list = new ArrayList<>();
 
-    Enemies () {}
+    Enemies (int index) {
 
-    static void addEnemy() {
-        for (Room room: Main.rooms) {
+        room = Main.rooms.get(index);
+        if (room.isEnemy) {
             Random generator = new Random();
-            if (room.isEnemy) {
-                for (int numberOf = 0; numberOf < generator.nextInt(4); numberOf++) {
-                    int x_position = generator.nextInt(room.width - 2) + 1;
-                    int y_position = generator.nextInt(room.height - 2) + 1;
-                    if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
-                        if (room.isZombiable) {
-                            Zombie zombie = new Zombie(room.index, x_position, y_position);
-                            enemies_list.add(zombie);
-                        } if (room.isSkeletonable) {
-                            Skeleton skeleton = new Skeleton(room.index, x_position, y_position);
-                            enemies_list.add(skeleton);
-                        } if (room.isGolemable) {
-                            Golem golem = new Golem(room.index, x_position, y_position);
-                            enemies_list.add(golem);
-                        }
-                    } else
-                        numberOf--;
-                }
+            for (int numberOf = 0; numberOf < generator.nextInt(4); numberOf++) {
+                int x_position = generator.nextInt(room.width - 2) + 1;
+                int y_position = generator.nextInt(room.height - 2) + 1;
+                if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
+                    if (room.isZombiable) {
+                        Zombie zombie = new Zombie(room.index, x_position, y_position);
+                        enemies_list.add(zombie);
+                    } if (room.isSkeletonable) {
+                        Skeleton skeleton = new Skeleton(room.index, x_position, y_position);
+                        enemies_list.add(skeleton);
+                    } if (room.isGolemable) {
+                        Golem golem = new Golem(room.index, x_position, y_position);
+                        enemies_list.add(golem);
+                    }
+                } else
+                    numberOf--;
             }
         }
     }
 
+    public Enemies() {
+    }
+
     void enemyMove() {
 
-        int prevX = positionX;
-        int prevY = positionY;
+        prevX = positionX;
+        prevY = positionY;
         room.sizes[positionX][positionY] = last_tile;
 
         if (Character.whereAmI == index) {
@@ -79,13 +82,17 @@ public class Enemies {
             room.sizes[positionX][positionY] = enemy_type_tile;
         } else {
             if (room.sizes[positionX][positionY] >= 44 && room.sizes[positionX][positionY] <= 47) {
-                Actions.fight(this);
+                Conflict.enemyAtack(this);
             }
             positionX = prevX;
             positionY = prevY;
             room.sizes[positionX][positionY] = enemy_type_tile;
 
         }
+    }
+
+    void disappear() {
+        room.sizes[prevX][prevY] = 88;
     }
 }
 

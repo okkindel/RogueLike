@@ -4,7 +4,7 @@ public class Character {
     static int last_tile = 0;
     static int whereAmI = 0;
     static int health_points = 500;
-    static int damage_points = 5;
+    static int damage_points = 10;
 
     Character() {
         Room room = Main.rooms.get(0);

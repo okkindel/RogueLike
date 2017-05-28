@@ -1,6 +1,6 @@
-public class Actions {
+public class Conflict {
 
-    static void fight (Enemies enemy) {
+    static void enemyAtack (Enemies enemy) {
 
         System.out.println("Character HP: " + Character.health_points);
         System.out.println("Enemy HP: " + enemy.health_points);
@@ -16,6 +16,7 @@ public class Actions {
         if (Character.health_points == 0)
             System.exit(0);
         if (enemy.health_points == 0) {
+            enemy.disappear();
             Enemies.enemies_list.remove(enemy);
             System.out.println("Enemy killed.\n");
         }
