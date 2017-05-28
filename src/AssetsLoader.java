@@ -13,7 +13,8 @@ public class AssetsLoader {
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
-    private Image character_left, character_right, character_up, character_down, enemy_wolf;
+    private Image character_left, character_right, character_up, character_down;
+    private Image enemy_wolf, enemy_skeleton;
 
     AssetsLoader() {
         //terminalShowing();
@@ -90,9 +91,12 @@ public class AssetsLoader {
         file = new File("./assets/character_d.png");
         BufferedImage character_d = ImageIO.read(file);
         character_down = SwingFXUtils.toFXImage(character_d, null);
-        file = new File("./assets/wolf.png");
+        file = new File("./assets/enemies/wolf.png");
         BufferedImage wolf = ImageIO.read(file);
         enemy_wolf = SwingFXUtils.toFXImage(wolf, null);
+        file = new File("./assets/enemies/skeleton.png");
+        BufferedImage skeleton = ImageIO.read(file);
+        enemy_skeleton = SwingFXUtils.toFXImage(skeleton, null);
     }
 
     Pane draw() {
@@ -189,6 +193,8 @@ public class AssetsLoader {
                     iV = new ImageView();
                     if (room.sizes[j][i] == 70)
                         iV.setImage(enemy_wolf);
+                    if (room.sizes[j][i] == 71)
+                        iV.setImage(enemy_skeleton);
                     iV.setX(j*32 + 100);
                     iV.setY(i*32 + 100);
                     root.getChildren().add(iV);

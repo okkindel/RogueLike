@@ -9,7 +9,7 @@ public class Room {
     int index = 0;
     int [][] sizes;
     int height, width = 0;
-    boolean isEnemy = false;
+    boolean isEnemy, isWolfable, isSkeletonable = false;
     boolean iWasHere = false;
     private Random generator = new Random();
 
@@ -30,7 +30,7 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = 1 /*generator.nextInt(3)*/;
+        int random = generator.nextInt(3);
 
         /*ROOM TYPE TILES*/
         for (int i = 0; i < height; i++) {
@@ -50,7 +50,7 @@ public class Room {
                     sizes[2][i] = 87;
                     sizes[width - 3][i] = 87;
                 }
-                isEnemy = true;
+                isSkeletonable = true;
             }
             /*ROOM TYPE COLUMNS ROUND*/
             if (random == 1) {
@@ -62,7 +62,7 @@ public class Room {
                     sizes[i][2] = 87;
                     sizes[i][height - 3] = 87;
                 }
-                isEnemy = true;
+                isSkeletonable = true;
             }
             /*ROOM TYPE COLUMNS HALL*/
             if (random == 2) {
@@ -71,6 +71,7 @@ public class Room {
                         sizes[j][i] = 87;
                     }
                 }
+                isSkeletonable = true;
             }
         }
         /*ROOM TYPE GRASS*/
@@ -101,8 +102,11 @@ public class Room {
                     }
                 }
             }
-            else { isEnemy = true; }
+            else { isWolfable = true; }
         }
+
+        if (isWolfable || isSkeletonable)
+            isEnemy = true;
     }
 
     private void addWalls() {

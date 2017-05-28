@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.input.KeyCode;
 import java.util.ArrayList;
-import java.util.Random;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,7 +10,6 @@ public class Main extends Application {
     static int howManyRooms = 10;
     private static Character character;
     static ArrayList<Room> rooms = new ArrayList<>();
-    static ArrayList<Enemies> enemies_list = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -24,21 +22,7 @@ public class Main extends Application {
             Room room = new Room(index);
             rooms.add(room);
         }
-        /* filling rooms with enemies */
-        for (Room room: rooms) {
-            Random generator = new Random();
-            if (room.isEnemy) {
-                for (int numberOf = 0; numberOf < generator.nextInt(4); numberOf++) {
-                    int x_position = generator.nextInt(room.width - 2) + 1;
-                    int y_position = generator.nextInt(room.height - 2) + 1;
-                    if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
-                        Enemies wolf = new Enemies("wolf", room.index, x_position, y_position);
-                        enemies_list.add(wolf);
-                    } else
-                        numberOf--;
-                }
-            }
-        }
+        Enemies.addEnemy();
 
         character = new Character();
         AssetsLoader assets = new AssetsLoader();
@@ -68,7 +52,7 @@ public class Main extends Application {
                 primaryStage.setScene(scene);
             }
             try {
-                for (Enemies enemy : enemies_list) {
+                for (Enemies enemy : Enemies.enemies_list) {
                     enemy.enemyMove();
                     primaryStage.setScene(scene);
                     primaryStage.show();
