@@ -10,9 +10,9 @@ public class Enemies {
     private int prevX, prevY;
     int enemy_type_tile;
     int dexterity_points;
+    int strength_points;
     int defence_points;
     int health_points;
-    int damage_points;
     int last_tile;
     int index;
 
@@ -114,7 +114,7 @@ class Zombie extends Enemies {
         type = "Zombie";
         enemy_type_tile = 70;
         health_points = 25;
-        damage_points = 10;
+        strength_points = 10;
         defence_points = 5;
         dexterity_points = 5;
         room = Main.rooms.get(index);
@@ -133,7 +133,7 @@ class Skeleton extends Enemies {
         type = "Skeleton";
         enemy_type_tile = 71;
         health_points = 25;
-        damage_points = 10;
+        strength_points = 10;
         defence_points = 5;
         dexterity_points = 15;
         room = Main.rooms.get(index);
@@ -152,7 +152,7 @@ class Golem extends Enemies {
         type = "Golem";
         enemy_type_tile = 72;
         health_points = 50;
-        damage_points = 20;
+        strength_points = 20;
         defence_points = 10;
         dexterity_points = 1;
         room = Main.rooms.get(index);
@@ -170,7 +170,7 @@ class Ghost extends Enemies {
         type = "Ghost";
         enemy_type_tile = 73;
         health_points = 5;
-        damage_points = 5;
+        strength_points = 5;
         defence_points = 1;
         dexterity_points = 85;
         room = Main.rooms.get(index);

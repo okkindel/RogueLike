@@ -6,9 +6,9 @@ public class Battle {
 
     static void enemyAttack (Enemies enemy) {
 
-        int damage = generator.nextInt(enemy.damage_points);
+        int strength = generator.nextInt(enemy.strength_points);
         int defence = generator.nextInt(Character.defence_points) / 2;
-        int true_damage = damage - defence;
+        int true_damage = strength - defence;
         if (true_damage <= 0) {
             System.out.println("Character blocked attack.");
         } else if (generator.nextInt(100) <= Character.dexterity_points) {
@@ -23,9 +23,9 @@ public class Battle {
 
     static void characterAttack (Enemies enemy) {
 
-        int damage = generator.nextInt(Character.damage_points);
+        int strength = generator.nextInt(Character.damage_points);
         int defence = generator.nextInt(enemy.defence_points) / 2;
-        int true_damage = damage - defence;
+        int true_damage = strength - defence;
         if (true_damage <= 0) {
             System.out.println(enemy.type + " blocked attack.");
         } else if (generator.nextInt(100) <= enemy.dexterity_points) {

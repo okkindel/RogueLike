@@ -121,7 +121,7 @@ public class AssetsLoader {
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
         Label health_points = new Label(
                 "Character health: " + Character.health_points
-                    + "\nCharacter damage: " + Character.damage_points
+                    + "\nCharacter strength: " + Character.damage_points
                     + "\nCharacter dexterity: " + Character.dexterity_points);
         root.getChildren().add(health_points);
         health_points.setPadding(new Insets(10, 230, 10, 230));
