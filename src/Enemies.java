@@ -46,6 +46,16 @@ public class Enemies {
     public Enemies() {
     }
 
+    public boolean isAlive(){
+        if (this.health_points == 0) {
+            room.sizes[prevX][prevY] = last_tile;
+            System.out.println("Enemy killed.\n");
+            return false;
+
+        }
+        return true;
+    }
+
     void enemyMove() {
 
         prevX = positionX;

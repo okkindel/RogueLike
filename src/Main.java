@@ -1,6 +1,8 @@
 import javafx.application.Application;
 import javafx.scene.input.KeyCode;
 import java.util.ArrayList;
+import java.util.ListIterator;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -51,13 +53,16 @@ public class Main extends Application {
                 scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
-            try {
-                for (Enemies enemy: Enemies.enemies_list) {
-                    enemy.enemyMove();
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
+            ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
+            while(iterator.hasNext()) {
+                Enemies enemies = iterator.next();
+                enemies.enemyMove();
+                if(!enemies.isAlive()){
+                    iterator.remove();
                 }
-            } catch (Exception ignore) {}
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            }
         });
 
         primaryStage.setScene(scene);
