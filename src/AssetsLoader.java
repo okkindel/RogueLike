@@ -118,7 +118,7 @@ public class AssetsLoader {
         Label health_points = new Label(
                 "Character health: " + Character.health_points
                     + "\nCharacter damage: " + Character.damage_points
-                    + "\nCharacter defence: " + Character.defence_points);
+                    + "\nCharacter dexterity: " + Character.dexterity_points);
         root.getChildren().add(health_points);
         health_points.setPadding(new Insets(10, 400, 10, 400));
         health_points.setAlignment(Pos.CENTER);

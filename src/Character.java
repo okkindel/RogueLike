@@ -5,6 +5,7 @@ public class Character {
     static int whereAmI = 0;
     static int health_points = 500;
     static int damage_points = 15;
+    static int dexterity_points = 25;
     static int defence_points = 5;
 
     Character() {
