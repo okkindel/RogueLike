@@ -19,7 +19,9 @@ public class Character {
     /* CHARACTER GOING DOWN */
     void increaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
+            try {
             whichDoor(x_value, y_value + 1);
+            } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
@@ -40,7 +42,9 @@ public class Character {
     /* CHARACTER GOING UP */
     void decreaseY() {
         if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
+            try {
             whichDoor(x_value, y_value - 1);
+            } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
@@ -61,7 +65,9 @@ public class Character {
     /* CHARACTER GOING RIGHT */
     void increaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
-            whichDoor(x_value + 1, y_value);
+            try {
+                whichDoor(x_value + 1, y_value);
+            } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
@@ -82,7 +88,9 @@ public class Character {
     /* CHARACTER GOING LEFT */
     void decreaseX() {
         if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
-            whichDoor(x_value - 1, y_value);
+            try {
+                whichDoor(x_value - 1, y_value);
+            } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
@@ -100,9 +108,27 @@ public class Character {
         }
     }
 
+    /* theoretically, now there shouldn't be error at the door */
+    private void teleport() {
+        System.out.println("What? I've been teleported!");
+        int index = Main.rooms.get(whereAmI).generator.nextInt(Main.rooms.size());
+        Room room = Main.rooms.get(index);
+        while (true)
+        {
+            whereAmI = index;
+            int x_position = room.generator.nextInt(room.width - 2) + 1;
+            int y_position = room.generator.nextInt(room.height - 2) + 1;
+            if (room.sizes[x_value][y_value] >= 10 && room.sizes[x_value][y_value] < 20) {
+                x_value = x_position;
+                y_value = y_position;
+                break;
+            }
+        }
+    }
+
     private void whichDoor (int x, int y) {
 
-        for (Door door: Main.rooms.get(whereAmI).doors) {
+        for (Door door : Main.rooms.get(whereAmI).doors) {
             if (door.x == x && door.y == y) {
                 Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
                 int whereIWas = whereAmI;
@@ -115,7 +141,7 @@ public class Character {
                 else
                     System.out.println("I've never seen this room before...");
                 room.iWasHere = true;
-                for (Door newdoor: Main.rooms.get(whereAmI).doors) {
+                for (Door newdoor : Main.rooms.get(whereAmI).doors) {
                     if (newdoor.where == whereIWas) {
                         Room newroom = Main.rooms.get(whereAmI);
                         last_tile = newroom.sizes[newdoor.posx][newdoor.posy];
@@ -127,6 +153,7 @@ public class Character {
                             Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 44;
                         if (newdoor.wall == 3)
                             Main.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 45;
+
                         x_value = newdoor.posx;
                         y_value = newdoor.posy;
                     }

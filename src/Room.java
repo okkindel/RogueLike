@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public class Room {
 
-    ArrayList<Door> doors;
     private int [] north, south, east, west;
     int index = 0;
     int [][] sizes;
     int height, width = 0;
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean iWasHere = false;
-    private Random generator = new Random();
+    ArrayList<Door> doors;
+    Random generator = new Random();
 
     Room (int index) {
 

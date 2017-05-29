@@ -1,14 +1,13 @@
 import javafx.embed.swing.SwingFXUtils;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
+import javafx.geometry.Insets;
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import javafx.geometry.Pos;
 import java.io.File;
 
 public class AssetsLoader {
@@ -114,6 +113,7 @@ public class AssetsLoader {
 
         Pane root = new Pane();
         Room room = Main.rooms.get(Character.whereAmI);
+
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
         Label health_points = new Label(
                 "Character health: " + Character.health_points

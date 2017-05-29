@@ -1,7 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.input.KeyCode;
-import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -57,9 +57,11 @@ public class Main extends Application {
                 enemies.enemyMove();
                 if(!enemies.isAlive()){
                     iterator.remove();
+                    scene.setRoot(assets.draw());
+                    primaryStage.setScene(scene);
                 }
+                scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
-                primaryStage.show();
             }
         });
 

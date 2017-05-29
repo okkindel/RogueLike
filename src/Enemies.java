@@ -3,26 +3,24 @@ import java.util.Random;
 
 public class Enemies {
 
-    int positionX, positionY = 0;
-    int enemy_type_tile;
-    int index;
-    int last_tile;
-    int health_points;
-    int damage_points;
-    int defence_points;
-    private int prevX = positionX;
-    private int prevY = positionY;
+    static ArrayList<Enemies> enemies_list = new ArrayList<>();
     String type = "";
     Room room;
-
-    static ArrayList<Enemies> enemies_list = new ArrayList<>();
+    int positionX, positionY = 0;
+    private int prevX, prevY;
+    int enemy_type_tile;
+    int defence_points;
+    int health_points;
+    int damage_points;
+    int last_tile;
+    int index;
 
     Enemies (int index) {
 
         room = Main.rooms.get(index);
         if (room.isEnemy) {
             Random generator = new Random();
-            for (int numberOf = 0; numberOf < generator.nextInt(4); numberOf++) {
+            for (int numberOf = 0; numberOf < generator.nextInt(5); numberOf++) {
                 int x_position = generator.nextInt(room.width - 2) + 1;
                 int y_position = generator.nextInt(room.height - 2) + 1;
                 if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
