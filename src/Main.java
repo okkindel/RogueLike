@@ -28,7 +28,7 @@ public class Main extends Application {
         AssetsLoader assets = new AssetsLoader();
         assets.load();
         primaryStage.setTitle("RogueLike");
-        scene = new Scene(assets.draw(), 520, 470);
+        scene = new Scene(assets.draw(), 552, 500);
 
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {

@@ -12,13 +12,14 @@ import java.io.File;
 
 public class AssetsLoader {
 
+    private Image shadow;
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
-    private static final int tile_size = 32;
+    static final int tile_size = 32;
 
     AssetsLoader() {
         //terminalShowing();
@@ -26,7 +27,10 @@ public class AssetsLoader {
 
     void load() throws IOException {
 
-        File file = new File("./assets/wall/brick.png");
+        File file = new File("./assets/shadow.png");
+        BufferedImage shadow_texture = ImageIO.read(file);
+        shadow = SwingFXUtils.toFXImage(shadow_texture, null);
+        file = new File("./assets/wall/brick.png");
         BufferedImage wall_black_block = ImageIO.read(file);
         wall_block = SwingFXUtils.toFXImage(wall_black_block, null);
         file = new File("./assets/wall/brick_broken.png");
@@ -120,19 +124,19 @@ public class AssetsLoader {
                     + "\nCharacter damage: " + Character.damage_points
                     + "\nCharacter dexterity: " + Character.dexterity_points);
         root.getChildren().add(health_points);
-        health_points.setPadding(new Insets(10, 205, 10, 205));
+        health_points.setPadding(new Insets(10, 230, 10, 230));
         health_points.setAlignment(Pos.CENTER);
         health_points.setStyle("-fx-background-color: gray");
 
         int x_begin, y_begin, x_end, y_end;
         x_begin = Character.x_value - 5;
         y_begin = Character.y_value - 5;
-        x_end = Character.x_value + 5;
-        y_end = Character.y_value + 5;
+        x_end = Character.x_value + 6;
+        y_end = Character.y_value + 6;
         if (Character.x_value < 5) { x_begin = 0; x_end += (5 - Character.x_value); }
         if (Character.y_value < 5) { y_begin = 0; y_end += (5 - Character.y_value); }
-        if (Character.x_value > (room.width - 5)) { x_end = room.width; x_begin += (room.width - Character.x_value - 5); }
-        if (Character.y_value > (room.height - 5)) { y_end = room.height; y_begin += (room.height - Character.y_value - 5); }
+        if (Character.x_value > (room.width - 6)) { x_end = room.width; x_begin += (room.width - Character.x_value - 6); }
+        if (Character.y_value > (room.height - 6)) { y_end = room.height; y_begin += (room.height - Character.y_value - 6); }
 
         for (int x_tile = x_begin, x_index = 0; x_tile < x_end; x_tile++, x_index++) {
             for (int y_tile = y_begin, y_index = 0; y_tile < y_end; y_tile++, y_index++) {
@@ -240,6 +244,15 @@ public class AssetsLoader {
                 }
             }
         }
+
+        ImageView iV = new ImageView();
+        iV.setFitHeight(tile_size * 11);
+        iV.setFitWidth(tile_size * 11);
+        iV.setImage(shadow);
+        iV.setX(100);
+        iV.setY(100);
+        root.getChildren().add(iV);
+
         return root;
     }
 

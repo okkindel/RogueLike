@@ -17,8 +17,8 @@ public class Room {
 
         this.index = index;
         doors = new ArrayList<>();
-        height = generator.nextInt(10) + 10;
-        width = generator.nextInt(10) + 10;
+        height = generator.nextInt(10) + 11;
+        width = generator.nextInt(10) + 11;
         sizes = new int[width][height];
         north = new int[width];
         south = new int[width];
