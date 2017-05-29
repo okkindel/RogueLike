@@ -221,6 +221,17 @@ public class AssetsLoader {
         return root;
     }
 
+    private int checkEnemyTile (int posX, int posY, int index) {
+        int last_tile = 0;
+        for (Enemies enemy: Enemies.enemies_list) {
+            if (enemy.index == index) {
+                if (posX == enemy.positionX && posY == enemy.positionY)
+                    last_tile = enemy.last_tile;
+            }
+        }
+        return last_tile;
+    }
+
     private Image background (int last_tile) {
         if (last_tile == 10)
             return floor_block;
@@ -236,17 +247,6 @@ public class AssetsLoader {
             return grass_down;
         else
             return floor_block;
-    }
-
-    private int checkEnemyTile (int posX, int posY, int index) {
-        int last_tile = 0;
-        for (Enemies enemy: Enemies.enemies_list) {
-            if (enemy.index == index) {
-                if (posX == enemy.positionX && posY == enemy.positionY)
-                    last_tile = enemy.last_tile;
-            }
-        }
-        return last_tile;
     }
 
     private void terminalShowing () {

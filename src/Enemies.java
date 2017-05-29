@@ -9,9 +9,9 @@ public class Enemies {
     int last_tile;
     int health_points;
     int damage_points;
-    String type = "";
     private int prevX = positionX;
     private int prevY = positionY;
+    String type = "";
     Room room;
 
     static ArrayList<Enemies> enemies_list = new ArrayList<>();
@@ -52,7 +52,6 @@ public class Enemies {
             room.sizes[prevX][prevY] = last_tile;
             System.out.println(type + " killed.\n");
             return false;
-
         }
         return true;
     }
@@ -96,7 +95,7 @@ public class Enemies {
             room.sizes[positionX][positionY] = enemy_type_tile;
         } else {
             if (room.sizes[positionX][positionY] >= 44 && room.sizes[positionX][positionY] <= 47) {
-                Conflict.enemyAtack(this);
+                Conflict.enemyAttack(this);
             }
             positionX = prevX;
             positionY = prevY;

@@ -9,7 +9,6 @@ public class Main extends Application {
 
     private static Scene scene;
     static int howManyRooms = 10;
-    private static Character character;
     static ArrayList<Room> rooms = new ArrayList<>();
 
     @Override
@@ -25,7 +24,7 @@ public class Main extends Application {
             new Enemies(index);
         }
 
-        character = new Character();
+        Character character = new Character();
         AssetsLoader assets = new AssetsLoader();
         assets.load();
         primaryStage.setTitle("RogueLike");

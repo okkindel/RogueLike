@@ -1,6 +1,6 @@
 public class Conflict {
 
-    static void enemyAtack (Enemies enemy) {
+    static void enemyAttack(Enemies enemy) {
 
         System.out.println("Character HP: " + Character.health_points);
         System.out.println(enemy.type + " HP: " + enemy.health_points);
