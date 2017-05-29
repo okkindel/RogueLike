@@ -9,6 +9,7 @@ public class Enemies {
     int last_tile;
     int health_points;
     int damage_points;
+    String type = "";
     private int prevX = positionX;
     private int prevY = positionY;
     Room room;
@@ -49,7 +50,7 @@ public class Enemies {
     public boolean isAlive(){
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
-            System.out.println("Enemy killed.\n");
+            System.out.println(type + " killed.\n");
             return false;
 
         }
@@ -111,6 +112,7 @@ class Zombie extends Enemies {
         this.positionX = positionX;
         this.positionY = positionY;
         this.index = index;
+        type = "Zombie";
         enemy_type_tile = 70;
         health_points = 20;
         damage_points = 5;
@@ -127,6 +129,7 @@ class Skeleton extends Enemies {
         this.positionX = positionX;
         this.positionY = positionY;
         this.index = index;
+        type = "Skeleton";
         enemy_type_tile = 71;
         health_points = 30;
         damage_points = 7;
@@ -143,6 +146,7 @@ class Golem extends Enemies {
         this.positionX = positionX;
         this.positionY = positionY;
         this.index = index;
+        type = "Golem";
         enemy_type_tile = 72;
         health_points = 40;
         damage_points = 5;
@@ -158,6 +162,7 @@ class Ghost extends Enemies {
         this.positionX = positionX;
         this.positionY = positionY;
         this.index = index;
+        type = "Ghost";
         enemy_type_tile = 73;
         health_points = 40;
         damage_points = 5;
