@@ -11,7 +11,7 @@ public class Battle {
         int true_damage = damage - defence;
         if (true_damage <= 0) {
             System.out.println("Character blocked attack.");
-        } else if (generator.nextInt((100 / Character.dexterity_points) + 1) == 0) {
+        } else if (generator.nextInt(100) <= Character.dexterity_points) {
             System.out.println("Character dodged attack.");
         } else {
             System.out.println(enemy.type + " attacks for : " + true_damage);
@@ -28,7 +28,7 @@ public class Battle {
         int true_damage = damage - defence;
         if (true_damage <= 0) {
             System.out.println(enemy.type + " blocked attack.");
-        } else if (generator.nextInt((100 / enemy.dexterity_points) + 1) == 0) {
+        } else if (generator.nextInt(100) <= enemy.dexterity_points) {
             System.out.println(enemy.type + " dodged attack.");
         } else {
             System.out.println("Character attacks for : " + true_damage);
