@@ -9,7 +9,7 @@ public class Room {
     int index = 0;
     int [][] sizes;
     int height, width = 0;
-    boolean isEnemy, isZombiable, isSkeletonable, isGolemable = false;
+    boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean iWasHere = false;
     private Random generator = new Random();
 
@@ -105,8 +105,9 @@ public class Room {
             }
             else { isZombiable = true; }
         }
+        else { isGhostable = true; }
 
-        if (isZombiable || isSkeletonable || isGolemable)
+        if (isZombiable || isSkeletonable || isGolemable || isGhostable)
             isEnemy = true;
     }
 

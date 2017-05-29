@@ -33,6 +33,9 @@ public class Enemies {
                     } if (room.isGolemable) {
                         Golem golem = new Golem(room.index, x_position, y_position);
                         enemies_list.add(golem);
+                    } if (room.isGhostable) {
+                        Ghost ghost = new Ghost(room.index, x_position, y_position);
+                        enemies_list.add(ghost);
                     }
                 } else
                     numberOf--;
@@ -87,12 +90,7 @@ public class Enemies {
             positionX = prevX;
             positionY = prevY;
             room.sizes[positionX][positionY] = enemy_type_tile;
-
         }
-    }
-
-    void disappear() {
-        room.sizes[prevX][prevY] = 88;
     }
 }
 
@@ -141,5 +139,20 @@ class Golem extends Enemies {
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 72;
+    }
+}
+class Ghost extends Enemies {
+
+    Ghost (int index, int positionX, int positionY) {
+
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.index = index;
+        enemy_type_tile = 73;
+        health_points = 40;
+        damage_points = 5;
+        room = Main.rooms.get(index);
+        last_tile = room.sizes[positionX][positionY];
+        room.sizes[positionX][positionY] = 73;
     }
 }

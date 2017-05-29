@@ -16,7 +16,6 @@ public class Conflict {
         if (Character.health_points == 0)
             System.exit(0);
         if (enemy.health_points == 0) {
-            enemy.disappear();
             Enemies.enemies_list.remove(enemy);
             System.out.println("Enemy killed.\n");
         }

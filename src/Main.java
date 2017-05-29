@@ -24,7 +24,6 @@ public class Main extends Application {
             new Enemies(index);
         }
 
-
         character = new Character();
         AssetsLoader assets = new AssetsLoader();
         assets.load();
@@ -53,7 +52,7 @@ public class Main extends Application {
                 primaryStage.setScene(scene);
             }
             try {
-                for (Enemies enemy : Enemies.enemies_list) {
+                for (Enemies enemy: Enemies.enemies_list) {
                     enemy.enemyMove();
                     primaryStage.setScene(scene);
                     primaryStage.show();

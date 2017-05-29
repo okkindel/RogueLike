@@ -14,7 +14,7 @@ public class AssetsLoader {
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
-    private Image enemy_zombie, enemy_skeleton, enemy_golem;
+    private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
     private static final int tile_size = 32;
 
     AssetsLoader() {
@@ -101,6 +101,9 @@ public class AssetsLoader {
         file = new File("./assets/enemies/golem.png");
         BufferedImage golem = ImageIO.read(file);
         enemy_golem = SwingFXUtils.toFXImage(golem, null);
+        file = new File("./assets/enemies/ghost.png");
+        BufferedImage ghost = ImageIO.read(file);
+        enemy_ghost = SwingFXUtils.toFXImage(ghost, null);
     }
 
     Pane draw() {
@@ -207,6 +210,8 @@ public class AssetsLoader {
                         iV.setImage(enemy_skeleton);
                     if (room.sizes[j][i] == 72)
                         iV.setImage(enemy_golem);
+                    if (room.sizes[j][i] == 73)
+                        iV.setImage(enemy_ghost);
                     iV.setX(j*tile_size + 100);
                     iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
