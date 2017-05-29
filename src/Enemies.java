@@ -49,7 +49,7 @@ public class Enemies {
     boolean isAlive(){
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
-            System.out.println(type + " killed.\n");
+            System.out.println(type + " died.\n");
             return false;
         }
         return true;
