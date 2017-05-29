@@ -43,10 +43,10 @@ public class Enemies {
         }
     }
 
-    public Enemies() {
+    Enemies() {
     }
 
-    public boolean isAlive(){
+    boolean isAlive(){
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
             System.out.println(type + " killed.\n");

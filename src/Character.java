@@ -25,7 +25,7 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value+1];
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value + 1];
             y_value += 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 47;
         } else if (Main.rooms.get(whereAmI).sizes[x_value][y_value + 1] >= 70
@@ -48,7 +48,7 @@ public class Character {
         else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] < 70
               || Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] > 99) {
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value-1];
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value][y_value - 1];
             y_value -= 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 46;
         } else if (Main.rooms.get(whereAmI).sizes[x_value][y_value - 1] >= 70
@@ -70,8 +70,8 @@ public class Character {
             } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] > 99) {
-            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
-            last_tile = Main.rooms.get(whereAmI).sizes[x_value+1][y_value];
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
+            last_tile = Main.rooms.get(whereAmI).sizes[x_value + 1][y_value];
             x_value += 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
         } else if (Main.rooms.get(whereAmI).sizes[x_value + 1][y_value] >= 70
@@ -93,7 +93,7 @@ public class Character {
             } catch (Exception ex) { teleport(); }
         else if (Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] < 70
               || Main.rooms.get(whereAmI).sizes[x_value - 1][y_value] > 99) {
-            Main.rooms.get(whereAmI).sizes[x_value ][y_value] = last_tile;
+            Main.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
             last_tile = Main.rooms.get(whereAmI).sizes[x_value - 1][y_value];
             x_value -= 1;
             Main.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
