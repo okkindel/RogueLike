@@ -33,12 +33,12 @@ public class Room {
         int random = generator.nextInt(3);
 
         /*ROOM TYPE TILES*/
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                sizes[j][i] = 10;
-                if (sizes[j][i] == 10) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                sizes[x][y] = 10;
+                if (sizes[x][y] == 10) {
                     if (generator.nextInt(4) == 0)
-                        sizes[j][i] = 11;
+                        sizes[x][y] = 11;
                 }
             }
         }
@@ -46,29 +46,29 @@ public class Room {
         if (height % 2 != 0 && width % 2 != 0) {
             /*ROOM TYPE COLUMNS VERTICAL*/
             if (random == 0) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 87;
-                    sizes[width - 3][i] = 87;
+                for (int y = 2; y < height - 2; y += 2) {
+                    sizes[2][y] = 87;
+                    sizes[width - 3][y] = 87;
                 }
                 isSkeletonable = true;
             }
             /*ROOM TYPE COLUMNS ROUND*/
             if (random == 1) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    sizes[2][i] = 87;
-                    sizes[width - 3][i] = 87;
+                for (int y = 2; y < height - 2; y += 2) {
+                    sizes[2][y] = 87;
+                    sizes[width - 3][y] = 87;
                 }
-                for (int i = 2; i < width - 2; i += 2) {
-                    sizes[i][2] = 87;
-                    sizes[i][height - 3] = 87;
+                for (int x = 2; x < width - 2; x += 2) {
+                    sizes[x][2] = 87;
+                    sizes[x][height - 3] = 87;
                 }
                 isSkeletonable = true;
             }
             /*ROOM TYPE COLUMNS HALL*/
             if (random == 2) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    for (int j = 2; j < width - 2; j += 2) {
-                        sizes[j][i] = 87;
+                for (int x = 2; x < width - 2; x += 2) {
+                    for (int y = 2; y < height - 2; y += 2) {
+                        sizes[x][y] = 87;
                     }
                 }
                 isSkeletonable = true;
@@ -76,30 +76,30 @@ public class Room {
         }
         /*ROOM TYPE GRASS*/
         else if (random == 0) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
                     if (generator.nextInt(6) < 4)
-                        sizes[j][i] = 13;
+                        sizes[x][y] = 13;
                     else if (generator.nextInt(6) < 3)
-                        sizes[j][i] = 14;
+                        sizes[x][y] = 14;
                 }
             }
             isGolemable = true;
         }
         /*ROOM TYPE WOODEN*/
         else if (random == 1) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    sizes[j][i] = 12;
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    sizes[x][y] = 12;
                 }
             }
             /*ROOM TYPE LIBRARY*/
             if (height % 2 != 0) {
-                for (int i = 2; i < height - 2; i += 2) {
-                    for (int j = 2; j < width - 2; j++) {
-                        sizes[j][i] = 81;
+                for (int x = 2; x < width - 2; x++) {
+                    for (int y = 2; y < height - 2; y += 2) {
+                        sizes[x][y] = 81;
                         if (generator.nextInt(30) == 0)
-                            sizes[j][i] = 82;
+                            sizes[x][y] = 82;
                     }
                 }
             }
@@ -152,13 +152,13 @@ public class Room {
 
         addDoors();
 
-        for (int i = 0; i < width; i++) {
-            sizes[i][0] = north[i];
-            sizes[i][height-1] = south[i];
+        for (int x = 0; x < width; x++) {
+            sizes[x][0] = north[x];
+            sizes[x][height-1] = south[x];
         }
-        for (int i = 0; i < height; i++) {
-            sizes[width-1][i] = east[i];
-            sizes[0][i] = west[i];
+        for (int y = 0; y < height; y++) {
+            sizes[width-1][y] = east[y];
+            sizes[0][y] = west[y];
         }
     }
 

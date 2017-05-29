@@ -285,15 +285,13 @@ public class AssetsLoader {
     }
 
     private void terminalShowing () {
-        for (int x = 0; x < Main.howManyRooms; x++) {
-            Room room = Main.rooms.get(x);
-            for (int i = 0; i < room.height; i++) {
-                for (int j = 0; j < room.width; j++) {
-                    System.out.print(room.sizes[j][i]);
-                }
-                System.out.println();
-            }
-            System.out.println();
+        for (int index = 0; index < Main.howManyRooms; index++) {
+            Room room = Main.rooms.get(index);
+            for (int x = 0; x < room.width; x++) {
+                for (int y = 0; y < room.height; y++) {
+                    System.out.print(room.sizes[x][y]);
+                } System.out.println();
+            } System.out.println();
         }
     }
 }
