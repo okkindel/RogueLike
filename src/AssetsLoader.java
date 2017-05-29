@@ -1,8 +1,12 @@
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.File;
@@ -111,6 +115,14 @@ public class AssetsLoader {
         Pane root = new Pane();
         Room room = Main.rooms.get(Character.whereAmI);
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
+        Label health_points = new Label(
+                "Character health: " + Character.health_points
+                    + "\nCharacter damage: " + Character.damage_points
+                    + "\nCharacter defence: " + Character.defence_points);
+        root.getChildren().add(health_points);
+        health_points.setPadding(new Insets(10, 400, 10, 400));
+        health_points.setAlignment(Pos.CENTER);
+        health_points.setStyle("-fx-background-color: gray");
 
         for (int i = 0; i < room.height; i++) {
             for(int j = 0; j < room.width; j++) {

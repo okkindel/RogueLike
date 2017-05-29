@@ -9,6 +9,7 @@ public class Enemies {
     int last_tile;
     int health_points;
     int damage_points;
+    int defence_points;
     private int prevX = positionX;
     private int prevY = positionY;
     String type = "";
@@ -95,7 +96,7 @@ public class Enemies {
             room.sizes[positionX][positionY] = enemy_type_tile;
         } else {
             if (room.sizes[positionX][positionY] >= 44 && room.sizes[positionX][positionY] <= 47) {
-                Conflict.enemyAttack(this);
+                Battle.enemyAttack(this);
             }
             positionX = prevX;
             positionY = prevY;
@@ -113,8 +114,9 @@ class Zombie extends Enemies {
         this.index = index;
         type = "Zombie";
         enemy_type_tile = 70;
-        health_points = 20;
-        damage_points = 5;
+        health_points = 25;
+        damage_points = 10;
+        defence_points = 5;
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 70;
@@ -130,8 +132,9 @@ class Skeleton extends Enemies {
         this.index = index;
         type = "Skeleton";
         enemy_type_tile = 71;
-        health_points = 30;
-        damage_points = 7;
+        health_points = 25;
+        damage_points = 10;
+        defence_points = 5;
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 71;
@@ -147,8 +150,9 @@ class Golem extends Enemies {
         this.index = index;
         type = "Golem";
         enemy_type_tile = 72;
-        health_points = 40;
-        damage_points = 5;
+        health_points = 50;
+        damage_points = 20;
+        defence_points = 10;
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 72;
@@ -163,8 +167,9 @@ class Ghost extends Enemies {
         this.index = index;
         type = "Ghost";
         enemy_type_tile = 73;
-        health_points = 40;
+        health_points = 5;
         damage_points = 5;
+        defence_points = 50;
         room = Main.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 73;
