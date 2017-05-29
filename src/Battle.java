@@ -4,7 +4,7 @@ public class Battle {
 
     static Random generator = new Random();
 
-    static void enemyAttack(Enemies enemy) {
+    static void enemyAttack (Enemies enemy) {
 
         int damage = generator.nextInt(enemy.damage_points);
         int defence = generator.nextInt(Character.defence_points) / 2;
@@ -21,7 +21,7 @@ public class Battle {
             System.exit(0);
     }
 
-    static void characterAttack(Enemies enemy) {
+    static void characterAttack (Enemies enemy) {
 
         int damage = generator.nextInt(Character.damage_points);
         int defence = generator.nextInt(enemy.defence_points) / 2;

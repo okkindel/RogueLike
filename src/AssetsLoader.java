@@ -120,112 +120,122 @@ public class AssetsLoader {
                     + "\nCharacter damage: " + Character.damage_points
                     + "\nCharacter dexterity: " + Character.dexterity_points);
         root.getChildren().add(health_points);
-        health_points.setPadding(new Insets(10, 400, 10, 400));
+        health_points.setPadding(new Insets(10, 205, 10, 205));
         health_points.setAlignment(Pos.CENTER);
         health_points.setStyle("-fx-background-color: gray");
 
-        for (int i = 0; i < room.height; i++) {
-            for(int j = 0; j < room.width; j++) {
+        int x_begin, y_begin, x_end, y_end;
+        x_begin = Character.x_value - 5;
+        y_begin = Character.y_value - 5;
+        x_end = Character.x_value + 5;
+        y_end = Character.y_value + 5;
+        if (Character.x_value < 5) { x_begin = 0; x_end += (5 - Character.x_value); }
+        if (Character.y_value < 5) { y_begin = 0; y_end += (5 - Character.y_value); }
+        if (Character.x_value > (room.width - 5)) { x_end = room.width; x_begin += (room.width - Character.x_value - 5); }
+        if (Character.y_value > (room.height - 5)) { y_end = room.height; y_begin += (room.height - Character.y_value - 5); }
+
+        for (int x_tile = x_begin, x_index = 0; x_tile < x_end; x_tile++, x_index++) {
+            for (int y_tile = y_begin, y_index = 0; y_tile < y_end; y_tile++, y_index++) {
                 ImageView iV = new ImageView();
                 iV.setFitHeight(tile_size);
                 iV.setFitWidth(tile_size);
 
                 /* WALL TILES */
-                if (room.sizes[j][i] >= 80 && room.sizes[j][i] <= 99) {
-                    if (room.sizes[j][i] == 81)
+                if (room.sizes[x_tile][y_tile] >= 80 && room.sizes[x_tile][y_tile] <= 99) {
+                    if (room.sizes[x_tile][y_tile] == 81)
                         iV.setImage(bookshelf);
-                    if (room.sizes[j][i] == 82)
+                    if (room.sizes[x_tile][y_tile] == 82)
                         iV.setImage(wooden_chest);
-                    if (room.sizes[j][i] == 87)
+                    if (room.sizes[x_tile][y_tile] == 87)
                         iV.setImage(column_block);
-                    if (room.sizes[j][i] == 88)
+                    if (room.sizes[x_tile][y_tile] == 88)
                         iV.setImage(wall_block);
-                    if (room.sizes[j][i] == 89)
+                    if (room.sizes[x_tile][y_tile] == 89)
                         iV.setImage(wall_broken_block);
-                    if (room.sizes[j][i] == 90)
+                    if (room.sizes[x_tile][y_tile] == 90)
                         iV.setImage(wall_plant_up);
-                    if (room.sizes[j][i] == 91)
+                    if (room.sizes[x_tile][y_tile] == 91)
                         iV.setImage(wall_plant_down);
-                    if (room.sizes[j][i] == 92)
+                    if (room.sizes[x_tile][y_tile] == 92)
                         iV.setImage(wall_plant_left);
-                    if (room.sizes[j][i] == 93)
+                    if (room.sizes[x_tile][y_tile] == 93)
                         iV.setImage(wall_plant_right);
-                    if (room.sizes[j][i] == 94)
+                    if (room.sizes[x_tile][y_tile] == 94)
                         iV.setImage(wall_moss_up);
-                    if (room.sizes[j][i] == 95)
+                    if (room.sizes[x_tile][y_tile] == 95)
                         iV.setImage(wall_moss_down);
-                    if (room.sizes[j][i] == 96)
+                    if (room.sizes[x_tile][y_tile] == 96)
                         iV.setImage(wall_moss_left);
-                    if (room.sizes[j][i] == 97)
+                    if (room.sizes[x_tile][y_tile] == 97)
                         iV.setImage(wall_moss_right);
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* FLOOR TILES */
-                if (room.sizes[j][i] >= 10 && room.sizes[j][i] < 20) {
-                    if (room.sizes[j][i] == 10)
+                if (room.sizes[x_tile][y_tile] >= 10 && room.sizes[x_tile][y_tile] < 20) {
+                    if (room.sizes[x_tile][y_tile] == 10)
                         iV.setImage(floor_block);
-                    if (room.sizes[j][i] == 11)
+                    if (room.sizes[x_tile][y_tile] == 11)
                         iV.setImage(floor_broken);
-                    if (room.sizes[j][i] == 12)
+                    if (room.sizes[x_tile][y_tile] == 12)
                         iV.setImage(wooden_floor);
-                    if (room.sizes[j][i] == 13)
+                    if (room.sizes[x_tile][y_tile] == 13)
                         iV.setImage(grass_up);
-                    if (room.sizes[j][i] == 14)
+                    if (room.sizes[x_tile][y_tile] == 14)
                         iV.setImage(grass_down);
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* DOORS TILES */
-                if (room.sizes[j][i] >= 20 && room.sizes[j][i] <= 30) {
-                    if (room.sizes[j][i] == 20)
+                if (room.sizes[x_tile][y_tile] >= 20 && room.sizes[x_tile][y_tile] <= 30) {
+                    if (room.sizes[x_tile][y_tile] == 20)
                         iV.setImage(wooden_doors);
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* CHARACTER TILES */
-                if (room.sizes[j][i] >= 44 && room.sizes[j][i] <= 47) {
+                if (room.sizes[x_tile][y_tile] >= 44 && room.sizes[x_tile][y_tile] <= 47) {
                     iV.setImage(background(Character.last_tile));
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
                     iV.setFitWidth(tile_size);
-                    if (room.sizes[j][i] == 44)
+                    if (room.sizes[x_tile][y_tile] == 44)
                         iV.setImage(character_left);
-                    if (room.sizes[j][i] == 45)
+                    if (room.sizes[x_tile][y_tile] == 45)
                         iV.setImage(character_right);
-                    if (room.sizes[j][i] == 46)
+                    if (room.sizes[x_tile][y_tile] == 46)
                         iV.setImage(character_up);
-                    if (room.sizes[j][i] == 47)
+                    if (room.sizes[x_tile][y_tile] == 47)
                         iV.setImage(character_down);
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                 }
                 /* ENEMIES TILES */
-                if (room.sizes[j][i] >= 70 && room.sizes[j][i] < 80) {
-                    iV.setImage(background(checkEnemyTile(j, i, room.index)));
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
+                    iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index)));
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
                     iV.setFitWidth(tile_size);
-                    if (room.sizes[j][i] == 70)
+                    if (room.sizes[x_tile][y_tile] == 70)
                         iV.setImage(enemy_zombie);
-                    if (room.sizes[j][i] == 71)
+                    if (room.sizes[x_tile][y_tile] == 71)
                         iV.setImage(enemy_skeleton);
-                    if (room.sizes[j][i] == 72)
+                    if (room.sizes[x_tile][y_tile] == 72)
                         iV.setImage(enemy_golem);
-                    if (room.sizes[j][i] == 73)
+                    if (room.sizes[x_tile][y_tile] == 73)
                         iV.setImage(enemy_ghost);
-                    iV.setX(j*tile_size + 100);
-                    iV.setY(i*tile_size + 100);
+                    iV.setX(x_index*tile_size + 100);
+                    iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
                 }
             }
