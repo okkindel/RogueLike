@@ -197,7 +197,7 @@ public class AssetsLoader {
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[j][i] >= 70 && room.sizes[j][i] < 80) {
-                    iV.setImage(background(Character.last_tile));
+                    iV.setImage(background(checkEnemyTile(j, i, room.index)));
                     iV.setX(j*tile_size + 100);
                     iV.setY(i*tile_size + 100);
                     root.getChildren().add(iV);
@@ -236,6 +236,17 @@ public class AssetsLoader {
             return grass_down;
         else
             return floor_block;
+    }
+
+    private int checkEnemyTile (int posX, int posY, int index) {
+        int last_tile = 0;
+        for (Enemies enemy: Enemies.enemies_list) {
+            if (enemy.index == index) {
+                if (posX == enemy.positionX && posY == enemy.positionY)
+                    last_tile = enemy.last_tile;
+            }
+        }
+        return last_tile;
     }
 
     private void terminalShowing () {
