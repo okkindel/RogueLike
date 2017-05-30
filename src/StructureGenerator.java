@@ -28,18 +28,18 @@ public class StructureGenerator {
                 }
             }
             if (countRooms[i] == 0) {
-                int shoot = generator.nextInt(vertex);
-                structure[i][shoot] = true;
-                countRooms[i]++;
+                int emergency_door = generator.nextInt(vertex);
+                structure[i][emergency_door] = true;
+                structure[emergency_door][i] = true;
             }
         }
         terminalShowing(vertex);
     }
 
     private void terminalShowing(int vertex) {
-        for (int x = 0; x < vertex; x++) {
-            for (int z = 0; z < vertex; z++) {
-                if (structure[x][z])
+        for (int i = 0; i < vertex; i++) {
+            for (int j = 0; j < vertex; j++) {
+                if (structure[i][j])
                      System.out.print("1 ");
                 else
                     System.out.print("0 ");
