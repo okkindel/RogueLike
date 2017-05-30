@@ -23,8 +23,8 @@ public class Enemies {
         if (room.isEnemy) {
             Random generator = new Random();
             for (int numberOf = 0; numberOf < generator.nextInt(5); numberOf++) {
-                int x_position = generator.nextInt(room.width - 2) + 1;
-                int y_position = generator.nextInt(room.height - 2) + 1;
+                int x_position = generator.nextInt(room.width - 4) + 2;
+                int y_position = generator.nextInt(room.height - 4) + 2;
                 if (room.sizes[x_position][y_position] >= 10 && room.sizes[x_position][y_position] < 20) {
                     if (room.isZombiable) {
                         Zombie zombie = new Zombie(room.index, x_position, y_position);
