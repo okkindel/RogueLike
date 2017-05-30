@@ -164,7 +164,7 @@ public class Room {
 
     private void addDoors() {
         Random generator = new Random();
-        for (int doorID = 0; doorID < Main.howManyRooms; doorID++) {
+        for (int doorID = 0; doorID < Level.howManyRooms; doorID++) {
             if (StructureGenerator.structure[index][doorID]) {
                 int wall = generator.nextInt(4);
                 int place;

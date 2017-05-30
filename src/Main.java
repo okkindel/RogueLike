@@ -1,29 +1,17 @@
 import javafx.application.Application;
 import javafx.scene.input.KeyCode;
 import java.util.ListIterator;
-import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     private static Scene scene;
-    static int howManyRooms = 10;
-    static ArrayList<Room> rooms = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        StructureGenerator gene = new StructureGenerator();
-        gene.generate(howManyRooms);
-
-        /* creating rooms */
-        for (int index = 0; index < howManyRooms; index++) {
-            Room room = new Room(index);
-            rooms.add(room);
-            new Enemies(index);
-        }
-
+        Level.addRooms();
         Character character = new Character();
         AssetsLoader assets = new AssetsLoader();
         assets.load();

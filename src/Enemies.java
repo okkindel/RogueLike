@@ -18,7 +18,7 @@ public class Enemies {
 
     Enemies (int index) {
 
-        room = Main.rooms.get(index);
+        room = Level.rooms.get(index);
         if (room.isEnemy) {
             Random generator = new Random();
             for (int numberOf = 0; numberOf < generator.nextInt(5); numberOf++) {
@@ -119,7 +119,7 @@ class Zombie extends Enemies {
         strength_points = 10;
         defence_points = 5;
         dexterity_points = 5;
-        room = Main.rooms.get(index);
+        room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 70;
     }
@@ -138,7 +138,7 @@ class Skeleton extends Enemies {
         strength_points = 10;
         defence_points = 5;
         dexterity_points = 15;
-        room = Main.rooms.get(index);
+        room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 71;
     }
@@ -157,7 +157,7 @@ class Golem extends Enemies {
         strength_points = 20;
         defence_points = 10;
         dexterity_points = 1;
-        room = Main.rooms.get(index);
+        room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 72;
     }
@@ -175,7 +175,7 @@ class Ghost extends Enemies {
         strength_points = 5;
         defence_points = 1;
         dexterity_points = 85;
-        room = Main.rooms.get(index);
+        room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 73;
     }

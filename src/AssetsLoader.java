@@ -15,7 +15,8 @@ public class AssetsLoader {
     private Image shadow;
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
-    private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right, wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
+    private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
+                  wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
@@ -116,7 +117,7 @@ public class AssetsLoader {
     Pane draw() {
 
         Pane root = new Pane();
-        Room room = Main.rooms.get(Character.whereAmI);
+        Room room = Level.rooms.get(Character.whereAmI);
 
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
         Label health_points = new Label(
@@ -285,8 +286,8 @@ public class AssetsLoader {
     }
 
     private void terminalShowing () {
-        for (int index = 0; index < Main.howManyRooms; index++) {
-            Room room = Main.rooms.get(index);
+        for (int index = 0; index < Level.howManyRooms; index++) {
+            Room room = Level.rooms.get(index);
             for (int x = 0; x < room.width; x++) {
                 for (int y = 0; y < room.height; y++) {
                     System.out.print(room.sizes[x][y]);
