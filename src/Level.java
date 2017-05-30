@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Level {
 
@@ -6,6 +7,7 @@ public class Level {
     static ArrayList<Room> rooms = new ArrayList<>();
 
     static void addRooms() {
+        Arrays.fill(Interface.message, " ");
         StructureGenerator structure = new StructureGenerator();
         structure.generate(howManyRooms);
 

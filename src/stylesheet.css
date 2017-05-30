@@ -1,3 +1,7 @@
+.root {
+    -fx-background-color: rgba(0,0,0,0.95);
+}
+
 .label {
     -fx-border-color: white;
     -fx-border-style: solid;
@@ -7,7 +11,8 @@
 }
 
 .status_bar {
-    -fx-text-fill: white;
+    -fx-text-fill: rgb(100, 100, 100);
+    -fx-font-weight: bold;
 }
 
 .status_area {

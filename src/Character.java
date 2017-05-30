@@ -11,6 +11,7 @@ public class Character {
     static int experience = 0;
     static int next_level = 100;
     static int level = 1;
+    private static int hunger = 0;
 
     Character() {
         Room room = Level.rooms.get(0);
@@ -142,6 +143,25 @@ public class Character {
                     }
                 }
             }
+        }
+    }
+
+    static void hunger() {
+
+        hunger += 1;
+        if (hunger == 100)
+            Interface.newEvent("You are still full.");
+        if (hunger == 300)
+            Interface.newEvent("Your stomach is fine.");
+        if (hunger == 500)
+            Interface.newEvent("You feel normally.");
+        if (hunger == 800)
+            Interface.newEvent("You are hungry!");
+        if (hunger == 900)
+            Interface.newEvent("You are starving!");
+        if (hunger == 1000) {
+            System.out.println("Character died.");
+            System.exit(0);
         }
     }
 

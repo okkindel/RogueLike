@@ -16,7 +16,7 @@ public class Main extends Application {
         AssetsLoader assets = new AssetsLoader();
         assets.load();
         primaryStage.setTitle("RogueLike");
-        scene = new Scene(assets.draw(), 550, 550);
+        scene = new Scene(assets.draw(), 565, 550);
         scene.getStylesheets().add("./stylesheet.css");
 
         scene.setOnKeyPressed(event -> {
@@ -40,6 +40,7 @@ public class Main extends Application {
                 scene.setRoot(assets.draw());
                 primaryStage.setScene(scene);
             }
+            Character.hunger();
             ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
             while(iterator.hasNext()) {
                 Enemies enemies = iterator.next();
