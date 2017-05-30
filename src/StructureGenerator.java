@@ -28,9 +28,14 @@ public class StructureGenerator {
                 }
             }
             if (countRooms[i] == 0) {
-                int emergency_door = generator.nextInt(vertex);
-                structure[i][emergency_door] = true;
-                structure[emergency_door][i] = true;
+                while (true) {
+                    int emergency_door = generator.nextInt(vertex);
+                    if (!structure[i][emergency_door] && !structure[emergency_door][i]) {
+                        structure[i][emergency_door] = true;
+                        structure[emergency_door][i] = true;
+                        break;
+                    }
+                }
             }
         }
         terminalShowing(vertex);
