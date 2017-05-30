@@ -3,8 +3,8 @@ public class Character {
     static int x_value, y_value;
     static int last_tile = 0;
     static int whereAmI = 0;
-    static int max_health = 500;
-    static int health_points = 500;
+    static int max_health = 200;
+    static int health_points = 200;
     static int strength_points = 15;
     static int dexterity_points = 25;
     static int defence_points = 5;
@@ -178,7 +178,7 @@ public class Character {
             dexterity_points += 5;
             defence_points += 5;
             max_health += 25;
-            health_points += 100;
+            health_points += 50;
             if (health_points > max_health)
                 health_points = max_health;
         }
