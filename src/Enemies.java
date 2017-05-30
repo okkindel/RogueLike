@@ -8,6 +8,7 @@ public class Enemies {
     Room room;
     int positionX, positionY = 0;
     private int prevX, prevY;
+    int experience_points;
     int enemy_type_tile;
     int dexterity_points;
     int strength_points;
@@ -51,6 +52,7 @@ public class Enemies {
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
             System.out.println(type + " died.\n");
+            Character.characterExp(this);
             return false;
         }
         return true;
@@ -119,6 +121,7 @@ class Zombie extends Enemies {
         strength_points = 10;
         defence_points = 5;
         dexterity_points = 5;
+        experience_points = 25;
         room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 70;
@@ -138,6 +141,7 @@ class Skeleton extends Enemies {
         strength_points = 10;
         defence_points = 5;
         dexterity_points = 15;
+        experience_points = 35;
         room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 71;
@@ -157,6 +161,7 @@ class Golem extends Enemies {
         strength_points = 20;
         defence_points = 10;
         dexterity_points = 1;
+        experience_points = 50;
         room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 72;
@@ -175,6 +180,7 @@ class Ghost extends Enemies {
         strength_points = 5;
         defence_points = 1;
         dexterity_points = 85;
+        experience_points = 10;
         room = Level.rooms.get(index);
         last_tile = room.sizes[positionX][positionY];
         room.sizes[positionX][positionY] = 73;

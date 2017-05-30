@@ -3,10 +3,14 @@ public class Character {
     static int x_value, y_value;
     static int last_tile = 0;
     static int whereAmI = 0;
+    static int max_hp = 500;
     static int health_points = 500;
     static int damage_points = 15;
     static int dexterity_points = 25;
     static int defence_points = 5;
+    static int experience = 0;
+    static int next_level = 100;
+    static int level = 1;
 
     Character() {
         Room room = Level.rooms.get(0);
@@ -160,6 +164,16 @@ public class Character {
                     }
                 }
             }
+        }
+    }
+
+    static void characterExp (Enemies enemy) {
+        experience += enemy.experience_points;
+        if (experience >= next_level) {
+            level += 1;
+            System.out.println("You are now on level " + level + ".\n");
+            experience = experience - next_level;
+            next_level += 50;
         }
     }
 }

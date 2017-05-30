@@ -1,14 +1,12 @@
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-import javafx.geometry.Insets;
 import javax.imageio.ImageIO;
 import java.io.IOException;
-import javafx.geometry.Pos;
 import java.io.File;
+import java.util.Objects;
 
 public class AssetsLoader {
 
@@ -117,17 +115,8 @@ public class AssetsLoader {
     Pane draw() {
 
         Pane root = new Pane();
+        Interface.statusBar(root);
         Room room = Level.rooms.get(Character.whereAmI);
-
-        root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
-        Label health_points = new Label(
-                "Character health: " + Character.health_points
-                    + "\nCharacter strength: " + Character.damage_points
-                    + "\nCharacter dexterity: " + Character.dexterity_points);
-        root.getChildren().add(health_points);
-        health_points.setPadding(new Insets(10, 230, 10, 230));
-        health_points.setAlignment(Pos.CENTER);
-        health_points.setStyle("-fx-background-color: gray");
 
         int x_begin, y_begin, x_end, y_end;
         x_begin = Character.x_value - 5;
@@ -203,7 +192,7 @@ public class AssetsLoader {
                 }
                 /* CHARACTER TILES */
                 if (room.sizes[x_tile][y_tile] >= 44 && room.sizes[x_tile][y_tile] <= 47) {
-                    iV.setImage(background(Character.last_tile));
+                    iV.setImage(background(Character.last_tile, "character"));
                     iV.setX(x_index*tile_size + 100);
                     iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
@@ -224,7 +213,7 @@ public class AssetsLoader {
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
-                    iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index)));
+                    iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index), "enemy"));
                     iV.setX(x_index*tile_size + 100);
                     iV.setY(y_index*tile_size + 100);
                     root.getChildren().add(iV);
@@ -268,7 +257,7 @@ public class AssetsLoader {
         return last_tile;
     }
 
-    private Image background (int last_tile) {
+    private Image background (int last_tile, String type) {
         if (last_tile == 10)
             return floor_block;
         if (last_tile == 11)
@@ -276,8 +265,11 @@ public class AssetsLoader {
         if (last_tile == 12)
             return wooden_floor;
         if (last_tile == 13) {
-            Character.last_tile = 14;
-            return grass_down;
+            if (Objects.equals(type, "character")) {
+                Character.last_tile = 14;
+                return grass_down;
+            } else if (Objects.equals(type, "enemy"))
+                return grass_up;
         }
         if (last_tile == 14)
             return grass_down;
