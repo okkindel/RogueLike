@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Battle {
 
-    static Random generator = new Random();
+    private static Random generator = new Random();
 
     static void enemyAttack (Enemies enemy) {
 

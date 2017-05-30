@@ -12,7 +12,14 @@ public class Interface {
         statusArea(root);
     }
 
-    static void statusBar (Pane root) {
+    static void newEvent (String message) {
+        Interface.message[3] = Interface.message[2];
+        Interface.message[2] = Interface.message[1];
+        Interface.message[1] = Interface.message[0];
+        Interface.message[0] = message;
+    }
+
+    private static void statusBar(Pane root) {
 
         Label status_bar = new Label(
                    "HP: " + Character.health_points + " / " + Character.max_health
@@ -34,14 +41,7 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
-    static void newEvent (String message) {
-        Interface.message[3] = Interface.message[2];
-        Interface.message[2] = Interface.message[1];
-        Interface.message[1] = Interface.message[0];
-        Interface.message[0] = message;
-    }
-
-    static void statusArea (Pane root) {
+    private static void statusArea(Pane root) {
 
         Label status_area = new Label(
                 message[3] + "\n"

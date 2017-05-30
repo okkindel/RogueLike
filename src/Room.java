@@ -11,7 +11,7 @@ public class Room {
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean iWasHere = false;
     ArrayList<Door> doors;
-    Random generator = new Random();
+    private Random generator = new Random();
 
     Room (int index) {
 

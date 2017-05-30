@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Level.addRooms();
+        new Level();
         Character character = new Character();
         AssetsLoader assets = new AssetsLoader();
         assets.load();

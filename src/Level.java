@@ -1,13 +1,20 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Level {
 
     static int howManyRooms = 10;
     static ArrayList<Room> rooms = new ArrayList<>();
 
-    static void addRooms() {
-        Arrays.fill(Interface.message, " ");
+    Level() {
+        Interface.newEvent(" ");
+        Interface.newEvent("You are now in sewers under the city.");
+        Interface.newEvent("Good Luck!");
+        Interface.newEvent(" ");
+
+        addRooms();
+    }
+
+    private static void addRooms() {
         StructureGenerator structure = new StructureGenerator();
         structure.generate(howManyRooms);
 
