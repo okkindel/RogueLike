@@ -113,24 +113,6 @@ public class Character {
         } catch (Exception ex) { teleport(); }
     }
 
-    /* theoretically, now there shouldn't be error at the door */
-    private void teleport() {
-        System.out.println("What? I've been teleported!");
-        int index = Level.rooms.get(whereAmI).generator.nextInt(Level.rooms.size());
-        Room room = Level.rooms.get(index);
-        while (true)
-        {
-            whereAmI = index;
-            int x_position = room.generator.nextInt(room.width - 2) + 1;
-            int y_position = room.generator.nextInt(room.height - 2) + 1;
-            if (room.sizes[x_value][y_value] >= 10 && room.sizes[x_value][y_value] < 20) {
-                x_value = x_position;
-                y_value = y_position;
-                break;
-            }
-        }
-    }
-
     private void whichDoor (int x, int y) {
 
         for (Door door : Level.rooms.get(whereAmI).doors) {
@@ -163,6 +145,24 @@ public class Character {
                         y_value = newdoor.posy;
                     }
                 }
+            }
+        }
+    }
+
+    /* theoretically, now there shouldn't be error at the door */
+    private void teleport() {
+        System.out.println("What? I've been teleported!");
+        int index = Level.rooms.get(whereAmI).generator.nextInt(Level.rooms.size());
+        Room room = Level.rooms.get(index);
+        while (true)
+        {
+            whereAmI = index;
+            int x_position = room.generator.nextInt(room.width - 2) + 1;
+            int y_position = room.generator.nextInt(room.height - 2) + 1;
+            if (room.sizes[x_value][y_value] >= 10 && room.sizes[x_value][y_value] < 20) {
+                x_value = x_position;
+                y_value = y_position;
+                break;
             }
         }
     }

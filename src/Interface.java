@@ -17,6 +17,13 @@ public class Interface {
                         + "\nLVL: " + Character.level);
         root.setRight(status_bar);
         BorderPane.setAlignment(status_bar, Pos.CENTER);
-        status_bar.setStyle("-fx-background-color: gray");
+        status_bar.setStyle (
+                "-fx-border-color: white; " +
+                "-fx-border-style: solid; " +
+                "-fx-border-radius: 5; " +
+                "-fx-border-width:1; " +
+                "-fx-background-color: rgb(20,20,20); " +
+                "-fx-text-fill: white");
+        status_bar.setPadding(new Insets(10));
     }
 }
