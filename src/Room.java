@@ -32,7 +32,7 @@ public class Room {
         Random generator = new Random();
         int random = generator.nextInt(3);
 
-        /*ROOM TYPE TILES*/
+        /* ROOM TYPE TILES */
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 sizes[x][y] = 10;
@@ -42,9 +42,9 @@ public class Room {
                 }
             }
         }
-
+        /* ROOM TYPE COLUMNS */
         if (height % 2 != 0 && width % 2 != 0) {
-            /*ROOM TYPE COLUMNS VERTICAL*/
+            /* ROOM TYPE COLUMNS VERTICAL */
             if (random == 0) {
                 for (int y = 2; y < height - 2; y += 2) {
                     sizes[2][y] = 87;
@@ -52,7 +52,7 @@ public class Room {
                 }
                 isSkeletonable = true;
             }
-            /*ROOM TYPE COLUMNS ROUND*/
+            /* ROOM TYPE COLUMNS ROUND */
             if (random == 1) {
                 for (int y = 2; y < height - 2; y += 2) {
                     sizes[2][y] = 87;
@@ -64,7 +64,7 @@ public class Room {
                 }
                 isSkeletonable = true;
             }
-            /*ROOM TYPE COLUMNS HALL*/
+            /* ROOM TYPE COLUMNS HALL */
             if (random == 2) {
                 for (int x = 2; x < width - 2; x += 2) {
                     for (int y = 2; y < height - 2; y += 2) {
@@ -74,7 +74,7 @@ public class Room {
                 isSkeletonable = true;
             }
         }
-        /*ROOM TYPE GRASS*/
+        /* ROOM TYPE GRASS */
         else if (random == 0) {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
@@ -86,14 +86,14 @@ public class Room {
             }
             isGolemable = true;
         }
-        /*ROOM TYPE WOODEN*/
+        /* ROOM TYPE WOODEN */
         else if (random == 1) {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     sizes[x][y] = 12;
                 }
             }
-            /*ROOM TYPE LIBRARY*/
+            /* ROOM TYPE LIBRARY */
             if (height % 2 != 0) {
                 for (int x = 2; x < width - 2; x++) {
                     for (int y = 2; y < height - 2; y += 2) {

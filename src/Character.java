@@ -6,7 +6,7 @@ public class Character {
     static int max_health = 200;
     static int health_points = 200;
     static int strength_points = 15;
-    static int dexterity_points = 25;
+    static int dexterity_points = 15;
     static int defence_points = 5;
     static int experience = 0;
     static int next_level = 100;
