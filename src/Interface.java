@@ -1,23 +1,22 @@
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
 
 public class Interface {
 
-    static void statusBar(Pane root) {
+    static void statusBar(BorderPane root) {
 
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
-        Label health_points = new Label(
-                "Character health: " + Character.health_points + " / " + Character.max_health
-                        + "\nCharacter strength: " + Character.strength_points
-                        + "\nCharacter dexterity: " + Character.dexterity_points
-                        + "\nCharacter defence: " + Character.defence_points
-                        + "\nCharacter experience: " + Character.experience + " / " + Character.next_level
-                        + "\nCharacter level: " + Character.level);
-        root.getChildren().add(health_points);
-        health_points.setPadding(new Insets(10, 230, 10, 230));
-        health_points.setAlignment(Pos.CENTER);
-        health_points.setStyle("-fx-background-color: gray");
+        Label status_bar = new Label(
+                     "HP: " + Character.health_points + " / " + Character.max_health
+                        + "\nSTR: " + Character.strength_points
+                        + "\nDEX: " + Character.dexterity_points
+                        + "\nDEF: " + Character.defence_points
+                        + "\nEXP: " + Character.experience + " / " + Character.next_level
+                        + "\nLVL: " + Character.level);
+        root.setRight(status_bar);
+        BorderPane.setAlignment(status_bar, Pos.CENTER);
+        status_bar.setStyle("-fx-background-color: gray");
     }
 }

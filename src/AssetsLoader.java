@@ -1,4 +1,5 @@
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.image.ImageView;
 import java.awt.image.BufferedImage;
 import javafx.scene.layout.Pane;
@@ -114,7 +115,7 @@ public class AssetsLoader {
 
     Pane draw() {
 
-        Pane root = new Pane();
+        BorderPane root = new BorderPane();
         Interface.statusBar(root);
         Room room = Level.rooms.get(Character.whereAmI);
 
@@ -162,8 +163,8 @@ public class AssetsLoader {
                         iV.setImage(wall_moss_left);
                     if (room.sizes[x_tile][y_tile] == 97)
                         iV.setImage(wall_moss_right);
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* FLOOR TILES */
@@ -178,23 +179,23 @@ public class AssetsLoader {
                         iV.setImage(grass_up);
                     if (room.sizes[x_tile][y_tile] == 14)
                         iV.setImage(grass_down);
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* DOORS TILES */
                 if (room.sizes[x_tile][y_tile] >= 20 && room.sizes[x_tile][y_tile] <= 30) {
                     if (room.sizes[x_tile][y_tile] == 20)
                         iV.setImage(wooden_doors);
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* CHARACTER TILES */
                 if (room.sizes[x_tile][y_tile] >= 44 && room.sizes[x_tile][y_tile] <= 47) {
                     iV.setImage(background(Character.last_tile, "character"));
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
@@ -207,15 +208,15 @@ public class AssetsLoader {
                         iV.setImage(character_up);
                     if (room.sizes[x_tile][y_tile] == 47)
                         iV.setImage(character_down);
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
                     iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index), "enemy"));
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
@@ -228,8 +229,8 @@ public class AssetsLoader {
                         iV.setImage(enemy_golem);
                     if (room.sizes[x_tile][y_tile] == 73)
                         iV.setImage(enemy_ghost);
-                    iV.setX(x_index*tile_size + 100);
-                    iV.setY(y_index*tile_size + 100);
+                    iV.setX(x_index*tile_size + 50);
+                    iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
             }
@@ -239,8 +240,8 @@ public class AssetsLoader {
         iV.setFitHeight(tile_size * 11);
         iV.setFitWidth(tile_size * 11);
         iV.setImage(shadow);
-        iV.setX(100);
-        iV.setY(100);
+        iV.setX(50);
+        iV.setY(50);
         root.getChildren().add(iV);
 
         return root;
