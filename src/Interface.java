@@ -1,12 +1,20 @@
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 
 public class Interface {
 
+    static String [] message = new String [4];
+
+    public Interface(Pane root) {
+        root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
+        statusBar(root);
+        statusArea(root);
+    }
+
     static void statusBar(Pane root) {
 
-        root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
         Label status_bar = new Label(
                      "HP: " + Character.health_points + " / " + Character.max_health
                         + "\nSTR: " + Character.strength_points
@@ -14,16 +22,29 @@ public class Interface {
                         + "\nDEF: " + Character.defence_points
                         + "\nEXP: " + Character.experience + " / " + Character.next_level
                         + "\nLVL: " + Character.level);
-        status_bar.setStyle (
-                "-fx-border-color: white; " +
-                "-fx-border-style: solid; " +
-                "-fx-border-radius: 5; " +
-                "-fx-border-width:1; " +
-                "-fx-background-color: rgb(20,20,20); " +
-                "-fx-text-fill: white");
+
         status_bar.setPadding(new Insets(115, 10, 115, 10));
-        status_bar.layoutYProperty().bind(root.heightProperty().subtract(status_bar.heightProperty()).divide(2));
+        status_bar.setLayoutY(60);
         status_bar.layoutXProperty().bind(root.widthProperty().subtract(status_bar.widthProperty()).subtract(30));
         root.getChildren().add(status_bar);
+    }
+
+    static void newEvent (String message) {
+        Interface.message[3] = Interface.message[2];
+        Interface.message[2] = Interface.message[1];
+        Interface.message[1] = Interface.message[0];
+        Interface.message[0] = message;
+    }
+
+    static void statusArea(Pane root) {
+
+        Label status_area = new Label(message[3] + "\n" + message[2] + "\n" + message[1] + "\n" + message[0]);
+        status_area.setMinWidth(450);
+        status_area.setMaxWidth(450);
+        status_area.setAlignment(Pos.CENTER);
+        status_area.setPadding(new Insets(10, 50, 10, 50));
+        status_area.layoutXProperty().bind(root.widthProperty().subtract(status_area.widthProperty()).divide(2));
+        status_area.layoutYProperty().bind(root.heightProperty().subtract(status_area.heightProperty()).subtract(30));
+        root.getChildren().add(status_area);
     }
 }
