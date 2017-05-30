@@ -9,8 +9,8 @@ public class Interface {
 
         root.setStyle("-fx-background-color: rgba(0,0,0,0.95)");
         Label health_points = new Label(
-                "Character health: " + Character.health_points
-                        + "\nCharacter strength: " + Character.damage_points
+                "Character health: " + Character.health_points + " / " + Character.max_health
+                        + "\nCharacter strength: " + Character.strength_points
                         + "\nCharacter dexterity: " + Character.dexterity_points
                         + "\nCharacter defence: " + Character.defence_points
                         + "\nCharacter experience: " + Character.experience + " / " + Character.next_level

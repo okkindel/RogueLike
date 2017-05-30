@@ -23,7 +23,7 @@ public class Battle {
 
     static void characterAttack (Enemies enemy) {
 
-        int strength = generator.nextInt(Character.damage_points);
+        int strength = generator.nextInt(Character.strength_points);
         int defence = generator.nextInt(enemy.defence_points) / 2;
         int true_damage = strength - defence;
         if (true_damage <= 0) {
