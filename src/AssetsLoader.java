@@ -115,7 +115,7 @@ public class AssetsLoader {
     Pane draw() {
 
         Pane root = new Pane();
-        new Interface(root);
+        Interface.statusBar(root);
         Room room = Level.rooms.get(Character.whereAmI);
 
         int x_begin, y_begin, x_end, y_end;

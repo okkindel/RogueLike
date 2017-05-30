@@ -118,11 +118,11 @@ public class Character {
                 whereAmI = door.where;
                 Room room = Level.rooms.get(whereAmI);
                 if (whereIWas == whereAmI)
-                    Interface.newEvent("Strange... I'm back in the same room.");
+                    System.out.println("Strange... I'm back in the same room.");
                 else if (room.iWasHere)
-                    Interface.newEvent("I already was here...");
+                    System.out.println("I already was here...");
                 else
-                    Interface.newEvent("I've never seen this room before...");
+                    System.out.println("I've never seen this room before...");
                 room.iWasHere = true;
                 for (Door newdoor : Level.rooms.get(whereAmI).doors) {
                     if (newdoor.where == whereIWas) {
@@ -149,7 +149,7 @@ public class Character {
         experience += enemy.experience_points;
         if (experience >= next_level) {
             level += 1;
-            Interface.newEvent("You are now on level " + level);
+            System.out.println("You are now on level " + level + ".\n");
             experience = experience - next_level;
             next_level += 50;
             strength_points += 5;
