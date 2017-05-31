@@ -27,6 +27,8 @@ public class Character {
 
         if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
             whichDoor(x_value, y_value + 1);
+        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 25)
+            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
         else if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] < 70
                 || Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] > 99) {
             Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
@@ -49,6 +51,8 @@ public class Character {
 
         if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
             whichDoor(x_value, y_value - 1);
+        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 25)
+            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
         else if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] < 70
                 || Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] > 99) {
             Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
@@ -71,6 +75,8 @@ public class Character {
 
         if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
             whichDoor(x_value + 1, y_value);
+        else if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 25)
+            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
         else if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] < 70
                 || Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] > 99) {
             Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
@@ -93,6 +99,8 @@ public class Character {
 
         if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
             whichDoor(x_value - 1, y_value);
+        else if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 25)
+            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
         else if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] < 70
                 || Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] > 99) {
             Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;

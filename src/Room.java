@@ -11,7 +11,7 @@ public class Room {
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean iWasHere = false;
     ArrayList<Door> doors;
-    private Random generator = new Random();
+    Random generator = new Random();
 
     Room (int index) {
 
@@ -99,7 +99,7 @@ public class Room {
                     for (int y = 2; y < height - 2; y += 2) {
                         sizes[x][y] = 81;
                         if (generator.nextInt(30) == 0)
-                            sizes[x][y] = 82;
+                            sizes[x][y] = 25;
                     }
                 }
             }

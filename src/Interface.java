@@ -24,6 +24,18 @@ public class Interface {
         Interface.message[0] = message;
     }
 
+    static void newItem (int item) {
+        inventory[8] = inventory[7];
+        inventory[7] = inventory[6];
+        inventory[6] = inventory[5];
+        inventory[5] = inventory[4];
+        inventory[4] = inventory[3];
+        inventory[3] = inventory[2];
+        inventory[2] = inventory[1];
+        inventory[1] = inventory[0];
+        inventory[0] = item;
+    }
+
     private void statusBar (Pane root) {
         Image icons = new Image("file:assets/inventory/status_bar.png");
         Label status_bar = new Label(
@@ -51,7 +63,7 @@ public class Interface {
             ImageView hunger_buff = new ImageView();
             hunger_buff.setImage(hunger);
             hunger_buff.setX(430);
-            hunger_buff.setY(340);
+            hunger_buff.setY(360);
             root.getChildren().add(hunger_buff);
         }
     }
@@ -78,13 +90,14 @@ public class Interface {
                     eq_item.setImage(red_potion);
                 if (inventory[index] == 4)
                     eq_item.setImage(purple_potion);
-                if (inventory[index] == 11)
+                if (inventory[index] == 5)
                     eq_item.setImage(food_apple);
-                if (inventory[index] == 12)
+                if (inventory[index] == 6)
                     eq_item.setImage(food_steak);
-                eq_item.setX(430 + i * 40);
-                eq_item.setY(220 + j * 40);
+                eq_item.setY(220 + i * 40);
+                eq_item.setX(430 + j * 40);
                 root.getChildren().add(eq_item);
+                index += 1;
             }
         }
     }

@@ -138,8 +138,6 @@ public class AssetsLoader {
                 if (room.sizes[x_tile][y_tile] >= 80 && room.sizes[x_tile][y_tile] <= 99) {
                     if (room.sizes[x_tile][y_tile] == 81)
                         iV.setImage(bookshelf);
-                    if (room.sizes[x_tile][y_tile] == 82)
-                        iV.setImage(wooden_chest);
                     if (room.sizes[x_tile][y_tile] == 87)
                         iV.setImage(column_block);
                     if (room.sizes[x_tile][y_tile] == 88)
@@ -186,6 +184,8 @@ public class AssetsLoader {
                 if (room.sizes[x_tile][y_tile] >= 20 && room.sizes[x_tile][y_tile] <= 30) {
                     if (room.sizes[x_tile][y_tile] == 20)
                         iV.setImage(wooden_doors);
+                    if (room.sizes[x_tile][y_tile] == 25)
+                        iV.setImage(wooden_chest);
                     iV.setX(x_index*tile_size + 50);
                     iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
