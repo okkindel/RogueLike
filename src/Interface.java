@@ -112,6 +112,13 @@ public class Interface {
                     eq_item.setImage(food_steak);
                 eq_item.setY(220 + i * 40);
                 eq_item.setX(430 + j * 40);
+
+                if (Items.was_clicked && Items.last_position == index) {
+                    eq_item.setFitHeight(38);
+                    eq_item.setFitWidth(38);
+                    eq_item.setY(220 + i * 40 - 3);
+                    eq_item.setX(430 + j * 40 - 3);
+                }
                 root.getChildren().add(eq_item);
                 index += 1;
             }

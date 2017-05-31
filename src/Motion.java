@@ -8,7 +8,7 @@ public class Motion {
     private Scene scene;
     private AssetsLoader assets;
     private Stage stage;
-    int last_position;
+
 
     Motion (Scene scene, AssetsLoader assets, Stage stage) {
         this.scene = scene;
@@ -42,67 +42,63 @@ public class Motion {
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
-            else if (Character.action_made) {
-                enemyMove();
-                Character.hunger();
-            }
             else if (event.getCode() == KeyCode.DIGIT1) {
                 items.checkItem(0, false);
-                last_position = 0;
+                Items.last_position = 0;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT2) {
                 items.checkItem(1, false);
-                last_position = 1;
+                Items.last_position = 1;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT3) {
                 items.checkItem(2, false);
-                last_position = 2;
+                Items.last_position = 2;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT4) {
                 items.checkItem(3, false);
-                last_position = 3;
+                Items.last_position = 3;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT5) {
                 items.checkItem(4, false);
-                last_position = 4;
+                Items.last_position = 4;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT6) {
                 items.checkItem(5, false);
-                last_position = 5;
+                Items.last_position = 5;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT7) {
                 items.checkItem(6, false);
-                last_position = 6;
+                Items.last_position = 6;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT8) {
                 items.checkItem(7, false);
-                last_position = 7;
+                Items.last_position = 7;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT9) {
                 items.checkItem(8, false);
-                last_position = 8;
+                Items.last_position = 8;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.Z) {
                 if (Items.was_clicked) {
-                    items.checkItem(last_position, true);
+                    items.checkItem(Items.last_position, true);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                     Items.was_clicked = false;
@@ -110,7 +106,7 @@ public class Motion {
             }
             else if (event.getCode() == KeyCode.X) {
                 if (Items.was_clicked) {
-                    items.dropItem(last_position);
+                    items.dropItem(Items.last_position);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                     Items.was_clicked = false;
@@ -119,6 +115,7 @@ public class Motion {
             if (Character.action_made) {
                 enemyMove();
                 Character.hunger();
+                Items.was_clicked = false;
                 Character.action_made = false;
             }
         });

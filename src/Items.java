@@ -6,6 +6,7 @@ public class Items {
     private static boolean [] mixtures_known = new boolean [7];
     private static int randomize;
     static boolean was_clicked = false;
+    static int last_position;
 
     Items() {
         Arrays.fill(mixtures_known, false);
@@ -15,6 +16,7 @@ public class Items {
 
     void checkItem (int position, boolean action) {
 
+        was_clicked = true;
         /* EMPTY */
         if (Interface.inventory[position] == 0) {
             Interface.newEvent("This area is empty.");
@@ -42,14 +44,13 @@ public class Items {
                 Interface.newEvent("Old and stiff but nutritious.");
             }
         }
-        was_clicked = true;
-
         if (action)
             dropItem(position);
     }
 
     void dropItem (int position) {
-        System.arraycopy(Interface.inventory, position + 1, Interface.inventory, position, 9 - position);
+        System.arraycopy(Interface.inventory, position + 1,
+                Interface.inventory, position, 9 - position);
         Interface.inventory[8] = 0;
         was_clicked = false;
     }
