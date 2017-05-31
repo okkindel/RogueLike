@@ -35,14 +35,14 @@ public class Interface {
 
         status_bar.setGraphic(new ImageView(image));
 
-        status_bar.setMinWidth(120);
-        status_bar.setMaxWidth(120);
+        status_bar.setMinWidth(125);
+        status_bar.setMaxWidth(125);
         status_bar.setAlignment(Pos.CENTER);
         status_bar.setPadding(new Insets(115, 10, 115, 10));
         status_bar.getStyleClass().add("status_bar");
         status_bar.setLayoutY(60);
         status_bar.layoutXProperty().bind(root.widthProperty()
-                .subtract(status_bar.widthProperty()).subtract(30));
+                .subtract(status_bar.widthProperty()).subtract(20));
 
         root.getChildren().add(status_bar);
     }
