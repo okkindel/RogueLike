@@ -25,15 +25,19 @@ public class Interface {
     }
 
     static void newItem (int item) {
-        inventory[8] = inventory[7];
-        inventory[7] = inventory[6];
-        inventory[6] = inventory[5];
-        inventory[5] = inventory[4];
-        inventory[4] = inventory[3];
-        inventory[3] = inventory[2];
-        inventory[2] = inventory[1];
-        inventory[1] = inventory[0];
-        inventory[0] = item;
+        if (inventory[8] != 0) {
+            inventory[8] = inventory[7];
+            inventory[7] = inventory[6];
+            inventory[6] = inventory[5];
+            inventory[5] = inventory[4];
+            inventory[4] = inventory[3];
+            inventory[3] = inventory[2];
+            inventory[2] = inventory[1];
+            inventory[1] = inventory[0];
+            inventory[0] = item;
+        }
+        else
+            newEvent("Inventory full!");
     }
 
     private void statusBar (Pane root) {

@@ -11,18 +11,6 @@
     -fx-text-fill: white;
 }
 
-.text {
-    -fx-border-color: white;
-    -fx-border-style: solid;
-    -fx-border-radius: 2;
-    -fx-min-width: 100;
-    -fx-border-width: 1;
-    -fx-background-color: rgb(20,20,20);
-    -fx-alignment: center;
-    -fx-text-fill: white;
-    -fx-padding: 2;
-}
-
 .status_bar {
     -fx-min-width: 125;
     -fx-text-fill: rgb(100, 100, 100);
