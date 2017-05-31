@@ -12,14 +12,14 @@ public class Items {
         randomize = generator.nextInt(7);
     }
 
-    static void checkItem (int position) {
+    void checkItem (int position) {
 
         /* EMPTY */
         if (Interface.inventory[position] == 0)
             Interface.newEvent("This area is empty.");
         /* POTIONS */
         if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7)
-            mixtureType(Interface.inventory[position]);
+            mixtureType(Interface.inventory[position] -1);
         /* FOOD */
         if (Interface.inventory[position] == 8)
             Interface.newEvent("Fresh apple. Where did it come from?");
@@ -27,9 +27,9 @@ public class Items {
             Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
     }
 
-    private static void mixtureType(int index) {
+    private void mixtureType (int index) {
 
-        int type = Math.floorMod((randomize+index),7) - 1;
+        int type = Math.floorMod((randomize+index),7);
 
         String [] mixtures = new String [7];
         mixtures[0] = "liquid flame.";
@@ -40,14 +40,14 @@ public class Items {
         mixtures[5] = "experience.";
         mixtures[6] = "harm.";
 
-        String [] colors = new String [8];
-        colors[1] = "yellow";
-        colors[2] = "blue";
-        colors[3] = "red";
-        colors[4] = "purple";
-        colors[5] = "green";
-        colors[6] = "aqua";
-        colors[7] = "orange";
+        String [] colors = new String [7];
+        colors[0] = "yellow";
+        colors[1] = "blue";
+        colors[2] = "red";
+        colors[3] = "purple";
+        colors[4] = "green";
+        colors[5] = "aqua";
+        colors[6] = "orange";
 
         if (!mixtures_known[index])
             Interface.newEvent("Bottle of " + colors[index] + " mixture. Unknown effects.");

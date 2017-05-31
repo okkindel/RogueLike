@@ -18,7 +18,7 @@ public class Motion {
 
     private void keyHandler() {
         Character character = new Character();
-        new Items();
+        Items items = new Items();
 
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
@@ -46,47 +46,47 @@ public class Motion {
                 Character.hunger();
             }
             else if (event.getCode() == KeyCode.DIGIT1) {
-                Items.checkItem(0);
+                items.checkItem(0);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT2) {
-                Items.checkItem(1);
+                items.checkItem(1);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT3) {
-                Items.checkItem(2);
+                items.checkItem(2);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT4) {
-                Items.checkItem(3);
+                items.checkItem(3);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT5) {
-                Items.checkItem(4);
+                items.checkItem(4);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT6) {
-                Items.checkItem(5);
+                items.checkItem(5);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT7) {
-                Items.checkItem(6);
+                items.checkItem(6);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT8) {
-                Items.checkItem(7);
+                items.checkItem(7);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
             else if (event.getCode() == KeyCode.DIGIT9) {
-                Items.checkItem(8);
+                items.checkItem(8);
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
