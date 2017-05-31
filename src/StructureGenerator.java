@@ -30,7 +30,7 @@ public class StructureGenerator {
             if (countRooms[i] == 0) {
                 while (true) {
                     int emergency_door = generator.nextInt(vertex);
-                    if (!structure[i][emergency_door] && !structure[emergency_door][i]) {
+                    if (i != emergency_door) {
                         structure[i][emergency_door] = true;
                         structure[emergency_door][i] = true;
                         break;
