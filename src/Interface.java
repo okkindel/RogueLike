@@ -7,7 +7,7 @@ import javafx.geometry.Pos;
 
 public class Interface {
 
-    private static String [] message = new String [4];
+    private static String [] message = new String [5];
 
     public Interface (Pane root) {
         statusBar(root);
@@ -22,9 +22,7 @@ public class Interface {
     }
 
     private void statusBar(Pane root) {
-
         Image image = new Image("file:assets/status_bar.png");
-
         Label status_bar = new Label(
                    "HP: " + Character.health_points + " / " + Character.max_health
                      + "\nSTR: " + Character.strength_points
@@ -34,28 +32,22 @@ public class Interface {
                      + "\nLVL: " + Character.level);
 
         status_bar.setGraphic(new ImageView(image));
-
-        status_bar.setMinWidth(125);
         status_bar.setMaxWidth(125);
         status_bar.setAlignment(Pos.CENTER);
-        status_bar.setPadding(new Insets(115, 10, 115, 10));
+        status_bar.setPadding(new Insets(20, 10, 20, 10));
         status_bar.getStyleClass().add("status_bar");
-        status_bar.setLayoutY(60);
+        status_bar.setLayoutY(50);
         status_bar.layoutXProperty().bind(root.widthProperty()
                 .subtract(status_bar.widthProperty()).subtract(20));
-
         root.getChildren().add(status_bar);
     }
 
     private void statusArea(Pane root) {
-
         Label status_area = new Label(
                 message[3] + "\n"
                    + message[2] + "\n"
                    + message[1] + "\n"
                    + message[0]);
-
-        status_area.setMinWidth(470);
         status_area.setMaxWidth(470);
         status_area.setAlignment(Pos.CENTER);
         status_area.setPadding(new Insets(10, 50, 10, 50));
@@ -63,7 +55,6 @@ public class Interface {
         status_area.setLayoutX(60);
         status_area.layoutYProperty().bind(root.heightProperty()
                 .subtract(status_area.heightProperty()).subtract(30));
-
         root.getChildren().add(status_area);
     }
 }
