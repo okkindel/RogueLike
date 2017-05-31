@@ -9,7 +9,7 @@ public class Room {
     int [][] sizes;
     int height, width = 0;
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
-    boolean iWasHere = false;
+    boolean former_room = false;
     ArrayList<Door> doors;
     Random generator = new Random();
 

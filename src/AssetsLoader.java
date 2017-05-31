@@ -56,7 +56,7 @@ public class AssetsLoader {
 
         Pane root = new Pane();
         new Interface(root);
-        Room room = Level.rooms.get(Character.whereAmI);
+        Room room = Level.rooms.get(Character.present_room);
 
         int x_begin, y_begin, x_end, y_end;
         x_begin = Character.x_value - 5;

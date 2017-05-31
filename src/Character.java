@@ -2,7 +2,7 @@ public class Character {
 
     static int x_value, y_value;
     static int last_tile = 0;
-    static int whereAmI = 0;
+    static int present_room = 0;
     static int max_health = 200;
     static int health_points = 200;
     static int strength_points = 15;
@@ -19,8 +19,8 @@ public class Character {
         last_tile = room.sizes[room.width/2][room.height/2];
         x_value = room.width / 2;
         y_value = room.height / 2;
-        Level.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
-        room.iWasHere = true;
+        Level.rooms.get(present_room).sizes[x_value][y_value] = 44;
+        room.former_room = true;
     }
 
     /* CHARACTER GOING DOWN */
@@ -47,30 +47,30 @@ public class Character {
     private void nextStep (int step_x, int step_y) {
 
         action_made = false;
-        if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 20)
+        if (Level.rooms.get(present_room).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
-        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 25)
-            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
-        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] < 70
-                || Level.rooms.get(whereAmI).sizes[step_x][step_y] > 99) {
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(whereAmI).sizes[step_x][step_y];
+        else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25)
+            Interface.newItem(Level.rooms.get(present_room).generator.nextInt(6) + 1);
+        else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
+                || Level.rooms.get(present_room).sizes[step_x][step_y] > 99) {
+            Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
+            last_tile = Level.rooms.get(present_room).sizes[step_x][step_y];
             if (step_x == x_value - 1)
-                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 44;
+                Level.rooms.get(present_room).sizes[step_x][step_y] = 44;
             if (step_x == x_value + 1)
-                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 45;
+                Level.rooms.get(present_room).sizes[step_x][step_y] = 45;
             if (step_y == y_value - 1)
-                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 46;
+                Level.rooms.get(present_room).sizes[step_x][step_y] = 46;
             if (step_y == y_value + 1)
-                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 47;
+                Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
             x_value = step_x;
             y_value = step_y;
             action_made = true;
         }
-        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] >= 70
-                || Level.rooms.get(whereAmI).sizes[step_x][step_y] <= 80) {
+        else if (Level.rooms.get(present_room).sizes[step_x][step_y] >= 70
+                || Level.rooms.get(present_room).sizes[step_x][step_y] <= 80) {
             for (Enemies enemy : Enemies.enemies_list) {
-                if (enemy.index == whereAmI) {
+                if (enemy.index == present_room) {
                     if ((step_x) == enemy.positionX && step_y == enemy.positionY) {
                         Battle.characterAttack(enemy);
                         action_made = true;
@@ -82,31 +82,31 @@ public class Character {
 
     private void whichDoor (int x, int y) {
 
-        for (Door door : Level.rooms.get(whereAmI).doors) {
+        for (Door door : Level.rooms.get(present_room).doors) {
             if (door.x == x && door.y == y) {
-                Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-                int whereIWas = whereAmI;
-                whereAmI = door.where;
-                Room room = Level.rooms.get(whereAmI);
-                if (whereIWas == whereAmI)
+                Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
+                int whereIWas = present_room;
+                present_room = door.where;
+                Room room = Level.rooms.get(present_room);
+                if (whereIWas == present_room)
                     Interface.newEvent("Strange... I'm back in the same room.");
-                else if (room.iWasHere)
+                else if (room.former_room)
                     Interface.newEvent("I already was here...");
                 else
                     Interface.newEvent("I've never seen this room before...");
-                room.iWasHere = true;
-                for (Door newdoor : Level.rooms.get(whereAmI).doors) {
+                room.former_room = true;
+                for (Door newdoor : Level.rooms.get(present_room).doors) {
                     if (newdoor.where == whereIWas) {
-                        Room newroom = Level.rooms.get(whereAmI);
+                        Room newroom = Level.rooms.get(present_room);
                         last_tile = newroom.sizes[newdoor.posx][newdoor.posy];
                         if (newdoor.wall == 0)
-                            Level.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 47;
+                            Level.rooms.get(present_room).sizes[newdoor.posx][newdoor.posy] = 47;
                         if (newdoor.wall == 1)
-                            Level.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 46;
+                            Level.rooms.get(present_room).sizes[newdoor.posx][newdoor.posy] = 46;
                         if (newdoor.wall == 2)
-                            Level.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 44;
+                            Level.rooms.get(present_room).sizes[newdoor.posx][newdoor.posy] = 44;
                         if (newdoor.wall == 3)
-                            Level.rooms.get(whereAmI).sizes[newdoor.posx][newdoor.posy] = 45;
+                            Level.rooms.get(present_room).sizes[newdoor.posx][newdoor.posy] = 45;
 
                         x_value = newdoor.posx;
                         y_value = newdoor.posy;
