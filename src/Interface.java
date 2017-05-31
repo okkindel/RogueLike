@@ -25,7 +25,7 @@ public class Interface {
     }
 
     static void newItem (int item) {
-        if (inventory[8] != 0) {
+        if (inventory[8] == 0) {
             inventory[8] = inventory[7];
             inventory[7] = inventory[6];
             inventory[6] = inventory[5];
