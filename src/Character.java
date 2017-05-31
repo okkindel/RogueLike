@@ -24,94 +24,48 @@ public class Character {
 
     /* CHARACTER GOING DOWN */
     void increaseY() {
-
-        if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 20)
-            whichDoor(x_value, y_value + 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] == 25)
-            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] < 70
-                || Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] > 99) {
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(whereAmI).sizes[x_value][y_value + 1];
-            y_value += 1;
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = 47;
-        } else if (Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] >= 70
-                || Level.rooms.get(whereAmI).sizes[x_value][y_value + 1] <= 80) {
-            for (Enemies enemy : Enemies.enemies_list) {
-                if (enemy.index == whereAmI) {
-                    if (x_value == enemy.positionX && (y_value + 1) == enemy.positionY)
-                        Battle.characterAttack(enemy);
-                }
-            }
-        }
+        nextStep (x_value, y_value + 1);
     }
 
     /* CHARACTER GOING UP */
     void decreaseY() {
-
-        if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 20)
-            whichDoor(x_value, y_value - 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] == 25)
-            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] < 70
-                || Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] > 99) {
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(whereAmI).sizes[x_value][y_value - 1];
-            y_value -= 1;
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = 46;
-        } else if (Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] >= 70
-                || Level.rooms.get(whereAmI).sizes[x_value][y_value - 1] <= 80) {
-            for (Enemies enemy : Enemies.enemies_list) {
-                if (enemy.index == whereAmI) {
-                    if (x_value == enemy.positionX && (y_value - 1) == enemy.positionY)
-                        Battle.characterAttack(enemy);
-                }
-            }
-        }
+        nextStep (x_value, y_value - 1);
     }
 
     /* CHARACTER GOING RIGHT */
     void increaseX() {
-
-        if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 20)
-            whichDoor(x_value + 1, y_value);
-        else if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] == 25)
-            Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] < 70
-                || Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] > 99) {
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(whereAmI).sizes[x_value + 1][y_value];
-            x_value += 1;
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = 45;
-        } else if (Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] >= 70
-                || Level.rooms.get(whereAmI).sizes[x_value + 1][y_value] <= 80) {
-            for (Enemies enemy : Enemies.enemies_list) {
-                if (enemy.index == whereAmI) {
-                    if ((x_value + 1) == enemy.positionX && y_value == enemy.positionY)
-                        Battle.characterAttack(enemy);
-                }
-            }
-        }
+        nextStep (x_value + 1, y_value);
     }
 
     /* CHARACTER GOING LEFT */
     void decreaseX() {
+        nextStep (x_value - 1, y_value);
+    }
 
-        if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 20)
-            whichDoor(x_value - 1, y_value);
-        else if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] == 25)
+    private void nextStep (int step_x, int step_y) {
+        if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 20)
+            whichDoor(step_x, step_y);
+        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 25)
             Interface.newItem(Level.rooms.get(whereAmI).generator.nextInt(6) + 1);
-        else if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] < 70
-                || Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] > 99) {
+        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] < 70
+                || Level.rooms.get(whereAmI).sizes[step_x][step_y] > 99) {
             Level.rooms.get(whereAmI).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(whereAmI).sizes[x_value - 1][y_value];
-            x_value -= 1;
-            Level.rooms.get(whereAmI).sizes[x_value][y_value] = 44;
-        } else if (Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] >= 70
-                || Level.rooms.get(whereAmI).sizes[x_value - 1][y_value] <= 80) {
+            last_tile = Level.rooms.get(whereAmI).sizes[step_x][step_y];
+            if (step_x == x_value - 1)
+                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 44;
+            if (step_x == x_value + 1)
+                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 45;
+            if (step_y == y_value - 1)
+                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 46;
+            if (step_y == y_value + 1)
+                Level.rooms.get(whereAmI).sizes[step_x][step_y] = 47;
+            x_value = step_x;
+            y_value = step_y;
+        } else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] >= 70
+                || Level.rooms.get(whereAmI).sizes[step_x][step_y] <= 80) {
             for (Enemies enemy : Enemies.enemies_list) {
                 if (enemy.index == whereAmI) {
-                    if ((x_value - 1) == enemy.positionX && y_value == enemy.positionY)
+                    if ((step_x) == enemy.positionX && step_y == enemy.positionY)
                         Battle.characterAttack(enemy);
                 }
             }
