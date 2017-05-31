@@ -35,8 +35,8 @@ public class Interface {
 
         status_bar.setGraphic(new ImageView(image));
 
-        status_bar.setMinWidth(115);
-        status_bar.setMaxWidth(115);
+        status_bar.setMinWidth(120);
+        status_bar.setMaxWidth(120);
         status_bar.setAlignment(Pos.CENTER);
         status_bar.setPadding(new Insets(115, 10, 115, 10));
         status_bar.getStyleClass().add("status_bar");
