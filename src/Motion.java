@@ -13,10 +13,10 @@ public class Motion {
         this.scene = scene;
         this.assets = assets;
         this.stage = stage;
-        characterMove();
+        keyHandler();
     }
 
-    private void characterMove() {
+    private void keyHandler() {
         Character character = new Character();
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
@@ -39,9 +39,59 @@ public class Motion {
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
+            else if (Character.action_made) {
+                enemyMove();
+                Character.hunger();
+            }
+            else if (event.getCode() == KeyCode.DIGIT1) {
+                Items.checkItem(0);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT2) {
+                Items.checkItem(1);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT3) {
+                Items.checkItem(2);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT4) {
+                Items.checkItem(3);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT5) {
+                Items.checkItem(4);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT6) {
+                Items.checkItem(5);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT7) {
+                Items.checkItem(6);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT8) {
+                Items.checkItem(7);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
+            else if (event.getCode() == KeyCode.DIGIT9) {
+                Items.checkItem(8);
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
+            }
             if (Character.action_made) {
                 enemyMove();
                 Character.hunger();
+                Character.action_made = false;
             }
         });
     }

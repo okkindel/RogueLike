@@ -46,11 +46,10 @@ public class Character {
     /* ACTION AFTER STEP */
     private void nextStep (int step_x, int step_y) {
 
-        action_made = false;
         if (Level.rooms.get(present_room).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25)
-            Interface.newItem(Level.rooms.get(present_room).generator.nextInt(6) + 1);
+            Interface.newItem(Level.rooms.get(present_room).generator.nextInt(9) + 1);
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
                 || Level.rooms.get(present_room).sizes[step_x][step_y] > 99) {
             Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;

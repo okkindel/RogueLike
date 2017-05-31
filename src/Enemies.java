@@ -166,6 +166,7 @@ class Golem extends Enemies {
         room.sizes[positionX][positionY] = 72;
     }
 }
+
 class Ghost extends Enemies {
 
     Ghost (int index, int positionX, int positionY) {

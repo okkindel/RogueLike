@@ -8,7 +8,7 @@ import javafx.geometry.Pos;
 public class Interface {
 
     private static String [] message = new String [5];
-    private static int [] inventory = new int [10];
+    static int [] inventory = new int [10];
 
     public Interface (Pane root) {
         statusBar(root);
@@ -90,6 +90,7 @@ public class Interface {
                 ImageView eq_item = new ImageView();
                 if (inventory[index] == 0)
                     eq_item.setImage(empty);
+                /* POTIONS */
                 if (inventory[index] == 1)
                     eq_item.setImage(yellow_potion);
                 if (inventory[index] == 2)
@@ -104,6 +105,7 @@ public class Interface {
                     eq_item.setImage(aqua_potion);
                 if (inventory[index] == 7)
                     eq_item.setImage(orange_potion);
+                /* FOOD */
                 if (inventory[index] == 8)
                     eq_item.setImage(food_apple);
                 if (inventory[index] == 9)
