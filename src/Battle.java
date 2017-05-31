@@ -17,10 +17,7 @@ public class Battle {
             Interface.newEvent(enemy.type + " attacks for : " + true_damage);
             Character.health_points -= true_damage;
         }
-        if (Character.health_points < 0) {
-            System.out.println("Character died.");
-            System.exit(0);
-        }
+        Character.checkIfAlive();
     }
 
     static void characterAttack (Enemies enemy) {

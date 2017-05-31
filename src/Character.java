@@ -146,6 +146,14 @@ public class Character {
         }
     }
 
+    static void checkIfAlive() {
+        if (health_points <= 0) {
+            health_points = 0;
+            System.out.println("Character died.");
+            System.exit(0);
+        }
+    }
+
     static void hunger() {
 
         hunger += 1;
@@ -159,9 +167,9 @@ public class Character {
             Interface.newEvent("You are hungry!");
         if (hunger == 900)
             Interface.newEvent("You are starving!");
-        if (hunger == 1000) {
-            System.out.println("Character died.");
-            System.exit(0);
+        if (hunger > 900) {
+            health_points -= 1;
+            checkIfAlive();
         }
     }
 

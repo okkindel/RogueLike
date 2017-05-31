@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 
 public class Interface {
 
-    static String [] message = new String [4];
+    private static String [] message = new String [4];
 
     public Interface (Pane root) {
         statusBar(root);
