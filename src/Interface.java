@@ -49,12 +49,11 @@ public class Interface {
                      + "\nDEF: " + Character.defence_points
                      + "\nEXP: " + Character.experience + " / " + Character.next_level
                      + "\nLVL: " + Character.level);
-
         status_bar.setGraphic(new ImageView(icons));
-        status_bar.setMaxWidth(125);
         status_bar.setAlignment(Pos.CENTER);
-        status_bar.setPadding(new Insets(20, 10, 20, 10));
         status_bar.getStyleClass().add("status_bar");
+        status_bar.setPadding(new Insets(20, 10, 20, 10));
+        status_bar.setMaxWidth(125);
         status_bar.setLayoutY(50);
         status_bar.layoutXProperty().bind(root.widthProperty()
                 .subtract(status_bar.widthProperty()).subtract(20));
@@ -63,7 +62,7 @@ public class Interface {
 
     private void buffs (Pane root) {
         if (Character.hunger > 800) {
-            Image hunger = new Image("file:assets/inventory/hunger.png");
+            Image hunger = new Image("file:assets/inventory/buff_hunger.png");
             ImageView hunger_buff = new ImageView();
             hunger_buff.setImage(hunger);
             hunger_buff.setX(430);
@@ -74,10 +73,15 @@ public class Interface {
 
     private void inventory (Pane root) {
         Image empty = new Image("file:assets/inventory/empty.png");
+        /* POTIONS */
+        Image green_potion = new Image("file:assets/inventory/green_potion.png");
+        Image aqua_potion = new Image("file:assets/inventory/aqua_potion.png");
+        Image orange_potion = new Image("file:assets/inventory/orange_potion.png");
         Image yellow_potion = new Image("file:assets/inventory/yellow_potion.png");
         Image blue_potion = new Image("file:assets/inventory/blue_potion.png");
         Image red_potion = new Image("file:assets/inventory/red_potion.png");
         Image purple_potion = new Image("file:assets/inventory/purple_potion.png");
+        /* FOOD */
         Image food_apple = new Image("file:assets/inventory/food_apple.png");
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
 
@@ -95,8 +99,14 @@ public class Interface {
                 if (inventory[index] == 4)
                     eq_item.setImage(purple_potion);
                 if (inventory[index] == 5)
-                    eq_item.setImage(food_apple);
+                    eq_item.setImage(green_potion);
                 if (inventory[index] == 6)
+                    eq_item.setImage(aqua_potion);
+                if (inventory[index] == 7)
+                    eq_item.setImage(orange_potion);
+                if (inventory[index] == 8)
+                    eq_item.setImage(food_apple);
+                if (inventory[index] == 9)
                     eq_item.setImage(food_steak);
                 eq_item.setY(220 + i * 40);
                 eq_item.setX(430 + j * 40);
