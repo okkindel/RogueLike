@@ -1,12 +1,8 @@
-import javafx.embed.swing.SwingFXUtils;
-import java.awt.image.BufferedImage;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Objects;
-import java.io.File;
 
 public class AssetsLoader {
 
