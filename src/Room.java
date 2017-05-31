@@ -30,7 +30,7 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = generator.nextInt(3);
+        int random = 1/* generator.nextInt(3)*/;
 
         /* ROOM TYPE TILES */
         for (int x = 0; x < width; x++) {

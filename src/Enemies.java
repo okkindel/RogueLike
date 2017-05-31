@@ -51,7 +51,7 @@ public class Enemies {
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
             Interface.newEvent(type + " died");
-            Character.experience(this);
+            Character.experience(this.experience_points);
             return false;
         }
         return true;

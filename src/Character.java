@@ -141,8 +141,8 @@ public class Character {
         }
     }
 
-    static void experience (Enemies enemy) {
-        experience += enemy.experience_points;
+    static void experience (int experience_points) {
+        experience += experience_points;
         if (experience >= next_level) {
             level += 1;
             Interface.newEvent("You are now on level " + level);

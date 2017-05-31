@@ -5,6 +5,7 @@ public class Items {
 
     private static boolean [] mixtures_known = new boolean [7];
     private static int randomize;
+    static boolean was_clicked = false;
 
     Items() {
         Arrays.fill(mixtures_known, false);
@@ -12,22 +13,48 @@ public class Items {
         randomize = generator.nextInt(7);
     }
 
-    void checkItem (int position) {
+    void checkItem (int position, boolean action) {
 
         /* EMPTY */
-        if (Interface.inventory[position] == 0)
+        if (Interface.inventory[position] == 0) {
             Interface.newEvent("This area is empty.");
+            if (action)
+                Interface.newEvent("You cannot use it.");
+        }
         /* POTIONS */
-        if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7)
-            mixtureType(Interface.inventory[position] -1);
+        if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7) {
+            mixtureType(Interface.inventory[position] - 1, false);
+            if (action)
+                mixtureType(Interface.inventory[position] - 1, true);
+        }
         /* FOOD */
-        if (Interface.inventory[position] == 8)
+        if (Interface.inventory[position] == 8) {
             Interface.newEvent("Fresh apple. Where did it come from?");
-        if (Interface.inventory[position] == 9)
+            if (action) {
+                Character.hunger = 0;
+                Interface.newEvent("Apple tastes great and cures hunger.");
+            }
+        }
+        if (Interface.inventory[position] == 9) {
             Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
+            if (action) {
+                Character.hunger = 0;
+                Interface.newEvent("Old and stiff but nutritious.");
+            }
+        }
+        was_clicked = true;
+
+        if (action)
+            dropItem(position);
     }
 
-    private void mixtureType (int index) {
+    void dropItem (int position) {
+        System.arraycopy(Interface.inventory, position + 1, Interface.inventory, position, 9 - position);
+        Interface.inventory[8] = 0;
+        was_clicked = false;
+    }
+
+    private void mixtureType (int index, boolean action) {
 
         int type = Math.floorMod((randomize+index),7);
 
@@ -53,5 +80,34 @@ public class Items {
             Interface.newEvent("Bottle of " + colors[index] + " mixture. Unknown effects.");
         else
             Interface.newEvent("It is potion of " + mixtures[type]);
+        if (action) {
+            mixtures_known[index] = true;
+            if (type == 0) {
+                Interface.newEvent("Pain inflicts your body. You are burning.");
+            }
+            if (type == 1) {
+                Interface.newEvent("Nothing happened.");
+            }
+            if (type == 2) {
+                Interface.newEvent("You feel much stronger!");
+                Character.strength_points += 5;
+            }
+            if (type == 3) {
+                Interface.newEvent("You feel much more skilful.");
+                Character.dexterity_points += 5;
+            }
+            if (type == 4) {
+                Interface.newEvent("You feel awesome.");
+                Character.health_points = Character.max_health;
+            }
+            if (type == 5) {
+                Interface.newEvent("You feel much more experienced.");
+                Character.experience(Character.next_level - Character.experience);
+            }
+            if (type == 6) {
+                Interface.newEvent("You feel terrible.");
+                Character.health_points /= 2;
+            }
+        }
     }
 }
