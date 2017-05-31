@@ -1,4 +1,6 @@
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,7 +21,9 @@ public class Interface {
         Interface.message[0] = message;
     }
 
-    private static void statusBar(Pane root) {
+    private void statusBar(Pane root) {
+
+        Image image = new Image("file:assets/status_bar.png");
 
         Label status_bar = new Label(
                    "HP: " + Character.health_points + " / " + Character.max_health
@@ -28,6 +32,8 @@ public class Interface {
                      + "\nDEF: " + Character.defence_points
                      + "\nEXP: " + Character.experience + " / " + Character.next_level
                      + "\nLVL: " + Character.level);
+
+        status_bar.setGraphic(new ImageView(image));
 
         status_bar.setMinWidth(115);
         status_bar.setMaxWidth(115);
@@ -41,7 +47,7 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
-    private static void statusArea(Pane root) {
+    private void statusArea(Pane root) {
 
         Label status_area = new Label(
                 message[3] + "\n"
