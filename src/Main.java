@@ -17,7 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("RogueLike");
         scene = new Scene(assets.draw(), 570, 540);
         scene.getStylesheets().add("./stylesheet.css");
-        Motion.characterMove(scene, assets, primaryStage);
+        new Motion(scene, assets, primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

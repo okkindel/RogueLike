@@ -12,7 +12,8 @@ public class Character {
     static int next_level = 100;
     static int level = 1;
     static int hunger = 0;
-    
+    static boolean action_made = false;
+
     void createCharacter() {
         Room room = Level.rooms.get(0);
         last_tile = room.sizes[room.width/2][room.height/2];
@@ -42,7 +43,10 @@ public class Character {
         nextStep (x_value - 1, y_value);
     }
 
+    /* ACTION AFTER STEP */
     private void nextStep (int step_x, int step_y) {
+
+        action_made = false;
         if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
         else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] == 25)
@@ -61,12 +65,16 @@ public class Character {
                 Level.rooms.get(whereAmI).sizes[step_x][step_y] = 47;
             x_value = step_x;
             y_value = step_y;
-        } else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] >= 70
+            action_made = true;
+        }
+        else if (Level.rooms.get(whereAmI).sizes[step_x][step_y] >= 70
                 || Level.rooms.get(whereAmI).sizes[step_x][step_y] <= 80) {
             for (Enemies enemy : Enemies.enemies_list) {
                 if (enemy.index == whereAmI) {
-                    if ((step_x) == enemy.positionX && step_y == enemy.positionY)
+                    if ((step_x) == enemy.positionX && step_y == enemy.positionY) {
                         Battle.characterAttack(enemy);
+                        action_made = true;
+                    }
                 }
             }
         }

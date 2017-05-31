@@ -45,8 +45,7 @@ public class Enemies {
         }
     }
 
-    Enemies() {
-    }
+    Enemies() {}
 
     boolean isAlive(){
         if (this.health_points == 0) {
