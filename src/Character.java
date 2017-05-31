@@ -125,7 +125,6 @@ public class Character {
     }
 
     static void hunger() {
-
         hunger += 1;
         if (hunger == 100)
             Interface.newEvent("You are still full.");
@@ -143,7 +142,7 @@ public class Character {
         }
     }
 
-    static void characterExp (Enemies enemy) {
+    static void experience (Enemies enemy) {
         experience += enemy.experience_points;
         if (experience >= next_level) {
             level += 1;

@@ -39,9 +39,10 @@ public class Motion {
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
-            Character.hunger();
-            if (Character.action_made)
+            if (Character.action_made) {
                 enemyMove();
+                Character.hunger();
+            }
         });
     }
 
