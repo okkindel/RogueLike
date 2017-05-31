@@ -18,6 +18,8 @@ public class Motion {
 
     private void keyHandler() {
         Character character = new Character();
+        new Items();
+
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
                 character.decreaseY();
