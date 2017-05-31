@@ -11,7 +11,7 @@ public class Character {
     static int experience = 0;
     static int next_level = 100;
     static int level = 1;
-    private static int hunger = 0;
+    static int hunger = 0;
 
     Character() {
         Room room = Level.rooms.get(0);

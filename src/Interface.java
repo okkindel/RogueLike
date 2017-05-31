@@ -12,6 +12,7 @@ public class Interface {
     public Interface (Pane root) {
         statusBar(root);
         statusArea(root);
+        buffs(root);
     }
 
     static void newEvent (String message) {
@@ -21,8 +22,8 @@ public class Interface {
         Interface.message[0] = message;
     }
 
-    private void statusBar(Pane root) {
-        Image image = new Image("file:assets/status_bar.png");
+    private void statusBar (Pane root) {
+        Image icons = new Image("file:assets/status_bar.png");
         Label status_bar = new Label(
                    "HP: " + Character.health_points + " / " + Character.max_health
                      + "\nSTR: " + Character.strength_points
@@ -31,7 +32,7 @@ public class Interface {
                      + "\nEXP: " + Character.experience + " / " + Character.next_level
                      + "\nLVL: " + Character.level);
 
-        status_bar.setGraphic(new ImageView(image));
+        status_bar.setGraphic(new ImageView(icons));
         status_bar.setMaxWidth(125);
         status_bar.setAlignment(Pos.CENTER);
         status_bar.setPadding(new Insets(20, 10, 20, 10));
@@ -40,6 +41,17 @@ public class Interface {
         status_bar.layoutXProperty().bind(root.widthProperty()
                 .subtract(status_bar.widthProperty()).subtract(20));
         root.getChildren().add(status_bar);
+    }
+
+    private void buffs (Pane root) {
+        if (Character.hunger > 800) {
+            Image hunger = new Image("file:assets/hunger.png");
+            ImageView hunger_buff = new ImageView();
+            hunger_buff.setImage(hunger);
+            hunger_buff.setX(425);
+            hunger_buff.setY(200);
+            root.getChildren().add(hunger_buff);
+        }
     }
 
     private void statusArea(Pane root) {
