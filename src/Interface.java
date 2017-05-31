@@ -1,6 +1,6 @@
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,11 +8,13 @@ import javafx.geometry.Pos;
 public class Interface {
 
     private static String [] message = new String [5];
+    private static int [] inventory = new int [10];
 
     public Interface (Pane root) {
         statusBar(root);
         statusArea(root);
         buffs(root);
+        inventory(root);
     }
 
     static void newEvent (String message) {
@@ -23,7 +25,7 @@ public class Interface {
     }
 
     private void statusBar (Pane root) {
-        Image icons = new Image("file:assets/status_bar.png");
+        Image icons = new Image("file:assets/inventory/status_bar.png");
         Label status_bar = new Label(
                    "HP: " + Character.health_points + " / " + Character.max_health
                      + "\nSTR: " + Character.strength_points
@@ -45,12 +47,45 @@ public class Interface {
 
     private void buffs (Pane root) {
         if (Character.hunger > 800) {
-            Image hunger = new Image("file:assets/hunger.png");
+            Image hunger = new Image("file:assets/inventory/hunger.png");
             ImageView hunger_buff = new ImageView();
             hunger_buff.setImage(hunger);
-            hunger_buff.setX(425);
-            hunger_buff.setY(200);
+            hunger_buff.setX(430);
+            hunger_buff.setY(340);
             root.getChildren().add(hunger_buff);
+        }
+    }
+
+    private void inventory (Pane root) {
+        Image empty = new Image("file:assets/inventory/empty.png");
+        Image yellow_potion = new Image("file:assets/inventory/yellow_potion.png");
+        Image blue_potion = new Image("file:assets/inventory/blue_potion.png");
+        Image red_potion = new Image("file:assets/inventory/red_potion.png");
+        Image purple_potion = new Image("file:assets/inventory/purple_potion.png");
+        Image food_apple = new Image("file:assets/inventory/food_apple.png");
+        Image food_steak = new Image("file:assets/inventory/food_steak.png");
+
+        for (int i = 0, index = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ImageView eq_item = new ImageView();
+                if (inventory[index] == 0)
+                    eq_item.setImage(empty);
+                if (inventory[index] == 1)
+                    eq_item.setImage(yellow_potion);
+                if (inventory[index] == 2)
+                    eq_item.setImage(blue_potion);
+                if (inventory[index] == 3)
+                    eq_item.setImage(red_potion);
+                if (inventory[index] == 4)
+                    eq_item.setImage(purple_potion);
+                if (inventory[index] == 11)
+                    eq_item.setImage(food_apple);
+                if (inventory[index] == 12)
+                    eq_item.setImage(food_steak);
+                eq_item.setX(430 + i * 40);
+                eq_item.setY(220 + j * 40);
+                root.getChildren().add(eq_item);
+            }
         }
     }
 
