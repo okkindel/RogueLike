@@ -12,8 +12,8 @@ public class Character {
     static int next_level = 100;
     static int level = 1;
     static int hunger = 0;
-
-    Character() {
+    
+    void createCharacter() {
         Room room = Level.rooms.get(0);
         last_tile = room.sizes[room.width/2][room.height/2];
         x_value = room.width / 2;

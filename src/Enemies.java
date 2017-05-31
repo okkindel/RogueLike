@@ -58,7 +58,7 @@ public class Enemies {
         return true;
     }
 
-    void enemyMove() {
+    void moveAlgorithm() {
 
         prevX = positionX;
         prevY = positionY;
