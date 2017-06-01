@@ -10,10 +10,10 @@ public class Room {
     int height, width = 0;
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean former_room = false;
+    private Random generator = new Random();
     ArrayList <Door> doors;
     ArrayList <Chests> chests_list;
     ArrayList <Drop> drop_list;
-    Random generator = new Random();
 
     Room (int index) {
 
@@ -34,7 +34,7 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = 1 /*generator.nextInt(3)*/;
+        int random = generator.nextInt(3);
 
         /* ROOM TYPE TILES */
         for (int x = 0; x < width; x++) {
@@ -86,9 +86,9 @@ public class Room {
                         sizes[x][y] = 13;
                     else if (generator.nextInt(6) < 3)
                         sizes[x][y] = 14;
-                    addChests();
                 }
             }
+            addChests();
             isGolemable = true;
         }
         /* ROOM TYPE WOODEN */
@@ -224,38 +224,42 @@ public class Room {
     }
 
     private void addChests() {
-        int wall = generator.nextInt(4);
 
-        if (wall == 0) {
-            int place = generator.nextInt(width - 2) + 1;
-            if (north[place] != 20) {
-                sizes[place][1] = 25;
-                Chests chest = new Chests(place, 1);
-                chests_list.add(chest);
+        if (generator.nextInt(2) == 0) {
+
+            int wall = generator.nextInt(4);
+
+            if (wall == 0) {
+                int place = generator.nextInt(width - 2) + 1;
+                if (north[place] != 20) {
+                    sizes[place][1] = 25;
+                    Chests chest = new Chests(place, 1);
+                    chests_list.add(chest);
+                }
             }
-        }
-        if (wall == 1) {
-            int place = generator.nextInt(width - 2) + 1;
-            if (south[place] != 20) {
-                sizes[place][height - 1] = 25;
-                Chests chest = new Chests(place, height - 1);
-                chests_list.add(chest);
+            if (wall == 1) {
+                int place = generator.nextInt(width - 2) + 1;
+                if (south[place] != 20) {
+                    sizes[place][height - 1] = 25;
+                    Chests chest = new Chests(place, height - 1);
+                    chests_list.add(chest);
+                }
             }
-        }
-        if (wall == 2) {
-            int place = generator.nextInt(height - 2) + 1;
-            if (east[place] != 20) {
-                sizes[1][place] = 25;
-                Chests chest = new Chests(1, place);
-                chests_list.add(chest);
+            if (wall == 2) {
+                int place = generator.nextInt(height - 2) + 1;
+                if (east[place] != 20) {
+                    sizes[1][place] = 25;
+                    Chests chest = new Chests(1, place);
+                    chests_list.add(chest);
+                }
             }
-        }
-        if (wall == 3) {
-            int place = generator.nextInt(height - 2) + 1;
-            if (west[place] != 20) {
-                sizes[width - 1][place] = 25;
-                Chests chest = new Chests(width - 1, place);
-                chests_list.add(chest);
+            if (wall == 3) {
+                int place = generator.nextInt(height - 2) + 1;
+                if (west[place] != 20) {
+                    sizes[width - 1][place] = 25;
+                    Chests chest = new Chests(width - 1, place);
+                    chests_list.add(chest);
+                }
             }
         }
     }

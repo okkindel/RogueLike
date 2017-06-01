@@ -152,8 +152,21 @@ public class AssetsLoader {
                     iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
                 }
+                /* DROP */
+                for (Drop drop: room.drop_list) {
+                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
+                        iV = new ImageView();
+                        iV.setFitHeight(tile_size);
+                        iV.setFitWidth(tile_size);
+                        iV.setImage(drop_bag);
+                        iV.setX(x_index*tile_size + 50);
+                        iV.setY(y_index*tile_size + 50);
+                        root.getChildren().add(iV);
+                    }
+                }
                 /* ENEMIES TILES */
                 if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
+                    iV = new ImageView();
                     iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index), "enemy"));
                     iV.setX(x_index*tile_size + 50);
                     iV.setY(y_index*tile_size + 50);
@@ -172,18 +185,6 @@ public class AssetsLoader {
                     iV.setX(x_index*tile_size + 50);
                     iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
-                }
-                /* DROP */
-                for (Drop drop: room.drop_list) {
-                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
-                        iV = new ImageView();
-                        iV.setFitHeight(tile_size);
-                        iV.setFitWidth(tile_size);
-                        iV.setImage(drop_bag);
-                        iV.setX(x_index*tile_size + 50);
-                        iV.setY(y_index*tile_size + 50);
-                        root.getChildren().add(iV);
-                    }
                 }
             }
         }

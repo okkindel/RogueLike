@@ -66,6 +66,6 @@ class Mixtures extends Items {
     }
 
     static int prevPotion (int numOf) {
-        return Math.floorMod((numOf - randomize + 1),7);
+        return Math.floorMod((numOf - randomize),7);
     }
 }
