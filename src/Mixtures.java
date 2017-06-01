@@ -64,6 +64,7 @@ public class Mixtures {
             Character.health_points /= 2;
         }
         mixtures_known[index] = true;
+        Character.checkIfAlive();
     }
 
     static int prevPotion (int numOf) {

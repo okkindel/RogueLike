@@ -30,6 +30,7 @@ public class Items {
                 Interface.newEvent("Fresh apple. Where did it come from?");
             else {
                 Character.hunger = 0;
+                Character.addHealth (25);
                 Interface.newEvent("Apple tastes great and cures hunger.");
             }
         }
@@ -38,6 +39,7 @@ public class Items {
                 Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
             else {
                 Character.hunger = 0;
+                Character.addHealth (35);
                 Interface.newEvent("Old and stiff but nutritious.");
             }
         }

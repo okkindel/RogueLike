@@ -162,6 +162,12 @@ public class Character {
         }
     }
 
+    static void addHealth (int points) {
+        health_points += points;
+        if (health_points > max_health)
+            health_points = max_health;
+    }
+
     static void experience (int experience_points) {
         experience += experience_points;
         if (experience >= next_level) {
@@ -173,9 +179,7 @@ public class Character {
             dexterity_points += 5;
             defence_points += 5;
             max_health += 25;
-            health_points += (50 + 10 * level);
-            if (health_points > max_health)
-                health_points = max_health;
+            addHealth (50 + 10 * level);
         }
     }
 }
