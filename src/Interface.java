@@ -61,7 +61,7 @@ public class Interface {
     }
 
     private void buffs (Pane root) {
-        if (Character.hunger > 800) {
+        if (Character.hunger > 400) {
             Image hunger = new Image("file:assets/inventory/buff_hunger.png");
             ImageView hunger_buff = new ImageView();
             hunger_buff.setImage(hunger);

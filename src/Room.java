@@ -248,7 +248,7 @@ public class Room {
             if (wall == 2) {
                 int place = generator.nextInt(height - 2) + 1;
                 if (east[place] != 20) {
-                    sizes[1][place] = 25;
+                    sizes[width - 1][place] = 25;
                     Chests chest = new Chests(1, place);
                     chests_list.add(chest);
                 }
@@ -256,7 +256,7 @@ public class Room {
             if (wall == 3) {
                 int place = generator.nextInt(height - 2) + 1;
                 if (west[place] != 20) {
-                    sizes[width - 1][place] = 25;
+                    sizes[1][place] = 25;
                     Chests chest = new Chests(width - 1, place);
                     chests_list.add(chest);
                 }

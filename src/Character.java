@@ -148,15 +148,15 @@ public class Character {
         hunger += 1;
         if (hunger == 100)
             Interface.newEvent("You are still full.");
-        if (hunger == 300)
+        if (hunger == 200)
             Interface.newEvent("Your stomach is fine.");
-        if (hunger == 500)
+        if (hunger == 300)
             Interface.newEvent("You feel normally.");
-        if (hunger == 800)
+        if (hunger == 400)
             Interface.newEvent("You are hungry!");
-        if (hunger == 900)
+        if (hunger == 500)
             Interface.newEvent("You are starving!");
-        if (hunger > 900) {
+        if (hunger > 500) {
             health_points -= 1;
             checkIfAlive();
         }
