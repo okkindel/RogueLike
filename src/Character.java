@@ -47,6 +47,7 @@ public class Character {
     /* ACTION AFTER STEP */
     private void nextStep (int step_x, int step_y) {
 
+        Items.was_clicked = false;
         if (Level.rooms.get(present_room).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25)
