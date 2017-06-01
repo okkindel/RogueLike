@@ -50,7 +50,7 @@ public class AssetsLoader {
         enemy_skeleton = new Image("file:assets/enemies/skeleton.png");
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
-        drop_bag = new Image("file:assets/bag.png");
+        drop_bag = new Image("file:assets/inventory/bag.png");
     }
 
     Pane draw() {
