@@ -50,11 +50,16 @@ public class Character {
         Items.was_clicked = false;
         if (Level.rooms.get(present_room).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
-        else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25)
-            Interface.newItem(Level.rooms.get(present_room).generator.nextInt(9) + 1);
+        else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25) {
+            for (Chests chest: Level.rooms.get(present_room).chests_list) {
+                if (chest.x_position == step_x && chest.y_position == step_y) {
+                    chest.checkTreasure();
+                }
+            }
+        }
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
                 || Level.rooms.get(present_room).sizes[step_x][step_y] > 99) {
-            if (Items.character_paralyze == 0) {
+            if (Mixtures.character_paralyze == 0) {
             Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
             last_tile = Level.rooms.get(present_room).sizes[step_x][step_y];
             if (step_x == x_value - 1)
@@ -68,7 +73,7 @@ public class Character {
                 x_value = step_x;
                 y_value = step_y;
             } else
-                Items.character_paralyze -= 1;
+                Mixtures.character_paralyze -= 1;
             action_made = true;
         }
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] >= 70

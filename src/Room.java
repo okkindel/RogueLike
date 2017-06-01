@@ -10,13 +10,15 @@ public class Room {
     int height, width = 0;
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean former_room = false;
-    ArrayList<Door> doors;
+    ArrayList <Door> doors;
+    ArrayList <Chests> chests_list;
     Random generator = new Random();
 
     Room (int index) {
 
         this.index = index;
         doors = new ArrayList<>();
+        chests_list = new ArrayList<>();
         height = generator.nextInt(10) + 11;
         width = generator.nextInt(10) + 11;
         sizes = new int[width][height];
@@ -30,7 +32,7 @@ public class Room {
 
     private void roomType() {
         Random generator = new Random();
-        int random = generator.nextInt(3);
+        int random = 1 /*generator.nextInt(3)*/;
 
         /* ROOM TYPE TILES */
         for (int x = 0; x < width; x++) {
@@ -82,6 +84,7 @@ public class Room {
                         sizes[x][y] = 13;
                     else if (generator.nextInt(6) < 3)
                         sizes[x][y] = 14;
+                    addChests();
                 }
             }
             isGolemable = true;
@@ -98,12 +101,18 @@ public class Room {
                 for (int x = 2; x < width - 2; x++) {
                     for (int y = 2; y < height - 2; y += 2) {
                         sizes[x][y] = 81;
-                        if (generator.nextInt(30) == 0)
+                        if (generator.nextInt(30) == 0) {
                             sizes[x][y] = 25;
+                            Chests chest = new Chests(x, y);
+                            chests_list.add(chest);
+                        }
                     }
                 }
             }
-            else { isZombiable = true; }
+            else {
+                isZombiable = true;
+                addChests();
+            }
         }
         else { isGhostable = true; }
 
@@ -208,6 +217,43 @@ public class Room {
                 }
                 Door door = new Door(index, doorID, wall, place, height, width);
                 doors.add(door);
+            }
+        }
+    }
+
+    private void addChests() {
+        int wall = generator.nextInt(4);
+
+        if (wall == 0) {
+            int place = generator.nextInt(width - 2) + 1;
+            if (north[place] != 20) {
+                sizes[place][1] = 25;
+                Chests chest = new Chests(place, 1);
+                chests_list.add(chest);
+            }
+        }
+        if (wall == 1) {
+            int place = generator.nextInt(width - 2) + 1;
+            if (south[place] != 20) {
+                sizes[place][height - 1] = 25;
+                Chests chest = new Chests(place, height - 1);
+                chests_list.add(chest);
+            }
+        }
+        if (wall == 2) {
+            int place = generator.nextInt(height - 2) + 1;
+            if (east[place] != 20) {
+                sizes[1][place] = 25;
+                Chests chest = new Chests(1, place);
+                chests_list.add(chest);
+            }
+        }
+        if (wall == 3) {
+            int place = generator.nextInt(height - 2) + 1;
+            if (west[place] != 20) {
+                sizes[width - 1][place] = 25;
+                Chests chest = new Chests(width - 1, place);
+                chests_list.add(chest);
             }
         }
     }
