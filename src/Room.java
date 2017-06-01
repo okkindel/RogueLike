@@ -26,8 +26,9 @@ public class Room {
         south = new int[width];
         east = new int[height];
         west = new int[height];
-        roomType();
+
         addWalls();
+        roomType();
     }
 
     private void roomType() {
@@ -35,8 +36,8 @@ public class Room {
         int random = generator.nextInt(3);
 
         /* ROOM TYPE TILES */
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 1; x < width - 1; x++) {
+            for (int y = 1; y < height - 1; y++) {
                 sizes[x][y] = 10;
                 if (sizes[x][y] == 10) {
                     if (generator.nextInt(4) == 0)
@@ -78,8 +79,8 @@ public class Room {
         }
         /* ROOM TYPE GRASS */
         else if (random == 0) {
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
+            for (int x = 1; x < width - 1; x++) {
+                for (int y = 1; y < height - 1; y++) {
                     if (generator.nextInt(6) < 4)
                         sizes[x][y] = 13;
                     else if (generator.nextInt(6) < 3)
@@ -91,8 +92,8 @@ public class Room {
         }
         /* ROOM TYPE WOODEN */
         else if (random == 1) {
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
+            for (int x = 1; x < width - 1; x++) {
+                for (int y = 1; y < height - 1; y++) {
                     sizes[x][y] = 12;
                 }
             }
@@ -158,7 +159,6 @@ public class Room {
             else if (generator.nextInt(50) == 0)
                 east[i] = 89;
         }
-
         addDoors();
 
         for (int x = 0; x < width; x++) {
@@ -238,16 +238,16 @@ public class Room {
             if (wall == 1) {
                 int place = generator.nextInt(width - 2) + 1;
                 if (south[place] != 20) {
-                    sizes[place][height - 1] = 25;
-                    Chests chest = new Chests(place, height - 1);
+                    sizes[place][height - 2] = 25;
+                    Chests chest = new Chests(place, height - 2);
                     chests_list.add(chest);
                 }
             }
             if (wall == 2) {
                 int place = generator.nextInt(height - 2) + 1;
                 if (east[place] != 20) {
-                    sizes[width - 1][place] = 25;
-                    Chests chest = new Chests(1, place);
+                    sizes[width - 2][place] = 25;
+                    Chests chest = new Chests(width - 2, place);
                     chests_list.add(chest);
                 }
             }
@@ -255,7 +255,7 @@ public class Room {
                 int place = generator.nextInt(height - 2) + 1;
                 if (west[place] != 20) {
                     sizes[1][place] = 25;
-                    Chests chest = new Chests(width - 1, place);
+                    Chests chest = new Chests(1, place);
                     chests_list.add(chest);
                 }
             }
