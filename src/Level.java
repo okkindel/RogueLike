@@ -11,7 +11,6 @@ public class Level {
         Interface.newEvent("You are now in sewers under the city.");
         Interface.newEvent("Good Luck!");
         Interface.newEvent(" ");
-        new Mixtures();
         addRooms();
     }
 

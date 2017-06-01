@@ -9,7 +9,6 @@ public class Motion {
     private AssetsLoader assets;
     private Stage stage;
 
-
     Motion (Scene scene, AssetsLoader assets, Stage stage) {
         this.scene = scene;
         this.assets = assets;
