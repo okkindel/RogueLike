@@ -52,10 +52,10 @@ public class Enemies {
             room.sizes[prevX][prevY] = last_tile;
             Interface.newEvent(type + " died");
             Character.experience(this.experience_points);
-            if (generator.nextInt(5) == 0) {
-                Drop drop = new Drop (positionX, positionY);
-                Level.rooms.get(index).drop_list.add(drop);
-            }
+            //if (generator.nextInt(5) == 0) {
+                Drop drop = new Drop (index, positionX, positionY);
+                Level.drop_list.add(drop);
+            //}
             return false;
         }
         return true;

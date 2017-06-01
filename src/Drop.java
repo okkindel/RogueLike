@@ -4,11 +4,13 @@ public class Drop {
 
     int x_position;
     int y_position;
-    int treasure;
+    int index;
+    private int treasure;
 
-    Drop (int x_position, int y_position) {
+    Drop (int index, int x_position, int y_position) {
         this.x_position = x_position;
         this.y_position = y_position;
+        this.index = index;
 
         Random generator = new Random();
         int random = generator.nextInt(30);
