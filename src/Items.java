@@ -80,9 +80,9 @@ public class Items {
             Interface.newEvent("Bottle of " + colors[index] + " mixture. Unknown effects.");
         else
             Interface.newEvent("It is potion of " + mixtures[type] + ". Are you sure you want to drink it?");
-        if (action) {
-            mixtures_known[index] = true;
 
+
+        if (action) {
             if (type == 0) {
                 Interface.newEvent("Nothing happened.");
             }
@@ -110,6 +110,7 @@ public class Items {
                 Interface.newEvent("You feel terrible.");
                 Character.health_points /= 2;
             }
+            mixtures_known[index] = true;
         }
     }
 }

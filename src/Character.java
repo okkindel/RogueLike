@@ -21,6 +21,7 @@ public class Character {
         y_value = room.height / 2;
         Level.rooms.get(present_room).sizes[x_value][y_value] = 44;
         room.former_room = true;
+        Interface.inventory[0] = 9;
     }
 
     /* CHARACTER GOING DOWN */

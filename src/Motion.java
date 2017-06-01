@@ -101,7 +101,6 @@ public class Motion {
                     items.checkItem(Items.last_position, true);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
-                    Items.was_clicked = false;
                 }
             }
             else if (event.getCode() == KeyCode.X) {
@@ -109,7 +108,6 @@ public class Motion {
                     items.dropItem(Items.last_position);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
-                    Items.was_clicked = false;
                 }
             }
             if (Character.action_made) {
