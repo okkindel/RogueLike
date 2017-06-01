@@ -61,13 +61,21 @@ public class Interface {
     }
 
     private void buffs (Pane root) {
+
+        Image rooted = new Image("file:assets/inventory/buff_root.png");
+        Image hunger = new Image("file:assets/inventory/buff_hunger.png");
+        ImageView buff = new ImageView();
         if (Character.hunger > 400) {
-            Image hunger = new Image("file:assets/inventory/buff_hunger.png");
-            ImageView hunger_buff = new ImageView();
-            hunger_buff.setImage(hunger);
-            hunger_buff.setX(430);
-            hunger_buff.setY(360);
-            root.getChildren().add(hunger_buff);
+            buff.setImage(hunger);
+            buff.setX(430);
+            buff.setY(360);
+            root.getChildren().add(buff);
+        }
+        if (Mixtures.character_paralyze > 0) {
+            buff.setImage(rooted);
+            buff.setX(470);
+            buff.setY(360);
+            root.getChildren().add(buff);
         }
     }
 
