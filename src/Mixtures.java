@@ -4,7 +4,7 @@ import java.util.Random;
 class Mixtures extends Items {
 
     private static boolean [] mixtures_known = new boolean [7];
-    private static int randomize;
+    static int randomize;
     static int character_paralyze = 0;
 
     Mixtures() {
@@ -66,6 +66,6 @@ class Mixtures extends Items {
     }
 
     static int prevPotion (int numOf) {
-        return Math.floorMod((numOf - randomize),7);
+        return Math.floorMod((numOf - randomize), 7);
     }
 }

@@ -16,19 +16,19 @@ public class Drop {
         int random = generator.nextInt(30);
 
         if (random < 3)
-            treasure = 1;
+            treasure = 0;
         else if (random < 6)
-            treasure = 2;
+            treasure = 1;
         else if (random < 9)
-            treasure = 3;
+            treasure = 2;
         else if (random < 12)
-            treasure = 4;
+            treasure = 3;
         else if (random < 16)
-            treasure = 5;
+            treasure = 4;
         else if (random < 19)
-            treasure = 6;
+            treasure = 5;
         else if (random < 22)
-            treasure = 7;
+            treasure = 6;
         else if (random < 26)
             treasure = 8;
         else if (random < 30)
@@ -36,8 +36,8 @@ public class Drop {
     }
 
     void checkTreasure() {
-        if (treasure > 0 && treasure < 8)
-            Interface.newItem(Mixtures.prevPotion(treasure));
+        if (treasure > 0 && treasure < 7)
+            Interface.newItem(Mixtures.prevPotion(treasure) + 1);
         else
             Interface.newItem(treasure);
     }
