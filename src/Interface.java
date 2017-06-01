@@ -25,7 +25,7 @@ public class Interface {
     }
 
     static void newItem (int item) {
-        if (inventory[8] == 0) {
+        if (inventory[8] == 88) {
             inventory[8] = inventory[7];
             inventory[7] = inventory[6];
             inventory[6] = inventory[5];
@@ -88,22 +88,22 @@ public class Interface {
         for (int i = 0, index = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 ImageView eq_item = new ImageView();
-                if (inventory[index] == 0)
+                if (inventory[index] == 88)
                     eq_item.setImage(empty);
                 /* POTIONS */
-                if (inventory[index] == 1)
+                if (inventory[index] == 0)
                     eq_item.setImage(yellow_potion);
-                if (inventory[index] == 2)
+                if (inventory[index] == 1)
                     eq_item.setImage(blue_potion);
-                if (inventory[index] == 3)
+                if (inventory[index] == 2)
                     eq_item.setImage(red_potion);
-                if (inventory[index] == 4)
+                if (inventory[index] == 3)
                     eq_item.setImage(purple_potion);
-                if (inventory[index] == 5)
+                if (inventory[index] == 4)
                     eq_item.setImage(green_potion);
-                if (inventory[index] == 6)
+                if (inventory[index] == 5)
                     eq_item.setImage(aqua_potion);
-                if (inventory[index] == 7)
+                if (inventory[index] == 6)
                     eq_item.setImage(orange_potion);
                 /* FOOD */
                 if (inventory[index] == 8)
