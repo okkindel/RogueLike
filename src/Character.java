@@ -52,6 +52,7 @@ public class Character {
             Interface.newItem(Level.rooms.get(present_room).generator.nextInt(9) + 1);
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
                 || Level.rooms.get(present_room).sizes[step_x][step_y] > 99) {
+            if (Items.character_paralyze == 0) {
             Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
             last_tile = Level.rooms.get(present_room).sizes[step_x][step_y];
             if (step_x == x_value - 1)
@@ -62,8 +63,10 @@ public class Character {
                 Level.rooms.get(present_room).sizes[step_x][step_y] = 46;
             if (step_y == y_value + 1)
                 Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
-            x_value = step_x;
-            y_value = step_y;
+                x_value = step_x;
+                y_value = step_y;
+            } else
+                Items.character_paralyze -= 1;
             action_made = true;
         }
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] >= 70

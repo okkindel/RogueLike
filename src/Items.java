@@ -7,6 +7,7 @@ public class Items {
     private static int randomize;
     static boolean was_clicked = false;
     static int last_position;
+    static int character_paralyze = 0;
 
     Items() {
         Arrays.fill(mixtures_known, false);
@@ -58,16 +59,14 @@ public class Items {
     private void mixtureType (int index, boolean action) {
 
         int type = Math.floorMod((randomize+index),7);
-
         String [] mixtures = new String [7];
-        mixtures[0] = "liquid flame.";
-        mixtures[1] = "invisibility.";
-        mixtures[2] = "strength.";
-        mixtures[3] = "dexterity.";
-        mixtures[4] = "healing.";
-        mixtures[5] = "experience.";
-        mixtures[6] = "harm.";
-
+        mixtures[0] = "liquid flame";
+        mixtures[1] = "paralytic gas";
+        mixtures[2] = "strength";
+        mixtures[3] = "dexterity";
+        mixtures[4] = "healing";
+        mixtures[5] = "experience";
+        mixtures[6] = "harm";
         String [] colors = new String [7];
         colors[0] = "yellow";
         colors[1] = "blue";
@@ -80,14 +79,16 @@ public class Items {
         if (!mixtures_known[index])
             Interface.newEvent("Bottle of " + colors[index] + " mixture. Unknown effects.");
         else
-            Interface.newEvent("It is potion of " + mixtures[type]);
+            Interface.newEvent("It is potion of " + mixtures[type] + ". Are you sure you want to drink it?");
         if (action) {
             mixtures_known[index] = true;
+
             if (type == 0) {
-                Interface.newEvent("Pain inflicts your body. You are burning.");
+                Interface.newEvent("Nothing happened.");
             }
             if (type == 1) {
-                Interface.newEvent("Nothing happened.");
+                Interface.newEvent("Strange... I cannot move.");
+                character_paralyze = 5;
             }
             if (type == 2) {
                 Interface.newEvent("You feel much stronger!");
