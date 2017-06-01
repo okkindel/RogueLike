@@ -1,5 +1,4 @@
 import java.util.ListIterator;
-import java.util.Arrays;
 
 public class Character {
 
@@ -24,7 +23,6 @@ public class Character {
         y_value = room.height / 2;
         Level.rooms.get(present_room).sizes[x_value][y_value] = 44;
         room.former_room = true;
-        Arrays.fill(Interface.inventory, 88);
         Interface.inventory[0] = 9;
     }
 
