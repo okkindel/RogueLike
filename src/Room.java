@@ -12,6 +12,7 @@ public class Room {
     boolean former_room = false;
     ArrayList <Door> doors;
     ArrayList <Chests> chests_list;
+    ArrayList <Drop> drop_list;
     Random generator = new Random();
 
     Room (int index) {
@@ -19,6 +20,7 @@ public class Room {
         this.index = index;
         doors = new ArrayList<>();
         chests_list = new ArrayList<>();
+        drop_list = new ArrayList<>();
         height = generator.nextInt(10) + 11;
         width = generator.nextInt(10) + 11;
         sizes = new int[width][height];

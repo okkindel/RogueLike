@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class AssetsLoader {
 
-    private Image shadow;
+    private Image shadow, drop_bag;
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
@@ -50,6 +50,7 @@ public class AssetsLoader {
         enemy_skeleton = new Image("file:assets/enemies/skeleton.png");
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
+        drop_bag = new Image("file:assets/bag.png");
     }
 
     Pane draw() {
@@ -171,6 +172,18 @@ public class AssetsLoader {
                     iV.setX(x_index*tile_size + 50);
                     iV.setY(y_index*tile_size + 50);
                     root.getChildren().add(iV);
+                }
+                /* DROP */
+                for (Drop drop: room.drop_list) {
+                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
+                        iV = new ImageView();
+                        iV.setFitHeight(tile_size);
+                        iV.setFitWidth(tile_size);
+                        iV.setImage(drop_bag);
+                        iV.setX(x_index*tile_size + 50);
+                        iV.setY(y_index*tile_size + 50);
+                        root.getChildren().add(iV);
+                    }
                 }
             }
         }

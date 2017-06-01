@@ -120,8 +120,8 @@ public class Motion {
     }
 
     private void enemyMove() {
-        ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
-        while(iterator.hasNext()) {
+        ListIterator <Enemies> iterator = Enemies.enemies_list.listIterator();
+        while (iterator.hasNext()) {
             Enemies enemies = iterator.next();
             enemies.moveAlgorithm();
             if(!enemies.isAlive()){

@@ -4,6 +4,7 @@ import java.util.Random;
 public class Enemies {
 
     static ArrayList<Enemies> enemies_list = new ArrayList<>();
+    private Random generator = new Random();
     String type = "";
     Room room;
     int positionX, positionY = 0;
@@ -21,7 +22,6 @@ public class Enemies {
 
         room = Level.rooms.get(index);
         if (room.isEnemy) {
-            Random generator = new Random();
             for (int numberOf = 0; numberOf < generator.nextInt(5); numberOf++) {
                 int x_position = generator.nextInt(room.width - 4) + 2;
                 int y_position = generator.nextInt(room.height - 4) + 2;
@@ -52,6 +52,10 @@ public class Enemies {
             room.sizes[prevX][prevY] = last_tile;
             Interface.newEvent(type + " died");
             Character.experience(this.experience_points);
+            if (generator.nextInt(5) == 0) {
+                Drop drop = new Drop (positionX, positionY);
+                Level.rooms.get(index).drop_list.add(drop);
+            }
             return false;
         }
         return true;

@@ -1,3 +1,5 @@
+import java.util.ListIterator;
+
 public class Character {
 
     static int x_value, y_value;
@@ -70,6 +72,15 @@ public class Character {
                 Level.rooms.get(present_room).sizes[step_x][step_y] = 46;
             if (step_y == y_value + 1)
                 Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
+
+            ListIterator <Drop> iterator = Level.rooms.get(present_room).drop_list.listIterator();
+            while (iterator.hasNext()) {
+                Drop drop = iterator.next();
+                if (drop.x_position == step_x && drop.y_position == step_y) {
+                    drop.checkTreasure();
+                    iterator.remove();
+                }
+            }
                 x_value = step_x;
                 y_value = step_y;
             } else
