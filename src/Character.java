@@ -173,7 +173,7 @@ public class Character {
             dexterity_points += 5;
             defence_points += 5;
             max_health += 25;
-            health_points += 50 * level;
+            health_points += (50 + 10 * level);
             if (health_points > max_health)
                 health_points = max_health;
         }
