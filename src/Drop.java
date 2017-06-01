@@ -36,7 +36,7 @@ public class Drop {
     }
 
     void checkTreasure() {
-        if (treasure > 0 && treasure < 7)
+        if (treasure >= 0 && treasure < 7)
             Interface.newItem(Mixtures.prevPotion(treasure) + 1);
         else
             Interface.newItem(treasure);

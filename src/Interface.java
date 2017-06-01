@@ -65,6 +65,7 @@ public class Interface {
         Image rooted = new Image("file:assets/inventory/buff_root.png");
         Image hunger = new Image("file:assets/inventory/buff_hunger.png");
         ImageView buff = new ImageView();
+
         if (Character.hunger > 400) {
             buff.setImage(hunger);
             buff.setX(430);

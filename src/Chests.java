@@ -36,7 +36,7 @@ public class Chests {
 
     void checkTreasure() {
         if (!was_taken) {
-            if (treasure > 0 && treasure < 7)
+            if (treasure >= 0 && treasure < 7)
                 Interface.newItem(Mixtures.prevPotion(treasure) + 1);
             else if (treasure == 8 || treasure == 9)
                 Interface.newItem(treasure);
