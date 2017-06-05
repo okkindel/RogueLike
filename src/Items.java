@@ -53,4 +53,16 @@ public class Items {
         Interface.inventory[8] = 0;
         was_clicked = false;
     }
+
+    void identify (int position) {
+        if (Interface.scrolls > 0) {
+            if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7) {
+                Mixtures.indetify(Interface.inventory[position] - 1);
+                Interface.scrolls -= 1;
+            } else
+                Interface.newEvent("You don't have to identify it.");
+        }
+        else
+            Interface.newEvent("You don't have enough scrolls.");
+    }
 }

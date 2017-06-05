@@ -46,7 +46,7 @@ public class Mixtures {
             Interface.newEvent("Nothing happened.");
         } else if (type == 1) {
             Interface.newEvent("Strange... I cannot move.");
-            character_paralyze = 5;
+            character_paralyze = 10;
         } else if (type == 2) {
             Interface.newEvent("You feel much stronger!");
             Character.strength_points += 5;
@@ -65,6 +65,11 @@ public class Mixtures {
         }
         mixtures_known[index] = true;
         Character.checkIfAlive();
+    }
+
+    static void indetify (int index) {
+        mixtures_known[index] = true;
+        mixtureType(index);
     }
 
     static int prevPotion (int numOf) {

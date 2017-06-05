@@ -29,10 +29,12 @@ public class Drop {
             treasure = 5;
         else if (random < 22)
             treasure = 6;
-        else if (random < 26)
+        else if (random < 25)
             treasure = 8;
-        else if (random < 30)
+        else if (random < 28)
             treasure = 9;
+        else if (random < 30)
+            treasure = 10;
     }
 
     void checkTreasure() {
@@ -40,5 +42,7 @@ public class Drop {
             Interface.newItem(Mixtures.prevPotion(treasure) + 1);
         else if (treasure == 8 || treasure == 9)
             Interface.newItem(treasure);
+        else if (treasure == 10)
+            Interface.scrolls += 1;
     }
 }

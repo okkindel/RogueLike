@@ -109,6 +109,13 @@ public class Motion {
                     stage.setScene(scene);
                 }
             }
+            else if (event.getCode() == KeyCode.I) {
+                if (Items.was_clicked) {
+                    items.identify(Items.last_position);
+                    scene.setRoot(assets.draw());
+                    stage.setScene(scene);
+                }
+            }
             if (Character.action_made) {
                 enemyMove();
                 Character.hunger();

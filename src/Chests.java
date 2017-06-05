@@ -12,7 +12,7 @@ public class Chests {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(30);
+        int random = generator.nextInt(33);
 
         if (random < 2)
             treasure = 0;
@@ -32,6 +32,8 @@ public class Chests {
             treasure = 8;
         else if (random < 25)
             treasure = 9;
+        else if (random < 28)
+            treasure = 10;
     }
 
     void checkTreasure() {
@@ -40,6 +42,8 @@ public class Chests {
                 Interface.newItem(Mixtures.prevPotion(treasure) + 1);
             else if (treasure == 8 || treasure == 9)
                 Interface.newItem(treasure);
+            else if (treasure == 10)
+                Interface.scrolls += 1;
             else
                 Interface.newEvent("There is nothing here.");
         }

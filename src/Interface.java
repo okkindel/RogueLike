@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 public class Interface {
 
     private static String [] message = new String [5];
+    static int scrolls = 0;
     static int [] inventory = new int [10];
 
     public Interface (Pane root) {
@@ -15,6 +16,7 @@ public class Interface {
         statusArea(root);
         buffs(root);
         inventory(root);
+        IdScrolls(root);
     }
 
     static void newEvent (String message) {
@@ -132,6 +134,20 @@ public class Interface {
                 index += 1;
             }
         }
+    }
+
+    private void IdScrolls(Pane root) {
+        Image scroll = new Image("file:assets/inventory/scroll.png");
+        Label scroll_counter = new Label("ID SCROLLS: " + scrolls);
+        scroll_counter.setGraphic(new ImageView(scroll));
+        scroll_counter.setAlignment(Pos.CENTER);
+        scroll_counter.getStyleClass().add("status_bar");
+        scroll_counter.setPadding(new Insets(5));
+        scroll_counter.setMaxWidth(125);
+        scroll_counter.setLayoutY(10);
+        scroll_counter.layoutXProperty().bind(root.widthProperty()
+                .subtract(scroll_counter.widthProperty()).subtract(20));
+        root.getChildren().add(scroll_counter);
     }
 
     private void statusArea(Pane root) {
