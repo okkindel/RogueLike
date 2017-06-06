@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Level {
 
-    static int howManyRooms = 15;
+    static int howManyRooms = 20;
     static ArrayList<Room> rooms = new ArrayList<>();
     static ArrayList<Drop> drop_list = new ArrayList<>();
 

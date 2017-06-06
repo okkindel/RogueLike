@@ -136,14 +136,16 @@ public class Motion {
         ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
         while (iterator.hasNext()) {
             Enemies enemies = iterator.next();
-            enemies.moveAlgorithm();
-            if (!enemies.isAlive()) {
-                iterator.remove();
+            if (enemies.index == Character.present_room) {
+                enemies.moveAlgorithm();
+                if (!enemies.isAlive()) {
+                    iterator.remove();
+                    scene.setRoot(assets.draw());
+                    stage.setScene(scene);
+                }
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
             }
-            scene.setRoot(assets.draw());
-            stage.setScene(scene);
         }
     }
 }

@@ -71,8 +71,7 @@ public class Enemies {
         prevY = positionY;
         room.sizes[positionX][positionY] = last_tile;
 
-        if (Character.present_room == index &&
-                Math.sqrt((positionX - Character.x_value) * (positionX - Character.x_value) +
+        if (Math.sqrt((positionX - Character.x_value) * (positionX - Character.x_value) +
                         (positionY - Character.y_value) * (positionY - Character.y_value)) < 6) {
             if (positionX > Character.x_value) {
                 if (positionY > Character.y_value) {
