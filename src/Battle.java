@@ -15,9 +15,8 @@ public class Battle {
             Interface.newEvent("Character dodged attack.");
         } else {
             Interface.newEvent(enemy.type + " attacks for : " + true_damage);
-            Character.health_points -= true_damage;
+            Character.modifyHealth(-true_damage);
         }
-        Character.checkIfAlive();
     }
 
     static void characterAttack(Enemies enemy) {

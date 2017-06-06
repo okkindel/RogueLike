@@ -89,6 +89,7 @@ public class Interface {
     }
 
     private void inventory(Pane root) {
+
         Image empty = new Image("file:assets/inventory/empty.png");
         /* POTIONS */
         Image green_potion = new Image("file:assets/inventory/green_potion.png");
@@ -101,6 +102,7 @@ public class Interface {
         /* FOOD */
         Image food_apple = new Image("file:assets/inventory/food_eggplant.png");
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
+        Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
 
         for (int i = 0, index = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -127,6 +129,8 @@ public class Interface {
                     eq_item.setImage(food_apple);
                 if (inventory[index] == 9)
                     eq_item.setImage(food_steak);
+                if (inventory[index] == 10)
+                    eq_item.setImage(food_mushroom);
                 eq_item.setY(220 + i * 40);
                 eq_item.setX(430 + j * 40);
 

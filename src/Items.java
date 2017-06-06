@@ -31,7 +31,7 @@ public class Items {
                 Interface.newEvent("Fresh eggplant. Where did it come from?");
             else {
                 Character.hunger = 0;
-                Character.addHealth(25);
+                Character.modifyHealth(25);
                 Interface.newEvent("Eggplant tastes great and cures hunger.");
             }
         }
@@ -40,8 +40,18 @@ public class Items {
                 Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
             else {
                 Character.hunger = 0;
-                Character.addHealth(35);
+                Character.modifyHealth(35);
                 Interface.newEvent("Old and stiff but nutritious.");
+            }
+        }
+        if (Interface.inventory[position] == 10) {
+            if (!action)
+                Interface.newEvent("A mushroom. I do not know if I should eat it.");
+            else {
+                Mixtures.character_confused = 15;
+                Character.max_health += 10;
+                Character.modifyHealth(-20);
+                Interface.newEvent("I feel a bit ... weird.");
             }
         }
         if (action)

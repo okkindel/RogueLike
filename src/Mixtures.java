@@ -66,7 +66,6 @@ public class Mixtures {
             Character.health_points /= 2;
         }
         mixtures_known[index] = true;
-        Character.checkIfAlive();
     }
 
     static void identify(int index) {

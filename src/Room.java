@@ -13,7 +13,7 @@ public class Room {
     private Random generator = new Random();
     ArrayList<Door> doors;
     ArrayList<Chests> chests_list;
-    static ArrayList<Drop> drop_list;
+    ArrayList<Drop> drop_list;
 
     Room(int index) {
 
@@ -117,6 +117,7 @@ public class Room {
             }
         } else {
             isGhostable = true;
+            addChests();
         }
 
         if (isZombiable || isSkeletonable || isGolemable || isGhostable)

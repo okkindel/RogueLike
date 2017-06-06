@@ -138,7 +138,7 @@ public class Character {
         }
     }
 
-    static void checkIfAlive() {
+    private static void checkIfAlive() {
         if (health_points <= 0) {
             health_points = 0;
             System.out.println("Character died.");
@@ -164,10 +164,11 @@ public class Character {
         }
     }
 
-    static void addHealth(int points) {
+    static void modifyHealth(int points) {
         health_points += points;
         if (health_points > max_health)
             health_points = max_health;
+        checkIfAlive();
     }
 
     static void experience(int experience_points) {
@@ -181,7 +182,7 @@ public class Character {
             dexterity_points += 5;
             defence_points += 5;
             max_health += 25;
-            addHealth(50 + 10 * level);
+            modifyHealth(50 + 10 * level);
         }
     }
 }
