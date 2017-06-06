@@ -53,7 +53,6 @@ public class Interface {
         status_bar.setAlignment(Pos.CENTER);
         status_bar.getStyleClass().add("status_bar");
         status_bar.setPadding(new Insets(20, 10, 20, 10));
-        status_bar.setMaxWidth(125);
         status_bar.setLayoutY(50);
         status_bar.layoutXProperty().bind(root.widthProperty()
                 .subtract(status_bar.widthProperty()).subtract(20));
@@ -148,7 +147,6 @@ public class Interface {
         scroll_counter.setAlignment(Pos.CENTER);
         scroll_counter.getStyleClass().add("status_bar");
         scroll_counter.setPadding(new Insets(5));
-        scroll_counter.setMaxWidth(125);
         scroll_counter.setLayoutY(10);
         scroll_counter.layoutXProperty().bind(root.widthProperty()
                 .subtract(scroll_counter.widthProperty()).subtract(20));
@@ -161,7 +159,6 @@ public class Interface {
                         + message[2] + "\n"
                         + message[1] + "\n"
                         + message[0]);
-        status_area.setMaxWidth(470);
         status_area.setAlignment(Pos.CENTER);
         status_area.setPadding(new Insets(10, 50, 10, 50));
         status_area.getStyleClass().add("status_area");

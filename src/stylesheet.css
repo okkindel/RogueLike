@@ -13,11 +13,13 @@
 
 .status_bar {
     -fx-min-width: 125;
+    -fx-max-width: 125;
     -fx-text-fill: rgb(100, 100, 100);
 }
 
 .status_area {
     -fx-min-width: 470;
+    -fx-max-width: 470;
     -fx-text-fill: linear-gradient(black, white);
     -fx-text-alignment: center;
 }

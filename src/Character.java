@@ -77,8 +77,11 @@ public class Character {
                 while (iterator.hasNext()) {
                     Drop drop = iterator.next();
                     if (drop.index == present_room && drop.x_position == step_x && drop.y_position == step_y) {
-                        drop.checkTreasure();
-                        iterator.remove();
+                        if (Interface.inventory[8] == 0) {
+                            drop.checkTreasure();
+                            iterator.remove();
+                        } else
+                            Interface.newEvent("Inventory full!");
                     }
                 }
                 x_value = step_x;
