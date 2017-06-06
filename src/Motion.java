@@ -1,5 +1,7 @@
 import javafx.scene.input.KeyCode;
+
 import java.util.ListIterator;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -9,7 +11,7 @@ public class Motion {
     private AssetsLoader assets;
     private Stage stage;
 
-    Motion (Scene scene, AssetsLoader assets, Stage stage) {
+    Motion(Scene scene, AssetsLoader assets, Stage stage) {
         this.scene = scene;
         this.assets = assets;
         this.stage = stage;
@@ -22,94 +24,99 @@ public class Motion {
 
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.UP) {
-                character.decreaseY();
+                if (Mixtures.character_confused == 0)
+                    character.decreaseY();
+                else {
+                    character.decreaseX();
+                    Mixtures.character_confused--;
+                }
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.LEFT) {
-                character.decreaseX();
+            } else if (event.getCode() == KeyCode.LEFT) {
+                if (Mixtures.character_confused == 0)
+                    character.decreaseX();
+                else {
+                    character.decreaseY();
+                    Mixtures.character_confused--;
+                }
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DOWN) {
-                character.increaseY();
+            } else if (event.getCode() == KeyCode.DOWN) {
+                if (Mixtures.character_confused == 0)
+                    character.increaseY();
+                else {
+                    character.increaseX();
+                    Mixtures.character_confused--;
+                }
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.RIGHT) {
-                character.increaseX();
+            } else if (event.getCode() == KeyCode.RIGHT) {
+                if (Mixtures.character_confused == 0)
+                    character.increaseX();
+                else {
+                    character.increaseY();
+                    Mixtures.character_confused--;
+                }
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT1) {
+            } else if (event.getCode() == KeyCode.DIGIT1) {
                 items.checkItem(0, false);
                 Items.last_position = 0;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT2) {
+            } else if (event.getCode() == KeyCode.DIGIT2) {
                 items.checkItem(1, false);
                 Items.last_position = 1;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT3) {
+            } else if (event.getCode() == KeyCode.DIGIT3) {
                 items.checkItem(2, false);
                 Items.last_position = 2;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT4) {
+            } else if (event.getCode() == KeyCode.DIGIT4) {
                 items.checkItem(3, false);
                 Items.last_position = 3;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT5) {
+            } else if (event.getCode() == KeyCode.DIGIT5) {
                 items.checkItem(4, false);
                 Items.last_position = 4;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT6) {
+            } else if (event.getCode() == KeyCode.DIGIT6) {
                 items.checkItem(5, false);
                 Items.last_position = 5;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT7) {
+            } else if (event.getCode() == KeyCode.DIGIT7) {
                 items.checkItem(6, false);
                 Items.last_position = 6;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT8) {
+            } else if (event.getCode() == KeyCode.DIGIT8) {
                 items.checkItem(7, false);
                 Items.last_position = 7;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.DIGIT9) {
+            } else if (event.getCode() == KeyCode.DIGIT9) {
                 items.checkItem(8, false);
                 Items.last_position = 8;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
-            }
-            else if (event.getCode() == KeyCode.Z) {
+            } else if (event.getCode() == KeyCode.Z) {
                 if (Items.was_clicked) {
                     items.checkItem(Items.last_position, true);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                 }
-            }
-            else if (event.getCode() == KeyCode.X) {
+            } else if (event.getCode() == KeyCode.X) {
                 if (Items.was_clicked) {
                     items.dropItem(Items.last_position);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                 }
-            }
-            else if (event.getCode() == KeyCode.I) {
+            } else if (event.getCode() == KeyCode.I) {
                 if (Items.was_clicked) {
                     items.identify(Items.last_position);
                     scene.setRoot(assets.draw());
@@ -126,11 +133,11 @@ public class Motion {
     }
 
     private void enemyMove() {
-        ListIterator <Enemies> iterator = Enemies.enemies_list.listIterator();
+        ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
         while (iterator.hasNext()) {
             Enemies enemies = iterator.next();
             enemies.moveAlgorithm();
-            if(!enemies.isAlive()){
+            if (!enemies.isAlive()) {
                 iterator.remove();
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);

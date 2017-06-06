@@ -18,7 +18,7 @@ public class Enemies {
     int last_tile;
     int index;
 
-    Enemies (int index) {
+    Enemies(int index) {
 
         room = Level.rooms.get(index);
         if (room.isEnemy) {
@@ -29,13 +29,16 @@ public class Enemies {
                     if (room.isZombiable) {
                         Zombie zombie = new Zombie(room.index, x_position, y_position);
                         enemies_list.add(zombie);
-                    } if (room.isSkeletonable) {
+                    }
+                    if (room.isSkeletonable) {
                         Skeleton skeleton = new Skeleton(room.index, x_position, y_position);
                         enemies_list.add(skeleton);
-                    } if (room.isGolemable) {
+                    }
+                    if (room.isGolemable) {
                         Golem golem = new Golem(room.index, x_position, y_position);
                         enemies_list.add(golem);
-                    } if (room.isGhostable) {
+                    }
+                    if (room.isGhostable) {
                         Ghost ghost = new Ghost(room.index, x_position, y_position);
                         enemies_list.add(ghost);
                     }
@@ -45,15 +48,16 @@ public class Enemies {
         }
     }
 
-    Enemies() {}
+    Enemies() {
+    }
 
-    boolean isAlive(){
+    boolean isAlive() {
         if (this.health_points == 0) {
             room.sizes[prevX][prevY] = last_tile;
             Interface.newEvent(type + " died");
             Character.experience(this.experience_points);
             if (generator.nextInt(3) == 0) {
-                Drop drop = new Drop (index, positionX, positionY);
+                Drop drop = new Drop(index, positionX, positionY);
                 Level.drop_list.add(drop);
             }
             return false;
@@ -68,8 +72,8 @@ public class Enemies {
         room.sizes[positionX][positionY] = last_tile;
 
         if (Character.present_room == index &&
-            Math.sqrt ((positionX - Character.x_value) * (positionX - Character.x_value) +
-            (positionY - Character.y_value) * (positionY - Character.y_value)) < 6) {
+                Math.sqrt((positionX - Character.x_value) * (positionX - Character.x_value) +
+                        (positionY - Character.y_value) * (positionY - Character.y_value)) < 6) {
             if (positionX > Character.x_value) {
                 if (positionY > Character.y_value) {
                     positionX--;
@@ -113,7 +117,7 @@ public class Enemies {
 
 class Zombie extends Enemies {
 
-    Zombie (int index, int positionX, int positionY) {
+    Zombie(int index, int positionX, int positionY) {
 
         this.positionX = positionX;
         this.positionY = positionY;
@@ -133,7 +137,7 @@ class Zombie extends Enemies {
 
 class Skeleton extends Enemies {
 
-    Skeleton (int index, int positionX, int positionY) {
+    Skeleton(int index, int positionX, int positionY) {
 
         this.positionX = positionX;
         this.positionY = positionY;
@@ -153,7 +157,7 @@ class Skeleton extends Enemies {
 
 class Golem extends Enemies {
 
-    Golem (int index, int positionX, int positionY) {
+    Golem(int index, int positionX, int positionY) {
 
         this.positionX = positionX;
         this.positionY = positionY;
@@ -173,7 +177,7 @@ class Golem extends Enemies {
 
 class Ghost extends Enemies {
 
-    Ghost (int index, int positionX, int positionY) {
+    Ghost(int index, int positionX, int positionY) {
 
         this.positionX = positionX;
         this.positionY = positionY;

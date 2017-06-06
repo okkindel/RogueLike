@@ -2,12 +2,13 @@ public class Items {
 
     static boolean was_clicked = false;
     static int last_position;
+    static int scrolls = 0;
 
     Items() {
         new Mixtures();
     }
 
-    void checkItem (int position, boolean action) {
+    void checkItem(int position, boolean action) {
 
         was_clicked = true;
         /* EMPTY */
@@ -30,7 +31,7 @@ public class Items {
                 Interface.newEvent("Fresh apple. Where did it come from?");
             else {
                 Character.hunger = 0;
-                Character.addHealth (25);
+                Character.addHealth(25);
                 Interface.newEvent("Apple tastes great and cures hunger.");
             }
         }
@@ -39,7 +40,7 @@ public class Items {
                 Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
             else {
                 Character.hunger = 0;
-                Character.addHealth (35);
+                Character.addHealth(35);
                 Interface.newEvent("Old and stiff but nutritious.");
             }
         }
@@ -47,22 +48,21 @@ public class Items {
             dropItem(position);
     }
 
-    void dropItem (int position) {
+    void dropItem(int position) {
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
         Interface.inventory[8] = 0;
         was_clicked = false;
     }
 
-    void identify (int position) {
-        if (Interface.scrolls > 0) {
+    void identify(int position) {
+        if (scrolls > 0) {
             if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7) {
-                Mixtures.indetify(Interface.inventory[position] - 1);
-                Interface.scrolls -= 1;
+                Mixtures.identify(Interface.inventory[position] - 1);
+                scrolls -= 1;
             } else
                 Interface.newEvent("You don't have to identify it.");
-        }
-        else
+        } else
             Interface.newEvent("You don't have enough scrolls.");
     }
 }

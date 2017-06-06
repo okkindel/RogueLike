@@ -7,42 +7,42 @@ public class Drop {
     int index;
     private int treasure;
 
-    Drop (int index, int x_position, int y_position) {
+    Drop(int index, int x_position, int y_position) {
         this.x_position = x_position;
         this.y_position = y_position;
         this.index = index;
 
         Random generator = new Random();
-        int random = generator.nextInt(30);
+        int random = generator.nextInt(120);
 
-        if (random < 3)
-            treasure = 0;
-        else if (random < 6)
+        if (random < 10)
             treasure = 1;
-        else if (random < 9)
+        else if (random < 20)
             treasure = 2;
-        else if (random < 12)
-            treasure = 3;
-        else if (random < 16)
-            treasure = 4;
-        else if (random < 19)
-            treasure = 5;
-        else if (random < 22)
-            treasure = 6;
         else if (random < 25)
-            treasure = 8;
-        else if (random < 28)
-            treasure = 9;
+            treasure = 3;
         else if (random < 30)
+            treasure = 4;
+        else if (random < 55)
+            treasure = 5;
+        else if (random < 60)
+            treasure = 6;
+        else if (random < 70)
+            treasure = 7;
+        else if (random < 90)
+            treasure = 8;
+        else if (random < 110)
+            treasure = 9;
+        else if (random < 120)
             treasure = 10;
     }
 
     void checkTreasure() {
-        if (treasure >= 0 && treasure < 7)
-            Interface.newItem(Mixtures.prevPotion(treasure) + 1);
+        if (treasure > 0 && treasure < 8)
+            Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);
         else if (treasure == 8 || treasure == 9)
             Interface.newItem(treasure);
         else if (treasure == 10)
-            Interface.scrolls += 1;
+            Items.scrolls += 1;
     }
 }

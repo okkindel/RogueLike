@@ -4,17 +4,17 @@ import java.util.Arrays;
 
 public class Room {
 
-    private int [] north, south, east, west;
+    private int[] north, south, east, west;
     int index = 0;
-    int [][] sizes;
+    int[][] sizes;
     int height, width = 0;
     boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     boolean former_room = false;
     private Random generator = new Random();
-    ArrayList <Door> doors;
-    ArrayList <Chests> chests_list;
+    ArrayList<Door> doors;
+    ArrayList<Chests> chests_list;
 
-    Room (int index) {
+    Room(int index) {
 
         this.index = index;
         doors = new ArrayList<>();
@@ -109,13 +109,13 @@ public class Room {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 isZombiable = true;
                 addChests();
             }
+        } else {
+            isGhostable = true;
         }
-        else { isGhostable = true; }
 
         if (isZombiable || isSkeletonable || isGolemable || isGhostable)
             isEnemy = true;
@@ -163,10 +163,10 @@ public class Room {
 
         for (int x = 0; x < width; x++) {
             sizes[x][0] = north[x];
-            sizes[x][height-1] = south[x];
+            sizes[x][height - 1] = south[x];
         }
         for (int y = 0; y < height; y++) {
-            sizes[width-1][y] = east[y];
+            sizes[width - 1][y] = east[y];
             sizes[0][y] = west[y];
         }
     }
@@ -183,8 +183,7 @@ public class Room {
                         if (north[place] != 3 && north[place - 1] != 20 && north[place + 1] != 20) {
                             north[place] = 20;
                             break;
-                        }
-                        else
+                        } else
                             wall += 1;
                     }
                     if (wall == 1) {
@@ -192,8 +191,7 @@ public class Room {
                         if (south[place] != 20 && south[place - 1] != 20 && south[place + 1] != 20) {
                             south[place] = 20;
                             break;
-                        }
-                        else
+                        } else
                             wall += 1;
                     }
                     if (wall == 2) {
@@ -201,8 +199,7 @@ public class Room {
                         if (east[place] != 20 && east[place - 1] != 20 && east[place + 1] != 20) {
                             east[place] = 20;
                             break;
-                        }
-                        else
+                        } else
                             wall += 1;
                     }
                     if (wall == 3) {
@@ -210,8 +207,7 @@ public class Room {
                         if (west[place] != 20 && west[place - 1] != 20 && west[place + 1] != 20) {
                             west[place] = 20;
                             break;
-                        }
-                        else
+                        } else
                             wall = 0;
                     }
                 }

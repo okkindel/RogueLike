@@ -3,9 +3,9 @@ import java.util.Random;
 
 public class StructureGenerator {
 
-    static boolean [][] structure;
+    static boolean[][] structure;
 
-    void generate (int vertex) {
+    void generate(int vertex) {
 
         Random generator = new Random();
         structure = new boolean[vertex][vertex];
@@ -45,7 +45,7 @@ public class StructureGenerator {
         for (int i = 0; i < vertex; i++) {
             for (int j = 0; j < vertex; j++) {
                 if (structure[i][j])
-                     System.out.print("1 ");
+                    System.out.print("1 ");
                 else
                     System.out.print("0 ");
             }

@@ -1,16 +1,17 @@
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+
 import java.io.IOException;
 import java.util.Objects;
 
 public class AssetsLoader {
 
-    private Image shadow, drop_bag;
+    private Image shadow, drop_bag, dead_screen;
     private Image wooden_doors, wooden_chest;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
-                  wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
+            wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
     private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
@@ -23,6 +24,8 @@ public class AssetsLoader {
     void load() throws IOException {
 
         shadow = new Image("file:assets/shadow.png");
+        dead_screen = new Image("file:assets/dead_screen.png");
+        drop_bag = new Image("file:assets/inventory/bag.png");
         wall_block = new Image("file:assets/wall/brick.png");
         wall_broken_block = new Image("file:assets/wall/brick_broken.png");
         wall_plant_up = new Image("file:assets/wall/brick_plant_u.png");
@@ -50,7 +53,6 @@ public class AssetsLoader {
         enemy_skeleton = new Image("file:assets/enemies/skeleton.png");
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
-        drop_bag = new Image("file:assets/inventory/bag.png");
     }
 
     Pane draw() {
@@ -64,10 +66,22 @@ public class AssetsLoader {
         y_begin = Character.y_value - 5;
         x_end = Character.x_value + 6;
         y_end = Character.y_value + 6;
-        if (Character.x_value < 5) { x_begin = 0; x_end += (5 - Character.x_value); }
-        if (Character.y_value < 5) { y_begin = 0; y_end += (5 - Character.y_value); }
-        if (Character.x_value > (room.width - 6)) { x_end = room.width; x_begin += (room.width - Character.x_value - 6); }
-        if (Character.y_value > (room.height - 6)) { y_end = room.height; y_begin += (room.height - Character.y_value - 6); }
+        if (Character.x_value < 5) {
+            x_begin = 0;
+            x_end += (5 - Character.x_value);
+        }
+        if (Character.y_value < 5) {
+            y_begin = 0;
+            y_end += (5 - Character.y_value);
+        }
+        if (Character.x_value > (room.width - 6)) {
+            x_end = room.width;
+            x_begin += (room.width - Character.x_value - 6);
+        }
+        if (Character.y_value > (room.height - 6)) {
+            y_end = room.height;
+            y_begin += (room.height - Character.y_value - 6);
+        }
 
         for (int x_tile = x_begin, x_index = 0; x_tile < x_end; x_tile++, x_index++) {
             for (int y_tile = y_begin, y_index = 0; y_tile < y_end; y_tile++, y_index++) {
@@ -101,8 +115,8 @@ public class AssetsLoader {
                         iV.setImage(wall_moss_left);
                     if (room.sizes[x_tile][y_tile] == 97)
                         iV.setImage(wall_moss_right);
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* FLOOR TILES */
@@ -117,8 +131,8 @@ public class AssetsLoader {
                         iV.setImage(grass_up);
                     if (room.sizes[x_tile][y_tile] == 14)
                         iV.setImage(grass_down);
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* DOORS TILES */
@@ -127,15 +141,15 @@ public class AssetsLoader {
                         iV.setImage(wooden_doors);
                     if (room.sizes[x_tile][y_tile] == 25)
                         iV.setImage(wooden_chest);
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* CHARACTER TILES */
                 if (room.sizes[x_tile][y_tile] >= 44 && room.sizes[x_tile][y_tile] <= 47) {
                     iV.setImage(background(Character.last_tile, "character"));
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
@@ -148,19 +162,19 @@ public class AssetsLoader {
                         iV.setImage(character_up);
                     if (room.sizes[x_tile][y_tile] == 47)
                         iV.setImage(character_down);
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
                 /* DROP */
-                for (Drop drop: Level.drop_list) {
+                for (Drop drop : Level.drop_list) {
                     if (room.index == drop.index && x_tile == drop.x_position && y_tile == drop.y_position) {
                         iV = new ImageView();
                         iV.setFitHeight(tile_size);
                         iV.setFitWidth(tile_size);
                         iV.setImage(drop_bag);
-                        iV.setX(x_index*tile_size + 50);
-                        iV.setY(y_index*tile_size + 50);
+                        iV.setX(x_index * tile_size + 50);
+                        iV.setY(y_index * tile_size + 50);
                         root.getChildren().add(iV);
                     }
                 }
@@ -168,8 +182,8 @@ public class AssetsLoader {
                 if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
                     iV = new ImageView();
                     iV.setImage(background(checkEnemyTile(x_tile, y_tile, room.index), "enemy"));
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                     iV = new ImageView();
                     iV.setFitHeight(tile_size);
@@ -182,8 +196,8 @@ public class AssetsLoader {
                         iV.setImage(enemy_golem);
                     if (room.sizes[x_tile][y_tile] == 73)
                         iV.setImage(enemy_ghost);
-                    iV.setX(x_index*tile_size + 50);
-                    iV.setY(y_index*tile_size + 50);
+                    iV.setX(x_index * tile_size + 50);
+                    iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
             }
@@ -193,6 +207,8 @@ public class AssetsLoader {
         iV.setFitHeight(tile_size * 11);
         iV.setFitWidth(tile_size * 11);
         iV.setImage(shadow);
+        if (Character.is_dead)
+            iV.setImage(dead_screen);
         iV.setX(50);
         iV.setY(50);
         root.getChildren().add(iV);
@@ -200,9 +216,9 @@ public class AssetsLoader {
         return root;
     }
 
-    private int checkEnemyTile (int posX, int posY, int index) {
+    private int checkEnemyTile(int posX, int posY, int index) {
         int last_tile = 0;
-        for (Enemies enemy: Enemies.enemies_list) {
+        for (Enemies enemy : Enemies.enemies_list) {
             if (enemy.index == index) {
                 if (posX == enemy.positionX && posY == enemy.positionY)
                     last_tile = enemy.last_tile;
@@ -211,7 +227,7 @@ public class AssetsLoader {
         return last_tile;
     }
 
-    private Image background (int last_tile, String type) {
+    private Image background(int last_tile, String type) {
         if (last_tile == 10)
             return floor_block;
         if (last_tile == 11)
@@ -231,14 +247,16 @@ public class AssetsLoader {
             return floor_block;
     }
 
-    private void terminalShowing () {
+    private void terminalShowing() {
         for (int index = 0; index < Level.howManyRooms; index++) {
             Room room = Level.rooms.get(index);
             for (int x = 0; x < room.width; x++) {
                 for (int y = 0; y < room.height; y++) {
                     System.out.print(room.sizes[x][y]);
-                } System.out.println();
-            } System.out.println();
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
     }
 }

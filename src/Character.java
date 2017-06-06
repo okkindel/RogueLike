@@ -14,11 +14,12 @@ public class Character {
     static int next_level = 100;
     static int level = 1;
     static int hunger = 0;
+    static boolean is_dead = false;
     static boolean action_made = false;
 
     void createCharacter() {
         Room room = Level.rooms.get(0);
-        last_tile = room.sizes[room.width/2][room.height/2];
+        last_tile = room.sizes[room.width / 2][room.height / 2];
         x_value = room.width / 2;
         y_value = room.height / 2;
         Level.rooms.get(present_room).sizes[x_value][y_value] = 44;
@@ -28,66 +29,64 @@ public class Character {
 
     /* CHARACTER GOING DOWN */
     void increaseY() {
-        nextStep (x_value, y_value + 1);
+        nextStep(x_value, y_value + 1);
     }
 
     /* CHARACTER GOING UP */
     void decreaseY() {
-        nextStep (x_value, y_value - 1);
+        nextStep(x_value, y_value - 1);
     }
 
     /* CHARACTER GOING RIGHT */
     void increaseX() {
-        nextStep (x_value + 1, y_value);
+        nextStep(x_value + 1, y_value);
     }
 
     /* CHARACTER GOING LEFT */
     void decreaseX() {
-        nextStep (x_value - 1, y_value);
+        nextStep(x_value - 1, y_value);
     }
 
     /* ACTION AFTER STEP */
-    private void nextStep (int step_x, int step_y) {
+    private void nextStep(int step_x, int step_y) {
 
         Items.was_clicked = false;
         if (Level.rooms.get(present_room).sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
         else if (Level.rooms.get(present_room).sizes[step_x][step_y] == 25) {
-            for (Chests chest: Level.rooms.get(present_room).chests_list) {
+            for (Chests chest : Level.rooms.get(present_room).chests_list) {
                 if (chest.x_position == step_x && chest.y_position == step_y) {
                     chest.checkTreasure();
                 }
             }
-        }
-        else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
+        } else if (Level.rooms.get(present_room).sizes[step_x][step_y] < 70
                 || Level.rooms.get(present_room).sizes[step_x][step_y] > 99) {
             if (Mixtures.character_paralyze == 0) {
-            Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
-            last_tile = Level.rooms.get(present_room).sizes[step_x][step_y];
-            if (step_x == x_value - 1)
-                Level.rooms.get(present_room).sizes[step_x][step_y] = 44;
-            if (step_x == x_value + 1)
-                Level.rooms.get(present_room).sizes[step_x][step_y] = 45;
-            if (step_y == y_value - 1)
-                Level.rooms.get(present_room).sizes[step_x][step_y] = 46;
-            if (step_y == y_value + 1)
-                Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
+                Level.rooms.get(present_room).sizes[x_value][y_value] = last_tile;
+                last_tile = Level.rooms.get(present_room).sizes[step_x][step_y];
+                if (step_x == x_value - 1)
+                    Level.rooms.get(present_room).sizes[step_x][step_y] = 44;
+                if (step_x == x_value + 1)
+                    Level.rooms.get(present_room).sizes[step_x][step_y] = 45;
+                if (step_y == y_value - 1)
+                    Level.rooms.get(present_room).sizes[step_x][step_y] = 46;
+                if (step_y == y_value + 1)
+                    Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
 
-            ListIterator <Drop> iterator = Level.drop_list.listIterator();
-            while (iterator.hasNext()) {
-                Drop drop = iterator.next();
-                if (drop.index == present_room && drop.x_position == step_x && drop.y_position == step_y) {
-                    drop.checkTreasure();
-                    iterator.remove();
+                ListIterator<Drop> iterator = Level.drop_list.listIterator();
+                while (iterator.hasNext()) {
+                    Drop drop = iterator.next();
+                    if (drop.index == present_room && drop.x_position == step_x && drop.y_position == step_y) {
+                        drop.checkTreasure();
+                        iterator.remove();
+                    }
                 }
-            }
                 x_value = step_x;
                 y_value = step_y;
             } else
                 Mixtures.character_paralyze -= 1;
             action_made = true;
-        }
-        else if (Level.rooms.get(present_room).sizes[step_x][step_y] >= 70
+        } else if (Level.rooms.get(present_room).sizes[step_x][step_y] >= 70
                 || Level.rooms.get(present_room).sizes[step_x][step_y] <= 80) {
             for (Enemies enemy : Enemies.enemies_list) {
                 if (enemy.index == present_room) {
@@ -100,7 +99,7 @@ public class Character {
         }
     }
 
-    private void whichDoor (int x, int y) {
+    private void whichDoor(int x, int y) {
 
         for (Door door : Level.rooms.get(present_room).doors) {
             if (door.x == x && door.y == y) {
@@ -140,7 +139,7 @@ public class Character {
         if (health_points <= 0) {
             health_points = 0;
             System.out.println("Character died.");
-            System.exit(0);
+            is_dead = true;
         }
     }
 
@@ -162,13 +161,13 @@ public class Character {
         }
     }
 
-    static void addHealth (int points) {
+    static void addHealth(int points) {
         health_points += points;
         if (health_points > max_health)
             health_points = max_health;
     }
 
-    static void experience (int experience_points) {
+    static void experience(int experience_points) {
         experience += experience_points;
         if (experience >= next_level) {
             level += 1;
@@ -179,7 +178,7 @@ public class Character {
             dexterity_points += 5;
             defence_points += 5;
             max_health += 25;
-            addHealth (50 + 10 * level);
+            addHealth(50 + 10 * level);
         }
     }
 }

@@ -7,11 +7,10 @@ import javafx.geometry.Pos;
 
 public class Interface {
 
-    private static String [] message = new String [5];
-    static int scrolls = 0;
-    static int [] inventory = new int [10];
+    private static String[] message = new String[5];
+    static int[] inventory = new int[10];
 
-    public Interface (Pane root) {
+    public Interface(Pane root) {
         statusBar(root);
         statusArea(root);
         buffs(root);
@@ -19,14 +18,14 @@ public class Interface {
         IdScrolls(root);
     }
 
-    static void newEvent (String message) {
+    static void newEvent(String message) {
         Interface.message[3] = Interface.message[2];
         Interface.message[2] = Interface.message[1];
         Interface.message[1] = Interface.message[0];
         Interface.message[0] = message;
     }
 
-    static void newItem (int item) {
+    static void newItem(int item) {
         if (inventory[8] == 0) {
             inventory[8] = inventory[7];
             inventory[7] = inventory[6];
@@ -37,20 +36,19 @@ public class Interface {
             inventory[2] = inventory[1];
             inventory[1] = inventory[0];
             inventory[0] = item;
-        }
-        else
+        } else
             newEvent("Inventory full!");
     }
 
-    private void statusBar (Pane root) {
+    private void statusBar(Pane root) {
         Image icons = new Image("file:assets/inventory/status_bar.png");
         Label status_bar = new Label(
-                   "HP: " + Character.health_points + " / " + Character.max_health
-                     + "\nSTR: " + Character.strength_points
-                     + "\nDEX: " + Character.dexterity_points
-                     + "\nDEF: " + Character.defence_points
-                     + "\nEXP: " + Character.experience + " / " + Character.next_level
-                     + "\nLVL: " + Character.level);
+                "HP: " + Character.health_points + " / " + Character.max_health
+                        + "\nSTR: " + Character.strength_points
+                        + "\nDEX: " + Character.dexterity_points
+                        + "\nDEF: " + Character.defence_points
+                        + "\nEXP: " + Character.experience + " / " + Character.next_level
+                        + "\nLVL: " + Character.level);
         status_bar.setGraphic(new ImageView(icons));
         status_bar.setAlignment(Pos.CENTER);
         status_bar.getStyleClass().add("status_bar");
@@ -62,10 +60,11 @@ public class Interface {
         root.getChildren().add(status_bar);
     }
 
-    private void buffs (Pane root) {
+    private void buffs(Pane root) {
 
         Image rooted = new Image("file:assets/inventory/buff_root.png");
         Image hunger = new Image("file:assets/inventory/buff_hunger.png");
+        Image confuse = new Image("file:assets/inventory/buff_confuse.png");
         ImageView buff = new ImageView();
 
         if (Character.hunger > 400) {
@@ -80,9 +79,15 @@ public class Interface {
             buff.setY(360);
             root.getChildren().add(buff);
         }
+        if (Mixtures.character_confused > 0) {
+            buff.setImage(confuse);
+            buff.setX(510);
+            buff.setY(360);
+            root.getChildren().add(buff);
+        }
     }
 
-    private void inventory (Pane root) {
+    private void inventory(Pane root) {
         Image empty = new Image("file:assets/inventory/empty.png");
         /* POTIONS */
         Image green_potion = new Image("file:assets/inventory/green_potion.png");
@@ -138,7 +143,7 @@ public class Interface {
 
     private void IdScrolls(Pane root) {
         Image scroll = new Image("file:assets/inventory/scroll.png");
-        Label scroll_counter = new Label("ID SCROLLS: " + scrolls);
+        Label scroll_counter = new Label("ID SCROLLS: " + Items.scrolls);
         scroll_counter.setGraphic(new ImageView(scroll));
         scroll_counter.setAlignment(Pos.CENTER);
         scroll_counter.getStyleClass().add("status_bar");
@@ -153,9 +158,9 @@ public class Interface {
     private void statusArea(Pane root) {
         Label status_area = new Label(
                 message[3] + "\n"
-                   + message[2] + "\n"
-                   + message[1] + "\n"
-                   + message[0]);
+                        + message[2] + "\n"
+                        + message[1] + "\n"
+                        + message[0]);
         status_area.setMaxWidth(470);
         status_area.setAlignment(Pos.CENTER);
         status_area.setPadding(new Insets(10, 50, 10, 50));
