@@ -23,8 +23,8 @@ public class AssetsLoader {
 
     void load() throws IOException {
 
-        shadow = new Image("file:assets/shadow.png");
-        dead_screen = new Image("file:assets/dead_screen.png");
+        shadow = new Image("file:assets/gui/shadow.png");
+        dead_screen = new Image("file:assets/gui/dead_screen.png");
         drop_bag = new Image("file:assets/inventory/bag.png");
         wall_block = new Image("file:assets/wall/brick.png");
         wall_broken_block = new Image("file:assets/wall/brick_broken.png");

@@ -41,7 +41,7 @@ public class Interface {
     }
 
     private void statusBar(Pane root) {
-        Image icons = new Image("file:assets/inventory/status_bar.png");
+        Image icons = new Image("file:assets/gui/status_bar.png");
         Label status_bar = new Label(
                 "HP: " + Character.health_points + " / " + Character.max_health
                         + "\nSTR: " + Character.strength_points
@@ -147,7 +147,7 @@ public class Interface {
     }
 
     private void IdScrolls(Pane root) {
-        Image scroll = new Image("file:assets/inventory/scroll.png");
+        Image scroll = new Image("file:assets/gui/scroll.png");
         Label scroll_counter = new Label("ID SCROLLS: " + Items.scrolls);
         scroll_counter.setGraphic(new ImageView(scroll));
         scroll_counter.setAlignment(Pos.CENTER);
