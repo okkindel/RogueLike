@@ -56,7 +56,7 @@ public class Mixtures {
             Interface.newEvent("You feel much more skillful.");
             Character.dexterity_points += 5;
         } else if (type == 4) {
-            Interface.newEvent("Delicious and refreshing, do I have more of it?");
+            Interface.newEvent("Delicious and refreshing. Do I have more of it?");
             Character.health_points = Character.max_health;
         } else if (type == 5) {
             Interface.newEvent("The enlightenment of the ancestors is coming upon you.");
