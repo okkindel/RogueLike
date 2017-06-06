@@ -97,7 +97,7 @@ public class Interface {
         Image red_potion = new Image("file:assets/inventory/red_potion.png");
         Image purple_potion = new Image("file:assets/inventory/purple_potion.png");
         /* FOOD */
-        Image food_apple = new Image("file:assets/inventory/food_apple.png");
+        Image food_apple = new Image("file:assets/inventory/food_eggplant.png");
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
 
         for (int i = 0, index = 0; i < 3; i++) {

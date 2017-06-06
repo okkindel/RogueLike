@@ -28,11 +28,11 @@ public class Items {
         /* FOOD */
         if (Interface.inventory[position] == 8) {
             if (!action)
-                Interface.newEvent("Fresh apple. Where did it come from?");
+                Interface.newEvent("Fresh eggplant. Where did it come from?");
             else {
                 Character.hunger = 0;
                 Character.addHealth(25);
-                Interface.newEvent("Apple tastes great and cures hunger.");
+                Interface.newEvent("Eggplant tastes great and cures hunger.");
             }
         }
         if (Interface.inventory[position] == 9) {
