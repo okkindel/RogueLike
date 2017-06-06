@@ -58,7 +58,7 @@ public class Enemies {
             Character.experience(this.experience_points);
             if (generator.nextInt(3) == 0) {
                 Drop drop = new Drop(index, positionX, positionY);
-                Level.drop_list.add(drop);
+                Level.rooms.get(index).drop_list.add(drop);
             }
             return false;
         }

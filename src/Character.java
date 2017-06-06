@@ -73,7 +73,7 @@ public class Character {
                 if (step_y == y_value + 1)
                     Level.rooms.get(present_room).sizes[step_x][step_y] = 47;
 
-                ListIterator<Drop> iterator = Level.drop_list.listIterator();
+                ListIterator<Drop> iterator = Level.rooms.get(present_room).drop_list.listIterator();
                 while (iterator.hasNext()) {
                     Drop drop = iterator.next();
                     if (drop.index == present_room && drop.x_position == step_x && drop.y_position == step_y) {

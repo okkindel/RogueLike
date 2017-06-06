@@ -13,12 +13,14 @@ public class Room {
     private Random generator = new Random();
     ArrayList<Door> doors;
     ArrayList<Chests> chests_list;
+    static ArrayList<Drop> drop_list;
 
     Room(int index) {
 
         this.index = index;
         doors = new ArrayList<>();
         chests_list = new ArrayList<>();
+        drop_list = new ArrayList<>();
         height = generator.nextInt(10) + 11;
         width = generator.nextInt(10) + 11;
         sizes = new int[width][height];
