@@ -64,21 +64,23 @@ public class Interface {
         Image rooted = new Image("file:assets/inventory/buff_root.png");
         Image hunger = new Image("file:assets/inventory/buff_hunger.png");
         Image confuse = new Image("file:assets/inventory/buff_confuse.png");
-        ImageView buff = new ImageView();
 
         if (Character.hunger > 400) {
+            ImageView buff = new ImageView();
             buff.setImage(hunger);
             buff.setX(430);
             buff.setY(360);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_paralyze > 0) {
+            ImageView buff = new ImageView();
             buff.setImage(rooted);
             buff.setX(470);
             buff.setY(360);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_confused > 0) {
+            ImageView buff = new ImageView();
             buff.setImage(confuse);
             buff.setX(510);
             buff.setY(360);
