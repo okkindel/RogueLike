@@ -61,7 +61,7 @@ public class Items {
     void dropItem(int position) {
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
-        Interface.inventory[8] = 0;
+        Interface.inventory[9] = 0;
         was_clicked = false;
     }
 
