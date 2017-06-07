@@ -104,6 +104,11 @@ public class Motion {
                 Items.last_position = 8;
                 scene.setRoot(assets.draw());
                 stage.setScene(scene);
+            } else if (event.getCode() == KeyCode.DIGIT0) {
+                items.checkItem(9, false);
+                Items.last_position = 9;
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
             } else if (event.getCode() == KeyCode.Z) {
                 if (Items.was_clicked) {
                     items.checkItem(Items.last_position, true);

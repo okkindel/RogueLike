@@ -26,7 +26,8 @@ public class Interface {
     }
 
     static void newItem(int item) {
-        if (inventory[8] == 0) {
+        if (inventory[9] == 0) {
+            inventory[9] = inventory[8];
             inventory[8] = inventory[7];
             inventory[7] = inventory[6];
             inventory[6] = inventory[5];
@@ -61,29 +62,29 @@ public class Interface {
 
     private void buffs(Pane root) {
 
-        Image rooted = new Image("file:assets/inventory/buff_root.png");
-        Image hunger = new Image("file:assets/inventory/buff_hunger.png");
-        Image confuse = new Image("file:assets/inventory/buff_confuse.png");
+        Image rooted = new Image("file:assets/gui/buff_root.png");
+        Image hunger = new Image("file:assets/gui/buff_hunger.png");
+        Image confuse = new Image("file:assets/gui/buff_confuse.png");
 
         if (Character.hunger > 400) {
             ImageView buff = new ImageView();
             buff.setImage(hunger);
-            buff.setX(430);
-            buff.setY(360);
+            buff.setX(432);
+            buff.setY(204);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_paralyze > 0) {
             ImageView buff = new ImageView();
             buff.setImage(rooted);
-            buff.setX(470);
-            buff.setY(360);
+            buff.setX(472);
+            buff.setY(204);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_confused > 0) {
             ImageView buff = new ImageView();
             buff.setImage(confuse);
-            buff.setX(510);
-            buff.setY(360);
+            buff.setX(512);
+            buff.setY(204);
             root.getChildren().add(buff);
         }
     }
@@ -104,7 +105,7 @@ public class Interface {
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
         Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
 
-        for (int i = 0, index = 0; i < 3; i++) {
+        for (int i = 0, index = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
                 ImageView eq_item = new ImageView();
                 if (inventory[index] == 0)
@@ -131,16 +132,19 @@ public class Interface {
                     eq_item.setImage(food_steak);
                 if (inventory[index] == 10)
                     eq_item.setImage(food_mushroom);
-                eq_item.setY(220 + i * 40);
+                eq_item.setY(235 + i * 40);
                 eq_item.setX(430 + j * 40);
 
                 if (Items.was_clicked && Items.last_position == index) {
                     eq_item.setFitHeight(38);
                     eq_item.setFitWidth(38);
-                    eq_item.setY(220 + i * 40 - 3);
+                    eq_item.setY(235 + i * 40 - 3);
                     eq_item.setX(430 + j * 40 - 3);
                 }
+
                 root.getChildren().add(eq_item);
+                if (i == 3 && j == 0)
+                    break;
                 index += 1;
             }
         }
@@ -148,14 +152,14 @@ public class Interface {
 
     private void IdScrolls(Pane root) {
         Image scroll = new Image("file:assets/gui/scroll.png");
-        Label scroll_counter = new Label("ID SCROLLS: " + Items.scrolls);
+        Label scroll_counter = new Label(": " + Items.scrolls);
         scroll_counter.setGraphic(new ImageView(scroll));
         scroll_counter.setAlignment(Pos.CENTER);
-        scroll_counter.getStyleClass().add("status_bar");
+        scroll_counter.getStyleClass().add("scrolls");
         scroll_counter.setPadding(new Insets(5));
-        scroll_counter.setLayoutY(10);
+        scroll_counter.setLayoutY(356);
         scroll_counter.layoutXProperty().bind(root.widthProperty()
-                .subtract(scroll_counter.widthProperty()).subtract(20));
+                .subtract(scroll_counter.widthProperty()).subtract(28));
         root.getChildren().add(scroll_counter);
     }
 
