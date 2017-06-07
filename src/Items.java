@@ -67,7 +67,8 @@ public class Items {
 
     void identify(int position) {
         if (scrolls > 0) {
-            if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7) {
+            if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7
+                    && !Mixtures.mixtures_known[position - 1]) {
                 Mixtures.identify(Interface.inventory[position] - 1);
                 scrolls -= 1;
             } else

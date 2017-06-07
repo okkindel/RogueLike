@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Mixtures {
 
-    private static boolean[] mixtures_known = new boolean[7];
+    static boolean[] mixtures_known = new boolean[7];
     private static int randomize;
     static int character_paralyze = 0;
     static int character_confused = 0;
