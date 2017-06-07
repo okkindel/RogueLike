@@ -2,7 +2,7 @@ public class Items {
 
     static boolean was_clicked = false;
     static int last_position;
-    static int scrolls = 0;
+    static int scrolls = 2;
 
     Items() {
         new Mixtures();
@@ -68,7 +68,7 @@ public class Items {
     void identify(int position) {
         if (scrolls > 0) {
             if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7
-                    && !Mixtures.mixtures_known[position - 1]) {
+                    && !Mixtures.mixtures_known[Interface.inventory[position] - 1]) {
                 Mixtures.identify(Interface.inventory[position] - 1);
                 scrolls -= 1;
             } else
