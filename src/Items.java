@@ -2,7 +2,7 @@ public class Items {
 
     static boolean was_clicked = false;
     static int last_position;
-    static int scrolls = 2;
+    static int scrolls = 1;
 
     Items() {
         new Mixtures();
