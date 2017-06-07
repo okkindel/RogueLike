@@ -77,7 +77,7 @@ public class Character {
                 while (iterator.hasNext()) {
                     Drop drop = iterator.next();
                     if (drop.index == present_room && drop.x_position == step_x && drop.y_position == step_y) {
-                        if (Interface.inventory[8] == 0) {
+                        if (Interface.inventory[9] == 0) {
                             drop.checkTreasure();
                             iterator.remove();
                         } else
