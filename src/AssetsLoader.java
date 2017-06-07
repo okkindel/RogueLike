@@ -58,7 +58,6 @@ public class AssetsLoader {
     Pane draw() {
 
         Pane root = new Pane();
-        new Interface(root);
         Room room = Level.rooms.get(Character.present_room);
 
         int x_begin, y_begin, x_end, y_end;
@@ -213,6 +212,7 @@ public class AssetsLoader {
         iV.setY(50);
         root.getChildren().add(iV);
 
+        new Interface(root);
         return root;
     }
 

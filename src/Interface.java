@@ -69,22 +69,22 @@ public class Interface {
         if (Character.hunger > 400) {
             ImageView buff = new ImageView();
             buff.setImage(hunger);
-            buff.setX(432);
-            buff.setY(204);
+            buff.setX(350);
+            buff.setY(50);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_paralyze > 0) {
             ImageView buff = new ImageView();
             buff.setImage(rooted);
-            buff.setX(472);
-            buff.setY(204);
+            buff.setX(315);
+            buff.setY(50);
             root.getChildren().add(buff);
         }
         if (Mixtures.character_confused > 0) {
             ImageView buff = new ImageView();
             buff.setImage(confuse);
-            buff.setX(512);
-            buff.setY(204);
+            buff.setX(280);
+            buff.setY(50);
             root.getChildren().add(buff);
         }
     }
