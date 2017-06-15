@@ -51,39 +51,38 @@ public class Character {
     /* ACTION AFTER STEP */
     private void nextStep(int step_x, int step_y) {
 
+        Room room = Level.levels_list.get(present_level).get(present_room);
         Items.was_clicked = false;
-        if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] == 20)
+
+        if (room.sizes[step_x][step_y] == 20)
             whichDoor(step_x, step_y);
-        else if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] == 29)
+        else if (room.sizes[step_x][step_y] == 29)
             nextLevel();
-        else if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] == 30)
+        else if (room.sizes[step_x][step_y] == 30)
             prevLevel();
-        else if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] == 25) {
-            for (Chests chest : Level.levels_list.get(present_level).get(present_room).chests_list) {
+        else if (room.sizes[step_x][step_y] == 25) {
+            for (Chests chest : room.chests_list) {
                 if (chest.x_position == step_x && chest.y_position == step_y) {
                     chest.checkTreasure();
                 }
             }
-        } else if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] < 70
-                || Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] > 99) {
+        } else if (room.sizes[step_x][step_y] < 70 || room.sizes[step_x][step_y] > 99) {
             if (Mixtures.character_paralyze == 0) {
-                Level.levels_list.get(present_level).get(present_room).sizes[x_value][y_value] = last_tile;
-                last_tile = Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y];
+                room.sizes[x_value][y_value] = last_tile;
+                last_tile = room.sizes[step_x][step_y];
                 if (step_x == x_value - 1)
-                    Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] = 44;
+                    room.sizes[step_x][step_y] = 44;
                 if (step_x == x_value + 1)
-                    Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] = 45;
+                    room.sizes[step_x][step_y] = 45;
                 if (step_y == y_value - 1)
-                    Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] = 46;
+                    room.sizes[step_x][step_y] = 46;
                 if (step_y == y_value + 1)
-                    Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] = 47;
+                    room.sizes[step_x][step_y] = 47;
 
-                ListIterator<Drop> iterator =
-                        Level.levels_list.get(present_level).get(present_room).drop_list.listIterator();
+                ListIterator<Drop> iterator = room.drop_list.listIterator();
                 while (iterator.hasNext()) {
                     Drop drop = iterator.next();
-                    if (drop.index == present_room && drop.level == present_level
-                            && drop.x_position == step_x && drop.y_position == step_y) {
+                    if (drop.x_position == step_x && drop.y_position == step_y) {
                         if (Interface.inventory[9] == 0) {
                             drop.checkTreasure();
                             iterator.remove();
@@ -96,9 +95,8 @@ public class Character {
             } else
                 Mixtures.character_paralyze -= 1;
             action_made = true;
-        } else if (Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] >= 70
-                || Level.levels_list.get(present_level).get(present_room).sizes[step_x][step_y] <= 80) {
-            for (Enemies enemy : Level.levels_list.get(present_level).get(present_room).enemies_list) {
+        } else if (room.sizes[step_x][step_y] >= 70 || room.sizes[step_x][step_y] <= 80) {
+            for (Enemies enemy : room.enemies_list) {
                 if (enemy.room.index == present_room) {
                     if ((step_x) == enemy.positionX && step_y == enemy.positionY) {
                         Battle.characterAttack(enemy);
@@ -111,12 +109,13 @@ public class Character {
 
     private void whichDoor(int x, int y) {
 
-        for (Door door : Level.levels_list.get(present_level).get(present_room).doors) {
+        Room room = Level.levels_list.get(present_level).get(present_room);
+
+        for (Door door : room.doors) {
             if (door.x == x && door.y == y) {
-                Level.levels_list.get(present_level).get(present_room).sizes[x_value][y_value] = last_tile;
+                room.sizes[x_value][y_value] = last_tile;
                 int whereIWas = present_room;
                 present_room = door.where;
-                Room room = Level.levels_list.get(present_level).get(present_room);
                 if (whereIWas == present_room)
                     Interface.newEvent("Strange... I'm back in the same room.");
                 else if (room.former_room)
@@ -154,7 +153,7 @@ public class Character {
             x_value = room.width / 2;
             y_value = room.height / 2;
             room.sizes[x_value][y_value] = 47;
-            Interface.newEvent("Cold winds blow through a miserable figure. It is the next level of exile.");
+            Interface.newEvent("It is the " + (present_level + 1) + " level of exile.");
         } else
             Interface.newEvent("There is nothing more here.");
     }

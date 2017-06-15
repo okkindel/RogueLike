@@ -4,8 +4,6 @@ public class Drop {
 
     int x_position;
     int y_position;
-    int index;
-    int level;
     private int treasure;
 
     Drop(int x_position, int y_position) {

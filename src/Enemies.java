@@ -20,7 +20,7 @@ public class Enemies {
             room.sizes[prevX][prevY] = last_tile;
             Interface.newEvent(type + " died");
             Character.experience(this.experience_points);
-            if (generator.nextInt(3) == 0) {
+            if (generator.nextInt(1) == 0) {
                 Drop drop = new Drop(positionX, positionY);
                 room.drop_list.add(drop);
             }

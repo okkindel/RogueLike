@@ -177,7 +177,7 @@ public class AssetsLoader {
                 }
                 /* DROP */
                 for (Drop drop : room.drop_list) {
-                    if (room.index == drop.index && x_tile == drop.x_position && y_tile == drop.y_position) {
+                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
                         iV = new ImageView();
                         iV.setFitHeight(tile_size);
                         iV.setFitWidth(tile_size);
