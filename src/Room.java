@@ -142,6 +142,11 @@ public class Room {
         for (int x = 1; x < width - 1; x++) {
             for (int y = 1; y < height - 1; y++) {
                 sizes[x][y] = 10;
+                if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 15;
+                else if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 11;
+
             }
         }
         if (index == Level.room_number - 1) {
