@@ -138,10 +138,11 @@ public class Motion {
     }
 
     private void enemyMove() {
-        ListIterator<Enemies> iterator = Enemies.enemies_list.listIterator();
+        ListIterator<Enemies> iterator = Level.levels_list.get
+                (Character.present_level).get(Character.present_room).enemies_list.listIterator();
         while (iterator.hasNext()) {
             Enemies enemies = iterator.next();
-            if (enemies.index == Character.present_room) {
+            if (enemies.room.index == Character.present_room) {
                 enemies.moveAlgorithm();
                 if (!enemies.isAlive()) {
                     iterator.remove();

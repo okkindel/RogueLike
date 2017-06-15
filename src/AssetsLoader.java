@@ -8,11 +8,11 @@ import java.util.Objects;
 public class AssetsLoader {
 
     private Image shadow, drop_bag, dead_screen;
-    private Image wooden_doors, wooden_chest;
+    private Image wooden_doors, wooden_chest, stairs_down, stairs_up;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
             wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
-    private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor;
+    private Image floor_block, floor_broken, grass_up, grass_down, wooden_floor, near_stairs;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
     private static final int tile_size = 32;
@@ -43,8 +43,11 @@ public class AssetsLoader {
         wooden_floor = new Image("file:assets/floor/wooden_floor.png");
         grass_up = new Image("file:assets/floor/grass_up.png");
         grass_down = new Image("file:assets/floor/grass_down.png");
+        near_stairs = new Image("file:assets/floor/near_stairs.png");
         wooden_doors = new Image("file:assets/action/doors.png");
         wooden_chest = new Image("file:assets/action/chest.png");
+        stairs_down = new Image("file:assets/action/stairs_down.png");
+        stairs_up = new Image("file:assets/action/stairs_up.png");
         character_left = new Image("file:assets/character/character_l.png");
         character_right = new Image("file:assets/character/character_r.png");
         character_up = new Image("file:assets/character/character_u.png");
@@ -58,8 +61,9 @@ public class AssetsLoader {
     Pane draw() {
 
         Pane root = new Pane();
-        Room room = Level.rooms.get(Character.present_room);
+        Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
 
+        /* CAMERA */
         int x_begin, y_begin, x_end, y_end;
         x_begin = Character.x_value - 5;
         y_begin = Character.y_value - 5;
@@ -130,6 +134,8 @@ public class AssetsLoader {
                         iV.setImage(grass_up);
                     if (room.sizes[x_tile][y_tile] == 14)
                         iV.setImage(grass_down);
+                    if (room.sizes[x_tile][y_tile] == 15)
+                        iV.setImage(near_stairs);
                     iV.setX(x_index * tile_size + 50);
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
@@ -140,6 +146,10 @@ public class AssetsLoader {
                         iV.setImage(wooden_doors);
                     if (room.sizes[x_tile][y_tile] == 25)
                         iV.setImage(wooden_chest);
+                    if (room.sizes[x_tile][y_tile] == 29)
+                        iV.setImage(stairs_down);
+                    if (room.sizes[x_tile][y_tile] == 30)
+                        iV.setImage(stairs_up);
                     iV.setX(x_index * tile_size + 50);
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
@@ -218,8 +228,8 @@ public class AssetsLoader {
 
     private int checkEnemyTile(int posX, int posY, int index) {
         int last_tile = 0;
-        for (Enemies enemy : Enemies.enemies_list) {
-            if (enemy.index == index) {
+        for (Enemies enemy : Level.levels_list.get(Character.present_level).get(index).enemies_list) {
+            if (enemy.room.index == index) {
                 if (posX == enemy.positionX && posY == enemy.positionY)
                     last_tile = enemy.last_tile;
             }
@@ -243,13 +253,19 @@ public class AssetsLoader {
         }
         if (last_tile == 14)
             return grass_down;
+        if (last_tile == 15)
+            return near_stairs;
+        if (last_tile == 29)
+            return stairs_down;
+        if (last_tile == 30)
+            return stairs_up;
         else
             return floor_block;
     }
 
     private void terminalShowing() {
-        for (int index = 0; index < Level.howManyRooms; index++) {
-            Room room = Level.rooms.get(index);
+        for (int index = 0; index < Level.room_number; index++) {
+            Room room = Level.levels_list.get(Character.present_level).get(index);
             for (int x = 0; x < room.width; x++) {
                 for (int y = 0; y < room.height; y++) {
                     System.out.print(room.sizes[x][y]);

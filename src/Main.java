@@ -9,7 +9,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        new Level();
+        Level level = new Level();
+        level.newLevel();
         Character character = new Character();
         character.createCharacter();
         AssetsLoader assets = new AssetsLoader();

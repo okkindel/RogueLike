@@ -4,16 +4,17 @@ import java.util.Arrays;
 
 public class Room {
 
+    private boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
+    private Random generator = new Random();
     private int[] north, south, east, west;
+    boolean former_room = false;
+    int height, width = 0;
     int index = 0;
     int[][] sizes;
-    int height, width = 0;
-    boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
-    boolean former_room = false;
-    private Random generator = new Random();
-    ArrayList<Door> doors;
+    ArrayList<Enemies> enemies_list;
     ArrayList<Chests> chests_list;
     ArrayList<Drop> drop_list;
+    ArrayList<Door> doors;
 
     Room(int index) {
 
@@ -21,16 +22,28 @@ public class Room {
         doors = new ArrayList<>();
         chests_list = new ArrayList<>();
         drop_list = new ArrayList<>();
-        height = generator.nextInt(10) + 11;
-        width = generator.nextInt(10) + 11;
+        enemies_list = new ArrayList<>();
+        if (index != Level.room_number - 1 && index != 0) {
+            height = generator.nextInt(10) + 11;
+            width = generator.nextInt(10) + 11;
+        } else {
+            height = 11;
+            width = 11;
+        }
         sizes = new int[width][height];
         north = new int[width];
         south = new int[width];
         east = new int[height];
         west = new int[height];
+        if (index != Level.room_number - 1 && index != 0) {
+            addWalls();
+            roomType();
+            addEnemies();
+        } else {
+            addWalls();
+            roomTypeStairs();
+        }
 
-        addWalls();
-        roomType();
     }
 
     private void roomType() {
@@ -124,6 +137,38 @@ public class Room {
             isEnemy = true;
     }
 
+    private void roomTypeStairs() {
+
+        for (int x = 1; x < width - 1; x++) {
+            for (int y = 1; y < height - 1; y++) {
+                sizes[x][y] = 10;
+            }
+        }
+        if (index == Level.room_number - 1) {
+            sizes[width / 2 - 1][height / 2] = 15;
+            sizes[width / 2 + 1][height / 2] = 15;
+            sizes[width / 2][height / 2 - 1] = 15;
+            sizes[width / 2][height / 2 + 1] = 15;
+            sizes[width / 2 - 1][height / 2 - 1] = 15;
+            sizes[width / 2 + 1][height / 2 + 1] = 15;
+            sizes[width / 2 - 1][height / 2 + 1] = 15;
+            sizes[width / 2 + 1][height / 2 - 1] = 15;
+            sizes[width / 2][height / 2] = 29;
+        }
+
+        if (index == 0) {
+            sizes[width / 2 - 1][height / 2] = 15;
+            sizes[width / 2 + 1][height / 2] = 15;
+            sizes[width / 2][height / 2 - 1] = 15;
+            sizes[width / 2][height / 2 + 1] = 15;
+            sizes[width / 2 - 1][height / 2 - 1] = 15;
+            sizes[width / 2 + 1][height / 2 + 1] = 15;
+            sizes[width / 2 - 1][height / 2 + 1] = 15;
+            sizes[width / 2 + 1][height / 2 - 1] = 15;
+            sizes[width / 2][height / 2] = 30;
+        }
+    }
+
     private void addWalls() {
         Arrays.fill(north, 88);
         Arrays.fill(south, 88);
@@ -176,7 +221,7 @@ public class Room {
 
     private void addDoors() {
         Random generator = new Random();
-        for (int doorID = 0; doorID < Level.howManyRooms; doorID++) {
+        for (int doorID = 0; doorID < Level.room_number; doorID++) {
             if (StructureGenerator.structure[index][doorID]) {
                 int wall = generator.nextInt(4);
                 int place;
@@ -218,6 +263,36 @@ public class Room {
                 doors.add(door);
             }
         }
+    }
+
+    private void addEnemies() {
+
+        if (isEnemy) {
+            for (int numberOf = 0; numberOf < generator.nextInt(5); numberOf++) {
+                int x_position = generator.nextInt(width - 4) + 2;
+                int y_position = generator.nextInt(height - 4) + 2;
+                if (sizes[x_position][y_position] >= 10 && sizes[x_position][y_position] < 20) {
+                    if (isZombiable) {
+                        Zombie zombie = new Zombie(this, x_position, y_position);
+                        enemies_list.add(zombie);
+                    }
+                    if (isSkeletonable) {
+                        Skeleton skeleton = new Skeleton(this, x_position, y_position);
+                        enemies_list.add(skeleton);
+                    }
+                    if (isGolemable) {
+                        Golem golem = new Golem(this, x_position, y_position);
+                        enemies_list.add(golem);
+                    }
+                    if (isGhostable) {
+                        Ghost ghost = new Ghost(this, x_position, y_position);
+                        enemies_list.add(ghost);
+                    }
+                } else
+                    numberOf--;
+            }
+        }
+
     }
 
     private void addChests() {
