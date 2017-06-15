@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Level {
 
-    static int room_number = 2;
-    static int level_number = 5;
+    static int room_number = 15;
+    static int level_number = 10;
     static ArrayList<ArrayList<Room>> levels_list = new ArrayList<>();
     private ArrayList<Room> rooms_list;
 
