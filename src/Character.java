@@ -24,7 +24,7 @@ public class Character {
         x_value = room.width / 2;
         y_value = room.height / 2;
         room.sizes[x_value][y_value] = 47;
-        room.former_room = true;
+        room.visited = true;
         Interface.inventory[0] = 9;
     }
 
@@ -109,20 +109,21 @@ public class Character {
 
     private void whichDoor(int x, int y) {
 
-        Room room = Level.levels_list.get(present_level).get(present_room);
-
-        for (Door door : room.doors) {
+        Room former_room = Level.levels_list.get(present_level).get(present_room);
+        for (Door door : former_room.doors) {
             if (door.x == x && door.y == y) {
-                room.sizes[x_value][y_value] = last_tile;
+                former_room.sizes[x_value][y_value] = last_tile;
                 int whereIWas = present_room;
                 present_room = door.where;
+                
+                Room room = Level.levels_list.get(present_level).get(present_room);
                 if (whereIWas == present_room)
                     Interface.newEvent("Strange... I'm back in the same room.");
-                else if (room.former_room)
+                else if (room.visited)
                     Interface.newEvent("I already was here...");
                 else
                     Interface.newEvent("I've never seen this room before...");
-                room.former_room = true;
+                room.visited = true;
                 for (Door newdoor : Level.levels_list.get(present_level).get(present_room).doors) {
                     if (newdoor.where == whereIWas) {
                         Room newroom = Level.levels_list.get(present_level).get(present_room);

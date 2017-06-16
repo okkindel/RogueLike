@@ -7,7 +7,7 @@ public class Room {
     private boolean isEnemy, isZombiable, isSkeletonable, isGolemable, isGhostable = false;
     private Random generator = new Random();
     private int[] north, south, east, west;
-    boolean former_room = false;
+    boolean visited = false;
     int height, width = 0;
     int index = 0;
     int[][] sizes;
