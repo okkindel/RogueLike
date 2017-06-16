@@ -140,6 +140,7 @@ public class Room {
 
     private void roomTypeStairs() {
 
+        /* TILES AROUND STAIRS */
         for (int x = 1; x < width - 1; x++) {
             for (int y = 1; y < height - 1; y++) {
                 sizes[x][y] = 10;
@@ -150,27 +151,18 @@ public class Room {
 
             }
         }
+        /* SQUARE AROUND STAIRS */
         if (index == Level.room_number - 1) {
-            sizes[width / 2 - 1][height / 2] = 15;
-            sizes[width / 2 + 1][height / 2] = 15;
-            sizes[width / 2][height / 2 - 1] = 15;
-            sizes[width / 2][height / 2 + 1] = 15;
-            sizes[width / 2 - 1][height / 2 - 1] = 15;
-            sizes[width / 2 + 1][height / 2 + 1] = 15;
-            sizes[width / 2 - 1][height / 2 + 1] = 15;
-            sizes[width / 2 + 1][height / 2 - 1] = 15;
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    sizes[width / 2 - 1 + i][height / 2 - 1 + j] = 15;
             sizes[width / 2][height / 2] = 29;
         }
-
+        /* SQUARE AROUND STAIRS */
         if (index == 0) {
-            sizes[width / 2 - 1][height / 2] = 15;
-            sizes[width / 2 + 1][height / 2] = 15;
-            sizes[width / 2][height / 2 - 1] = 15;
-            sizes[width / 2][height / 2 + 1] = 15;
-            sizes[width / 2 - 1][height / 2 - 1] = 15;
-            sizes[width / 2 + 1][height / 2 + 1] = 15;
-            sizes[width / 2 - 1][height / 2 + 1] = 15;
-            sizes[width / 2 + 1][height / 2 - 1] = 15;
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    sizes[width / 2 - 1 + i][height / 2 - 1 + j] = 15;
             sizes[width / 2][height / 2] = 30;
         }
     }
