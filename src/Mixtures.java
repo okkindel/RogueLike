@@ -76,4 +76,5 @@ public class Mixtures {
     static int prevPotion(int numOf) {
         return Math.floorMod((numOf - randomize), 7);
     }
+    static int nextPotion(int numOf) { return Math.floorMod((numOf + randomize), 7); }
 }

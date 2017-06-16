@@ -40,7 +40,10 @@ public class Drop {
     Drop(int x_position, int y_position, int treasure) {
         this.x_position = x_position;
         this.y_position = y_position;
-        this.treasure = treasure;
+        if (treasure > 0 && treasure < 8)
+            this.treasure = Mixtures.nextPotion(treasure - 1) + 1;
+        else if (treasure == 8 || treasure == 9 || treasure == 10)
+            this.treasure = treasure;
     }
 
     void checkTreasure() {
