@@ -41,8 +41,9 @@ public class Chests {
     }
 
     void checkTreasure() {
-        if (Interface.inventory[9] == 0) {
-            if (!was_taken) {
+
+        if (!was_taken) {
+            if (Interface.inventory[9] == 0) {
                 if (treasure == 0)
                     Interface.newEvent("There is nothing here.");
                 else if (treasure > 0 && treasure < 8)
@@ -55,8 +56,9 @@ public class Chests {
                 }
                 was_taken = true;
             } else
-                Interface.newEvent("This chest is empty.");
+                Interface.newEvent("Inventory full!");
         } else
-            Interface.newEvent("Inventory full!");
+            Interface.newEvent("This chest is empty.");
+
     }
 }
