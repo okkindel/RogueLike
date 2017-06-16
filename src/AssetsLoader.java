@@ -12,7 +12,7 @@ public class AssetsLoader {
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
             wall_moss_up, wall_moss_down, wall_moss_left, wall_moss_right;
-    private Image floor_block, floor_broken, dirt, grass_up, grass_down, wooden_floor, near_stairs;
+    private Image floor_block, floor_broken, grass_less, grass_up, grass_down, wooden_floor, near_stairs;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
     private static final int tile_size = 32;
@@ -40,8 +40,8 @@ public class AssetsLoader {
         bookshelf = new Image("file:assets/wall/bookshelf.png");
         floor_block = new Image("file:assets/floor/white.png");
         floor_broken = new Image("file:assets/floor/white_broken.png");
-        dirt = new Image("file:assets/floor/dirt.png");
         wooden_floor = new Image("file:assets/floor/wooden_floor.png");
+        grass_less = new Image("file:assets/floor/grass_less.png");
         grass_up = new Image("file:assets/floor/grass_up.png");
         grass_down = new Image("file:assets/floor/grass_down.png");
         near_stairs = new Image("file:assets/floor/near_stairs.png");
@@ -138,7 +138,7 @@ public class AssetsLoader {
                     if (room.sizes[x_tile][y_tile] == 15)
                         iV.setImage(near_stairs);
                     if (room.sizes[x_tile][y_tile] == 16)
-                        iV.setImage(dirt);
+                        iV.setImage(grass_less);
                     iV.setX(x_index * tile_size + 50);
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
@@ -260,7 +260,7 @@ public class AssetsLoader {
         if (last_tile == 15)
             return near_stairs;
         if (last_tile == 16)
-            return dirt;
+            return grass_less;
         if (last_tile == 29)
             return stairs_down;
         if (last_tile == 30)
