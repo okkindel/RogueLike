@@ -4,8 +4,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static Scene scene;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -16,7 +14,7 @@ public class Main extends Application {
         AssetsLoader assets = new AssetsLoader();
         assets.load();
         primaryStage.setTitle("RogueLike");
-        scene = new Scene(assets.draw(), 570, 540);
+        Scene scene = new Scene(assets.draw(), 570, 540);
         scene.getStylesheets().add("./stylesheet.css");
         new Motion(scene, assets, primaryStage);
         primaryStage.setScene(scene);

@@ -7,7 +7,7 @@ public class Chests {
     private boolean was_taken = false;
     private int treasure;
 
-    Chests (int x_position, int y_position) {
+    Chests(int x_position, int y_position) {
         this.x_position = x_position;
         this.y_position = y_position;
 
@@ -41,20 +41,22 @@ public class Chests {
     }
 
     void checkTreasure() {
-        if (!was_taken) {
-            if (treasure == 0)
-                Interface.newEvent("There is nothing here.");
-            else if (treasure > 0 && treasure < 8)
-                Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);
-            else if (treasure == 8 || treasure == 9 || treasure == 10)
-                Interface.newItem(treasure);
-            else if (treasure == 11) {
-                Items.scrolls += 1;
-                Interface.newEvent("I found an identify scroll!");
-            }
-        }
-        else
-            Interface.newEvent("This chest is empty.");
-        was_taken = true;
+        if (Interface.inventory[9] == 0) {
+            if (!was_taken) {
+                if (treasure == 0)
+                    Interface.newEvent("There is nothing here.");
+                else if (treasure > 0 && treasure < 8)
+                    Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);
+                else if (treasure == 8 || treasure == 9 || treasure == 10)
+                    Interface.newItem(treasure);
+                else if (treasure == 11) {
+                    Items.scrolls += 1;
+                    Interface.newEvent("I found an identify scroll!");
+                }
+                was_taken = true;
+            } else
+                Interface.newEvent("This chest is empty.");
+        } else
+            Interface.newEvent("Inventory full!");
     }
 }
