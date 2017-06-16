@@ -37,6 +37,12 @@ public class Drop {
             treasure = 11;
     }
 
+    Drop(int x_position, int y_position, int treasure) {
+        this.x_position = x_position;
+        this.y_position = y_position;
+        this.treasure = treasure;
+    }
+
     void checkTreasure() {
         if (treasure > 0 && treasure < 8)
             Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);

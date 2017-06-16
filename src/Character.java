@@ -173,14 +173,6 @@ public class Character {
             Interface.newEvent("I can't back yet.");
     }
 
-    private static void checkIfAlive() {
-        if (health_points <= 0) {
-            health_points = 0;
-            System.out.println("Character died.");
-            is_dead = true;
-        }
-    }
-
     static void hunger() {
         hunger += 1;
         if (hunger == 100)
@@ -194,8 +186,7 @@ public class Character {
         if (hunger == 500)
             Interface.newEvent("You are starving!");
         if (hunger > 500) {
-            health_points -= 1;
-            checkIfAlive();
+            modifyHealth(-1);
         }
     }
 
@@ -203,7 +194,11 @@ public class Character {
         health_points += points;
         if (health_points > max_health)
             health_points = max_health;
-        checkIfAlive();
+        if (health_points <= 0) {
+            health_points = 0;
+            System.out.println("Character died.");
+            is_dead = true;
+        }
     }
 
     static void experience(int experience_points) {
