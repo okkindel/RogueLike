@@ -54,10 +54,12 @@ public class Room {
         for (int x = 1; x < width - 1; x++) {
             for (int y = 1; y < height - 1; y++) {
                 sizes[x][y] = 10;
-                if (sizes[x][y] == 10) {
-                    if (generator.nextInt(4) == 0)
-                        sizes[x][y] = 11;
-                }
+                if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 11;
+                else if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 12;
+                else if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 13;
             }
         }
         /* ROOM TYPE COLUMNS */
@@ -98,9 +100,9 @@ public class Room {
                 for (int y = 1; y < height - 1; y++) {
                     sizes[x][y] = 16;
                     if (generator.nextInt(6) < 4)
-                        sizes[x][y] = 13;
+                        sizes[x][y] = 15;
                     else if (generator.nextInt(6) < 3)
-                        sizes[x][y] = 14;
+                        sizes[x][y] = 17;
                 }
             }
             addChests();
@@ -110,7 +112,7 @@ public class Room {
         else if (random == 1) {
             for (int x = 1; x < width - 1; x++) {
                 for (int y = 1; y < height - 1; y++) {
-                    sizes[x][y] = 12;
+                    sizes[x][y] = 14;
                 }
             }
             /* ROOM TYPE LIBRARY */
@@ -145,24 +147,20 @@ public class Room {
             for (int y = 1; y < height - 1; y++) {
                 sizes[x][y] = 10;
                 if (generator.nextInt(4) == 0)
-                    sizes[x][y] = 15;
-                else if (generator.nextInt(4) == 0)
                     sizes[x][y] = 11;
+                else if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 12;
+                else if (generator.nextInt(4) == 0)
+                    sizes[x][y] = 13;
 
             }
         }
-        /* SQUARE AROUND STAIRS */
+        /* STAIRS */
         if (index == Level.room_number - 1) {
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    sizes[width / 2 - 1 + i][height / 2 - 1 + j] = 15;
             sizes[width / 2][height / 2] = 29;
         }
-        /* SQUARE AROUND STAIRS */
+        /* STAIRS */
         if (index == 0) {
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    sizes[width / 2 - 1 + i][height / 2 - 1 + j] = 15;
             sizes[width / 2][height / 2] = 30;
         }
     }
