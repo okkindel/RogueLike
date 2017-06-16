@@ -157,8 +157,21 @@ public class AssetsLoader {
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
+                /* DROP */
+                for (Drop drop : room.drop_list) {
+                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
+                        iV = new ImageView();
+                        iV.setFitHeight(tile_size);
+                        iV.setFitWidth(tile_size);
+                        iV.setImage(drop_bag);
+                        iV.setX(x_index * tile_size + 50);
+                        iV.setY(y_index * tile_size + 50);
+                        root.getChildren().add(iV);
+                    }
+                }
                 /* CHARACTER TILES */
                 if (room.sizes[x_tile][y_tile] >= 44 && room.sizes[x_tile][y_tile] <= 47) {
+                    iV = new ImageView();
                     iV.setImage(background(Character.last_tile, "character"));
                     iV.setX(x_index * tile_size + 50);
                     iV.setY(y_index * tile_size + 50);
@@ -177,18 +190,6 @@ public class AssetsLoader {
                     iV.setX(x_index * tile_size + 50);
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
-                }
-                /* DROP */
-                for (Drop drop : room.drop_list) {
-                    if (x_tile == drop.x_position && y_tile == drop.y_position) {
-                        iV = new ImageView();
-                        iV.setFitHeight(tile_size);
-                        iV.setFitWidth(tile_size);
-                        iV.setImage(drop_bag);
-                        iV.setX(x_index * tile_size + 50);
-                        iV.setY(y_index * tile_size + 50);
-                        root.getChildren().add(iV);
-                    }
                 }
                 /* ENEMIES TILES */
                 if (room.sizes[x_tile][y_tile] >= 70 && room.sizes[x_tile][y_tile] < 80) {
