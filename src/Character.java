@@ -55,7 +55,7 @@ public class Character {
         Items.was_clicked = false;
 
         if (room.sizes[step_x][step_y] == 20)
-            whichDoor(step_x, step_y);
+            nextRoom(step_x, step_y);
         else if (room.sizes[step_x][step_y] == 29)
             nextLevel();
         else if (room.sizes[step_x][step_y] == 30)
@@ -107,7 +107,7 @@ public class Character {
         }
     }
 
-    private void whichDoor(int x, int y) {
+    private void nextRoom(int x, int y) {
 
         Room former_room = Level.levels_list.get(present_level).get(present_room);
         for (Door door : former_room.doors) {
