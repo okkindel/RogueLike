@@ -105,8 +105,8 @@ public class Interface {
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
         Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
 
-        for (int row = 0, index = 0; row < 4; row++) {
-            for (int column = 0; column < 3; column++) {
+        for (int i = 0, index = 0; i < 4; i++) {
+            for (int j = 0; j < 3; j++) {
                 ImageView eq_item = new ImageView();
                 if (inventory[index] == 0)
                     eq_item.setImage(empty);
@@ -132,18 +132,18 @@ public class Interface {
                     eq_item.setImage(food_steak);
                 if (inventory[index] == 10)
                     eq_item.setImage(food_mushroom);
-                eq_item.setY(235 + row * 40);
-                eq_item.setX(430 + column * 40);
+                eq_item.setY(235 + i * 40);
+                eq_item.setX(430 + j * 40);
 
                 if (Items.was_clicked && Items.last_position == index) {
                     eq_item.setFitHeight(38);
                     eq_item.setFitWidth(38);
-                    eq_item.setY(235 + row * 40 - 3);
-                    eq_item.setX(430 + column * 40 - 3);
+                    eq_item.setY(235 + i * 40 - 3);
+                    eq_item.setX(430 + j * 40 - 3);
                 }
 
                 root.getChildren().add(eq_item);
-                if (row == 3)
+                if (i == 3 && j == 0)
                     break;
                 index += 1;
             }

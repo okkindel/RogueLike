@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -14,6 +15,7 @@ public class Main extends Application {
         AssetsLoader assets = new AssetsLoader();
         assets.load();
         primaryStage.setTitle("RogueLike");
+        primaryStage.getIcons().add(new Image("file:assets/action/chest.png"));
         Scene scene = new Scene(assets.draw(), 570, 540);
         scene.getStylesheets().add("./stylesheet.css");
         new Motion(scene, assets, primaryStage);
