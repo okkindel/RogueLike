@@ -115,15 +115,14 @@ public class Character {
                 former_room.sizes[x_value][y_value] = last_tile;
                 int whereIWas = present_room;
                 present_room = door.where;
-                
-                Room room = Level.levels_list.get(present_level).get(present_room);
+                Room new_room = Level.levels_list.get(present_level).get(present_room);
                 if (whereIWas == present_room)
                     Interface.newEvent("Strange... I'm back in the same room.");
-                else if (room.visited)
+                else if (new_room.visited)
                     Interface.newEvent("I already was here...");
                 else
                     Interface.newEvent("I've never seen this room before...");
-                room.visited = true;
+                new_room.visited = true;
                 for (Door newdoor : Level.levels_list.get(present_level).get(present_room).doors) {
                     if (newdoor.where == whereIWas) {
                         Room newroom = Level.levels_list.get(present_level).get(present_room);
