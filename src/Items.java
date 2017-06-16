@@ -55,12 +55,14 @@ public class Items {
             }
         }
         if (action)
-            dropItem(position);
+            dropItem(position, true);
     }
 
-    void dropItem(int position) {
-        Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
-        room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.inventory[position]));
+    void dropItem(int position, boolean consumption) {
+        if (!consumption) {
+            Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
+            room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.inventory[position]));
+        }
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
         Interface.inventory[9] = 0;
