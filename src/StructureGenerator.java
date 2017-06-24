@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class StructureGenerator {
@@ -9,32 +8,30 @@ public class StructureGenerator {
 
         Random generator = new Random();
         structure = new boolean[vertex][vertex];
-        int[] countRooms = new int[vertex];
-        Arrays.fill(countRooms, 0);
 
         for (int i = 0; i < vertex; i++) {
             for (int j = 0; j < vertex; j++) {
                 structure[j][i] = false;
+                if (i > 0 && j > 0) {
+                    structure[i][i - 1] = true;
+                    structure[j - 1][j] = true;
+                }
             }
         }
         for (int i = 0; i < vertex; i++) {
-            for (int j = 0; j < vertex; j++) {
-                int chance = generator.nextInt(100);
-                if (chance < 20 && countRooms[i] < 4 && countRooms[j] < 4) {
-                    structure[i][j] = true;
-                    structure[j][i] = true;
-                    countRooms[i]++;
-                    countRooms[j]++;
-                }
-            }
-            if (countRooms[i] == 0) {
-                while (true) {
-                    int emergency_door = generator.nextInt(vertex);
-                    if (i != emergency_door) {
-                        structure[i][emergency_door] = true;
-                        structure[emergency_door][i] = true;
-                        break;
+            if (i == 0 || i == (vertex - 1)) {
+                for (int index = 0; index < 2; index++) {
+                    if (generator.nextInt(2) == 0) {
+                        int vertex_got = generator.nextInt(vertex);
+                        structure[i][vertex_got] = true;
+                        structure[vertex_got][i] = true;
                     }
+                }
+            } else {
+                if (generator.nextInt(2) == 0) {
+                    int vertex_got = generator.nextInt(vertex);
+                    structure[i][vertex_got] = true;
+                    structure[vertex_got][i] = true;
                 }
             }
         }
