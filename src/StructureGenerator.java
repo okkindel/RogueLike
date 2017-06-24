@@ -9,6 +9,7 @@ public class StructureGenerator {
         Random generator = new Random();
         structure = new boolean[vertex][vertex];
 
+        /* MAKING LINE GRAPH */
         for (int i = 0; i < vertex; i++) {
             for (int j = 0; j < vertex; j++) {
                 structure[j][i] = false;
@@ -18,6 +19,7 @@ public class StructureGenerator {
                 }
             }
         }
+        /* RANDOM CYCLES */
         for (int i = 0; i < vertex; i++) {
             if (i == 0 || i == (vertex - 1)) {
                 for (int index = 0; index < 2; index++) {

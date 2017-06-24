@@ -152,16 +152,16 @@ public class Room {
                     sizes[x][y] = 12;
                 else if (generator.nextInt(4) == 0)
                     sizes[x][y] = 13;
-
             }
         }
-        /* STAIRS */
-        if (index == Level.room_number - 1) {
-            sizes[width / 2][height / 2] = 29;
-        }
-        /* STAIRS */
+        /* STAIRS UP */
         if (index == 0) {
             sizes[width / 2][height / 2] = 30;
+            visited = true;
+        }
+        /* STAIRS DOWN */
+        if (index == Level.room_number - 1) {
+            sizes[width / 2][height / 2] = 29;
         }
     }
 
