@@ -18,18 +18,8 @@ public class Chests {
             treasure = 0;
         else if (random < 20)
             treasure = 1;
-        else if (random < 30)
-            treasure = 2;
-        else if (random < 35)
-            treasure = 3;
-        else if (random < 40)
-            treasure = 4;
-        else if (random < 65)
-            treasure = 5;
-        else if (random < 70)
-            treasure = 6;
         else if (random < 80)
-            treasure = 7;
+            treasure = Mixtures.dropMixture();
         else if (random < 100)
             treasure = 8;
         else if (random < 120)

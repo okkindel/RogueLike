@@ -13,20 +13,8 @@ public class Drop {
         Random generator = new Random();
         int random = generator.nextInt(125);
 
-        if (random < 10)
-            treasure = 1;
-        else if (random < 20)
-            treasure = 2;
-        else if (random < 25)
-            treasure = 3;
-        else if (random < 30)
-            treasure = 4;
-        else if (random < 55)
-            treasure = 5;
-        else if (random < 60)
-            treasure = 6;
-        else if (random < 70)
-            treasure = 7;
+        if (random < 70)
+            treasure = Mixtures.dropMixture();
         else if (random < 90)
             treasure = 8;
         else if (random < 110)

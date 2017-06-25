@@ -7,10 +7,10 @@ public class Mixtures {
     private static int randomize;
     static int character_paralyze = 0;
     static int character_confused = 0;
+    private static Random generator = new Random();
 
     Mixtures() {
         Arrays.fill(mixtures_known, false);
-        Random generator = new Random();
         randomize = generator.nextInt(7);
     }
 
@@ -73,8 +73,29 @@ public class Mixtures {
         mixtureType(index);
     }
 
+    static int dropMixture() {
+
+        int random = generator.nextInt(60);
+
+        if (random < 10)
+            return 2;
+        else if (random < 15)
+            return 3;
+        else if (random < 20)
+            return 4;
+        else if (random < 45)
+            return 5;
+        else if (random < 50)
+            return 6;
+        else
+            return 7;
+    }
+
     static int prevPotion(int numOf) {
         return Math.floorMod((numOf - randomize), 7);
     }
-    static int nextPotion(int numOf) { return Math.floorMod((numOf + randomize), 7); }
+
+    static int nextPotion(int numOf) {
+        return Math.floorMod((numOf + randomize), 7);
+    }
 }

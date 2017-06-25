@@ -8,13 +8,16 @@ import javafx.geometry.Pos;
 public class Interface {
 
     private static String[] message = new String[5];
+    static boolean inventory_shown = true;
     static int[] inventory = new int[10];
+    static int[] equipment = new int[5];
 
     public Interface(Pane root) {
         statusBar(root);
         statusArea(root);
         buffs(root);
         inventory(root);
+        equipment(root);
         IdScrolls(root);
     }
 
@@ -105,62 +108,146 @@ public class Interface {
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
         Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
 
-        for (int row = 0, index = 0; row < 4; row++) {
-            for (int column = 0; column < 3; column++) {
-                ImageView eq_item = new ImageView();
-                if (inventory[index] == 0)
-                    eq_item.setImage(empty);
+        if (inventory_shown) {
+            for (int row = 0, index = 0; row < 4; row++) {
+                for (int column = 0; column < 3; column++) {
+                    ImageView eq_item = new ImageView();
+                    if (inventory[index] == 0)
+                        eq_item.setImage(empty);
                 /* POTIONS */
-                if (inventory[index] == 1)
-                    eq_item.setImage(yellow_potion);
-                if (inventory[index] == 2)
-                    eq_item.setImage(blue_potion);
-                if (inventory[index] == 3)
-                    eq_item.setImage(red_potion);
-                if (inventory[index] == 4)
-                    eq_item.setImage(purple_potion);
-                if (inventory[index] == 5)
-                    eq_item.setImage(green_potion);
-                if (inventory[index] == 6)
-                    eq_item.setImage(aqua_potion);
-                if (inventory[index] == 7)
-                    eq_item.setImage(orange_potion);
+                    if (inventory[index] == 1)
+                        eq_item.setImage(yellow_potion);
+                    if (inventory[index] == 2)
+                        eq_item.setImage(blue_potion);
+                    if (inventory[index] == 3)
+                        eq_item.setImage(red_potion);
+                    if (inventory[index] == 4)
+                        eq_item.setImage(purple_potion);
+                    if (inventory[index] == 5)
+                        eq_item.setImage(green_potion);
+                    if (inventory[index] == 6)
+                        eq_item.setImage(aqua_potion);
+                    if (inventory[index] == 7)
+                        eq_item.setImage(orange_potion);
                 /* FOOD */
-                if (inventory[index] == 8)
-                    eq_item.setImage(food_apple);
-                if (inventory[index] == 9)
-                    eq_item.setImage(food_steak);
-                if (inventory[index] == 10)
-                    eq_item.setImage(food_mushroom);
-                eq_item.setY(235 + row * 40);
-                eq_item.setX(430 + column * 40);
+                    if (inventory[index] == 8)
+                        eq_item.setImage(food_apple);
+                    if (inventory[index] == 9)
+                        eq_item.setImage(food_steak);
+                    if (inventory[index] == 10)
+                        eq_item.setImage(food_mushroom);
+                    eq_item.setY(235 + row * 40);
+                    eq_item.setX(430 + column * 40);
 
-                if (Items.was_clicked && Items.last_position == index) {
-                    eq_item.setFitHeight(38);
-                    eq_item.setFitWidth(38);
-                    eq_item.setY(235 + row * 40 - 3);
-                    eq_item.setX(430 + column * 40 - 3);
+                    if (Items.was_clicked && Items.last_position == index) {
+                        eq_item.setFitHeight(38);
+                        eq_item.setFitWidth(38);
+                        eq_item.setY(235 + row * 40 - 3);
+                        eq_item.setX(430 + column * 40 - 3);
+                    }
+
+                    root.getChildren().add(eq_item);
+                    if (row == 3)
+                        break;
+                    index += 1;
                 }
-
-                root.getChildren().add(eq_item);
-                if (row == 3)
-                    break;
-                index += 1;
             }
         }
     }
 
+    private void equipment(Pane root) {
+
+        Image empty = new Image("file:assets/inventory/empty.png");
+        Image background = new Image("file:assets/inventory/background.png");
+
+        if (!inventory_shown) {
+
+            ImageView background_image = new ImageView();
+            background_image.setImage(background);
+            background_image.setY(235);
+            background_image.setX(430);
+            root.getChildren().add(background_image);
+
+            ImageView left_ring = new ImageView();
+            if (equipment[0] == 0)
+                left_ring.setImage(empty);
+            left_ring.setY(235);
+            left_ring.setX(430);
+            if (Items.was_clicked && Items.last_position == 0) {
+                left_ring.setFitHeight(38);
+                left_ring.setFitWidth(38);
+                left_ring.setY(232);
+                left_ring.setX(427);
+            }
+            root.getChildren().add(left_ring);
+
+            ImageView right_ring = new ImageView();
+            if (equipment[1] == 0)
+                right_ring.setImage(empty);
+            right_ring.setY(235);
+            right_ring.setX(510);
+            if (Items.was_clicked && Items.last_position == 1) {
+                right_ring.setFitHeight(38);
+                right_ring.setFitWidth(38);
+                right_ring.setY(232);
+                right_ring.setX(507);
+            }
+            root.getChildren().add(right_ring);
+
+            ImageView armor = new ImageView();
+            if (equipment[2] == 0)
+                armor.setImage(empty);
+            armor.setY(275);
+            armor.setX(470);
+            if (Items.was_clicked && Items.last_position == 2) {
+                armor.setFitHeight(38);
+                armor.setFitWidth(38);
+                armor.setY(272);
+                armor.setX(467);
+            }
+            root.getChildren().add(armor);
+
+            ImageView sword = new ImageView();
+            if (equipment[3] == 0)
+                sword.setImage(empty);
+            sword.setY(315);
+            sword.setX(430);
+            if (Items.was_clicked && Items.last_position == 3) {
+                sword.setFitHeight(38);
+                sword.setFitWidth(38);
+                sword.setY(312);
+                sword.setX(427);
+            }
+            root.getChildren().add(sword);
+
+            ImageView shield = new ImageView();
+            if (equipment[4] == 0)
+                shield.setImage(empty);
+            shield.setY(315);
+            shield.setX(510);
+            if (Items.was_clicked && Items.last_position == 4) {
+                shield.setFitHeight(38);
+                shield.setFitWidth(38);
+                shield.setY(312);
+                shield.setX(507);
+            }
+            root.getChildren().add(shield);
+        }
+    }
+
     private void IdScrolls(Pane root) {
-        Image scroll = new Image("file:assets/gui/scroll.png");
-        Label scroll_counter = new Label(": " + Items.scrolls);
-        scroll_counter.setGraphic(new ImageView(scroll));
-        scroll_counter.setAlignment(Pos.CENTER);
-        scroll_counter.getStyleClass().add("scrolls");
-        scroll_counter.setPadding(new Insets(5));
-        scroll_counter.setLayoutY(356);
-        scroll_counter.layoutXProperty().bind(root.widthProperty()
-                .subtract(scroll_counter.widthProperty()).subtract(28));
-        root.getChildren().add(scroll_counter);
+        if (inventory_shown) {
+            Image scroll = new Image("file:assets/gui/scroll.png");
+            Label scroll_counter = new Label(": " + Items.scrolls);
+            scroll_counter.setGraphic(new ImageView(scroll));
+            scroll_counter.setAlignment(Pos.CENTER);
+            scroll_counter.getStyleClass().add("scrolls");
+            scroll_counter.setPadding(new Insets(5));
+            scroll_counter.setLayoutY(356);
+            scroll_counter.layoutXProperty().bind(root.widthProperty()
+                    .subtract(scroll_counter.widthProperty()).subtract(28));
+            root.getChildren().add(scroll_counter);
+        }
     }
 
     private void statusArea(Pane root) {

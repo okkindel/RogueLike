@@ -127,6 +127,11 @@ public class Motion {
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                 }
+            } else if (event.getCode() == KeyCode.E) {
+                Interface.inventory_shown = !Interface.inventory_shown;
+                Items.was_clicked = false;
+                scene.setRoot(assets.draw());
+                stage.setScene(scene);
             }
             if (Character.action_made) {
                 enemyMove();

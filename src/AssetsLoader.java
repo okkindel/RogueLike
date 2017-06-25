@@ -4,10 +4,11 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
 public class AssetsLoader {
 
-    private Image shadow, drop_bag, hit;
+    private Image shadow, drop_bag, hit, hit_1, hit_2;
     private Image wooden_doors, wooden_chest, stairs_down, stairs_up;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
@@ -61,12 +62,16 @@ public class AssetsLoader {
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
         hit = new Image("file:assets/battle/hit.png");
+        hit_1 = new Image("file:assets/battle/hit_1.png");
+        hit_2 = new Image("file:assets/battle/hit_2.png");
     }
 
     Pane draw() {
 
         Pane root = new Pane();
         Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
+        Random generator = new Random();
+        int random = generator.nextInt(3);
 
         /* CAMERA */
         int x_begin, y_begin, x_end, y_end;
@@ -222,7 +227,12 @@ public class AssetsLoader {
                 /* ATTACK MARK */
                 if (Character.is_attacking) {
                     iV = new ImageView();
-                    iV.setImage(hit);
+                    if (random == 0)
+                        iV.setImage(hit);
+                    if (random == 1)
+                        iV.setImage(hit_1);
+                    if (random == 2)
+                        iV.setImage(hit_2);
                     iV.setFitHeight(AssetsLoader.tile_size);
                     iV.setFitWidth(AssetsLoader.tile_size);
                     iV.setX((enemy_x_index - x_begin) * AssetsLoader.tile_size + 50);
