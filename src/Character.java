@@ -16,6 +16,7 @@ public class Character {
     static int level = 1;
     static int hunger = 0;
     static boolean is_dead = false;
+    static boolean is_attacking = false;
     static boolean action_made = false;
 
     void createCharacter() {

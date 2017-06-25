@@ -133,6 +133,7 @@ public class Motion {
                 Character.hunger();
                 Items.was_clicked = false;
                 Character.action_made = false;
+                Character.is_attacking = false;
             }
         });
     }

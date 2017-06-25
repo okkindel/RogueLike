@@ -32,8 +32,10 @@ public class Battle {
             Interface.newEvent("Character attacks for : " + true_damage);
             enemy.health_points -= true_damage;
         }
-
         if (enemy.health_points < 0)
             enemy.health_points = 0;
+        else
+            AssetsLoader.battle(enemy.positionX, enemy.positionY);
+
     }
 }

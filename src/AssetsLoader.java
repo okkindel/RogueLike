@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class AssetsLoader {
 
-    private Image shadow, drop_bag, dead_screen;
+    private Image shadow, drop_bag, hit;
     private Image wooden_doors, wooden_chest, stairs_down, stairs_up;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
@@ -16,7 +16,9 @@ public class AssetsLoader {
             grass_less, grass_up, grass_down, wooden_floor;
     private Image character_left, character_right, character_up, character_down;
     private Image enemy_zombie, enemy_skeleton, enemy_golem, enemy_ghost;
-    private static final int tile_size = 32;
+    static final int tile_size = 32;
+    private static int enemy_x_index;
+    private static int enemy_y_index;
 
     AssetsLoader() {
         //terminalShowing();
@@ -25,7 +27,6 @@ public class AssetsLoader {
     void load() throws IOException {
 
         shadow = new Image("file:assets/gui/shadow.png");
-        dead_screen = new Image("file:assets/gui/dead_screen.png");
         drop_bag = new Image("file:assets/inventory/bag.png");
         wall_block = new Image("file:assets/wall/brick.png");
         wall_broken_block = new Image("file:assets/wall/brick_broken.png");
@@ -59,6 +60,7 @@ public class AssetsLoader {
         enemy_skeleton = new Image("file:assets/enemies/skeleton.png");
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
+        hit = new Image("file:assets/battle/hit.png");
     }
 
     Pane draw() {
@@ -217,19 +219,28 @@ public class AssetsLoader {
                     iV.setY(y_index * tile_size + 50);
                     root.getChildren().add(iV);
                 }
+                /* ATTACK MARK */
+                if (Character.is_attacking) {
+                    iV = new ImageView();
+                    iV.setImage(hit);
+                    iV.setFitHeight(AssetsLoader.tile_size);
+                    iV.setFitWidth(AssetsLoader.tile_size);
+                    iV.setX((enemy_x_index - x_begin) * AssetsLoader.tile_size + 50);
+                    iV.setY((enemy_y_index - y_begin) * AssetsLoader.tile_size + 50);
+                    root.getChildren().add(iV);
+                }
             }
         }
         ImageView iV = new ImageView();
         iV.setFitHeight(tile_size * 11);
         iV.setFitWidth(tile_size * 11);
         iV.setImage(shadow);
-        if (Character.is_dead)
-            iV.setImage(dead_screen);
         iV.setX(50);
         iV.setY(50);
         root.getChildren().add(iV);
 
         new Interface(root);
+        new Actions(root);
         return root;
     }
 
@@ -242,6 +253,12 @@ public class AssetsLoader {
             }
         }
         return last_tile;
+    }
+
+    static void battle(int x_pos, int y_pos) {
+        enemy_x_index = x_pos;
+        enemy_y_index = y_pos;
+        Character.is_attacking = true;
     }
 
     private Image background(int last_tile, String type) {
