@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class AssetsLoader {
 
-    private Image shadow, drop_bag, hit, hit_1, hit_2;
+    private Image shadow, drop_bag, hit_0, hit_1, hit_2;
     private Image wooden_doors, wooden_chest, stairs_down, stairs_up;
     private Image wall_block, wall_broken_block, column_block, bookshelf;
     private Image wall_plant_up, wall_plant_down, wall_plant_left, wall_plant_right,
@@ -61,7 +61,7 @@ public class AssetsLoader {
         enemy_skeleton = new Image("file:assets/enemies/skeleton.png");
         enemy_golem = new Image("file:assets/enemies/golem.png");
         enemy_ghost = new Image("file:assets/enemies/ghost.png");
-        hit = new Image("file:assets/battle/hit.png");
+        hit_0 = new Image("file:assets/battle/hit_0.png");
         hit_1 = new Image("file:assets/battle/hit_1.png");
         hit_2 = new Image("file:assets/battle/hit_2.png");
     }
@@ -228,7 +228,7 @@ public class AssetsLoader {
                 if (Character.is_attacking) {
                     iV = new ImageView();
                     if (random == 0)
-                        iV.setImage(hit);
+                        iV.setImage(hit_0);
                     if (random == 1)
                         iV.setImage(hit_1);
                     if (random == 2)

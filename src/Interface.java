@@ -107,6 +107,10 @@ public class Interface {
         Image food_apple = new Image("file:assets/inventory/food_eggplant.png");
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
         Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
+        /* ARMORY */
+        Image ring_dex = new Image("file:assets/armory/ring_dex.png");
+        Image ring_str = new Image("file:assets/armory/ring_str.png");
+        Image ring_def = new Image("file:assets/armory/ring_def.png");
 
         if (inventory_shown) {
             for (int row = 0, index = 0; row < 4; row++) {
@@ -136,6 +140,13 @@ public class Interface {
                         eq_item.setImage(food_steak);
                     if (inventory[index] == 10)
                         eq_item.setImage(food_mushroom);
+                /* RINGS */
+                    if (inventory[index] == 51)
+                        eq_item.setImage(ring_dex);
+                    if (inventory[index] == 52)
+                        eq_item.setImage(ring_str);
+                    if (inventory[index] == 53)
+                        eq_item.setImage(ring_def);
                     eq_item.setY(235 + row * 40);
                     eq_item.setX(430 + column * 40);
 
@@ -157,8 +168,11 @@ public class Interface {
 
     private void equipment(Pane root) {
 
-        Image empty = new Image("file:assets/inventory/empty.png");
-        Image background = new Image("file:assets/inventory/background.png");
+        Image sword_empty = new Image("file:assets/armory/sword_empty.png");
+        Image ring_empty = new Image("file:assets/armory/ring_empty.png");
+        Image armor_empty = new Image("file:assets/armory/armor_empty.png");
+        Image shield_empty = new Image("file:assets/armory/shield_empty.png");
+        Image background = new Image("file:assets/armory/background.png");
 
         if (!inventory_shown) {
 
@@ -170,7 +184,7 @@ public class Interface {
 
             ImageView left_ring = new ImageView();
             if (equipment[0] == 0)
-                left_ring.setImage(empty);
+                left_ring.setImage(ring_empty);
             left_ring.setY(235);
             left_ring.setX(430);
             if (Items.was_clicked && Items.last_position == 0) {
@@ -183,7 +197,7 @@ public class Interface {
 
             ImageView right_ring = new ImageView();
             if (equipment[1] == 0)
-                right_ring.setImage(empty);
+                right_ring.setImage(ring_empty);
             right_ring.setY(235);
             right_ring.setX(510);
             if (Items.was_clicked && Items.last_position == 1) {
@@ -196,7 +210,7 @@ public class Interface {
 
             ImageView armor = new ImageView();
             if (equipment[2] == 0)
-                armor.setImage(empty);
+                armor.setImage(armor_empty);
             armor.setY(275);
             armor.setX(470);
             if (Items.was_clicked && Items.last_position == 2) {
@@ -209,7 +223,7 @@ public class Interface {
 
             ImageView sword = new ImageView();
             if (equipment[3] == 0)
-                sword.setImage(empty);
+                sword.setImage(sword_empty);
             sword.setY(315);
             sword.setX(430);
             if (Items.was_clicked && Items.last_position == 3) {
@@ -222,7 +236,7 @@ public class Interface {
 
             ImageView shield = new ImageView();
             if (equipment[4] == 0)
-                shield.setImage(empty);
+                shield.setImage(shield_empty);
             shield.setY(315);
             shield.setX(510);
             if (Items.was_clicked && Items.last_position == 4) {

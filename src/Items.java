@@ -56,6 +56,15 @@ public class Items {
                     Interface.newEvent("I feel a bit ... weird.");
                 }
             }
+            if (Interface.inventory[position] == 12) {
+                if (!action)
+                    Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
+                else {
+                    Character.hunger = 0;
+                    Character.modifyHealth(35);
+                    Interface.newEvent("Old and stiff but nutritious.");
+                }
+            }
             if (action)
                 dropItem(position, true);
         }

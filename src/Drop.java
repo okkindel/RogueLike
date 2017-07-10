@@ -23,6 +23,7 @@ public class Drop {
             treasure = 10;
         else if (random < 125)
             treasure = 11;
+        //treasure = Armory.newRing();
     }
 
     Drop(int x_position, int y_position, int treasure) {
@@ -31,6 +32,8 @@ public class Drop {
         if (treasure > 0 && treasure < 8)
             this.treasure = Mixtures.nextPotion(treasure - 1) + 1;
         else if (treasure == 8 || treasure == 9 || treasure == 10)
+            this.treasure = treasure;
+        else if (treasure > 20)
             this.treasure = treasure;
     }
 
@@ -42,6 +45,9 @@ public class Drop {
         else if (treasure == 11) {
             Items.scrolls += 1;
             Interface.newEvent("I found an identify scroll!");
+        }
+        else if (treasure == 51 || treasure == 52 || treasure == 53) {
+            Interface.newItem(treasure);
         }
     }
 }

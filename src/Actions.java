@@ -21,6 +21,7 @@ public class Actions {
             iV.setX(50);
             iV.setY(50);
             root.getChildren().add(iV);
+            Mixtures.character_paralyze = 100;
             new TimeKeeper(2500);
         }
     }
