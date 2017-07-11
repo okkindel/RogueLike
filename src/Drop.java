@@ -11,7 +11,7 @@ public class Drop {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(145);
+        int random = generator.nextInt(150);
 
         if (random < 70)
             treasure = Mixtures.dropMixture();
@@ -29,7 +29,8 @@ public class Drop {
             treasure = Swords.dropSword();
         else if (random < 145)
             treasure = Armors.dropArmor();
-        treasure = Shields.dropShield();
+        else if (random < 150)
+            treasure = Shields.dropShield();
     }
 
     Drop(int x_position, int y_position, int treasure) {

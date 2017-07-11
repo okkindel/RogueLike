@@ -12,7 +12,7 @@ public class Chests {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(155);
+        int random = generator.nextInt(160);
 
         if (random < 10)
             treasure = 0;
@@ -32,8 +32,10 @@ public class Chests {
             treasure = Rings.dropRing();
         else if (random < 150)
             treasure = Swords.dropSword();
-        else if (random < 55)
+        else if (random < 155)
             treasure = Armors.dropArmor();
+        else if (random < 160)
+            treasure = Shields.dropShield();
     }
 
     void checkTreasure() {
