@@ -2,6 +2,28 @@ import java.util.Random;
 
 public class Armory {
     static Random generator = new Random();
+    static int DEX = 0;
+    static int STR = 0;
+    static int DEF = 0;
+
+    static void editAbilities() {
+        DEX = 0; STR = 0; DEF = 0;
+
+        for (int place = 0; place < 2; place++) {
+            if (Interface.equipment[place] == 11)
+                DEX += 2;
+            if (Interface.equipment[place] == 12)
+                DEX -= 5;
+            if (Interface.equipment[place] == 13)
+                STR += 2;
+            if (Interface.equipment[place] == 14)
+                STR -= 5;
+            if (Interface.equipment[place] == 15)
+                DEF += 2;
+            if (Interface.equipment[place] == 16)
+                DEF -= 5;
+        }
+    }
 }
 
 class Swords extends Armory {
