@@ -6,7 +6,7 @@ public class Mixtures {
     static boolean[] mixtures_known = new boolean[7];
     private static int randomize;
     static int character_paralyze = 0;
-    static int character_confused = 40;
+    static int character_confused = 0;
     static int character_harm = 0;
     private static Random generator = new Random();
 
