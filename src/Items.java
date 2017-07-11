@@ -51,7 +51,7 @@ public class Items {
             }
             if (Interface.inventory[position] == 10) {
                 if (!action)
-                    Interface.newEvent("A mushroom. I do not know if I should eat it.");
+                    Interface.newEvent("A mushroom. I don't know if I should eat it.");
                 else {
                     Mixtures.character_confused = 15;
                     Mixtures.character_harm += 10;

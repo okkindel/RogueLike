@@ -11,7 +11,7 @@ public class Drop {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(150);
+        int random = generator.nextInt(140);
 
         if (random < 70)
             treasure = Mixtures.dropMixture();
@@ -22,14 +22,12 @@ public class Drop {
         else if (random < 115)
             treasure = 10;
         else if (random < 125)
-            treasure = 50;
-        else if (random < 135)
             treasure = Rings.dropRing();
-        else if (random < 140)
+        else if (random < 130)
             treasure = Swords.dropSword();
-        else if (random < 145)
+        else if (random < 135)
             treasure = Armors.dropArmor();
-        else if (random < 150)
+        else if (random < 140)
             treasure = Shields.dropShield();
     }
 
@@ -51,17 +49,11 @@ public class Drop {
             Interface.newItem(treasure);
         else if (treasure >= 11 && treasure <= 16)
             Interface.newItem(treasure);
-        else if (treasure == 50) {
-            Items.scrolls += 1;
-            Interface.newEvent("I found an identify scroll!");
-        } else if (treasure >= 11 && treasure <= 16) {
+        else if (treasure == 21 || treasure == 22 || treasure == 23)
             Interface.newItem(treasure);
-        } else if (treasure == 21 || treasure == 22 || treasure == 23) {
+        else if (treasure == 31 || treasure == 32 || treasure == 33)
             Interface.newItem(treasure);
-        } else if (treasure == 31 || treasure == 32 || treasure == 33) {
+        else if (treasure == 41 || treasure == 42 || treasure == 43)
             Interface.newItem(treasure);
-        } else if (treasure == 41 || treasure == 42 || treasure == 43) {
-            Interface.newItem(treasure);
-        }
     }
 }
