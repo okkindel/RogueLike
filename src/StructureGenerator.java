@@ -37,7 +37,7 @@ public class StructureGenerator {
                 }
             }
         }
-        terminalShowing(vertex);
+        //terminalShowing(vertex);
     }
 
     private void terminalShowing(int vertex) {

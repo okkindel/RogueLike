@@ -56,29 +56,46 @@ public class Items {
                     Interface.newEvent("I feel a bit ... weird.");
                 }
             }
-            if (Interface.inventory[position] == 12) {
+            if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16) {
                 if (!action)
-                    Interface.newEvent("Dried meat. Someone hid it here a long time ago.");
-                else {
-                    Character.hunger = 0;
-                    Character.modifyHealth(35);
-                    Interface.newEvent("Old and stiff but nutritious.");
-                }
+                    Rings.ringType(Interface.inventory[position] - 10);
+                else
+                    Rings.useRing(Interface.inventory[position] - 10);
             }
             if (action)
-                dropItem(position, true);
+                removeItem(position);
+        } else {
+            if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
+                if (!action)
+                    Rings.ringType(Interface.equipment[position] - 10);
+            }
+            if (action)
+                dropEquipment(position);
         }
     }
 
-    void dropItem(int position, boolean consumption) {
+    void dropItem(int position) {
         if (Interface.inventory_shown) {
-            if (!consumption) {
-                Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
-                room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.inventory[position]));
-            }
+            Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
+            room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.inventory[position]));
+
             System.arraycopy(Interface.inventory, position + 1,
                     Interface.inventory, position, 9 - position);
             Interface.inventory[9] = 0;
+        }
+        was_clicked = false;
+    }
+
+    void removeItem(int position) {
+        System.arraycopy(Interface.inventory, position + 1,
+                Interface.inventory, position, 9 - position);
+        Interface.inventory[9] = 0;
+    }
+
+    private void dropEquipment(int position) {
+        if (!Interface.inventory_shown) {
+            Interface.newItem(Interface.equipment[position]);
+            Interface.equipment[position] = 0;
         }
         was_clicked = false;
     }
@@ -88,6 +105,10 @@ public class Items {
             if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7
                     && !Mixtures.mixtures_known[Interface.inventory[position] - 1]) {
                 Mixtures.identify(Interface.inventory[position] - 1);
+                scrolls -= 1;
+            } else if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16
+                    && !Rings.rings_known[Interface.inventory[position] - 10]) {
+                Rings.identify(Interface.inventory[position] - 10);
                 scrolls -= 1;
             } else
                 Interface.newEvent("You don't have to identify it.");

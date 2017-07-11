@@ -22,8 +22,8 @@ public class Drop {
         else if (random < 115)
             treasure = 10;
         else if (random < 125)
-            treasure = 11;
-        //treasure = Armory.newRing();
+            treasure = 20;
+        treasure = Rings.dropRing();
     }
 
     Drop(int x_position, int y_position, int treasure) {
@@ -42,7 +42,9 @@ public class Drop {
             Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);
         else if (treasure == 8 || treasure == 9 || treasure == 10)
             Interface.newItem(treasure);
-        else if (treasure == 11) {
+        else if (treasure >= 11 && treasure <= 16)
+            Interface.newItem(treasure);
+        else if (treasure == 20) {
             Items.scrolls += 1;
             Interface.newEvent("I found an identify scroll!");
         }

@@ -117,7 +117,7 @@ public class Motion {
                 }
             } else if (event.getCode() == KeyCode.X) {
                 if (Items.was_clicked) {
-                    items.dropItem(Items.last_position, false);
+                    items.dropItem(Items.last_position);
                     scene.setRoot(assets.draw());
                     stage.setScene(scene);
                 }

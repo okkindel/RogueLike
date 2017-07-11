@@ -12,6 +12,10 @@ public class Interface {
     static int[] inventory = new int[10];
     static int[] equipment = new int[5];
 
+    private Image ring_dex = new Image("file:assets/armory/ring_dex.png");
+    private Image ring_str = new Image("file:assets/armory/ring_str.png");
+    private Image ring_def = new Image("file:assets/armory/ring_def.png");
+
     public Interface(Pane root) {
         statusBar(root);
         statusArea(root);
@@ -42,6 +46,15 @@ public class Interface {
             inventory[0] = item;
         } else
             newEvent("Inventory full!");
+    }
+
+    static void addRing(int item) {
+        if (equipment[0] == 0)
+            equipment[0] = item;
+        else if (equipment[1] == 0)
+            equipment[1] = item;
+        else
+            newEvent("I have no more fingers!");
     }
 
     private void statusBar(Pane root) {
@@ -107,10 +120,6 @@ public class Interface {
         Image food_apple = new Image("file:assets/inventory/food_eggplant.png");
         Image food_steak = new Image("file:assets/inventory/food_steak.png");
         Image food_mushroom = new Image("file:assets/inventory/food_mushroom.png");
-        /* ARMORY */
-        Image ring_dex = new Image("file:assets/armory/ring_dex.png");
-        Image ring_str = new Image("file:assets/armory/ring_str.png");
-        Image ring_def = new Image("file:assets/armory/ring_def.png");
 
         if (inventory_shown) {
             for (int row = 0, index = 0; row < 4; row++) {
@@ -141,11 +150,11 @@ public class Interface {
                     if (inventory[index] == 10)
                         eq_item.setImage(food_mushroom);
                 /* RINGS */
-                    if (inventory[index] == 51)
+                    if (inventory[index] == 11 || inventory[index] == 12)
                         eq_item.setImage(ring_dex);
-                    if (inventory[index] == 52)
+                    if (inventory[index] == 13 || inventory[index] == 14)
                         eq_item.setImage(ring_str);
-                    if (inventory[index] == 53)
+                    if (inventory[index] == 15 || inventory[index] == 16)
                         eq_item.setImage(ring_def);
                     eq_item.setY(235 + row * 40);
                     eq_item.setX(430 + column * 40);
@@ -185,6 +194,12 @@ public class Interface {
             ImageView left_ring = new ImageView();
             if (equipment[0] == 0)
                 left_ring.setImage(ring_empty);
+            if (equipment[0] == 11 || equipment[0] == 12)
+                left_ring.setImage(ring_dex);
+            if (equipment[0] == 13 || equipment[0] == 14)
+                left_ring.setImage(ring_str);
+            if (equipment[0] == 15 || equipment[0] == 16)
+                left_ring.setImage(ring_def);
             left_ring.setY(235);
             left_ring.setX(430);
             if (Items.was_clicked && Items.last_position == 0) {
@@ -198,6 +213,12 @@ public class Interface {
             ImageView right_ring = new ImageView();
             if (equipment[1] == 0)
                 right_ring.setImage(ring_empty);
+            if (equipment[1] == 11 || equipment[1] == 12)
+                right_ring.setImage(ring_dex);
+            if (equipment[1] == 13 || equipment[1] == 14)
+                right_ring.setImage(ring_str);
+            if (equipment[1] == 15 || equipment[1] == 16)
+                right_ring.setImage(ring_def);
             right_ring.setY(235);
             right_ring.setX(510);
             if (Items.was_clicked && Items.last_position == 1) {

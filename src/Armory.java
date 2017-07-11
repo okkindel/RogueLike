@@ -2,11 +2,6 @@ import java.util.Random;
 
 public class Armory {
     static Random generator = new Random();
-
-    static int newRing() {
-        Rings ring = new Rings();
-        return ring.type;
-    }
 }
 
 class Swords extends Armory {
@@ -14,40 +9,46 @@ class Swords extends Armory {
 
 class Rings extends Armory {
 
-    int type = 0;
-    boolean known = false;
+    static boolean[] rings_known = new boolean[7];
 
-    Rings() {
-        dropRing();
+    static void ringType(int index) {
+        String[] rings = new String[7];
+        rings[1] = "holy ring of dexterity: DEX + 2";
+        rings[2] = "cursed ring of dexterity: DEX - 5";
+        rings[3] = "holy ring of strength: STR + 2";
+        rings[4] = "cursed ring of strength: STR - 5";
+        rings[5] = "holy ring of defence: DEF + 2";
+        rings[6] = "cursed ring of defence: DEF - 5";
+
+        if (!rings_known[index])
+            Interface.newEvent("It is a ring. I don't know it's properties.");
+        else
+            Interface.newEvent("It is a " + rings[index]);
     }
 
-    private void dropRing() {
-        type = generator.nextInt(6);
+    static void identify(int index) {
+        rings_known[index] = true;
+        ringType(index);
     }
 
-    private String ringType(int ring_type) {
-        if (ring_type == 0 || ring_type == 3)
-            return "dexterity";
-        if (ring_type == 1 || ring_type == 4)
-            return "strength";
-        if (ring_type == 2 || ring_type == 5)
-            return "defence";
-        else return "";
+    static void useRing(int index) {
+        Interface.addRing(index + 10);
     }
 
-    private boolean ringCursed(int ring_type) {
-        return !(ring_type == 0 || ring_type == 1 || ring_type == 2);
-    }
-
-    void checkRing(int ring_type) {
-        if (!known)
-            Interface.newEvent("It is ring of " + ringType(ring_type) + ".");
-        if (known) {
-            if (ringCursed(ring_type))
-                Interface.newEvent("It is cursed ring of " + ringType(ring_type) + ": - 5.");
-            if (!ringCursed(ring_type))
-                Interface.newEvent("It is holy ring of " + ringType(ring_type) + ": + 5.");
-        }
+    static int dropRing() {
+        int random = generator.nextInt(6);
+        if (random == 0)
+            return 11;
+        else if (random == 1)
+            return 12;
+        else if (random == 2)
+            return 13;
+        else if (random == 3)
+            return 14;
+        else if (random == 4)
+            return 15;
+        else
+            return 16;
     }
 }
 
