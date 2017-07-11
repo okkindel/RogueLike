@@ -53,8 +53,10 @@ public class Interface {
             equipment[0] = item;
         else if (equipment[1] == 0)
             equipment[1] = item;
-        else
+        else {
             newEvent("I have no more fingers!");
+            Items.eq_full = true;
+        }
     }
 
     private void statusBar(Pane root) {

@@ -3,6 +3,7 @@ public class Items {
     static boolean was_clicked = false;
     static int last_position;
     static int scrolls = 1;
+    static boolean eq_full = false;
 
     Items() {
         new Mixtures();
@@ -62,7 +63,7 @@ public class Items {
                 else
                     Rings.useRing(Interface.inventory[position] - 10);
             }
-            if (action)
+            if (action && !eq_full)
                 removeItem(position);
         } else {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
@@ -72,6 +73,8 @@ public class Items {
             if (action)
                 dropEquipment(position);
         }
+        eq_full = false;
+        was_clicked = false;
     }
 
     void dropItem(int position) {
@@ -83,10 +86,9 @@ public class Items {
                     Interface.inventory, position, 9 - position);
             Interface.inventory[9] = 0;
         }
-        was_clicked = false;
     }
 
-    void removeItem(int position) {
+    private void removeItem(int position) {
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
         Interface.inventory[9] = 0;
@@ -97,7 +99,6 @@ public class Items {
             Interface.newItem(Interface.equipment[position]);
             Interface.equipment[position] = 0;
         }
-        was_clicked = false;
     }
 
     void identify(int position) {
