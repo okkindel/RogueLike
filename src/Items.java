@@ -63,12 +63,22 @@ public class Items {
                 else
                     Rings.useRing(Interface.inventory[position] - 10);
             }
+            if (Interface.inventory[position] >= 21 && Interface.inventory[position] <= 23) {
+                if (!action)
+                    Swords.swordType(Interface.inventory[position] - 20);
+                else
+                    Swords.useSword(Interface.inventory[position] - 20);
+            }
             if (action && !eq_full)
                 removeItem(position);
         } else {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
                 if (!action)
                     Rings.ringType(Interface.equipment[position] - 10);
+            }
+            if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
+                if (!action)
+                    Swords.swordType(Interface.equipment[position] - 20);
             }
             if (action)
                 dropEquipment(position);
@@ -80,7 +90,6 @@ public class Items {
         if (Interface.inventory_shown) {
             Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
             room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.inventory[position]));
-
             System.arraycopy(Interface.inventory, position + 1,
                     Interface.inventory, position, 9 - position);
             Interface.inventory[9] = 0;
@@ -88,7 +97,7 @@ public class Items {
         was_clicked = false;
     }
 
-    void removeItem(int position) {
+    private void removeItem(int position) {
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
         Interface.inventory[9] = 0;

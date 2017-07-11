@@ -15,6 +15,9 @@ public class Interface {
     private Image ring_dex = new Image("file:assets/armory/ring_dex.png");
     private Image ring_str = new Image("file:assets/armory/ring_str.png");
     private Image ring_def = new Image("file:assets/armory/ring_def.png");
+    private Image sword_1 = new Image("file:assets/armory/sword_1.png");
+    private Image sword_2 = new Image("file:assets/armory/sword_2.png");
+    private Image sword_3 = new Image("file:assets/armory/sword_3.png");
 
     public Interface(Pane root) {
         statusBar(root);
@@ -48,14 +51,23 @@ public class Interface {
             newEvent("Inventory full!");
     }
 
-    static void addRing(int item) {
-        if (equipment[0] == 0)
-            equipment[0] = item;
-        else if (equipment[1] == 0)
-            equipment[1] = item;
-        else {
-            newEvent("I have no more fingers!");
-            Items.eq_full = true;
+    static void addStuff(int item) {
+        if (item < 20) {
+            if (equipment[0] == 0)
+                equipment[0] = item;
+            else if (equipment[1] == 0)
+                equipment[1] = item;
+            else {
+                newEvent("I have no more fingers!");
+                Items.eq_full = true;
+            }
+        } else if (item < 30) {
+            if (equipment[3] == 0)
+                equipment[3] = item;
+            else {
+                newEvent("I already have one sword!");
+                Items.eq_full = true;
+            }
         }
     }
 
@@ -158,6 +170,13 @@ public class Interface {
                         eq_item.setImage(ring_str);
                     if (inventory[index] == 15 || inventory[index] == 16)
                         eq_item.setImage(ring_def);
+                /* SWORDS */
+                    if (inventory[index] == 21)
+                        eq_item.setImage(sword_1);
+                    if (inventory[index] == 22)
+                        eq_item.setImage(sword_2);
+                    if (inventory[index] == 23)
+                        eq_item.setImage(sword_3);
                     eq_item.setY(235 + row * 40);
                     eq_item.setX(430 + column * 40);
 
@@ -247,6 +266,12 @@ public class Interface {
             ImageView sword = new ImageView();
             if (equipment[3] == 0)
                 sword.setImage(sword_empty);
+            if (equipment[3] == 21)
+                sword.setImage(sword_1);
+            if (equipment[3] == 22)
+                sword.setImage(sword_2);
+            if (equipment[3] == 23)
+                sword.setImage(sword_3);
             sword.setY(315);
             sword.setX(430);
             if (Items.was_clicked && Items.last_position == 3) {

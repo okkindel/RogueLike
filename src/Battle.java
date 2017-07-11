@@ -31,8 +31,8 @@ public class Battle {
         else if (generator.nextInt(100) <= enemy.dexterity_points) {
             Interface.newEvent(enemy.type + " dodged attack.");
         } else {
-            Interface.newEvent("Character attacks for : " + true_damage);
-            enemy.health_points -= true_damage;
+            Interface.newEvent("Character attacks for : " + true_damage + Armory.ATT);
+            enemy.health_points -= (true_damage + Armory.ATT);
         }
         if (enemy.health_points < 0)
             enemy.health_points = 0;

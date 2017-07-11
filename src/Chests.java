@@ -12,7 +12,7 @@ public class Chests {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(145);
+        int random = generator.nextInt(150);
 
         if (random < 10)
             treasure = 0;
@@ -27,9 +27,11 @@ public class Chests {
         else if (random < 125)
             treasure = 10;
         else if (random < 135)
-            treasure = 20;
+            treasure = 50;
         else if (random < 145)
             treasure = Rings.dropRing();
+        else if (random < 150)
+            treasure = Swords.dropSword();
     }
 
     void checkTreasure() {
@@ -42,11 +44,14 @@ public class Chests {
                     Interface.newItem(Mixtures.prevPotion(treasure - 1) + 1);
                 else if (treasure == 8 || treasure == 9 || treasure == 10)
                     Interface.newItem(treasure);
-                else if (treasure == 20) {
+                else if (treasure == 50) {
                     Items.scrolls += 1;
                     Interface.newEvent("I found an identify scroll!");
                 }
                 else if (treasure >= 11 && treasure <= 16) {
+                    Interface.newItem(treasure);
+                }
+                else if (treasure == 21 || treasure == 22 || treasure == 23) {
                     Interface.newItem(treasure);
                 }
                 was_taken = true;
@@ -54,6 +59,5 @@ public class Chests {
                 Interface.newEvent("Inventory full!");
         } else
             Interface.newEvent("This chest is empty.");
-
     }
 }

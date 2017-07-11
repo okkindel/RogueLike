@@ -5,9 +5,10 @@ public class Armory {
     static int DEX = 0;
     static int STR = 0;
     static int DEF = 0;
+    static int ATT = 0;
 
     static void editAbilities() {
-        DEX = 0; STR = 0; DEF = 0;
+        DEX = 0; STR = 0; DEF = 0; ATT = 0;
 
         for (int place = 0; place < 2; place++) {
             if (Interface.equipment[place] == 11)
@@ -23,10 +24,39 @@ public class Armory {
             if (Interface.equipment[place] == 16)
                 DEF -= 5;
         }
+        if (Interface.equipment[3] == 21)
+            ATT += 1;
+        if (Interface.equipment[3] == 22)
+            ATT += 3;
+        if (Interface.equipment[3] == 23)
+            ATT += 5;
     }
 }
 
 class Swords extends Armory {
+
+    static void swordType(int index) {
+        String[] swords = new String[4];
+        swords[1] = "simple dagger. It will gently improves your impact.";
+        swords[2] = "short sword. Your attacks will become much stronger.";
+        swords[3] = "long sword. You have to have the strength of a warrior to use it.";
+
+        Interface.newEvent("It is a " + swords[index]);
+    }
+
+    static void useSword(int index) {
+        Interface.addStuff(index + 20);
+    }
+
+    static int dropSword() {
+        int random = generator.nextInt(10);
+        if (random < 6)
+            return 21;
+        else if (random < 9)
+            return 22;
+        else
+            return 23;
+    }
 }
 
 class Rings extends Armory {
@@ -54,7 +84,7 @@ class Rings extends Armory {
     }
 
     static void useRing(int index) {
-        Interface.addRing(index + 10);
+        Interface.addStuff(index + 10);
     }
 
     static int dropRing() {
