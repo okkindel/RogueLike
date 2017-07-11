@@ -95,6 +95,7 @@ public class Interface {
         Image rooted = new Image("file:assets/gui/buff_root.png");
         Image hunger = new Image("file:assets/gui/buff_hunger.png");
         Image confuse = new Image("file:assets/gui/buff_confuse.png");
+        Image harm = new Image("file:assets/gui/buff_harm.png");
 
         if (Character.hunger > 400) {
             ImageView buff = new ImageView();
@@ -114,6 +115,13 @@ public class Interface {
             ImageView buff = new ImageView();
             buff.setImage(confuse);
             buff.setX(280);
+            buff.setY(50);
+            root.getChildren().add(buff);
+        }
+        if (Mixtures.character_harm > 0) {
+            ImageView buff = new ImageView();
+            buff.setImage(harm);
+            buff.setX(245);
             buff.setY(50);
             root.getChildren().add(buff);
         }

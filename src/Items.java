@@ -35,6 +35,7 @@ public class Items {
                 else {
                     Character.hunger = 0;
                     Character.modifyHealth(25);
+                    Mixtures.character_harm -= 15;
                     Interface.newEvent("Eggplant tastes great and cures hunger.");
                 }
             }
@@ -44,6 +45,7 @@ public class Items {
                 else {
                     Character.hunger = 0;
                     Character.modifyHealth(35);
+                    Mixtures.character_harm -= 25;
                     Interface.newEvent("Old and stiff but nutritious.");
                 }
             }
@@ -52,8 +54,8 @@ public class Items {
                     Interface.newEvent("A mushroom. I do not know if I should eat it.");
                 else {
                     Mixtures.character_confused = 15;
-                    Character.max_health += 10;
-                    Character.modifyHealth(-20);
+                    Mixtures.character_harm += 10;
+                    Character.max_health += 15;
                     Interface.newEvent("I feel a bit ... weird.");
                 }
             }

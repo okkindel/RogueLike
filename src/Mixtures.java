@@ -7,6 +7,7 @@ public class Mixtures {
     private static int randomize;
     static int character_paralyze = 0;
     static int character_confused = 0;
+    static int character_harm = 0;
     private static Random generator = new Random();
 
     Mixtures() {
@@ -45,25 +46,28 @@ public class Mixtures {
         int type = Math.floorMod((randomize + index), 7);
         if (type == 0) {
             Interface.newEvent("What is happening?");
-            character_confused = 15;
+            character_confused += 15;
         } else if (type == 1) {
             Interface.newEvent("Probably nothing happened ... I guess.");
-            character_paralyze = 10;
+            character_paralyze += 10;
         } else if (type == 2) {
             Interface.newEvent("New found strength surges through your body.");
-            Character.strength_points += 5;
+            Character.strength_points += 2;
         } else if (type == 3) {
             Interface.newEvent("You feel much more skillful.");
-            Character.dexterity_points += 5;
+            Character.dexterity_points += 2;
         } else if (type == 4) {
             Interface.newEvent("Delicious and refreshing. Do I have more of it?");
             Character.health_points = Character.max_health;
+            character_paralyze = 0;
+            character_confused = 0;
+            character_harm = 0;
         } else if (type == 5) {
             Interface.newEvent("The enlightenment of the ancestors is coming upon you.");
             Character.experience(Character.next_level - Character.experience);
         } else if (type == 6) {
-            Interface.newEvent("You feel terribly, shocked by shivers.");
-            Character.health_points /= 2;
+            Interface.newEvent("Pain stabs your body. It was a poison.");
+            character_harm += 25;
         }
         mixtures_known[index] = true;
     }

@@ -95,6 +95,7 @@ public class Character {
                 y_value = step_y;
             } else
                 Mixtures.character_paralyze -= 1;
+            buffs();
             action_made = true;
         } else if (room.sizes[step_x][step_y] >= 70 || room.sizes[step_x][step_y] <= 80) {
             for (Enemies enemy : room.enemies_list) {
@@ -202,6 +203,17 @@ public class Character {
         }
     }
 
+    private static void buffs() {
+        if (Mixtures.character_harm > 0) {
+            modifyHealth(-5);
+            Mixtures.character_harm -= 1;
+        }
+        if (Mixtures.character_harm < 0) {
+            modifyHealth(1);
+            Mixtures.character_harm += 1;
+        }
+    }
+
     static void experience(int experience_points) {
         experience += experience_points;
         if (experience >= next_level) {
@@ -209,10 +221,10 @@ public class Character {
             Interface.newEvent("You are now on level " + level);
             experience = experience - next_level;
             next_level += 50;
-            strength_points += 5;
-            dexterity_points += 5;
-            defence_points += 5;
-            max_health += 25;
+            strength_points += 1;
+            dexterity_points += 1;
+            defence_points += 1;
+            max_health += 10;
             modifyHealth(50 + 10 * level);
         }
     }
