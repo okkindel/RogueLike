@@ -11,7 +11,7 @@ public class Drop {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(140);
+        int random = generator.nextInt(145);
 
         if (random < 70)
             treasure = Mixtures.dropMixture();
@@ -27,6 +27,8 @@ public class Drop {
             treasure = Rings.dropRing();
         else if (random < 140)
             treasure = Swords.dropSword();
+        else if (random < 145)
+            treasure = Armors.dropArmor();
     }
 
     Drop(int x_position, int y_position, int treasure) {
@@ -53,6 +55,8 @@ public class Drop {
         } else if (treasure >= 11 && treasure <= 16) {
             Interface.newItem(treasure);
         } else if (treasure == 21 || treasure == 22 || treasure == 23) {
+            Interface.newItem(treasure);
+        } else if (treasure == 31 || treasure == 32 || treasure == 33) {
             Interface.newItem(treasure);
         }
     }

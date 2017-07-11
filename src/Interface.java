@@ -18,6 +18,9 @@ public class Interface {
     private Image sword_1 = new Image("file:assets/armory/sword_1.png");
     private Image sword_2 = new Image("file:assets/armory/sword_2.png");
     private Image sword_3 = new Image("file:assets/armory/sword_3.png");
+    private Image armor_1 = new Image("file:assets/armory/armor_1.png");
+    private Image armor_2 = new Image("file:assets/armory/armor_2.png");
+    private Image armor_3 = new Image("file:assets/armory/armor_3.png");
 
     public Interface(Pane root) {
         statusBar(root);
@@ -66,6 +69,13 @@ public class Interface {
                 equipment[3] = item;
             else {
                 newEvent("I already have one sword!");
+                Items.eq_full = true;
+            }
+        } else if (item < 40) {
+            if (equipment[2] == 0)
+                equipment[2] = item;
+            else {
+                newEvent("I already wear an armor!");
                 Items.eq_full = true;
             }
         }
@@ -185,6 +195,13 @@ public class Interface {
                         eq_item.setImage(sword_2);
                     if (inventory[index] == 23)
                         eq_item.setImage(sword_3);
+                /* ARMORS */
+                    if (inventory[index] == 31)
+                        eq_item.setImage(armor_1);
+                    if (inventory[index] == 32)
+                        eq_item.setImage(armor_2);
+                    if (inventory[index] == 33)
+                        eq_item.setImage(armor_3);
                     eq_item.setY(235 + row * 40);
                     eq_item.setX(430 + column * 40);
 
@@ -261,6 +278,12 @@ public class Interface {
             ImageView armor = new ImageView();
             if (equipment[2] == 0)
                 armor.setImage(armor_empty);
+            if (equipment[2] == 31)
+                armor.setImage(armor_1);
+            if (equipment[2] == 32)
+                armor.setImage(armor_2);
+            if (equipment[2] == 33)
+                armor.setImage(armor_3);
             armor.setY(275);
             armor.setX(470);
             if (Items.was_clicked && Items.last_position == 2) {

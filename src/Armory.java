@@ -30,6 +30,12 @@ public class Armory {
             ATT += 3;
         if (Interface.equipment[3] == 23)
             ATT += 5;
+        if (Interface.equipment[2] == 31)
+            DEF += 1;
+        if (Interface.equipment[2] == 32)
+            DEF += 3;
+        if (Interface.equipment[2] == 33)
+            DEF += 5;
     }
 }
 
@@ -37,11 +43,11 @@ class Swords extends Armory {
 
     static void swordType(int index) {
         String[] swords = new String[4];
-        swords[1] = "simple dagger. It will gently improves your impact.";
-        swords[2] = "short sword. Your attacks will become much stronger.";
-        swords[3] = "long sword. You have to have the strength of a warrior to use it.";
+        swords[1] = "It's just a simple dagger. It will gently improves your impact.";
+        swords[2] = "It's a short sword. Your attacks will become much stronger.";
+        swords[3] = "It's a long sword. You have to have the strength of a warrior to use it.";
 
-        Interface.newEvent("It is a " + swords[index]);
+        Interface.newEvent(swords[index]);
     }
 
     static void useSword(int index) {
@@ -119,13 +125,26 @@ class Shields extends Armory {
 
 class Armors extends Armory {
 
+    static void armorType(int index) {
+        String[] armors = new String[4];
+        armors[1] = "Just ordinary cloth, but better than nothing.";
+        armors[2] = "This chain mail will surely stop many smites.";
+        armors[3] = "Real plate armor! How did it get here?";
+
+        Interface.newEvent(armors[index]);
+    }
+
+    static void useArmor(int index) {
+        Interface.addStuff(index + 30);
+    }
+
     static int dropArmor() {
-        int random = generator.nextInt(30);
-        if (random < 10)
-            return 1;
-        else if (random < 20)
-            return 2;
+        int random = generator.nextInt(10);
+        if (random < 6)
+            return 31;
+        else if (random < 9)
+            return 32;
         else
-            return 3;
+            return 33;
     }
 }

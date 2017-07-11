@@ -12,7 +12,7 @@ public class Chests {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(150);
+        int random = generator.nextInt(155);
 
         if (random < 10)
             treasure = 0;
@@ -32,6 +32,8 @@ public class Chests {
             treasure = Rings.dropRing();
         else if (random < 150)
             treasure = Swords.dropSword();
+        else if (random < 55)
+            treasure = Armors.dropArmor();
     }
 
     void checkTreasure() {
@@ -47,11 +49,11 @@ public class Chests {
                 else if (treasure == 50) {
                     Items.scrolls += 1;
                     Interface.newEvent("I found an identify scroll!");
-                }
-                else if (treasure >= 11 && treasure <= 16) {
+                } else if (treasure >= 11 && treasure <= 16) {
                     Interface.newItem(treasure);
-                }
-                else if (treasure == 21 || treasure == 22 || treasure == 23) {
+                } else if (treasure == 21 || treasure == 22 || treasure == 23) {
+                    Interface.newItem(treasure);
+                } else if (treasure == 31 || treasure == 32 || treasure == 33) {
                     Interface.newItem(treasure);
                 }
                 was_taken = true;

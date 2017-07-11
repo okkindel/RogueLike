@@ -71,6 +71,12 @@ public class Items {
                 else
                     Swords.useSword(Interface.inventory[position] - 20);
             }
+            if (Interface.inventory[position] >= 31 && Interface.inventory[position] <= 33) {
+                if (!action)
+                    Armors.armorType(Interface.inventory[position] - 30);
+                else
+                    Armors.useArmor(Interface.inventory[position] - 30);
+            }
             if (action && !eq_full)
                 removeItem(position);
         } else {
@@ -81,6 +87,10 @@ public class Items {
             if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
                 if (!action)
                     Swords.swordType(Interface.equipment[position] - 20);
+            }
+            if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
+                if (!action)
+                    Armors.armorType(Interface.equipment[position] - 30);
             }
             if (action)
                 dropEquipment(position);
