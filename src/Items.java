@@ -77,6 +77,12 @@ public class Items {
                 else
                     Armors.useArmor(Interface.inventory[position] - 30);
             }
+            if (Interface.inventory[position] >= 41 && Interface.inventory[position] <= 43) {
+                if (!action)
+                    Shields.shieldType(Interface.inventory[position] - 40);
+                else
+                    Shields.useShield(Interface.inventory[position] - 40);
+            }
             if (action && !eq_full)
                 removeItem(position);
         } else {
@@ -91,6 +97,10 @@ public class Items {
             if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
                 if (!action)
                     Armors.armorType(Interface.equipment[position] - 30);
+            }
+            if (Interface.equipment[position] >= 41 && Interface.equipment[position] <= 43) {
+                if (!action)
+                    Shields.shieldType(Interface.equipment[position] - 40);
             }
             if (action)
                 dropEquipment(position);

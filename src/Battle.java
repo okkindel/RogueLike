@@ -26,7 +26,9 @@ public class Battle {
         int strength = generator.nextInt(Character.strength_points + Armory.STR);
         int defence = generator.nextInt(enemy.defence_points) / 2;
         int true_damage = strength - defence;
-        if (true_damage <= 0)
+        if (Mixtures.character_confused > 0) {
+            Interface.newEvent("You missed attack.");
+        } else if (true_damage <= 0)
             Interface.newEvent(enemy.type + " blocked attack.");
         else if (generator.nextInt(100) <= enemy.dexterity_points) {
             Interface.newEvent(enemy.type + " dodged attack.");

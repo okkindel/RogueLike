@@ -55,6 +55,8 @@ public class Chests {
                     Interface.newItem(treasure);
                 } else if (treasure == 31 || treasure == 32 || treasure == 33) {
                     Interface.newItem(treasure);
+                } else if (treasure == 41 || treasure == 42 || treasure == 43) {
+                    Interface.newItem(treasure);
                 }
                 was_taken = true;
             } else

@@ -36,6 +36,12 @@ public class Armory {
             DEF += 3;
         if (Interface.equipment[2] == 33)
             DEF += 5;
+        if (Interface.equipment[4] == 41)
+            DEF += 1;
+        if (Interface.equipment[4] == 42)
+            DEF += 3;
+        if (Interface.equipment[4] == 43)
+            DEF += 5;
     }
 }
 
@@ -112,14 +118,27 @@ class Rings extends Armory {
 
 class Shields extends Armory {
 
+    static void shieldType(int index) {
+        String[] shields = new String[4];
+        shields[1] = "Weak, wooden shield. It won't stand much time.";
+        shields[2] = "Decorated, although not distinguished by anything special.";
+        shields[3] = "Huge and beautiful. Nothing will pass through it.";
+
+        Interface.newEvent(shields[index]);
+    }
+
+    static void useShield(int index) {
+        Interface.addStuff(index + 40);
+    }
+
     static int dropShield() {
-        int random = generator.nextInt(30);
-        if (random < 10)
-            return 1;
-        else if (random < 20)
-            return 2;
+        int random = generator.nextInt(10);
+        if (random < 6)
+            return 41;
+        else if (random < 9)
+            return 42;
         else
-            return 3;
+            return 43;
     }
 }
 

@@ -29,6 +29,7 @@ public class Drop {
             treasure = Swords.dropSword();
         else if (random < 145)
             treasure = Armors.dropArmor();
+        treasure = Shields.dropShield();
     }
 
     Drop(int x_position, int y_position, int treasure) {
@@ -57,6 +58,8 @@ public class Drop {
         } else if (treasure == 21 || treasure == 22 || treasure == 23) {
             Interface.newItem(treasure);
         } else if (treasure == 31 || treasure == 32 || treasure == 33) {
+            Interface.newItem(treasure);
+        } else if (treasure == 41 || treasure == 42 || treasure == 43) {
             Interface.newItem(treasure);
         }
     }

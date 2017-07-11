@@ -21,6 +21,9 @@ public class Interface {
     private Image armor_1 = new Image("file:assets/armory/armor_1.png");
     private Image armor_2 = new Image("file:assets/armory/armor_2.png");
     private Image armor_3 = new Image("file:assets/armory/armor_3.png");
+    private Image shield_1 = new Image("file:assets/armory/shield_1.png");
+    private Image shield_2 = new Image("file:assets/armory/shield_2.png");
+    private Image shield_3 = new Image("file:assets/armory/shield_3.png");
 
     public Interface(Pane root) {
         statusBar(root);
@@ -76,6 +79,13 @@ public class Interface {
                 equipment[2] = item;
             else {
                 newEvent("I already wear an armor!");
+                Items.eq_full = true;
+            }
+        } else if (item < 50) {
+            if (equipment[4] == 0)
+                equipment[4] = item;
+            else {
+                newEvent("I already have a shield!");
                 Items.eq_full = true;
             }
         }
@@ -202,6 +212,13 @@ public class Interface {
                         eq_item.setImage(armor_2);
                     if (inventory[index] == 33)
                         eq_item.setImage(armor_3);
+                /* SHIELDS */
+                    if (inventory[index] == 41)
+                        eq_item.setImage(shield_1);
+                    if (inventory[index] == 42)
+                        eq_item.setImage(shield_2);
+                    if (inventory[index] == 43)
+                        eq_item.setImage(shield_3);
                     eq_item.setY(235 + row * 40);
                     eq_item.setX(430 + column * 40);
 
@@ -316,6 +333,12 @@ public class Interface {
             ImageView shield = new ImageView();
             if (equipment[4] == 0)
                 shield.setImage(shield_empty);
+            if (equipment[4] == 41)
+                shield.setImage(shield_1);
+            if (equipment[4] == 42)
+                shield.setImage(shield_2);
+            if (equipment[4] == 43)
+                shield.setImage(shield_3);
             shield.setY(315);
             shield.setX(510);
             if (Items.was_clicked && Items.last_position == 4) {
