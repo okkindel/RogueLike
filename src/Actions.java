@@ -21,24 +21,6 @@ public class Actions {
             iV.setX(50);
             iV.setY(50);
             root.getChildren().add(iV);
-            Mixtures.character_paralyze = 100;
-            new TimeKeeper(2500);
-        }
-    }
-
-    class TimeKeeper {
-        Timer timer;
-
-        TimeKeeper(int time) {
-            timer = new Timer();
-            timer.schedule(new TaskExit(), time);
-        }
-
-        class TaskExit extends TimerTask {
-            public void run() {
-                System.exit(0);
-                timer.cancel();
-            }
         }
     }
 }

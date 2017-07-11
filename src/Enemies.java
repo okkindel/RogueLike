@@ -3,6 +3,7 @@ import java.util.Random;
 public class Enemies {
 
     private Random generator = new Random();
+    boolean is_under_attack = false;
     String type = "";
     Room room;
     int positionX, positionY = 0;
@@ -26,6 +27,9 @@ public class Enemies {
             }
             return false;
         }
+        if (is_under_attack)
+            AssetsLoader.battle(this.positionX, this.positionY);
+        is_under_attack = false;
         return true;
     }
 

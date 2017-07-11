@@ -85,20 +85,17 @@ public class Items {
             }
             if (action && !eq_full)
                 removeItem(position);
-        } else {
+        } else if (position < 5) {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
                 if (!action)
                     Rings.ringType(Interface.equipment[position] - 10);
-            }
-            if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
+            } else if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
                 if (!action)
                     Swords.swordType(Interface.equipment[position] - 20);
-            }
-            if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
+            } else if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
                 if (!action)
                     Armors.armorType(Interface.equipment[position] - 30);
-            }
-            if (Interface.equipment[position] >= 41 && Interface.equipment[position] <= 43) {
+            }if (Interface.equipment[position] >= 41 && Interface.equipment[position] <= 43) {
                 if (!action)
                     Shields.shieldType(Interface.equipment[position] - 40);
             }
@@ -127,7 +124,7 @@ public class Items {
     }
 
     private void dropEquipment(int position) {
-        if (!Interface.inventory_shown) {
+        if (!Interface.inventory_shown && Interface.equipment[position] != 0) {
             Interface.newItem(Interface.equipment[position]);
             Interface.equipment[position] = 0;
         }

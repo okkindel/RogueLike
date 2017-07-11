@@ -22,7 +22,7 @@ public class Battle {
     static void characterAttack(Enemies enemy) {
 
         Armory.editAbilities();
-        AssetsLoader.battle(enemy.positionX, enemy.positionY);
+        enemy.is_under_attack = true;
         int strength = generator.nextInt(Character.strength_points + Armory.STR);
         int defence = generator.nextInt(enemy.defence_points) / 2;
         int true_damage = strength - defence;
