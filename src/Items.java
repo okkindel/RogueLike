@@ -59,6 +59,7 @@ public class Items {
                     Interface.newEvent("I feel a bit ... weird.");
                 }
             }
+        /* ARMORY */
             if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16) {
                 if (!action)
                     Rings.ringType(Interface.inventory[position] - 10);
@@ -85,7 +86,10 @@ public class Items {
             }
             if (action && !eq_full)
                 removeItem(position);
-        } else if (position < 5) {
+        }
+        /* EQUIPMENT */
+
+        else if (position < 5) {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
                 if (!action)
                     Rings.ringType(Interface.equipment[position] - 10);
