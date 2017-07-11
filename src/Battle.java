@@ -26,7 +26,7 @@ public class Battle {
         int strength = generator.nextInt(Character.strength_points + Armory.STR);
         int defence = generator.nextInt(enemy.defence_points) / 2;
         int true_damage = strength - defence;
-        if (Mixtures.character_confused > 0) {
+        if (Mixtures.character_confused > 0 || Mixtures.character_paralyze > 0) {
             Interface.newEvent("You missed attack.");
         } else if (true_damage <= 0)
             Interface.newEvent(enemy.type + " blocked attack.");

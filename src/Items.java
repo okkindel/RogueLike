@@ -87,8 +87,8 @@ public class Items {
             if (action && !eq_full)
                 removeItem(position);
         }
-        /* EQUIPMENT */
 
+        /* EQUIPMENT */
         else if (position < 5) {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
                 if (!action)
