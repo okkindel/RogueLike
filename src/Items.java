@@ -89,13 +89,16 @@ public class Items {
             if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16) {
                 if (!action)
                     Rings.ringType(Interface.equipment[position] - 10);
-            } else if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
+            }
+            if (Interface.equipment[position] >= 21 && Interface.equipment[position] <= 23) {
                 if (!action)
                     Swords.swordType(Interface.equipment[position] - 20);
-            } else if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
+            }
+            if (Interface.equipment[position] >= 31 && Interface.equipment[position] <= 33) {
                 if (!action)
                     Armors.armorType(Interface.equipment[position] - 30);
-            }if (Interface.equipment[position] >= 41 && Interface.equipment[position] <= 43) {
+            }
+            if (Interface.equipment[position] >= 41 && Interface.equipment[position] <= 43) {
                 if (!action)
                     Shields.shieldType(Interface.equipment[position] - 40);
             }
