@@ -11,7 +11,7 @@ public class Drop {
         this.y_position = y_position;
 
         Random generator = new Random();
-        int random = generator.nextInt(125);
+        int random = generator.nextInt(135);
 
         if (random < 70)
             treasure = Mixtures.dropMixture();
@@ -23,7 +23,8 @@ public class Drop {
             treasure = 10;
         else if (random < 125)
             treasure = 20;
-        treasure = Rings.dropRing();
+        else if (random < 135)
+            treasure = Rings.dropRing();
     }
 
     Drop(int x_position, int y_position, int treasure) {
@@ -48,7 +49,7 @@ public class Drop {
             Items.scrolls += 1;
             Interface.newEvent("I found an identify scroll!");
         }
-        else if (treasure == 51 || treasure == 52 || treasure == 53) {
+        else if (treasure >= 11 && treasure <= 16) {
             Interface.newItem(treasure);
         }
     }

@@ -15,25 +15,24 @@ public class Battle {
             Interface.newEvent("Character dodged attack.");
         else
             Interface.newEvent(enemy.type + " attacks for : " + true_damage);
-            Character.modifyHealth(-true_damage);
+        Character.modifyHealth(-true_damage);
     }
 
     static void characterAttack(Enemies enemy) {
 
+        AssetsLoader.battle(enemy.positionX, enemy.positionY);
         int strength = generator.nextInt(Character.strength_points);
         int defence = generator.nextInt(enemy.defence_points) / 2;
         int true_damage = strength - defence;
         if (true_damage <= 0)
             Interface.newEvent(enemy.type + " blocked attack.");
-        else if (generator.nextInt(100) <= enemy.dexterity_points)
+        else if (generator.nextInt(100) <= enemy.dexterity_points) {
             Interface.newEvent(enemy.type + " dodged attack.");
-        else
+        } else {
             Interface.newEvent("Character attacks for : " + true_damage);
             enemy.health_points -= true_damage;
+        }
         if (enemy.health_points < 0)
             enemy.health_points = 0;
-        else
-            AssetsLoader.battle(enemy.positionX, enemy.positionY);
-
     }
 }

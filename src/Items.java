@@ -74,7 +74,6 @@ public class Items {
                 dropEquipment(position);
         }
         eq_full = false;
-        was_clicked = false;
     }
 
     void dropItem(int position) {
@@ -86,12 +85,14 @@ public class Items {
                     Interface.inventory, position, 9 - position);
             Interface.inventory[9] = 0;
         }
+        was_clicked = false;
     }
 
-    private void removeItem(int position) {
+    void removeItem(int position) {
         System.arraycopy(Interface.inventory, position + 1,
                 Interface.inventory, position, 9 - position);
         Interface.inventory[9] = 0;
+        was_clicked = false;
     }
 
     private void dropEquipment(int position) {
@@ -99,6 +100,7 @@ public class Items {
             Interface.newItem(Interface.equipment[position]);
             Interface.equipment[position] = 0;
         }
+        was_clicked = false;
     }
 
     void identify(int position) {
