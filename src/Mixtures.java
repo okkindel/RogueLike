@@ -8,6 +8,7 @@ public class Mixtures {
     static int character_paralyze = 0;
     static int character_confused = 0;
     static int character_harm = 0;
+    static int character_full = 0;
     private static Random generator = new Random();
 
     Mixtures() {

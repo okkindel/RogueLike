@@ -1,9 +1,9 @@
 public class Items {
 
     static boolean was_clicked = false;
+    static boolean eq_full = false;
     static int last_position;
     static int scrolls = 1;
-    static boolean eq_full = false;
 
     Items() {
         new Mixtures();
@@ -35,7 +35,7 @@ public class Items {
                 else {
                     Character.hunger = 0;
                     Character.modifyHealth(25);
-                    Mixtures.character_harm -= 15;
+                    Mixtures.character_full += 15;
                     Interface.newEvent("Eggplant tastes great and cures hunger.");
                 }
             }
@@ -45,7 +45,7 @@ public class Items {
                 else {
                     Character.hunger = 0;
                     Character.modifyHealth(35);
-                    Mixtures.character_harm -= 25;
+                    Mixtures.character_full += 25;
                     Interface.newEvent("Old and stiff but nutritious.");
                 }
             }
@@ -147,6 +147,10 @@ public class Items {
             } else if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16
                     && !Rings.rings_known[Interface.inventory[position] - 10]) {
                 Rings.identify(Interface.inventory[position] - 10);
+                scrolls -= 1;
+            } else if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16
+                    && !Rings.rings_known[Interface.equipment[position] - 10]) {
+                Rings.identify(Interface.equipment[position] - 10);
                 scrolls -= 1;
             } else
                 Interface.newEvent("You don't have to identify it.");

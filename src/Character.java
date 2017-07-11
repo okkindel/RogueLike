@@ -208,9 +208,9 @@ public class Character {
             modifyHealth(-5);
             Mixtures.character_harm -= 1;
         }
-        if (Mixtures.character_harm < 0) {
+        if (Mixtures.character_full > 0) {
             modifyHealth(1);
-            Mixtures.character_harm += 1;
+            Mixtures.character_full -= 1;
         }
     }
 
