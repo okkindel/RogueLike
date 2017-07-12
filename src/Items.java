@@ -132,8 +132,12 @@ public class Items {
 
     private void dropEquipment(int position) {
         if (!Interface.inventory_shown && Interface.equipment[position] != 0) {
-            Interface.newItem(Interface.equipment[position]);
-            Interface.equipment[position] = 0;
+            if (Interface.inventory[9] == 0) {
+                Interface.newItem(Interface.equipment[position]);
+                Interface.equipment[position] = 0;
+            }
+            else
+                Interface.newEvent("Inventory full!");
         }
         was_clicked = false;
     }

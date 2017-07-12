@@ -38,7 +38,13 @@ public class Drop {
             this.treasure = Mixtures.nextPotion(treasure - 1) + 1;
         else if (treasure == 8 || treasure == 9 || treasure == 10)
             this.treasure = treasure;
-        else if (treasure > 20)
+        else if (treasure >= 11 && treasure <= 16)
+            this.treasure = treasure;
+        else if (treasure == 21 || treasure == 22 || treasure == 23)
+            this.treasure = treasure;
+        else if (treasure == 31 || treasure == 32 || treasure == 33)
+            this.treasure = treasure;
+        else if (treasure == 41 || treasure == 42 || treasure == 43)
             this.treasure = treasure;
     }
 
