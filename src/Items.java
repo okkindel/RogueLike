@@ -119,6 +119,10 @@ public class Items {
             System.arraycopy(Interface.inventory, position + 1,
                     Interface.inventory, position, 9 - position);
             Interface.inventory[9] = 0;
+        } else if (!Interface.inventory_shown) {
+            Room room = Level.levels_list.get(Character.present_level).get(Character.present_room);
+            room.drop_list.add(new Drop(Character.x_value, Character.y_value, Interface.equipment[position]));
+            Interface.equipment[position] = 0;
         }
         was_clicked = false;
     }
@@ -135,8 +139,7 @@ public class Items {
             if (Interface.inventory[9] == 0) {
                 Interface.newItem(Interface.equipment[position]);
                 Interface.equipment[position] = 0;
-            }
-            else
+            } else
                 Interface.newEvent("Inventory full!");
         }
         was_clicked = false;
