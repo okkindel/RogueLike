@@ -13,9 +13,9 @@ public class Drop {
         Random generator = new Random();
         int random = generator.nextInt(140);
 
-        if (random < 70)
+        if (random < 65)
             treasure = Mixtures.dropMixture();
-        else if (random < 90)
+        else if (random < 85)
             treasure = 8;
         else if (random < 110)
             treasure = 9;

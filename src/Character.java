@@ -6,8 +6,8 @@ public class Character {
     static int last_tile = 0;
     static int present_room = 0;
     static int present_level = 0;
-    static int max_health = 150;
-    static int health_points = 150;
+    static int max_health = 200;
+    static int health_points = 200;
     static int strength_points = 15;
     static int dexterity_points = 10;
     static int defence_points = 5;

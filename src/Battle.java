@@ -7,16 +7,17 @@ public class Battle {
     static void enemyAttack(Enemies enemy) {
 
         Armory.editAbilities();
-        int strength = generator.nextInt(enemy.strength_points);
+        int strength = generator.nextInt(enemy.strength_points + 5 * Character.present_level);
         int defence = generator.nextInt(Character.defence_points + Armory.DEF) / 2;
         int true_damage = strength - defence;
         if (true_damage <= 0)
             Interface.newEvent("Character blocked attack.");
         else if (generator.nextInt(100) <= (Character.dexterity_points + Armory.DEX))
             Interface.newEvent("Character dodged attack.");
-        else
+        else {
             Interface.newEvent(enemy.type + " attacks for : " + true_damage);
-        Character.modifyHealth(-true_damage);
+            Character.modifyHealth(-true_damage);
+        }
     }
 
     static void characterAttack(Enemies enemy) {
