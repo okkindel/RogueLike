@@ -1,7 +1,6 @@
 import javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
