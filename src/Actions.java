@@ -1,8 +1,6 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Actions {
 
