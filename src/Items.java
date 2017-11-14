@@ -147,18 +147,24 @@ public class Items {
 
     void identify(int position) {
         if (scrolls > 0) {
-            if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7
-                    && !Mixtures.mixtures_known[Interface.inventory[position] - 1]) {
-                Mixtures.identify(Interface.inventory[position] - 1);
-                scrolls -= 1;
-            } else if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16
-                    && !Rings.rings_known[Interface.inventory[position] - 10]) {
-                Rings.identify(Interface.inventory[position] - 10);
-                scrolls -= 1;
-            } else if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16
-                    && !Rings.rings_known[Interface.equipment[position] - 10]) {
-                Rings.identify(Interface.equipment[position] - 10);
-                scrolls -= 1;
+            if (Interface.inventory_shown) {
+                if (Interface.inventory[position] >= 1 && Interface.inventory[position] <= 7
+                        && !Mixtures.mixtures_known[Interface.inventory[position] - 1]) {
+                    Mixtures.identify(Interface.inventory[position] - 1);
+                    scrolls -= 1;
+                } else if (Interface.inventory[position] >= 11 && Interface.inventory[position] <= 16
+                        && !Rings.rings_known[Interface.inventory[position] - 10]) {
+                    Rings.identify(Interface.inventory[position] - 10);
+                    scrolls -= 1;
+
+                } else
+                    Interface.newEvent("You don't have to identify it.");
+            } else if (!Interface.inventory_shown) {
+                if (Interface.equipment[position] >= 11 && Interface.equipment[position] <= 16
+                        && !Rings.rings_known[Interface.equipment[position] - 10]) {
+                    Rings.identify(Interface.equipment[position] - 10);
+                    scrolls -= 1;
+                }
             } else
                 Interface.newEvent("You don't have to identify it.");
         } else

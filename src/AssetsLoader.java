@@ -1,7 +1,6 @@
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;

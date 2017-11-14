@@ -1,7 +1,5 @@
 import javafx.scene.input.KeyCode;
-
 import java.util.ListIterator;
-
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
