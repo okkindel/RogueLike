@@ -1,7 +1,9 @@
 # RogueLike
 A roguelike game made becuase of boredom during the exam session.
 The game is entirely written in Java and JavaFX, graphics is basically also my work.
-It is quite difficult also I wish good luck :)
+It is quite difficult so I wish good luck :)
+
+Please feel free to fork and make comments/suggestions! Thanks!
 
 # Screenshots:
 
@@ -24,7 +26,7 @@ It is quite difficult also I wish good luck :)
 | Key | Action |
 | ------ | ------ |
 | Arrows | Moving |
-| 1-0 | Select an item |
+| 1, 2, ..., 0 | Select an item |
 | Z | Key of Action: Drink a micture, take a sword etc... |
 | X | Drop current item |
 | E | Switch the view of equipment and character |
