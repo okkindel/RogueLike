@@ -1,4 +1,4 @@
-# RogueLike
+# RogueLike [![CodeFactor](https://www.codefactor.io/repository/github/okkindel/roguelike/badge/master)](https://www.codefactor.io/repository/github/okkindel/roguelike/overview/master)
 A roguelike game made becuase of boredom during the exam session.
 The game is entirely written in Java and JavaFX, graphics is basically also my work.
 It is quite difficult so I wish good luck :)
